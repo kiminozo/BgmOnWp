@@ -3,3 +3,5 @@
 /src/KimiStudio.BgmOnWp/Bin
 /src/KimiStudio.BgmOnWp/obj
 *.suo
+/src/KimiStudio.Controls/obj
+/src/KimiStudio.Controls/Bin
