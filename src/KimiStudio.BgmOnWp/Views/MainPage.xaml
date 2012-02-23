@@ -6,7 +6,8 @@
 	xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+	xmlns:cal="http://www.caliburnproject.org"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
 	x:Class="KimiStudio.BgmOnWp.Views.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -17,13 +18,27 @@
 	<!--LayoutRoot 是放置所有页面内容的根网格-->
 	<Grid x:Name="LayoutRoot" Background="Transparent">
 		<!--透视控件-->
-        <controls:Panorama Title="Bagumi" >
-            <controls:PanoramaItem Header="最近观看" Orientation="Horizontal">
-                <ContentControl x:Name="RecentlyWatchedItem" HorizontalAlignment="Left" Width="800" VerticalAlignment="Stretch" />
+        <controls:Panorama Title="Bagumi" FontSize="{StaticResource PhoneFontSizeNormal}" >
+            <controls:PanoramaItem Header="最近观看" Orientation="Horizontal" FontSize="{StaticResource PhoneFontSizeSmall}">
+            	<Grid>
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="*" />
+						<RowDefinition Height="50" />
+					</Grid.RowDefinitions>
+                	<ContentControl x:Name="RecentlyWatchedItem" HorizontalAlignment="Left" Width="800" VerticalAlignment="Stretch" Margin="0" />
+					<HyperlinkButton Content="查看全部" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Style="{StaticResource HyperlinkText}" />
+				</Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem>
                 <!--<c:Thumbnail Text="日常" UriSource="http://lain.bgm.tv/pic/cover/c/fb/94/23640_T3pB2.jpg"/>-->
             </controls:PanoramaItem>
         </controls:Panorama>
 	</Grid>
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" BackgroundColor="#99000000">
+            <shell:ApplicationBar.MenuItems>
+            	<shell:ApplicationBarMenuItem Text="配置"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

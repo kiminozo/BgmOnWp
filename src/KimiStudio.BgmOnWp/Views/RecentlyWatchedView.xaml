@@ -8,12 +8,15 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="800">
+	<UserControl.Resources>
+		
+	</UserControl.Resources>
     <Grid x:Name="LayoutRoot">
-        <ListBox ItemsSource="{Binding Items}" Style="{StaticResource WrapListBox}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListBox ItemsSource="{Binding Items}" Style="{StaticResource NoScrollWrapListBox}"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <c:Thumbnail Text="{Binding Name}" Margin="10" UriSource="{Binding UriSource}" />
+                    <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
