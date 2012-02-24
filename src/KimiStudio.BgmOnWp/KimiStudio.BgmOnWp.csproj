@@ -61,6 +61,9 @@
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\Json.NET\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -69,11 +72,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiCommand.cs" />
+    <Compile Include="Api\IBagumiService.cs" />
+    <Compile Include="Api\LoginCommand.cs" />
+    <Compile Include="Api\PostExecutor.cs" />
+    <Compile Include="Api\RequestUri.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\AuthData.cs" />
+    <Compile Include="Models\Avatar.cs" />
+    <Compile Include="Models\BagumiData.cs" />
+    <Compile Include="Models\BagumiSubject.cs" />
+    <Compile Include="Models\BagumiSubjectTap.cs" />
+    <Compile Include="Models\ImageData.cs" />
     <Compile Include="ViewModels\RecentlyWatchedViewModel.cs" />
+    <Compile Include="ViewModels\WatchedItemModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -117,7 +132,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SampleData\" />
     <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

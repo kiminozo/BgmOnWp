@@ -6,8 +6,8 @@
 	xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:cal="http://www.caliburnproject.org"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+	xmlns:cal="http://www.caliburnproject.org" xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
+	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
 	x:Class="KimiStudio.BgmOnWp.Views.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -30,7 +30,7 @@
 				</Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem>
-                <!--<c:Thumbnail Text="日常" UriSource="http://lain.bgm.tv/pic/cover/c/fb/94/23640_T3pB2.jpg"/>-->
+                 
             </controls:PanoramaItem>
         </controls:Panorama>
 	</Grid>

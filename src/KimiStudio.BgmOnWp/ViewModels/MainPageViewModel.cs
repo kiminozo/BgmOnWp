@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Caliburn.Micro;
+using KimiStudio.BgmOnWp.Api;
+using KimiStudio.BgmOnWp.Models;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
@@ -13,9 +17,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         }
 
         public IScreen RecentlyWatchedItem { get; private set; }
-        ///// <summary>
-        ///// ItemViewModel 对象的集合。
-        ///// </summary>
-        //public ObservableCollection<ItemViewModel> Items { get; private set; }
+
+        
     }
 }

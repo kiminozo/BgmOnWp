@@ -16,15 +16,15 @@
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="ListBox">
-						<ItemsPresenter/>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
         </Style>
-		<Style TargetType="ListBox" x:Key="NoScrollWrapListBox" BasedOn="{StaticResource WrapListBox}">
+		<Style TargetType="ListBox" x:Key="NoScrollWrapListBox">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="ListBox">

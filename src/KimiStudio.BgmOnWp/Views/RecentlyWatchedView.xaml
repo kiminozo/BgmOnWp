@@ -16,7 +16,7 @@
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" />
+                    <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Tag="{Binding Id}" Width="173" Height="173" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

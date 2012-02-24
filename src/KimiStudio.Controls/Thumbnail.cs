@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -40,6 +41,7 @@ namespace KimiStudio.Controls
         private TextBlock imageName;
         private ImageBrush imageBrush;
 
+
         public Thumbnail()
         {
             DefaultStyleKey = typeof(Thumbnail);
@@ -59,17 +61,22 @@ namespace KimiStudio.Controls
 
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
-            imageName = GetTemplateChild("imageName") as TextBlock;
-            imageBrush = GetTemplateChild("imageBrush") as ImageBrush;
+            imageName = (TextBlock) GetTemplateChild("imageName");
+            imageBrush = (ImageBrush) GetTemplateChild("imageBrush");
             SetText(Text);
             SetImageBrush(UriSource);
+            base.OnApplyTemplate();
         }
 
         private void SetText(string text)
         {
-            if (imageName == null) return; ;
+            if (imageName == null) return;
             imageName.Text = text;
+        }
+
+        private string WordEllipsis(string text, int length)
+        {
+            return text.Length < length ? text : text.Substring(0, length) + "\u2026";
         }
 
         private void SetImageBrush(Uri uriSource)
@@ -78,8 +85,8 @@ namespace KimiStudio.Controls
 
             var disposer = imageBrush.ImageSource as IDisposable;
             if(disposer != null)disposer.Dispose();
-            
-            imageBrush.ImageSource = new BitmapImage(uriSource);
+
+            imageBrush.ImageSource = new StorageCachedImage(uriSource);
 
         }
     }
