@@ -13,7 +13,7 @@
 	FontSize="{StaticResource PhoneFontSizeNormal}"
 	Foreground="{StaticResource PhoneForegroundBrush}"
 	SupportedOrientations="Portrait" Orientation="Portrait"
-	shell:SystemTray.IsVisible="True">
+	shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
 
 	<!--LayoutRoot 是放置所有页面内容的根网格-->
 	<Grid x:Name="LayoutRoot" Background="Transparent">
@@ -30,7 +30,7 @@
 				</Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem>
-                 
+                     <Ellipse Width="100" Height="100" Fill="#FFEB0606"></Ellipse>
             </controls:PanoramaItem>
         </controls:Panorama>
 	</Grid>

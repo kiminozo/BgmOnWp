@@ -11,9 +11,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class MainPageViewModel : Screen
     {
-        public MainPageViewModel()
+        public MainPageViewModel(RecentlyWatchedViewModel recentlyWatched)
         {
-            RecentlyWatchedItem = new RecentlyWatchedViewModel();
+            RecentlyWatchedItem = recentlyWatched;
         }
 
         public IScreen RecentlyWatchedItem { get; private set; }

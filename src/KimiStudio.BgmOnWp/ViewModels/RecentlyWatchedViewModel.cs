@@ -17,15 +17,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class RecentlyWatchedViewModel : Screen
     {
+        private readonly INavigationService navigation;
         private IEnumerable<WatchedItemModel> items;
 
-        public RecentlyWatchedViewModel()
+        public RecentlyWatchedViewModel(INavigationService navigation)
         {
+            this.navigation = navigation;
             items = Enumerable.Empty<WatchedItemModel>();
-            //for (int i = 0; i < 8; i++)
-            //{
-            //    Items.Add(new WatchedModel { Name = "日常", UriSource = new Uri(@"http://lain.bgm.tv/pic/cover/c/fb/94/23640_T3pB2.jpg",UriKind.Absolute) });    
-            //}
         }
 
         public IEnumerable<WatchedItemModel> Items
@@ -36,6 +34,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 items = value;
                 NotifyOfPropertyChange(() => Items);
             }
+        }
+
+        public void OnTap(WatchedItemModel item)
+        {
+            navigation.UriFor<SubjectViewModel>()
+                .WithParam(x => x.Id,item.Id)
+                .Navigate();
         }
 
         protected override void OnViewLoaded(object view)

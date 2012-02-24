@@ -18,6 +18,7 @@ namespace KimiStudio.BgmOnWp
             container.RegisterPhoneServices();
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<RecentlyWatchedViewModel>();
+            container.PerRequest<SubjectViewModel>();
 
             AddCustomConventions();
         }
