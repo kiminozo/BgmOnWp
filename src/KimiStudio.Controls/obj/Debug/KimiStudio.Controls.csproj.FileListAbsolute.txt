@@ -1,6 +1,0 @@
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\Bin\Debug\KimiStudio.Controls.dll
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\Bin\Debug\KimiStudio.Controls.pdb
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\obj\Debug\ResolveAssemblyReference.cache
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\obj\Debug\KimiStudio.Controls.g.resources
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\obj\Debug\KimiStudio.Controls.dll
-D:\Workspace\BgmOnWp\src\KimiStudio.Controls\obj\Debug\KimiStudio.Controls.pdb
