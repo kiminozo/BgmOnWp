@@ -31,16 +31,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         protected override void OnInitialize()
         {
-
-        }
-
-        protected override void OnActivate()
-        {
-            base.OnActivate();
             var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
             getWatchedCommand.Execute();
         }
-
+        
         private void WatchedCallBack(IList<BagumiData> list)
         {
             var query = list.OrderByDescending(p => p.LastTouch);
