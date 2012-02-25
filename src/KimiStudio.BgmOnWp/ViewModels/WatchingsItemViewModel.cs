@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
@@ -9,7 +10,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
     public class WatchingsItemViewModel : Screen
     {
         private IEnumerable<WatchedItemModel> watchingItems;
-        
+
         public IEnumerable<WatchedItemModel> WatchingItems
         {
             get { return watchingItems; }
@@ -20,22 +21,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        protected override void OnActivate()
+        public Func<BagumiData, bool> Filter { get; set; }
+
+        public void UpdateWatchingItems(IEnumerable<BagumiData> itemModels)
         {
-            base.OnActivate();
-            var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
-            getWatchedCommand.Execute();
+            var query = Filter == null ? itemModels : itemModels.Where(Filter);
+            WatchingItems = query.Select(WatchedItemModel.FromBagumiData);
         }
 
-        private void WatchedCallBack(IList<BagumiData> list)
-        {
-            WatchingItems = list.OrderByDescending(p => p.LastTouch)
-                .Select(p => new WatchedItemModel
-                                 {
-                                     Id = p.Subject.Id,
-                                     Name = p.Name,
-                                     UriSource = p.Subject.Images.Large
-                                 });
-        }
     }
 }

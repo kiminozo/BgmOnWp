@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiCommand.cs" />
+    <Compile Include="Api\GetWatchedCommand.cs" />
     <Compile Include="Api\IBagumiService.cs" />
     <Compile Include="Api\LoginCommand.cs" />
     <Compile Include="Api\PostExecutor.cs" />

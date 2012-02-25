@@ -13,7 +13,7 @@ using Microsoft.Phone.Controls;
 
 namespace KimiStudio.BgmOnWp.Views
 {
-    public partial class SubjectView : PhoneApplicationPage
+    public partial class SubjectView 
     {
         public SubjectView()
         {

@@ -61,12 +61,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             Items = list.OrderByDescending(p => p.LastTouch)
                 .Take(8)
-                .Select(p => new WatchedItemModel
-                                 {
-                                     Id = p.Subject.Id,
-                                     Name = p.Name,
-                                     UriSource = p.Subject.Images.Large
-                                 });
+                .Select(WatchedItemModel.FromBagumiData);
         }
     }
 }

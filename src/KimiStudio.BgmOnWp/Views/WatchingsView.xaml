@@ -18,13 +18,13 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--透视控件-->
-        <controls:Pivot Title="在看" ItemsSource="{Binding Items}">
+        <controls:Pivot x:Name="Items" Title="在看">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}"/>
                 </DataTemplate>
             </controls:Pivot.HeaderTemplate>
-            <controls:Pivot.ItemTemplate>
+            <!--<controls:Pivot.ItemTemplate>
                 <DataTemplate>
                     <ListBox ItemsSource="{Binding WatchingItems}" Style="{StaticResource WrapListBox}"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -36,7 +36,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </DataTemplate>
-            </controls:Pivot.ItemTemplate>
+            </controls:Pivot.ItemTemplate>-->
             <!--<controls:PivotItem Header="全部">
                 
             </controls:PivotItem>
