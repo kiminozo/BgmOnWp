@@ -108,7 +108,7 @@ namespace KimiStudio.BgmOnWp.Models
 
     public class CharacterInfo
     {
-        public Alias Alias { get; set; }
+        //public Alias Alias { get; set; }
         public string Brith { get; set; }
         //public string Bloodtype { get; set; }
         //public string Bwh { get; set; }
