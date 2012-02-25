@@ -11,7 +11,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Grid Background="Gray">
-                        <Rectangle HorizontalAlignment="Center" Margin="0" Height="173" Width="173">
+                        <Rectangle HorizontalAlignment='Stretch' VerticalAlignment="Stretch" Margin="0">                                  
                             <Rectangle.Fill>
                                 <ImageBrush x:Name="imageBrush" Stretch="UniformToFill"/>
                             </Rectangle.Fill>

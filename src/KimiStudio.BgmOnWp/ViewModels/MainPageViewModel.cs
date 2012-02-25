@@ -11,13 +11,20 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class MainPageViewModel : Screen
     {
-        public MainPageViewModel(RecentlyWatchedViewModel recentlyWatched)
+        private readonly INavigationService navigation;
+
+        public MainPageViewModel(RecentlyWatchedViewModel recentlyWatched, INavigationService navigation)
         {
             RecentlyWatchedItem = recentlyWatched;
+            this.navigation = navigation;
         }
 
         public IScreen RecentlyWatchedItem { get; private set; }
 
+        public void NavWatchings()
+        {
+            navigation.UriFor<WatchingsViewModel>().Navigate();
+        }
         
     }
 }

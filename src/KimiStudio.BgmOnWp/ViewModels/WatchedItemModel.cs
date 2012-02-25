@@ -7,10 +7,5 @@ namespace KimiStudio.BgmOnWp.ViewModels
         public string Id { get; set; }
         public string Name { get; set; }
         public Uri UriSource { get; set; }
-
-        public void Nav(object id)
-        {
-            
-        }
     }
 }

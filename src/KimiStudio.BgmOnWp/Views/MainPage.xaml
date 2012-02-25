@@ -26,7 +26,7 @@
 						<RowDefinition Height="50" />
 					</Grid.RowDefinitions>
                 	<ContentControl x:Name="RecentlyWatchedItem" HorizontalAlignment="Left" Width="800" VerticalAlignment="Stretch" Margin="0" />
-					<HyperlinkButton Content="查看全部" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Style="{StaticResource HyperlinkText}" />
+                    <HyperlinkButton Name="NavWatchings" Content="查看全部" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Style="{StaticResource HyperlinkText}" />
 				</Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem>
