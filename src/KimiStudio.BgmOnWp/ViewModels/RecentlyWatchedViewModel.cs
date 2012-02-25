@@ -42,11 +42,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.Id,item.Id)
                 .Navigate();
         }
-
-        protected override void OnViewLoaded(object view)
+        
+        protected override void OnInitialize()
         {
-            base.OnViewLoaded(view);
-            base.OnViewLoaded(view);
             var loginCommand = new LoginCommand("kiminozo", "haruka", LoginCallBack);
             loginCommand.Execute();
         }
