@@ -74,11 +74,6 @@ namespace KimiStudio.Controls
             imageName.Text = text;
         }
 
-        private string WordEllipsis(string text, int length)
-        {
-            return text.Length < length ? text : text.Substring(0, length) + "\u2026";
-        }
-
         private void SetImageBrush(Uri uriSource)
         {
             if (imageBrush == null) return;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Caliburn.Micro;
+using KimiStudio.BgmOnWp.Toolkit;
 using KimiStudio.BgmOnWp.ViewModels;
 using Microsoft.Phone.Controls;
 
@@ -16,6 +17,9 @@ namespace KimiStudio.BgmOnWp
             if (RootFrame == null) return;
             container = new PhoneContainer(RootFrame);
             container.RegisterPhoneServices();
+
+            container.Instance<IProgressService>(new ProgressService(RootFrame));
+
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<RecentlyWatchedViewModel>();
             container.PerRequest<SubjectViewModel>();
@@ -24,6 +28,8 @@ namespace KimiStudio.BgmOnWp
 
             AddCustomConventions();
         }
+
+       
 
         private static void AddCustomConventions()
         {
@@ -84,4 +90,5 @@ namespace KimiStudio.BgmOnWp
             container.BuildUp(instance);
         }
     }
+
 }

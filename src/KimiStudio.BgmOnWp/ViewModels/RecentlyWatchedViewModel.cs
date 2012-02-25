@@ -12,17 +12,20 @@ using System.Windows.Shapes;
 using Caliburn.Micro;
 using KimiStudio.BgmOnWp.Api;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class RecentlyWatchedViewModel : Screen
     {
         private readonly INavigationService navigation;
+        private readonly IProgressService progressService;
         private IEnumerable<WatchedItemModel> items;
 
-        public RecentlyWatchedViewModel(INavigationService navigation)
+        public RecentlyWatchedViewModel(INavigationService navigation, IProgressService progressService)
         {
             this.navigation = navigation;
+            this.progressService = progressService;
             items = Enumerable.Empty<WatchedItemModel>();
         }
 
@@ -42,15 +45,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.Id,item.Id)
                 .Navigate();
         }
-        
-        protected override void OnInitialize()
+        protected override void OnViewLoaded(object view)
         {
+            base.OnViewLoaded(view);
+            progressService.Show("登录中\u2026");
             var loginCommand = new LoginCommand("kiminozo", "haruka", LoginCallBack);
             loginCommand.Execute();
         }
 
         private void LoginCallBack()
         {
+            progressService.Show("加载中\u2026");
             var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
             getWatchedCommand.Execute();
         }
@@ -60,6 +65,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Items = list.OrderByDescending(p => p.LastTouch)
                 .Take(8)
                 .Select(WatchedItemModel.FromBagumiData);
+            progressService.Hide();
         }
     }
 }

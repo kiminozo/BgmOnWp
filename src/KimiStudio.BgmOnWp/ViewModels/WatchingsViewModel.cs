@@ -13,16 +13,19 @@ using System.Windows.Shapes;
 using Caliburn.Micro;
 using KimiStudio.BgmOnWp.Api;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class WatchingsViewModel : Conductor<WatchingsItemViewModel>.Collection.OneActive
     {
         private readonly INavigationService navigation;
+        private readonly IProgressService progressService;
 
-        public WatchingsViewModel(INavigationService navigation)
+        public WatchingsViewModel(INavigationService navigation, IProgressService progressService)
         {
             this.navigation = navigation;
+            this.progressService = progressService;
             Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });
             Items.Add(new WatchingsItemViewModel { DisplayName = "动画", Filter = p => p.Subject.Type == 2 });
             Items.Add(new WatchingsItemViewModel { DisplayName = "三次元", Filter = p => p.Subject.Type == 6 });
@@ -31,6 +34,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         protected override void OnInitialize()
         {
+            progressService.Show("加载中\u2026");
             var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
             getWatchedCommand.Execute();
         }
@@ -39,6 +43,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             var query = list.OrderByDescending(p => p.LastTouch);
             Items.Apply(x => x.UpdateWatchingItems(query));
+            progressService.Hide();
         }
 
         public void OnTap(WatchedItemModel item)

@@ -89,6 +89,8 @@
     <Compile Include="Models\BagumiSubjectTap.cs" />
     <Compile Include="Models\ImageData.cs" />
     <Compile Include="Storages\RecentlyWatchedViewModelStorage.cs" />
+    <Compile Include="Toolkit\IProgressService.cs" />
+    <Compile Include="Toolkit\ProgressService.cs" />
     <Compile Include="ViewModels\RecentlyWatchedViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="ViewModels\WatchedItemModel.cs" />
