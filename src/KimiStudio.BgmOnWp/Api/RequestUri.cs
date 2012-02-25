@@ -50,5 +50,10 @@ namespace KimiStudio.BgmOnWp.Api
             }
             return new Uri(uriBuilder.ToString());
         }
+
+        public override string ToString()
+        {
+            return BuildUri().ToString();
+        }
     }
 }

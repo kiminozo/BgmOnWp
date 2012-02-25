@@ -82,12 +82,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Models\AuthData.cs" />
-    <Compile Include="Models\Avatar.cs" />
     <Compile Include="Models\BagumiData.cs" />
     <Compile Include="Models\BagumiSubject.cs" />
-    <Compile Include="Models\BagumiSubjectTap.cs" />
-    <Compile Include="Models\ImageData.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Storages\RecentlyWatchedViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
@@ -103,6 +100,9 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\RecentlyWatchedView.xaml.cs">
       <DependentUpon>RecentlyWatchedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubjectSummaryView.xaml.cs">
+      <DependentUpon>SubjectSummaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubjectView.xaml.cs">
       <DependentUpon>SubjectView.xaml</DependentUpon>
@@ -124,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RecentlyWatchedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubjectSummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

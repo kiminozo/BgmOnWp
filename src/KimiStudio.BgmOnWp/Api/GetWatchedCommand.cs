@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using KimiStudio.BgmOnWp.Models;
 using Newtonsoft.Json;
 
@@ -37,6 +38,43 @@ namespace KimiStudio.BgmOnWp.Api
         {
             IList<BagumiData> list = JsonConvert.DeserializeObject<List<BagumiData>>(result);
             action(list);
+        }
+    }
+
+    public sealed class GetSubjectCommand : ApiCommand
+    {
+        private readonly string subjectId;
+        private readonly Action<Subject> action;
+        private const string Uri = @"http://api.bgm.tv/subject/";
+        #region Overrides of ApiCommand
+
+        public GetSubjectCommand(int subjectId, Action<Subject> action)
+        {
+            this.subjectId = subjectId.ToString(CultureInfo.InvariantCulture);
+            this.action = action;
+        }
+
+        public override void Execute()
+        {
+            var authData = BagumiService.Auth;
+            var request = new RequestData(Uri + subjectId);
+            request.AddParameter("responseGroup", "large");
+            request.AddParameter("source", "OnAir");
+            request.AddParameter("sysbuild", "201107272200");
+            request.AddParameter("sysuid", authData.Id);
+            request.AddParameter("sysusername", authData.UserName);
+            request.AddParameter("auth", authData.Auth);
+
+            var executor = new GetExecutor(CallBackPost);
+            executor.Execute(request);
+        }
+
+        #endregion
+
+        private void CallBackPost(string result)
+        {
+            var subject = JsonConvert.DeserializeObject<Subject>(result);
+            action(subject);
         }
     }
 }

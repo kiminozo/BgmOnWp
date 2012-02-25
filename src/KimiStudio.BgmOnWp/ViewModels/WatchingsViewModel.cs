@@ -50,6 +50,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
+                .WithParam(x => x.DisplayName, item.Name)
                 .Navigate();
         }
     }

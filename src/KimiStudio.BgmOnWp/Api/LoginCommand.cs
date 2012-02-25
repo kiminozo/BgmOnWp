@@ -30,7 +30,7 @@ namespace KimiStudio.BgmOnWp.Api
 
         private void CallBackPost(string result)
         {
-            BagumiService.Auth = JsonConvert.DeserializeObject<AuthData>(result);
+            BagumiService.Auth = JsonConvert.DeserializeObject<AuthUser>(result);
             action();
         }
     }

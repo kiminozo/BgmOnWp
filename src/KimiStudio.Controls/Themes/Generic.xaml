@@ -16,7 +16,7 @@
                                 <ImageBrush x:Name="imageBrush" Stretch="UniformToFill"/>
                             </Rectangle.Fill>
                         </Rectangle>
-                        <Rectangle Fill="#99000000" Height="28" VerticalAlignment="Bottom" />
+                        <Rectangle x:Name="imageNameBackground" Fill="#99000000" Height="28" VerticalAlignment="Bottom" />
                         <TextBlock x:Name="imageName" VerticalAlignment="Bottom" 
                                    Foreground="White" IsHitTestVisible="True" TextTrimming="WordEllipsis" HorizontalAlignment="Left" Margin="5,0" />
                     </Grid>

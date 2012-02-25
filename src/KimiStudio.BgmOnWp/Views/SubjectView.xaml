@@ -17,12 +17,9 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--透视控件-->
-        <controls:Panorama Title="Bagumi">
+        <controls:Panorama Title="{Binding DisplayName}">
             <controls:PanoramaItem>
-                <controls:PanoramaItem.Header>
-                    <TextBlock Text="影片" FontSize="{StaticResource PhoneFontSizeLarge}" />
-                </controls:PanoramaItem.Header>
-                <TextBlock Text="{Binding Id}"/>
+                <ContentControl x:Name="SubjectSummary" HorizontalAlignment="Left" Margin="0" />
             </controls:PanoramaItem>
             <controls:PanoramaItem>
                
