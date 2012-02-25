@@ -19,14 +19,19 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--透视控件-->
         <controls:Pivot Title="在看" ItemsSource="{Binding Items}">
+            <controls:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayName}"/>
+                </DataTemplate>
+            </controls:Pivot.HeaderTemplate>
             <controls:Pivot.ItemTemplate>
                 <DataTemplate>
                     <ListBox ItemsSource="{Binding WatchingItems}" Style="{StaticResource WrapListBox}"
-                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200" 
-                              cal:Message.Attach="[Event Tap] = [Action OnTap($dataContext)]" />
+                                      cal:Message.Attach="[Event Tap] = [Action OnTap($dataContext)]" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

@@ -91,6 +91,7 @@
     <Compile Include="ViewModels\RecentlyWatchedViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="ViewModels\WatchedItemModel.cs" />
+    <Compile Include="ViewModels\WatchingsItemViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="Views\SubjectView.xaml.cs">
       <DependentUpon>SubjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WatchingsItemView..xaml.cs">
+      <DependentUpon>WatchingsItemView..xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WatchingsView.xaml.cs">
       <DependentUpon>WatchingsView.xaml</DependentUpon>
@@ -121,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SubjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WatchingsItemView..xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

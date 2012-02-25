@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="KimiStudio.BgmOnWp.Views.WatchingsItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cal="http://www.caliburnproject.org"
+             xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls" mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="800" d:DesignWidth="480">
+    <ListBox ItemsSource="{Binding WatchingItems}" Style="{StaticResource WrapListBox}"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200" 
+                                      cal:Message.Attach="[Event Tap] = [Action OnTap($dataContext)]" />
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</UserControl>
