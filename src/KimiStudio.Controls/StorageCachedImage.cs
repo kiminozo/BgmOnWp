@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
@@ -104,8 +105,9 @@ namespace KimiStudio.Controls
                 }
                 Dispatcher.BeginInvoke(SetCacheStreamSource);
             }
-            catch
+            catch(Exception err)
             {
+                Debug.WriteLine(err.Message);
             }
         }
     }
