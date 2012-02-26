@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiCommand.cs" />
+    <Compile Include="Api\GetSubjectCommand.cs" />
     <Compile Include="Api\GetWatchedCommand.cs" />
     <Compile Include="Api\IBagumiService.cs" />
     <Compile Include="Api\LoginCommand.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Storages\RecentlyWatchedViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
-    <Compile Include="ViewModels\RecentlyWatchedViewModel.cs" />
     <Compile Include="ViewModels\SubjectSummaryViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="ViewModels\WatchedItemModel.cs" />
@@ -101,9 +101,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="Views\RecentlyWatchedView.xaml.cs">
-      <DependentUpon>RecentlyWatchedView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SubjectSummaryView.xaml.cs">
       <DependentUpon>SubjectSummaryView.xaml</DependentUpon>
     </Compile>
@@ -123,10 +120,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Views\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RecentlyWatchedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

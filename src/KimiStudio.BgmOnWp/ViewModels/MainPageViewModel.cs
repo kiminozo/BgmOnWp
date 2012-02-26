@@ -11,11 +11,10 @@ using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public sealed class MainPageViewModel : Screen, IHandle<LoginMessage>
+    public sealed class MainPageViewModel : Screen
     {
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
-        private readonly IEventAggregator eventAggregator;
 
         private IEnumerable<WatchedItemModel> items;
         public IEnumerable<WatchedItemModel> Items
@@ -28,43 +27,21 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public MainPageViewModel(INavigationService navigation, IProgressService progressService, IEventAggregator eventAggregator)
+        public MainPageViewModel(INavigationService navigation, IProgressService progressService)
         {
             this.navigation = navigation;
             this.progressService = progressService;
-            this.eventAggregator = eventAggregator;
         }
-
-        protected override void OnActivate()
-        {
-            eventAggregator.Subscribe(this);
-            base.OnActivate();
-        }
-
-        protected override void OnDeactivate(bool close)
-        {
-            eventAggregator.Unsubscribe(this);
-            base.OnDeactivate(close);
-        }
-
 
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
             progressService.Show("登录中\u2026");
-            var loginCommand = new LoginCommand("kiminozo", "haruka", eventAggregator.Publish);
-            loginCommand.Execute();
+            var loginCommand = new LoginCommand("kiminozo", "haruka");
+            loginCommand.Execute(Handle);
         }
 
-        private void WatchedCallBack(IEnumerable<BagumiData> list)
-        {
-            Items = list.OrderByDescending(p => p.LastTouch)
-                .Take(8)
-                .Select(WatchedItemModel.FromBagumiData);
-            progressService.Hide();
-        }
-
-        void IHandle<LoginMessage>.Handle(LoginMessage message)
+        private void Handle(LoginMessage message)
         {
             if (message.Cancelled)
             {
@@ -73,19 +50,26 @@ namespace KimiStudio.BgmOnWp.ViewModels
             else
             {
                 progressService.Show("加载中\u2026");
-                //var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
-                //getWatchedCommand.Execute();
+                var getWatchedCommand = new GetWatchedCommand();
+                getWatchedCommand.Execute(Handle);
             }
         }
 
-
+        private void Handle(WatchedsMessage message)
+        {
+            if (message.Cancelled) return;
+            Items = message.Watcheds.OrderByDescending(p => p.LastTouch)
+               .Take(8)
+               .Select(WatchedItemModel.FromBagumiData);
+            progressService.Hide();
+        }
 
         public void NavWatchings()
         {
             navigation.UriFor<WatchingsViewModel>().Navigate();
         }
 
-        public void OnTap(WatchedItemModel item)
+        public void OnTapItem(WatchedItemModel item)
         {
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
@@ -93,5 +77,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
         }
+
+       
     }
 }

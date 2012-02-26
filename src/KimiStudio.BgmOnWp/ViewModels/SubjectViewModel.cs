@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Micro;
 using KimiStudio.BgmOnWp.Api;
+using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Toolkit;
 
@@ -28,14 +29,15 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SubjectSummary.UriSource = UriSource;
 
             progressService.Show("加载中\u2026");
-            var command = new GetSubjectCommand(Id, SubjectCallBack);
-            command.Execute();
+            var command = new GetSubjectCommand(Id);
+            command.Execute(Handle);
         }
 
-        private void SubjectCallBack(Subject subject)
+        private void Handle(SubjectMessage message)
         {
-            DisplayName = subject.Name;
-            SubjectSummary.SetSubject(subject);
+            if (message.Cancelled) return;
+            DisplayName = message.Subject.Name;
+            SubjectSummary.SetSubject(message.Subject);
             progressService.Hide();
         }
     }

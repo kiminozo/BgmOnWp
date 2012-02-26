@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
 using KimiStudio.BgmOnWp.Api;
+using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Toolkit;
 
@@ -35,24 +36,26 @@ namespace KimiStudio.BgmOnWp.ViewModels
         protected override void OnInitialize()
         {
             progressService.Show("加载中\u2026");
-            var getWatchedCommand = new GetWatchedCommand(WatchedCallBack);
-            getWatchedCommand.Execute();
-        }
-        
-        private void WatchedCallBack(IList<BagumiData> list)
-        {
-            var query = list.OrderByDescending(p => p.LastTouch);
-            Items.Apply(x => x.UpdateWatchingItems(query));
-            progressService.Hide();
+            var getWatchedCommand = new GetWatchedCommand();
+            getWatchedCommand.Execute(Handle);
         }
 
-        public void OnTap(WatchedItemModel item)
+        public void OnTapItem(WatchedItemModel item)
         {
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
                 .WithParam(x => x.DisplayName, item.Name)
                 .WithParam(x => x.UriSource,item.UriSource)
                 .Navigate();
+        }
+
+        private void Handle(WatchedsMessage message)
+        {
+            progressService.Hide();
+            if(message.Cancelled)return;
+
+            var query = message.Watcheds.OrderByDescending(p => p.LastTouch);
+            Items.Apply(x => x.UpdateWatchingItems(query));
         }
     }
 }
