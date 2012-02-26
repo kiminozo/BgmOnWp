@@ -14,39 +14,69 @@
 	Foreground="{StaticResource PhoneForegroundBrush}"
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="VerticalTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="Width" Value="50"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraLarge}"/>
+			<Setter Property="Margin" Value="30,50,30,0"/>
+			<Setter Property="TextWrapping" Value="Wrap"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			
+		</Style>
+		
+	</phone:PhoneApplicationPage.Resources>
 
-	<!--LayoutRoot 是放置所有页面内容的根网格-->
-	<Grid x:Name="LayoutRoot" Background="Transparent">
-		<!--透视控件-->
-        <controls:Panorama Title="Bagumi" FontSize="{StaticResource PhoneFontSizeNormal}" >
-            <controls:PanoramaItem Header="最近观看" Orientation="Horizontal" FontSize="{StaticResource PhoneFontSizeSmall}">
-            	<Grid>
-            		<Grid.RowDefinitions>
-            			<RowDefinition Height="*" />
-						<RowDefinition Height="50" />
-					</Grid.RowDefinitions>
+    <!--LayoutRoot 是放置所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--透视控件-->
+        <controls:Panorama Title="Bagumi" >
+            <controls:PanoramaItem Orientation="Horizontal">
+            	<controls:PanoramaItem.Header>
+            		 <TextBlock Text="最近观看" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>       	
+				</controls:PanoramaItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="390" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
                     <ListBox ItemsSource="{Binding Items}" Style="{StaticResource NoScrollWrapListBox}"
                   HorizontalAlignment="Stretch" Width="800" VerticalAlignment="Stretch" Margin="0" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" 
-                              cal:Message.Attach="[Event Tap] = [Action OnTapItem($dataContext)]" />
+                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <HyperlinkButton Name="NavWatchings" Content="查看全部" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Style="{StaticResource HyperlinkText}" />
-				</Grid>
+                    <HyperlinkButton Name="NavWatchings" Content="查看全部" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+                </Grid>
             </controls:PanoramaItem>
             <controls:PanoramaItem>
-                     <Ellipse Width="100" Height="100" Fill="#FFEB0606"></Ellipse>
+            	<controls:PanoramaItem.Header>
+            		 <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>       	
+				</controls:PanoramaItem.Header>
+                    <StackPanel Grid.Row="1" >                        
+                        <HyperlinkButton Content="全部" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+						<HyperlinkButton Content="动画" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+						<HyperlinkButton Content="三次元" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+					</StackPanel>
             </controls:PanoramaItem>
         </controls:Panorama>
-	</Grid>
-	<phone:PhoneApplicationPage.ApplicationBar>
-		<shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" BackgroundColor="#99000000">
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" 
+                              BackgroundColor="#99000000" StateChanged="OnAppBarStateChanged">
             <shell:ApplicationBar.MenuItems>
-            	<shell:ApplicationBarMenuItem Text="配置"/>
+                <shell:ApplicationBarMenuItem Text="配置"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-	</phone:PhoneApplicationPage.ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
