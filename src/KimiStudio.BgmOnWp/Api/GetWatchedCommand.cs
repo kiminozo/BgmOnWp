@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Storages;
 using Newtonsoft.Json;
 
 namespace KimiStudio.BgmOnWp.Api
@@ -13,7 +14,7 @@ namespace KimiStudio.BgmOnWp.Api
 
         public override void Execute(Action<WatchedsMessage> callbackHandler)
         {
-            var authData = BagumiService.Auth;
+            var authData = AuthStorage.Auth;
             var request = new RequestData(Uri);
             request.AddParameter("source", "OnAir");
             request.AddParameter("sysbuild", "201107272200");

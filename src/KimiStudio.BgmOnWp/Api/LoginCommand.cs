@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Storages;
 using Newtonsoft.Json;
 
 namespace KimiStudio.BgmOnWp.Api
@@ -32,7 +33,7 @@ namespace KimiStudio.BgmOnWp.Api
         {
             if (args.Cancelled) return new LoginMessage {Cancelled = true, ErrorMessage = args.Error.ToString()};
             var authUser = JsonConvert.DeserializeObject<AuthUser>(args.Result);
-            BagumiService.Auth = authUser;
+            AuthStorage.Auth = authUser;
             return new LoginMessage {AuthUser = authUser};
         }
     }

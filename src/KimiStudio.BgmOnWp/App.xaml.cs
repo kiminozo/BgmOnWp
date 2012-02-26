@@ -21,6 +21,12 @@ namespace KimiStudio.BgmOnWp
         public App()
         {
             InitializeComponent();
+            base.UnhandledException += new EventHandler<ApplicationUnhandledExceptionEventArgs>(App_UnhandledException);
+        }
+
+        void App_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

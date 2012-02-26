@@ -34,8 +34,4 @@ namespace KimiStudio.BgmOnWp.Api
 
     //    #endregion
     //}
-    public static class BagumiService
-    {
-        public static AuthUser Auth { get; set; }
-    }
 }

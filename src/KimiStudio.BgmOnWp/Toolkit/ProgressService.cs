@@ -15,6 +15,8 @@ namespace KimiStudio.BgmOnWp.Toolkit
             rootFrame.Navigated += RootFrameOnNavigated;
         }
 
+        
+
         private void RootFrameOnNavigated(object sender, NavigationEventArgs args)
         {
             var page = args.Content as PhoneApplicationPage;
@@ -22,6 +24,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
 
             page.SetValue(SystemTray.ProgressIndicatorProperty, progressIndicator);
         }
+
 
         #region Implementation of IProgressService
 

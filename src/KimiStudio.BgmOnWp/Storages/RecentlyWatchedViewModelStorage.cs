@@ -13,7 +13,7 @@ using KimiStudio.BgmOnWp.ViewModels;
 
 namespace KimiStudio.BgmOnWp.Storages
 {
-    public class RecentlyWatchedViewModelStorage : StorageHandler<MainPageViewModel>
+    public class MainPageViewModelStorage : StorageHandler<MainPageViewModel>
     {
 
         public override void Configure()

@@ -67,15 +67,18 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.progressService = progressService;
         }
 
-        protected override void OnViewLoaded(object view)
+        protected override void OnActivate()
         {
-            base.OnViewLoaded(view);
-
-            UriSource = UriSource;
+            base.OnActivate();
 
             progressService.Show("加载中\u2026");
             var command = new GetSubjectCommand(Id);
             command.Execute(Handle);
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
         }
 
         private void Handle(SubjectMessage message)

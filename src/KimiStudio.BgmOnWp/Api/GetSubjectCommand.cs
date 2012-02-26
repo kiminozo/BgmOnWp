@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Storages;
 using Newtonsoft.Json;
 
 namespace KimiStudio.BgmOnWp.Api
@@ -20,7 +21,7 @@ namespace KimiStudio.BgmOnWp.Api
 
         public override void Execute(Action<SubjectMessage> callbackHandler)
         {
-            var authData = BagumiService.Auth;
+            var authData = AuthStorage.Auth;
             var request = new RequestData(Uri + subjectId);
             request.AddParameter("responseGroup", "large");
             request.AddParameter("source", "OnAir");
