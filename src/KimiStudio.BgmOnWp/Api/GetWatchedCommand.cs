@@ -28,15 +28,16 @@ namespace KimiStudio.BgmOnWp.Api
             request.AddParameter("sysusername", authData.UserName);
             request.AddParameter("auth", authData.Auth);
 
-            var executor = new GetExecutor(CallBackPost);
-            executor.Execute(request);
+            var executor = new HttpGetExecutor();
+            executor.ExecuteCompleted += ExecuteCompleted;
+            executor.ExecuteAsync(request);
         }
 
         #endregion
 
-        private void CallBackPost(string result)
+        private void ExecuteCompleted(ExecuteCompletedEventArgs e)
         {
-            IList<BagumiData> list = JsonConvert.DeserializeObject<List<BagumiData>>(result);
+            IList<BagumiData> list = JsonConvert.DeserializeObject<List<BagumiData>>(e.Result);
             action(list);
         }
     }
@@ -65,8 +66,8 @@ namespace KimiStudio.BgmOnWp.Api
             request.AddParameter("sysusername", authData.UserName);
             request.AddParameter("auth", authData.Auth);
 
-            var executor = new GetExecutor(CallBackPost);
-            executor.Execute(request);
+            var executor = new HttpGetExecutor();
+            executor.ExecuteAsync(request);
         }
 
         #endregion

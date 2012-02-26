@@ -82,6 +82,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="ModelMessages\LoginMessage.cs" />
+    <Compile Include="ModelMessages\Message.cs" />
     <Compile Include="Models\BagumiData.cs" />
     <Compile Include="Models\BagumiSubject.cs" />
     <Compile Include="Models\Subject.cs" />

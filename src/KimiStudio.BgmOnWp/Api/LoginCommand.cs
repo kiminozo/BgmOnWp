@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using KimiStudio.BgmOnWp.ModelMessages;
 using KimiStudio.BgmOnWp.Models;
 using Newtonsoft.Json;
 
@@ -9,14 +10,14 @@ namespace KimiStudio.BgmOnWp.Api
     {
         private readonly string userName;
         private readonly string password;
-        private readonly Action action;
+        private readonly Action<LoginMessage> publisher;
         private const string AuthUrl = @"http://api.bgm.tv/auth?source=onAir";
 
-        public LoginCommand(string userName, string password,Action action)
+        public LoginCommand(string userName, string password, Action<LoginMessage> publisher)
         {
             this.userName = userName;
             this.password = password;
-            this.action = action;
+            this.publisher = publisher;
         }
 
         private const string PostFormat =
@@ -24,14 +25,18 @@ namespace KimiStudio.BgmOnWp.Api
 
         public override void Execute()
         {
-            var executor = new PostExecutor(CallBackPost);
-            executor.Execute(new RequestData(AuthUrl,string.Format(PostFormat, userName, password)));
+            var executor = new HttpPostExecutor();
+            executor.ExecuteCompleted += args => publisher(ToMessage(args));
+            executor.ExecuteAsync(new RequestData(AuthUrl, string.Format(PostFormat, userName, password)));
         }
 
-        private void CallBackPost(string result)
+        private LoginMessage ToMessage(ExecuteCompletedEventArgs args)
         {
-            BagumiService.Auth = JsonConvert.DeserializeObject<AuthUser>(result);
-            action();
+            if (args.Cancelled) return new LoginMessage { Cancelled = true, ErrorMessage = args.Error.ToString() };
+            return new LoginMessage
+                       {
+                           AuthUser = JsonConvert.DeserializeObject<AuthUser>(args.Result),
+                       };
         }
     }
 }

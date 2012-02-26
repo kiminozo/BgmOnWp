@@ -5,25 +5,54 @@ using System.Text;
 
 namespace KimiStudio.BgmOnWp.Api
 {
-    public interface IExecutor
+    public abstract class Executor
     {
-        void Execute(RequestData uri);
-    }
+        public abstract void ExecuteAsync(RequestData request);
+        public event ExecuteCompletedHandler ExecuteCompleted;
 
-    public sealed class PostExecutor : IExecutor
-    {
-        private readonly Action<string> resultAction;
-        private string postData;
-
-        public PostExecutor(Action<string> resultAction)
+        private void OnExecuteCompleted(ExecuteCompletedEventArgs e)
         {
-            this.resultAction = resultAction;
+            var handler = ExecuteCompleted;
+            if (handler != null) handler(e);
         }
 
-        public void Execute(RequestData uri)
+
+        protected void OnCompleted(string result)
         {
-            postData = uri.Data;
-            var webRequest = (HttpWebRequest)WebRequest.Create(uri.BuildUri());
+            OnExecuteCompleted(new ExecuteCompletedEventArgs(result,false,null));
+        }
+
+        protected void OnError(Exception error)
+        {
+            OnExecuteCompleted(new ExecuteCompletedEventArgs(null, true, error));
+        }
+
+    }
+
+    public delegate void ExecuteCompletedHandler(ExecuteCompletedEventArgs e);
+
+    public class ExecuteCompletedEventArgs:EventArgs
+    {
+        public ExecuteCompletedEventArgs(string result, bool cancelled, Exception error)
+        {
+            Cancelled = cancelled;
+            Result = result;
+            Error = error;
+        }
+
+        public string Result { get; private set; }
+        public bool Cancelled { get; private set; }
+        public Exception Error { get; private set; }
+    }
+
+    public sealed class HttpPostExecutor : Executor
+    {
+        private string postData;
+        
+        public override void ExecuteAsync(RequestData request)
+        {
+            postData = request.Data;
+            var webRequest = (HttpWebRequest) WebRequest.Create(request.BuildUri());
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";
 
@@ -32,17 +61,12 @@ namespace KimiStudio.BgmOnWp.Api
 
         private void GetRequestStreamCallback(IAsyncResult asynchronousResult)
         {
-            var webRequest = (HttpWebRequest)asynchronousResult.AsyncState;
-            Stream postStream = webRequest.EndGetRequestStream(asynchronousResult);
-
-
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-
-            // Add the post data to the web request
-            postStream.Write(byteArray, 0, byteArray.Length);
-            postStream.Close();
-
-            // Start the web request
+            var webRequest = (HttpWebRequest) asynchronousResult.AsyncState;
+            using (var postStream = webRequest.EndGetRequestStream(asynchronousResult))
+            using (var streamWriter = new StreamWriter(postStream, Encoding.UTF8))
+            {
+                streamWriter.Write(postData);
+            }
             webRequest.BeginGetResponse(GetResponseCallback, webRequest);
         }
 
@@ -50,41 +74,30 @@ namespace KimiStudio.BgmOnWp.Api
         {
             try
             {
-                var webRequest = (HttpWebRequest)asynchronousResult.AsyncState;
+                var webRequest = (HttpWebRequest) asynchronousResult.AsyncState;
 
                 string result;
-                using (var response = (HttpWebResponse)webRequest.EndGetResponse(asynchronousResult))
+                using (var response = (HttpWebResponse) webRequest.EndGetResponse(asynchronousResult))
                 using (var streamResponse = response.GetResponseStream())
                 using (var streamReader = new StreamReader(streamResponse))
                 {
                     result = streamReader.ReadToEnd();
                 }
-                CallBackPost(result);
+                OnCompleted(result);
             }
-            catch (WebException e)
+            catch (Exception err)
             {
-                // Error treatment
+                OnError(err);
             }
         }
 
-        private void CallBackPost(string result)
-        {
-            resultAction(result);
-        }
     }
 
-    public sealed class GetExecutor : IExecutor
+    public sealed class HttpGetExecutor : Executor
     {
-        private readonly Action<string> resultAction;
-
-        public GetExecutor(Action<string> resultAction)
+        public override void ExecuteAsync(RequestData request)
         {
-            this.resultAction = resultAction;
-        }
-
-        public void Execute(RequestData uri)
-        {
-            var webRequest = (HttpWebRequest)WebRequest.Create(uri.BuildUri());
+            var webRequest = (HttpWebRequest)WebRequest.Create(request.BuildUri());
             webRequest.BeginGetResponse(GetResponseCallback, webRequest);
         }
 
@@ -101,17 +114,12 @@ namespace KimiStudio.BgmOnWp.Api
                 {
                     result = streamReader.ReadToEnd();
                 }
-                CallBackPost(result);
+                OnCompleted(result);
             }
-            catch (WebException e)
+            catch (Exception err)
             {
-                // Error treatment
+                OnError(err);
             }
-        }
-
-        private void CallBackPost(string result)
-        {
-            resultAction(result);
         }
     }
 }

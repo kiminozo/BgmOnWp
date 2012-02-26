@@ -25,7 +25,15 @@
             			<RowDefinition Height="*" />
 						<RowDefinition Height="50" />
 					</Grid.RowDefinitions>
-                	<ContentControl x:Name="RecentlyWatchedItem" HorizontalAlignment="Left" Width="800" VerticalAlignment="Stretch" Margin="0" />
+                    <ListBox ItemsSource="{Binding Items}" Style="{StaticResource NoScrollWrapListBox}"
+                  HorizontalAlignment="Stretch" Width="800" VerticalAlignment="Stretch" Margin="0" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" 
+                              cal:Message.Attach="[Event Tap] = [Action OnTap($dataContext)]" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <HyperlinkButton Name="NavWatchings" Content="查看全部" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" Style="{StaticResource HyperlinkText}" />
 				</Grid>
             </controls:PanoramaItem>
