@@ -89,7 +89,6 @@
     <Compile Include="Models\BagumiSubject.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Storages\AuthStorage.cs" />
-    <Compile Include="Storages\RecentlyWatchedViewModelStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
