@@ -55,17 +55,23 @@ namespace KimiStudio.BgmOnWp.ViewModels
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
                 .WithParam(x => x.DisplayName, item.Name)
-                .WithParam(x => x.UriSource,item.UriSource)
+                .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
         }
 
         private void Handle(WatchedsMessage message)
         {
-            progressService.Hide();
+            try
+            {
+                if (message.Cancelled) return;
+                var query = message.Watcheds.OrderByDescending(p => p.LastTouch);
+                Items.Apply(x => x.UpdateWatchingItems(query));
+            }
+            finally
+            {
 
-            if(message.Cancelled)return;
-            var query = message.Watcheds.OrderByDescending(p => p.LastTouch);
-            Items.Apply(x => x.UpdateWatchingItems(query));
+                progressService.Hide();
+            }
         }
     }
 }
