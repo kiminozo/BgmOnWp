@@ -51,8 +51,28 @@
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>
-                    <TextBlock Text="信息" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                    <TextBlock Text="角色" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
+                        <!--<TextBlock Text="角色" Style="{StaticResource PhoneTextNormalStyle}"/>-->
+                        <ListBox ItemsSource="{Binding Characters}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                <Grid Height="80" Margin="0,5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <c:Thumbnail Grid.RowSpan="2" UriSource="{Binding CharacterImage}" IsShowText="False" Width="75" Height="75" Margin="0"/>
+                                        <TextBlock Text="{Binding CharacterName}" Grid.Column="1" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="12,5,12,0" />
+                                        <TextBlock Text="{Binding CvName}" Grid.Column="1" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" VerticalAlignment="Top" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>

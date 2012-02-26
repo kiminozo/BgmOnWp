@@ -22,7 +22,9 @@ namespace KimiStudio.BgmOnWp.Models
         public int AirWeekday { get; set; }
         public IList<Blog> Blog { get; set; }
         public BagumiSubjectTap Collection { get; set; }
-        public IList<Character> Crt { get; set; }
+
+        [JsonProperty("crt")]
+        public IList<Character> Characters { get; set; }
         public IList<Episode> Eps { get; set; }
         public int Id { get; set; }
         public ImageData Images { get; set; }
@@ -100,8 +102,13 @@ namespace KimiStudio.BgmOnWp.Models
         public IList<Actor> Actors { get; set; }
         public int Collects { get; set; }
         public int Id { get; set; }
-        public ImageData Image { get; set; }
+        public ImageData Images { get; set; }
         public CharacterInfo Info { get; set; }
+
+        public string Name { get; set; }
+        [JsonProperty("role_name")]
+        public string RoleName { get; set; }
+        public Uri Url { get; set; }
     }
 
     public class CharacterInfo
@@ -112,14 +119,11 @@ namespace KimiStudio.BgmOnWp.Models
         //public string Bwh { get; set; }
         public string Gender { get; set; }
         // public string Height { get; set; }
-
         [JsonProperty("name_cn")]
         public string NameCn { get; set; }
         // public string Source { get; set; }
         // public string Weight { get; set; }
-        [JsonProperty("role_name")]
-        public string RoleName { get; set; }
-        public Uri Url { get; set; }
+        
     }
 
     public class Alias

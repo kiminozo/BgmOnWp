@@ -72,23 +72,25 @@ namespace KimiStudio.BgmOnWp.Api
 
         private void GetResponseCallback(IAsyncResult asynchronousResult)
         {
+            string result = null;
             try
             {
                 var webRequest = (HttpWebRequest) asynchronousResult.AsyncState;
 
-                string result;
                 using (var response = (HttpWebResponse) webRequest.EndGetResponse(asynchronousResult))
                 using (var streamResponse = response.GetResponseStream())
                 using (var streamReader = new StreamReader(streamResponse))
                 {
                     result = streamReader.ReadToEnd();
                 }
-                OnCompleted(result);
+                
             }
             catch (Exception err)
             {
                 OnError(err);
+                return;
             }
+            OnCompleted(result);
         }
 
     }
@@ -103,23 +105,23 @@ namespace KimiStudio.BgmOnWp.Api
 
         private void GetResponseCallback(IAsyncResult asynchronousResult)
         {
+            string result = null;
             try
             {
                 var webRequest = (HttpWebRequest)asynchronousResult.AsyncState;
-
-                string result;
                 using (var response = (HttpWebResponse)webRequest.EndGetResponse(asynchronousResult))
                 using (var streamResponse = response.GetResponseStream())
                 using (var streamReader = new StreamReader(streamResponse))
                 {
                     result = streamReader.ReadToEnd();
                 }
-                OnCompleted(result);
             }
             catch (Exception err)
             {
                 OnError(err);
+                return;
             }
+            OnCompleted(result);
         }
     }
 }
