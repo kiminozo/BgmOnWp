@@ -25,6 +25,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public WatchingsViewModel(INavigationService navigation, IProgressService progressService)
         {
+            DisplayName = "收視進度";
             this.navigation = navigation;
             this.progressService = progressService;
             Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });

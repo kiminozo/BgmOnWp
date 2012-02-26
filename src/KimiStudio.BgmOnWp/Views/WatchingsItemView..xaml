@@ -3,7 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cal="http://www.caliburnproject.org"
-             xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls" mc:Ignorable="d"
+             xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -12,8 +14,15 @@
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200" 
-                                      cal:Message.Attach="[Event Tap] = [Action OnTapItem($dataContext)]" />
+                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <cal:ActionMessage MethodName="OnTapItem" >
+                                <cal:Parameter Value="$dataContext"/>
+                            </cal:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </c:Thumbnail>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

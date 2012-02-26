@@ -18,47 +18,12 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--透视控件-->
-        <controls:Pivot x:Name="Items" Title="在看">
+        <controls:Pivot x:Name="Items" Title="{Binding DisplayName}">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}"/>
                 </DataTemplate>
             </controls:Pivot.HeaderTemplate>
-            <!--<controls:Pivot.ItemTemplate>
-                <DataTemplate>
-                    <ListBox ItemsSource="{Binding WatchingItems}" Style="{StaticResource WrapListBox}"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200" 
-                                      cal:Message.Attach="[Event Tap] = [Action OnTap($dataContext)]" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </DataTemplate>
-            </controls:Pivot.ItemTemplate>-->
-            <!--<controls:PivotItem Header="全部">
-                
-            </controls:PivotItem>
-            <controls:PivotItem Header="动画">
-
-            </controls:PivotItem>
-            <controls:PivotItem Header="三次元">
-
-            </controls:PivotItem>-->
         </controls:Pivot>
     </Grid>
-
-    <!--演示 ApplicationBar 用法的示例代码-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="按钮 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="按钮 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="菜单项 1"/>
-                <shell:ApplicationBarMenuItem Text="菜单项 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-
 </phone:PhoneApplicationPage>

@@ -7,7 +7,8 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:cal="http://www.caliburnproject.org" xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
-	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
+	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
 	x:Class="KimiStudio.BgmOnWp.Views.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -28,9 +29,34 @@
 	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot 是放置所有页面内容的根网格-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
         <!--透视控件-->
-        <controls:Panorama Title="Bagumi" >
+        <controls:Panorama >
+        	<controls:Panorama.TitleTemplate>
+        		<DataTemplate>
+                    <StackPanel Height="150" Margin="0,72,0,0" Orientation="Horizontal">
+                        <TextBlock Text="Bagumi" FontSize="72" FontStyle="Italic" FontFamily="Segoe WP Semibold"><TextBlock.Foreground><LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0"><GradientStop Color="#FF5EB0D7" Offset="0" /><GradientStop Color="#FF277EEC" Offset="1" /></LinearGradientBrush></TextBlock.Foreground></TextBlock>
+                        <TextBlock Text="番組計劃" Margin="36,28,0,0" FontSize="48" FontStyle="Normal" Foreground="Gray" />
+                    </StackPanel>
+         			<!--<Image Height="150" Source="/Images/logo.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
+				</DataTemplate>     	
+			</controls:Panorama.TitleTemplate>
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
+                <StackPanel Grid.Row="1" >
+                    <HyperlinkButton Content="全部" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+                    <HyperlinkButton Content="动画" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+                    <HyperlinkButton Content="三次元" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
+                </StackPanel>
+            </controls:PanoramaItem>
             <controls:PanoramaItem Orientation="Horizontal">
             	<controls:PanoramaItem.Header>
             		 <TextBlock Text="最近观看" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>       	
@@ -44,7 +70,15 @@
                   HorizontalAlignment="Stretch" Width="800" VerticalAlignment="Stretch" Margin="0" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" />
+                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Tap">
+                                            <cal:ActionMessage MethodName="OnTapItem" >
+                                                <cal:Parameter Value="$dataContext"/>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </c:Thumbnail>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -53,22 +87,10 @@
 					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
                 </Grid>
             </controls:PanoramaItem>
-            <controls:PanoramaItem>
-            	<controls:PanoramaItem.Header>
-            		 <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>       	
-				</controls:PanoramaItem.Header>
-                    <StackPanel Grid.Row="1" >                        
-                        <HyperlinkButton Content="全部" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
-						<HyperlinkButton Content="动画" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
-						<HyperlinkButton Content="三次元" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
-					</StackPanel>
-            </controls:PanoramaItem>
+			<controls:PanoramaItem>
+				<Image Height="43" Margin="0,50,0,0" Source="/Images/logo_rc1.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+				
+			</controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
