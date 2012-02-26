@@ -52,8 +52,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private void Handle(WatchedsMessage message)
         {
             progressService.Hide();
-            if(message.Cancelled)return;
 
+            if(message.Cancelled)return;
             var query = message.Watcheds.OrderByDescending(p => p.LastTouch);
             Items.Apply(x => x.UpdateWatchingItems(query));
         }

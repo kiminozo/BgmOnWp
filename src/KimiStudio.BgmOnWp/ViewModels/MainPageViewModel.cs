@@ -43,9 +43,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void Handle(LoginMessage message)
         {
+            progressService.Hide();
+
             if (message.Cancelled)
             {
-                progressService.Hide();
+                //TODO:login
             }
             else
             {
@@ -57,11 +59,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void Handle(WatchedsMessage message)
         {
+            progressService.Hide();
+
             if (message.Cancelled) return;
             Items = message.Watcheds.OrderByDescending(p => p.LastTouch)
                .Take(8)
                .Select(WatchedItemModel.FromBagumiData);
-            progressService.Hide();
+            
         }
 
         public void NavWatchings()
