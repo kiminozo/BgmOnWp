@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -17,16 +18,55 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--透视控件-->
-        <controls:Panorama Title="{Binding DisplayName}">
+        <controls:Panorama Title="{Binding DisplayName}" FontSize="{StaticResource PhoneFontSizeExtraLarge}">
+            <controls:Panorama.TitleTemplate>
+                <DataTemplate>
+                    <TextBlock Height="50" Margin="0,72,0,0" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </DataTemplate>
+            </controls:Panorama.TitleTemplate>
             <controls:PanoramaItem>
-                <ContentControl x:Name="SubjectSummary" HorizontalAlignment="Left" Margin="0" />
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="280" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <c:Thumbnail UriSource="{Binding UriSource}" IsShowText="False"
+                         Width="165" Height="250" VerticalAlignment="Top" Margin="15,15,20,0" />
+                        <StackPanel Grid.Column="1" Margin="0,10,0,0" >
+                            <TextBlock Text="日文名" Margin="0,5" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="0,5" Style="{StaticResource PhoneTextNormalStyle}"/>
+                            <TextBlock Text="中文名" Margin="0,5" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding CnName}" TextWrapping="Wrap" Margin="0,5"  Style="{StaticResource PhoneTextNormalStyle}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                            <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
             </controls:PanoramaItem>
-            <controls:PanoramaItem>
-               
+            <controls:PanoramaItem >
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="信息" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem >
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="章节" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem >
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="评论" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
- 
+
     <!--演示 ApplicationBar 用法的示例代码-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

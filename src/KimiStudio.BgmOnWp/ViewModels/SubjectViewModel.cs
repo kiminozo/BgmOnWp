@@ -12,21 +12,66 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly IProgressService progressService;
 
         public int Id { get; set; }
-        public Uri UriSource { get; set; }
 
-        public SubjectSummaryViewModel SubjectSummary { get; set; }
+        #region Property
+        private string name;
+        private string cnName;
+        private Uri uriSource;
+        private string summary;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                NotifyOfPropertyChange(() => Name);
+            }
+        }
+
+        public string CnName
+        {
+            get { return cnName; }
+            set
+            {
+                cnName = value;
+                NotifyOfPropertyChange(() => CnName);
+            }
+        }
+
+        public Uri UriSource
+        {
+            get { return uriSource; }
+            set
+            {
+                uriSource = value;
+                NotifyOfPropertyChange(() => UriSource);
+            }
+        }
+
+        public string Summary
+        {
+            get { return summary; }
+            set
+            {
+                summary = value;
+                NotifyOfPropertyChange(() => Summary);
+            }
+        }
+
+        #endregion
+
 
         public SubjectViewModel(IProgressService progressService)
         {
             this.progressService = progressService;
-            SubjectSummary = new SubjectSummaryViewModel();
         }
 
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
 
-            SubjectSummary.UriSource = UriSource;
+            UriSource = UriSource;
 
             progressService.Show("加载中\u2026");
             var command = new GetSubjectCommand(Id);
@@ -35,10 +80,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void Handle(SubjectMessage message)
         {
+            progressService.Hide();
+
             if (message.Cancelled) return;
             DisplayName = message.Subject.Name;
-            SubjectSummary.SetSubject(message.Subject);
-            progressService.Hide();
+            Name = message.Subject.Name;
+            CnName = message.Subject.NameCn;
+            UriSource = message.Subject.Images.Large;
+            Summary = message.Subject.Summary;
         }
     }
 }

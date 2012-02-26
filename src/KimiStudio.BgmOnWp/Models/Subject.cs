@@ -21,7 +21,7 @@ namespace KimiStudio.BgmOnWp.Models
         [JsonProperty("air_weekday")]
         public int AirWeekday { get; set; }
         public IList<Blog> Blog { get; set; }
-        public BagumiSubjectTap Collects { get; set; }
+        public BagumiSubjectTap Collection { get; set; }
         public IList<Character> Crt { get; set; }
         public IList<Episode> Eps { get; set; }
         public int Id { get; set; }
@@ -31,8 +31,6 @@ namespace KimiStudio.BgmOnWp.Models
         public string NameCn { get; set; }
         public IList<Staff> Staff { get; set; }
         public string Summary { get; set; }
-
-
         public IList<Topic> Topic { get; set; }
         public int Type { get; set; }
         public Uri Url { get; set; }
