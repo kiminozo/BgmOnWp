@@ -20,8 +20,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class WatchingsViewModel : Conductor<WatchingsItemViewModel>.Collection.OneActive
     {
+
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
+
+        public int Index { get; set; }
 
         public WatchingsViewModel(INavigationService navigation, IProgressService progressService)
         {
@@ -31,7 +34,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });
             Items.Add(new WatchingsItemViewModel { DisplayName = "动画", Filter = p => p.Subject.Type == 2 });
             Items.Add(new WatchingsItemViewModel { DisplayName = "三次元", Filter = p => p.Subject.Type == 6 });
-            ActivateItem(Items[0]);
+            ActivateItem(Items[Index]);
+        }
+
+        protected override void OnViewLoaded(object view)
+        {
+            base.OnViewLoaded(view);
+            ActivateItem(Items[Index]);
         }
 
         protected override void OnInitialize()

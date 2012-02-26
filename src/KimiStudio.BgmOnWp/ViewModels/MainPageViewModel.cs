@@ -13,8 +13,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public sealed class MainPageViewModel : Screen
     {
+        #region Property
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
+        private bool authed;
 
         private IEnumerable<WatchedItemModel> items;
         public IEnumerable<WatchedItemModel> Items
@@ -26,7 +28,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 NotifyOfPropertyChange(() => Items);
             }
         }
+        
+        #endregion
 
+        #region Private
         public MainPageViewModel(INavigationService navigation, IProgressService progressService)
         {
             this.navigation = navigation;
@@ -51,6 +56,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             else
             {
+                authed = true;
                 progressService.Show("加载中\u2026");
                 var getWatchedCommand = new GetWatchedCommand();
                 getWatchedCommand.Execute(Handle);
@@ -65,12 +71,30 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Items = message.Watcheds.OrderByDescending(p => p.LastTouch)
                .Take(8)
                .Select(WatchedItemModel.FromBagumiData);
-            
-        }
+
+        } 
+        #endregion
+
+        #region Public
 
         public void NavWatchings()
         {
-            navigation.UriFor<WatchingsViewModel>().Navigate();
+            navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
+        }
+        
+        public void NavAll()
+        {
+            navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
+        }
+
+        public void NavAmine()
+        {
+            navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 1).Navigate();
+        }
+
+        public void NavReal()
+        {
+            navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 2).Navigate();
         }
 
         public void OnTapItem(WatchedItemModel item)
@@ -80,8 +104,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.DisplayName, item.Name)
                 .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
-        }
+        } 
+        #endregion
 
-       
+
     }
 }

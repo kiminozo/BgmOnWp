@@ -92,6 +92,7 @@
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
+    <Compile Include="ViewModels\CharacterViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="ViewModels\WatchedItemModel.cs" />
     <Compile Include="ViewModels\WatchingsItemViewModel.cs" />
