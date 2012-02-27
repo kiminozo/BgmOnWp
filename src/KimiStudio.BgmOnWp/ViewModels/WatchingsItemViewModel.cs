@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
-using KimiStudio.BgmOnWp.Api;
 using KimiStudio.BgmOnWp.Models;
+
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {

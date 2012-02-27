@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KimiStudio.BgmOnWp.Api
+namespace KimiStudio.Bagumi.Api
 {
     public sealed class RequestData
     {
@@ -14,9 +14,9 @@ namespace KimiStudio.BgmOnWp.Api
         {
             this.uri = uri;
             this.data = data;
-
             parameters = new Dictionary<string, string>();
         }
+
         public RequestData(string uri)
             : this(uri, null)
         {

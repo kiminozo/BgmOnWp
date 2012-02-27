@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Caliburn.Micro;
-using KimiStudio.BgmOnWp.Api;
-using KimiStudio.BgmOnWp.ModelMessages;
-using KimiStudio.BgmOnWp.Models;
+using KimiStudio.Bagumi.Api.Commands;
+using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
@@ -43,34 +42,44 @@ namespace KimiStudio.BgmOnWp.ViewModels
             base.OnViewLoaded(view);
             progressService.Show("登录中\u2026");
             var loginCommand = new LoginCommand("kiminozo", "haruka");
-            loginCommand.Execute(Handle);
+            loginCommand.BeginExecute(LoginCallBack,loginCommand);
         }
 
-        private void Handle(LoginMessage message)
+        private void LoginCallBack(IAsyncResult asyncResult)
         {
             progressService.Hide();
-
-            if (message.Cancelled)
+            try
             {
-                //TODO:login
-            }
-            else
-            {
+                var command = (LoginCommand)asyncResult.AsyncState;
+                var auth = command.EndExecute(asyncResult);
+                AuthStorage.Auth = auth;
                 authed = true;
                 progressService.Show("加载中\u2026");
-                var getWatchedCommand = new GetWatchedCommand();
-                getWatchedCommand.Execute(Handle);
+                var watchedCommand = new GetWatchedCommand(auth);
+                watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
+            }
+            catch (Exception err)
+            {
+                //TODO:
             }
         }
 
-        private void Handle(WatchedsMessage message)
+
+        private void GetWatchedCallBack(IAsyncResult asyncResult)
         {
             progressService.Hide();
-
-            if (message.Cancelled) return;
-            Items = message.Watcheds.OrderByDescending(p => p.LastTouch)
-               .Take(8)
-               .Select(WatchedItemModel.FromBagumiData);
+            try
+            {
+                var command = (GetWatchedCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                Items = result.OrderByDescending(p => p.LastTouch)
+                   .Take(8)
+                   .Select(WatchedItemModel.FromBagumiData);
+            }
+            catch (Exception err)
+            {
+                //TODO:
+            }
 
         } 
         #endregion

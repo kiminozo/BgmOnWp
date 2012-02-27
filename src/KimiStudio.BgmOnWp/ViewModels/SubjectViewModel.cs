@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Collections.Generic;
 using Caliburn.Micro;
-using KimiStudio.BgmOnWp.Api;
-using KimiStudio.BgmOnWp.ModelMessages;
+using KimiStudio.Bagumi.Api.Commands;
+using KimiStudio.Bagumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
@@ -86,16 +87,26 @@ namespace KimiStudio.BgmOnWp.ViewModels
             base.OnActivate();
 
             progressService.Show("加载中\u2026");
-            var command = new GetSubjectCommand(Id);
-            command.Execute(Handle);
+            var command = new GetSubjectCommand(Id, AuthStorage.Auth);
+            command.BeginExecute(CallBack, command);
         }
 
-        private void Handle(SubjectMessage message)
+        private void CallBack(IAsyncResult asyncResult)
         {
-            progressService.Hide();
-
-            if (message.Cancelled) return;
-            SetSubject(message.Subject);
+            try
+            {
+                var command = (GetSubjectCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                SetSubject(result);
+            }
+            catch (Exception)
+            {
+                //TODO:
+            }
+            finally
+            {
+                progressService.Hide();
+            }
         }
 
         private void SetSubject(Subject subject)

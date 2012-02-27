@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using Caliburn.Micro;
-using KimiStudio.BgmOnWp.Api;
-using KimiStudio.BgmOnWp.ModelMessages;
-using KimiStudio.BgmOnWp.Models;
+using KimiStudio.Bagumi.Api.Commands;
+using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
@@ -46,8 +36,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
         protected override void OnInitialize()
         {
             progressService.Show("加载中\u2026");
-            var getWatchedCommand = new GetWatchedCommand();
-            getWatchedCommand.Execute(Handle);
+            var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
+            watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
         }
 
         public void OnTapItem(WatchedItemModel item)
@@ -59,19 +49,23 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Navigate();
         }
 
-        private void Handle(WatchedsMessage message)
+        private void GetWatchedCallBack(IAsyncResult asyncResult)
         {
             try
             {
-                if (message.Cancelled) return;
-                var query = message.Watcheds.OrderByDescending(p => p.LastTouch);
+                var command = (GetWatchedCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                var query = result.OrderByDescending(p => p.LastTouch);
                 Items.Apply(x => x.UpdateWatchingItems(query));
+            }
+            catch (Exception)
+            {
+                //TODO:
             }
             finally
             {
-
                 progressService.Hide();
             }
-        }
+        } 
     }
 }

@@ -5,3 +5,5 @@
 *.suo
 /src/KimiStudio.Controls/obj
 /src/KimiStudio.Controls/Bin
+/src/KimiStudio.Bagumi.Api/Bin
+/src/KimiStudio.Bagumi.Api/obj

@@ -72,22 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiCommand.cs" />
-    <Compile Include="Api\GetSubjectCommand.cs" />
-    <Compile Include="Api\GetWatchedCommand.cs" />
-    <Compile Include="Api\IBagumiService.cs" />
-    <Compile Include="Api\LoginCommand.cs" />
-    <Compile Include="Api\PostExecutor.cs" />
-    <Compile Include="Api\RequestUri.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="ModelMessages\LoginMessage.cs" />
-    <Compile Include="ModelMessages\Message.cs" />
-    <Compile Include="Models\BagumiData.cs" />
-    <Compile Include="Models\BagumiSubject.cs" />
-    <Compile Include="Models\Subject.cs" />
     <Compile Include="Storages\AuthStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
@@ -149,6 +137,10 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KimiStudio.Bagumi.Api\KimiStudio.Bagumi.Api.csproj">
+      <Project>{3DEA0C55-7487-4295-9446-2A312B4857B7}</Project>
+      <Name>KimiStudio.Bagumi.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KimiStudio.Controls\KimiStudio.Controls.csproj">
       <Project>{99A9578C-F0F8-4999-8335-FB56426220B4}</Project>
       <Name>KimiStudio.Controls</Name>
