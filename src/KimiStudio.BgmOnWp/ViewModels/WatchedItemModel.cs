@@ -1,5 +1,5 @@
 using System;
-using KimiStudio.BgmOnWp.Models;
+using KimiStudio.Bagumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {

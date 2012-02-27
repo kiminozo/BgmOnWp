@@ -1,5 +1,4 @@
 using System;
-using KimiStudio.BgmOnWp.Models;
 using Newtonsoft.Json;
 
 namespace KimiStudio.Bagumi.Api.Models

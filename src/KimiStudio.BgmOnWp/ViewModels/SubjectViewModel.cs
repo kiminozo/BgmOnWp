@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Caliburn.Micro;
 using KimiStudio.Bagumi.Api.Commands;
 using KimiStudio.Bagumi.Api.Models;
-using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 

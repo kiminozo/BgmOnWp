@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using KimiStudio.Bagumi.Api.Models;
-using KimiStudio.BgmOnWp.Models;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {

@@ -1,6 +1,4 @@
-using KimiStudio.Bagumi.Api.Models;
-
-namespace KimiStudio.BgmOnWp.Models
+namespace KimiStudio.Bagumi.Api.Models
 {
     public class BagumiData
     {

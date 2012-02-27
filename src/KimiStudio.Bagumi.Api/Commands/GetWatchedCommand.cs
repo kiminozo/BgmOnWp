@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using KimiStudio.Bagumi.Api.Models;
-using KimiStudio.BgmOnWp.Models;
 
 namespace KimiStudio.Bagumi.Api.Commands
 {
