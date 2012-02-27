@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Caliburn.Micro;
 using KimiStudio.Bagumi.Api.Commands;
 using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
@@ -12,6 +13,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
     public class SubjectViewModel : Screen
     {
         private readonly IProgressService progressService;
+        private readonly IWindowManager windowManager;
+        private readonly INavigationService navigationService;
 
         public int Id { get; set; }
 
@@ -20,7 +23,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string cnName;
         private Uri uriSource;
         private string summary;
-        private IEnumerable<CharacterViewModel> characters;
+        private IEnumerable<CharacterModel> characters;
 
         public string Name
         {
@@ -62,7 +65,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public IEnumerable<CharacterViewModel> Characters
+        public IEnumerable<CharacterModel> Characters
         {
             get { return characters; }
             set
@@ -76,9 +79,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService)
+        public SubjectViewModel(IProgressService progressService, IWindowManager windowManager, INavigationService navigationService)
         {
             this.progressService = progressService;
+            this.windowManager = windowManager;
+            this.navigationService = navigationService;
         }
 
         protected override void OnActivate()
@@ -118,8 +123,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             if (subject.Characters != null)
             {
-                Characters = subject.Characters.Select(CharacterViewModel.FromCharacter);
+                Characters = subject.Characters.Select(CharacterModel.FromCharacter);
             }
+        }
+
+        public void Favorite()
+        {
+//            windowManager.ShowPopup(new FavoriteViewModel());
+            navigationService.UriFor<FavoriteViewModel>().Navigate();
         }
     }
 }

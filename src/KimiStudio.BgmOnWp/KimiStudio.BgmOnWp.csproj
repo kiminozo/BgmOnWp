@@ -57,6 +57,9 @@
     <Reference Include="Caliburn.Micro.Extensions">
       <HintPath>..\..\lib\Caliburn.Micro\Caliburn.Micro.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Coding4Fun.Phone.Controls">
+      <HintPath>..\..\lib\Coding4Fun\Coding4Fun.Phone.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit" />
@@ -80,11 +83,15 @@
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
-    <Compile Include="ViewModels\CharacterViewModel.cs" />
+    <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
-    <Compile Include="ViewModels\WatchedItemModel.cs" />
+    <Compile Include="Models\WatchedItemModel.cs" />
     <Compile Include="ViewModels\WatchingsItemViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
+    <Compile Include="Views\FavoriteView.xaml.cs">
+      <DependentUpon>FavoriteView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -105,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\FavoriteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +144,8 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\appbar.favs.addto.rest.png" />
+    <Content Include="Images\appbar.favs.rest.png" />
     <Content Include="Images\logo.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
@@ -149,6 +162,7 @@
   <ItemGroup>
     <Content Include="Images\logo_rc1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Grid Background="Gray">
-                        <Rectangle HorizontalAlignment='Stretch' VerticalAlignment="Stretch" Margin="0">                                  
+                        <Rectangle HorizontalAlignment='Stretch' VerticalAlignment="Stretch" Margin="0">
                             <Rectangle.Fill>
                                 <ImageBrush x:Name="imageBrush" Stretch="UniformToFill"/>
                             </Rectangle.Fill>
@@ -24,5 +24,89 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style TargetType="local:RoundButton">
+        <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RoundButton">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ButtonBackground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonForeground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <StackPanel>
+                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Margin="3">
+                                <Ellipse
+								x:Name="ButtonBackground"
+								Stroke="{TemplateBinding BorderBrush}" 
+								StrokeThickness="{StaticResource PhoneStrokeThickness}" 
+								Fill="{TemplateBinding Background}" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}" />
+                                <Ellipse
+								x:Name="ButtonForeground" 
+								Fill="{TemplateBinding Foreground}" 
+								Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                    <Ellipse.OpacityMask>
+                                        <ImageBrush x:Name="OpacityImageBrush" />
+                                    </Ellipse.OpacityMask>
+                                </Ellipse>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="local:StarMark">
+        <Setter Property="Width" Value="340"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:StarMark">
+                    <Grid>
+                        <ItemsControl x:Name="stars">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Path Data="M16,0 L19.77688,12.223213 L32.000001,12.222913 L22.111121,19.776973 L25.888544,32.000001 L16,24.445454 L6.1114563,32.000001 L9.88888,19.776973 L2.2971745E-08,12.222913 L12.22312,12.223213 z" 
+                              Fill="{Binding Fill}" HorizontalAlignment="Left" Height="32" Margin="1,0" Width="32"
+                              Stretch="Fill" VerticalAlignment="Top" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Rectangle Fill="#00000000"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

@@ -1,7 +1,7 @@
 using System;
 using KimiStudio.Bagumi.Api.Models;
 
-namespace KimiStudio.BgmOnWp.ViewModels
+namespace KimiStudio.BgmOnWp.Models
 {
     public class WatchedItemModel
     {

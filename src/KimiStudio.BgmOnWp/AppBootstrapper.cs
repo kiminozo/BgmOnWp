@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Caliburn.Micro;
+using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Toolkit;
 using KimiStudio.BgmOnWp.ViewModels;
 using Microsoft.Phone.Controls;
@@ -21,7 +22,7 @@ namespace KimiStudio.BgmOnWp
             container.Instance<IProgressService>(new ProgressService(RootFrame));
 
             container.PerRequest<MainPageViewModel>();
-           // container.PerRequest<RecentlyWatchedViewModel>();
+            container.PerRequest<FavoriteViewModel>();
             container.PerRequest<SubjectViewModel>();
             container.PerRequest<WatchingsViewModel>();
             container.PerRequest<WatchingsItemViewModel>();

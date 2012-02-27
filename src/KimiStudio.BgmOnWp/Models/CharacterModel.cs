@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using KimiStudio.Bagumi.Api.Models;
 
-namespace KimiStudio.BgmOnWp.ViewModels
+namespace KimiStudio.BgmOnWp.Models
 {
-    public class CharacterViewModel
+    public class CharacterModel
     {
         public Uri CharacterImage { get; set; }
         public string CharacterName { get; set; }
         public string CvName { get; set; }
 
-        public static CharacterViewModel FromCharacter(Character character)
+        public static CharacterModel FromCharacter(Character character)
         {
             try
             {
-                return new CharacterViewModel
+                return new CharacterModel
                            {
                                CharacterImage = character.Images != null ? character.Images.Grid : null,//TODO:defultImage
                                CharacterName = character.Name,
@@ -25,7 +25,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
-                return new CharacterViewModel();
+                return new CharacterModel();
             }
         }
 
