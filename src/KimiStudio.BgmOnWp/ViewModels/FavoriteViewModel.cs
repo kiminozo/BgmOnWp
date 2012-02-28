@@ -9,11 +9,24 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
+using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class FavoriteViewModel : Screen
+    public sealed class FavoriteViewModel : Screen, IPrompt
     {
+        public FavoriteViewModel()
+        {
+            DisplayName = "收藏";
+        }
 
+        #region Implementation of IPrompt
+
+        public void PromptResult(bool canceled)
+        {
+            
+        }
+
+        #endregion
     }
 }

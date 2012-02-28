@@ -20,6 +20,7 @@ namespace KimiStudio.BgmOnWp
             container.RegisterPhoneServices();
 
             container.Instance<IProgressService>(new ProgressService(RootFrame));
+            container.Instance<IPromptManager>(new PromptManager());
 
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<FavoriteViewModel>();

@@ -14,8 +14,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
     public class SubjectViewModel : Screen
     {
         private readonly IProgressService progressService;
-        private readonly IWindowManager windowManager;
         private readonly INavigationService navigationService;
+        private readonly IPromptManager promptManager;
 
         public int Id { get; set; }
 
@@ -80,11 +80,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, IWindowManager windowManager, INavigationService navigationService)
+        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager)
         {
             this.progressService = progressService;
-            this.windowManager = windowManager;
             this.navigationService = navigationService;
+            this.promptManager = promptManager;
         }
 
         protected override void OnActivate()
@@ -130,15 +130,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void Favorite()
         {
-//            windowManager.ShowPopup(new FavoriteViewModel());
-            navigationService.UriFor<FavoriteViewModel>().Navigate();
+            //            windowManager.ShowPopup(new FavoriteViewModel());
+            //navigationService.UriFor<FavoriteViewModel>().Navigate();
+            promptManager.ShowPopup(IoC.Get<FavoriteViewModel>());
         }
 
         public void OnTapCharacterItem(CharacterModel character)
         {
-            if(character.RemoteUrl == null)return;
+            if (character.RemoteUrl == null) return;
 
-            var task = new WebBrowserTask {Uri = character.RemoteUrl};
+            var task = new WebBrowserTask { Uri = character.RemoteUrl };
             task.Show();
         }
     }

@@ -82,8 +82,11 @@
     <Compile Include="Storages\AuthStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
+    <Compile Include="Toolkit\IPrompt.cs" />
+    <Compile Include="Toolkit\IPromptManager.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
     <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="Toolkit\PromptManager.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="Models\WatchedItemModel.cs" />
