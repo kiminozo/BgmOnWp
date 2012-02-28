@@ -7,6 +7,7 @@ using KimiStudio.Bagumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
+using Microsoft.Phone.Tasks;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
@@ -131,6 +132,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
 //            windowManager.ShowPopup(new FavoriteViewModel());
             navigationService.UriFor<FavoriteViewModel>().Navigate();
+        }
+
+        public void OnTapCharacterItem(CharacterModel character)
+        {
+            if(character.RemoteUrl == null)return;
+
+            var task = new WebBrowserTask {Uri = character.RemoteUrl};
+            task.Show();
         }
     }
 }

@@ -8,7 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cal="http://www.caliburnproject.org" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -55,10 +57,17 @@
                     <TextBlock Text="角色" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
                 <!--<TextBlock Text="角色" Style="{StaticResource PhoneTextNormalStyle}"/>-->
-                <ListBox ItemsSource="{Binding Characters}">
+                <ListBox ItemsSource="{Binding Characters}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="85" Margin="0,5">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Tap">
+                                        <cal:ActionMessage MethodName="OnTapCharacterItem" >
+                                            <cal:Parameter Value="$dataContext"/>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition/>

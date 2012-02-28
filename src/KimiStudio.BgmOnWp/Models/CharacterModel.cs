@@ -10,6 +10,8 @@ namespace KimiStudio.BgmOnWp.Models
         public Uri CharacterImage { get; set; }
         public string CharacterName { get; set; }
         public string CvName { get; set; }
+        public Uri RemoteUrl { get; set; }
+
 
         public static CharacterModel FromCharacter(Character character)
         {
@@ -19,7 +21,8 @@ namespace KimiStudio.BgmOnWp.Models
                            {
                                CharacterImage = character.Images != null ? character.Images.Grid : null,//TODO:defultImage
                                CharacterName = character.Name,
-                               CvName = ToCvName(character.Actors)
+                               CvName = ToCvName(character.Actors),
+                               RemoteUrl = character.Url
                            };
             }
             catch (Exception err)
