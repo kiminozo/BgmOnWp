@@ -18,20 +18,20 @@ namespace KimiStudio.Controls
         #region DependencyPropertys
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof (string), typeof (Thumbnail),
+            DependencyProperty.Register("Text", typeof(string), typeof(Thumbnail),
                                         new PropertyMetadata(TextPropertyChanged));
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("UriSource", typeof (Uri), typeof (Thumbnail),
+            DependencyProperty.Register("UriSource", typeof(Uri), typeof(Thumbnail),
                                         new PropertyMetadata(ImageSourcePropertyChanged));
 
         public static readonly DependencyProperty IsShowTextProperty =
-            DependencyProperty.Register("IsShowText", typeof (bool), typeof (Thumbnail),
+            DependencyProperty.Register("IsShowText", typeof(bool), typeof(Thumbnail),
                                         new PropertyMetadata(true, IsShowTextPropertyChanged));
 
         public bool IsShowText
         {
-            get { return (bool) GetValue(IsShowTextProperty); }
+            get { return (bool)GetValue(IsShowTextProperty); }
             set { SetValue(IsShowTextProperty, value); }
         }
 
@@ -53,7 +53,7 @@ namespace KimiStudio.Controls
         {
             var sender = o as Thumbnail;
             if (sender == null || e.NewValue == e.OldValue) return;
-            sender.SetIsShowText((bool) e.NewValue);
+            sender.SetIsShowText((bool)e.NewValue);
         }
 
         #endregion
@@ -64,26 +64,26 @@ namespace KimiStudio.Controls
 
         public Thumbnail()
         {
-            DefaultStyleKey = typeof (Thumbnail);
+            DefaultStyleKey = typeof(Thumbnail);
         }
 
         public string Text
         {
-            get { return (string) GetValue(TextProperty); }
+            get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
 
         public Uri UriSource
         {
-            get { return (Uri) GetValue(ImageSourceProperty); }
+            get { return (Uri)GetValue(ImageSourceProperty); }
             set { SetValue(ImageSourceProperty, value); }
         }
 
         public override void OnApplyTemplate()
         {
-            imageName = (TextBlock) GetTemplateChild("imageName");
-            imageBrush = (ImageBrush) GetTemplateChild("imageBrush");
-            imageNameBackground = (Rectangle) GetTemplateChild("imageNameBackground");
+            imageName = (TextBlock)GetTemplateChild("imageName");
+            imageBrush = (ImageBrush)GetTemplateChild("imageBrush");
+            imageNameBackground = (Rectangle)GetTemplateChild("imageNameBackground");
             SetText(Text);
             SetIsShowText(IsShowText);
             SetImageBrush(UriSource);
@@ -99,7 +99,20 @@ namespace KimiStudio.Controls
         private void SetImageBrush(Uri uriSource)
         {
             if (imageBrush == null) return;
-            imageBrush.ImageSource = uriSource == null ? null : new StorageCachedImage(uriSource);
+
+            if (uriSource == null)
+            {
+                imageBrush.ImageSource = null;
+                return;
+            }
+            if (uriSource.IsAbsoluteUri)
+            {
+                imageBrush.ImageSource = new StorageCachedImage(uriSource);
+            }
+            else
+            {
+                imageBrush.ImageSource = new BitmapImage(uriSource);
+            }
         }
 
         private void SetIsShowText(bool isShow)

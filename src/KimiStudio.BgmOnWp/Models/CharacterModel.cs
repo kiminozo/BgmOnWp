@@ -19,7 +19,7 @@ namespace KimiStudio.BgmOnWp.Models
             {
                 return new CharacterModel
                            {
-                               CharacterImage = character.Images != null ? character.Images.Grid : null,//TODO:defultImage
+                               CharacterImage = CharacterImageUri(character.Images),
                                CharacterName = character.Name,
                                CvName = ToCvName(character.Actors),
                                RemoteUrl = character.Url
@@ -30,6 +30,11 @@ namespace KimiStudio.BgmOnWp.Models
                 Debug.WriteLine(err.Message);
                 return new CharacterModel();
             }
+        }
+
+        private static Uri CharacterImageUri(ImageData image)
+        {
+            return image != null ? image.Grid : new Uri("/Images/info_only_m.png", UriKind.Relative);
         }
 
         private static string ToCvName(IList<Actor> actors)

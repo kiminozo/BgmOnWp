@@ -125,7 +125,7 @@ namespace KimiStudio.Controls
 
             //var compositeTransform = (CompositeTransform)rectangle.RenderTransform;
             //compositeTransform.TranslateX = Size * index;
-            ShowAnimation(Size*index);
+            ShowAnimation(Size * index);
         }
 
         protected override void OnTap(GestureEventArgs e)
@@ -135,7 +135,7 @@ namespace KimiStudio.Controls
             var x = (int)(point.X / Size) * Size;
             int index = x / Size;
             ChangeSelected(index);
-           // ShowAnimation(x);
+            // ShowAnimation(x);
             base.OnTap(e);
         }
 
@@ -146,11 +146,10 @@ namespace KimiStudio.Controls
                                     Duration = new Duration(new TimeSpan(0, 0, 0, 0, 500)),
                                     To = x,
                                     EasingFunction =
-                                        new ElasticEase { EasingMode = EasingMode.EaseOut, Oscillations = 1 }
+                                        new ElasticEase { EasingMode = EasingMode.EaseOut, Oscillations = 1, Springiness = 5 }
                                 };
             Storyboard.SetTarget(animation, rectangle);
-            Storyboard.SetTargetProperty(animation,
-                                         new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateX)"));
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(CompositeTransform.TranslateX)"));
             var storyboard = new Storyboard();
             storyboard.Children.Add(animation);
             storyboard.Begin();
