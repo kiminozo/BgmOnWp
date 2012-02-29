@@ -11,12 +11,14 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Content="想看"/>
-                <RadioButton Content="在看"/>
-                <RadioButton Content="看过"/>
-            </StackPanel>
-            <TextBlock Text="评分"/>
+            <c:TabSwitch SelectedBackground="#FFF19199">
+                <c:TabSwitchItem Content="想看" />
+                <c:TabSwitchItem Content="在看" />
+                <c:TabSwitchItem Content="看过" />
+                <c:TabSwitchItem Content="搁置" />
+                <c:TabSwitchItem Content="抛弃" />
+            </c:TabSwitch>
+            <TextBlock Text="评分" />
             <c:StarMark  MaxStars="10" Height="50" HorizontalAlignment="Left" Width="340" Padding="10,10,0,10" Margin="15,0,0,0" />
             <TextBlock Text="标签" />
             <TextBox Text="刚刚看了第六话心情很难平复下来刚 " MaxLength="20" />
@@ -26,3 +28,5 @@
         </StackPanel>
     </Grid>
 </UserControl>
+
+    

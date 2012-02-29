@@ -54,6 +54,8 @@
     <Compile Include="RoundButton.cs" />
     <Compile Include="StarMark.cs" />
     <Compile Include="StorageCachedImage.cs" />
+    <Compile Include="TabSwitch.cs" />
+    <Compile Include="TabSwitchItem.cs" />
     <Compile Include="Thumbnail.cs" />
   </ItemGroup>
   <ItemGroup>

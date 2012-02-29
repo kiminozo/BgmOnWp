@@ -4,6 +4,7 @@
     xmlns:local="clr-namespace:KimiStudio.Controls" 
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:Double x:Key="TextHeight">30</sys:Double>
+    
     <Style TargetType="local:Thumbnail">
         <Setter Property="Width" Value="173"/>
         <Setter Property="Height" Value="173"/>
@@ -108,5 +109,44 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:TabSwitch">
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TabSwitch">
+                    <Grid>
+                        <Rectangle x:Name="rectangle" Width="65" Height="40" RadiusY="5" RadiusX="5"
+                                Fill="Red" HorizontalAlignment="Left">
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <ItemsPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:TabSwitchItem">
+        <Setter Property="Width" Value="45"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="10,10,10,3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TabSwitchItem">
+                    <TextBlock Text="{TemplateBinding Content}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
