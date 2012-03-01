@@ -61,6 +61,8 @@ namespace KimiStudio.Bagumi.Api.Models
 
     public class Episode
     {
+        public const string OnAir = "Air";
+
         public string AirDate { get; set; }
         public int Comment { get; set; }
         public string Desc { get; set; }

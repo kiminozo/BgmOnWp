@@ -56,6 +56,24 @@
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="章节" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
+                <ListBox ItemsSource="{Binding Episodes}" Style="{StaticResource WrapListBox}"
+                         toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="48" Height="48" Background="{Binding Fill}" Margin="0,0,5,5">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Tap">
+                                        <cal:ActionMessage MethodName="TapEpisodeItem" >
+                                            <cal:Parameter Value="$dataContext"/>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <TextBlock Text="{Binding Number}" Style="{StaticResource PhoneTextSmallStyle}"
+                                           VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>
@@ -68,7 +86,7 @@
                             <Grid Height="85" Margin="0,5">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
-                                        <cal:ActionMessage MethodName="OnTapCharacterItem" >
+                                        <cal:ActionMessage MethodName="TapCharacterItem" >
                                             <cal:Parameter Value="$dataContext"/>
                                         </cal:ActionMessage>
                                     </i:EventTrigger>
@@ -97,7 +115,7 @@
                             <Grid Height="85" Margin="0,5">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
-                                        <cal:ActionMessage MethodName="OnTapStaffItem" >
+                                        <cal:ActionMessage MethodName="TapStaffItem" >
                                             <cal:Parameter Value="$dataContext"/>
                                         </cal:ActionMessage>
                                     </i:EventTrigger>

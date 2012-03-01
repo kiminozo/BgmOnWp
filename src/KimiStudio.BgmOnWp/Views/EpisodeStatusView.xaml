@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="KimiStudio.BgmOnWp.Views.EpisodeStatusView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls" mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <StackPanel>
+        <TextBlock Text="{Binding CnName}" Margin="5,3" />
+        <c:TabSwitch SelectedBackground="#FFF19199" Margin="10,20,10,50">
+            <c:TabSwitchItem Content="看过" />
+            <c:TabSwitchItem Content="看到" />
+            <c:TabSwitchItem Content="想看" />
+            <c:TabSwitchItem Content="抛弃" />
+        </c:TabSwitch>
+    </StackPanel>
+</UserControl>

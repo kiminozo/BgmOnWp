@@ -26,6 +26,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string summary;
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
+        private IEnumerable<EpisodeModel> episodes;
 
         public string Name
         {
@@ -87,6 +88,15 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public IEnumerable<EpisodeModel> Episodes
+        {
+            get { return episodes; }
+            set
+            {
+                episodes = value;
+                NotifyOfPropertyChange(() => Episodes);
+            }
+        }
 
         #endregion
 
@@ -137,9 +147,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 Characters = subject.Characters.Select(CharacterModel.FromCharacter);
             }
-            if(subject.Staff != null)
+            if (subject.Staff != null)
             {
                 Staff = subject.Staff.Select(StaffModel.FromStaffItem);
+            }
+            if (subject.Eps != null)
+            {
+                //int maxLength = 
+                ////int length = subject.Eps.Count;
+                //Episodes = subject.Eps.
+                Episodes = subject.Eps.Select(EpisodeModel.FromEpisode);
             }
         }
 
@@ -147,10 +164,24 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             //            windowManager.ShowPopup(new FavoriteViewModel());
             //navigationService.UriFor<FavoriteViewModel>().Navigate();
-            promptManager.ShowPopup(IoC.Get<FavoriteViewModel>());
+            promptManager.PopupFor<FavoriteViewModel>().Show();
         }
 
-        public void OnTapCharacterItem(CharacterModel character)
+        public void TapEpisodeItem(EpisodeModel episode)
+        {
+            if (!episode.IsOnAir) return;
+
+            promptManager.PopupFor<EpisodeStatusViewModel>()
+                .Setup(x =>
+                           {
+                               x.DisplayName = episode.Name;
+                               x.SelectIndex = 1;//TODO:getSelectIndex
+                               x.CnName = episode.CnName;
+                           })
+                .Show();
+        }
+
+        public void TapCharacterItem(CharacterModel character)
         {
             if (character.RemoteUrl == null) return;
 
@@ -158,7 +189,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Show();
         }
 
-        public void OnTapStaffItem(StaffModel staffModel)
+        public void TapStaffItem(StaffModel staffModel)
         {
             if (staffModel.RemoteUrl == null) return;
 

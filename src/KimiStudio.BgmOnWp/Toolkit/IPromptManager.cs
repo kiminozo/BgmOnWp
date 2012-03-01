@@ -6,4 +6,6 @@ namespace KimiStudio.BgmOnWp.Toolkit
     {
         void ShowPopup(object rootModel, object context = null, IDictionary<string, object> settings = null);
     }
+
+   
 }

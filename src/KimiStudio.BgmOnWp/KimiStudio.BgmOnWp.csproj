@@ -79,6 +79,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\EpisodeModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Storages\AuthStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
@@ -88,6 +89,8 @@
     <Compile Include="Toolkit\ProgressService.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Toolkit\PromptManager.cs" />
+    <Compile Include="Toolkit\PromptManagerExtentions.cs" />
+    <Compile Include="ViewModels\EpisodeStatusViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="Models\WatchedItemModel.cs" />
@@ -96,6 +99,9 @@
     <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="Views\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EpisodeStatusView.xaml.cs">
+      <DependentUpon>EpisodeStatusView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FavoriteView.xaml.cs">
       <DependentUpon>FavoriteView.xaml</DependentUpon>
@@ -121,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Views\CalendarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EpisodeStatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

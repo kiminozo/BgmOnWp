@@ -67,4 +67,6 @@ namespace KimiStudio.BgmOnWp.Toolkit
             return false;
         }
     }
+
+    
 }
