@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Caliburn.Micro;
 using KimiStudio.Bagumi.Api.Commands;
+using KimiStudio.Bagumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
@@ -19,17 +20,28 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly IProgressService progressService;
         private bool authed;
 
-        private IEnumerable<WatchedItemModel> items;
-        public IEnumerable<WatchedItemModel> Items
+        private IEnumerable<WatchedItemModel> watchedItems;
+        public IEnumerable<WatchedItemModel> WatchedItems
         {
-            get { return items; }
+            get { return watchedItems; }
             set
             {
-                items = value;
-                NotifyOfPropertyChange(() => Items);
+                watchedItems = value;
+                NotifyOfPropertyChange(() => WatchedItems);
             }
         }
-        
+
+        private IEnumerable<WatchedItemModel> calendarItems;
+        public IEnumerable<WatchedItemModel> CalendarItems
+        {
+            get { return calendarItems; }
+            set
+            {
+                calendarItems = value;
+                NotifyOfPropertyChange(() => CalendarItems);
+            }
+        }
+
         #endregion
 
         #region Private
@@ -44,12 +56,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
             base.OnViewLoaded(view);
             progressService.Show("登录中\u2026");
             var loginCommand = new LoginCommand("kiminozo", "haruka");
-            loginCommand.BeginExecute(LoginCallBack,loginCommand);
+            loginCommand.BeginExecute(LoginCallBack, loginCommand);
         }
 
         private void LoginCallBack(IAsyncResult asyncResult)
         {
-            progressService.Hide();
+
             try
             {
                 var command = (LoginCommand)asyncResult.AsyncState;
@@ -57,11 +69,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 AuthStorage.Auth = auth;
                 authed = true;
                 progressService.Show("加载中\u2026");
-                var watchedCommand = new GetWatchedCommand(auth);
+                var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
                 watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
             }
             catch (Exception err)
             {
+                progressService.Hide();
                 Debug.WriteLine(err);
                 //TODO:
             }
@@ -70,14 +83,39 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void GetWatchedCallBack(IAsyncResult asyncResult)
         {
-            progressService.Hide();
+
             try
             {
                 var command = (GetWatchedCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
-                Items = result.OrderByDescending(p => p.LastTouch)
+                WatchedItems = result.OrderByDescending(p => p.LastTouch)
                     .Take(8)
                     .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
+
+                var calendarCommand = new CalendarCommand(AuthStorage.Auth);
+                calendarCommand.BeginExecute(GetCalendarCallBack, calendarCommand);
+            }
+            catch (Exception err)
+            {
+                progressService.Hide();
+                Debug.WriteLine(err);
+                //TODO:
+            }
+
+        }
+
+        private void GetCalendarCallBack(IAsyncResult asyncResult)
+        {
+            progressService.Hide();
+            try
+            {
+                var command = (CalendarCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                var query = from p in result
+                            from subject in p.Items
+                            where p.WeekDay.Id == WeekDay.WeekDayIdOfToday
+                            select WatchedItemModel.FromBagumiData(subject);
+                CalendarItems = query;
             }
             catch (Exception err)
             {
@@ -85,7 +123,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 //TODO:
             }
 
-        } 
+        }
         #endregion
 
         #region Public
@@ -94,7 +132,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
-        
+
         public void NavAll()
         {
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
@@ -122,7 +160,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.DisplayName, item.Name)
                 .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
-        } 
+        }
         #endregion
 
 

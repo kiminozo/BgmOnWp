@@ -24,17 +24,7 @@ namespace KimiStudio.Controls
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("UriSource", typeof(Uri), typeof(Thumbnail),
                                         new PropertyMetadata(ImageSourcePropertyChanged));
-
-        public static readonly DependencyProperty IsShowTextProperty =
-            DependencyProperty.Register("IsShowText", typeof(bool), typeof(Thumbnail),
-                                        new PropertyMetadata(true, IsShowTextPropertyChanged));
-
-        public bool IsShowText
-        {
-            get { return (bool)GetValue(IsShowTextProperty); }
-            set { SetValue(IsShowTextProperty, value); }
-        }
-
+        
         private static void TextPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var sender = o as Thumbnail;
@@ -48,14 +38,6 @@ namespace KimiStudio.Controls
             if (sender == null || e.NewValue == e.OldValue) return;
             sender.SetImageBrush(e.NewValue as Uri);
         }
-
-        private static void IsShowTextPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            var sender = o as Thumbnail;
-            if (sender == null || e.NewValue == e.OldValue) return;
-            sender.SetIsShowText((bool)e.NewValue);
-        }
-
         #endregion
 
         private TextBlock imageName;
@@ -85,7 +67,6 @@ namespace KimiStudio.Controls
             imageBrush = (ImageBrush)GetTemplateChild("imageBrush");
             imageNameBackground = (Rectangle)GetTemplateChild("imageNameBackground");
             SetText(Text);
-            SetIsShowText(IsShowText);
             SetImageBrush(UriSource);
             base.OnApplyTemplate();
         }
@@ -93,6 +74,7 @@ namespace KimiStudio.Controls
         private void SetText(string text)
         {
             if (imageName == null) return;
+            SetIsShowText(!string.IsNullOrEmpty(text));
             imageName.Text = text;
         }
 
