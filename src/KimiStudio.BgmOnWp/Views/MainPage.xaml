@@ -67,7 +67,7 @@
                 </controls:PanoramaItem.Header>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" toolkit:TiltEffect.IsTiltEnabled="True">
                     <HyperlinkButton Name="NavCalendar" Content="每日放送" Style="{StaticResource VerticalLink}" />
-                    <HyperlinkButton Name="NavAll" Content="全部" Style="{StaticResource VerticalLink}" />
+                    <HyperlinkButton Name="NavAll" Content="收视进度" Style="{StaticResource VerticalLink}" />
                     <HyperlinkButton Name="NavAmine" Content="动画" Style="{StaticResource VerticalLink}" />
                     <HyperlinkButton Name="NavReal" Content="三次元" Style="{StaticResource VerticalLink}" />
                 </StackPanel>

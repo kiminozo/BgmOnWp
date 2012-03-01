@@ -23,7 +23,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = "每日放送";
             this.navigation = navigation;
             this.progressService = progressService;
-            Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });
             Items.Add(new WatchingsItemViewModel { DisplayName = "星期一" });
             Items.Add(new WatchingsItemViewModel { DisplayName = "星期二" });
             Items.Add(new WatchingsItemViewModel { DisplayName = "星期三" });
@@ -38,7 +37,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            int index = WeekDay.WeekDayIdOfToday;
+            int index = WeekDay.WeekDayIdOfToday - 1;
             ActivateItem(Items[index]);
         }
 
@@ -65,14 +64,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 var command = (CalendarCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
 
-                var query = from p in result
-                            from item in p.Items
-                            select item;
-                Items[0].UpdateWatchingItems(query);
-
                 result.Apply(x =>
                                 {
-                                    var item = Items[x.WeekDay.Id];
+                                    var item = Items[x.WeekDay.Id - 1];
                                     item.DisplayName = x.WeekDay.Cn;
                                     item.UpdateWatchingItems(x.Items);
                                 });
