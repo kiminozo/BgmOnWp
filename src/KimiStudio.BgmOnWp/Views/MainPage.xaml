@@ -81,7 +81,7 @@
                         <RowDefinition Height="390" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ListBox ItemsSource="{Binding WatchedItems}" Style="{StaticResource NoScrollWrapListBox}"
+                    <ListBox ItemsSource="{Binding WatchedItems}" Style="{StaticResource NoScrollVerticalWrapListBox}"
                              HorizontalAlignment="Stretch" Width="800" VerticalAlignment="Stretch" Margin="0" 
                              toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
@@ -105,26 +105,50 @@
             </controls:PanoramaItem>
             <controls:PanoramaItem>
                 <controls:PanoramaItem.Header>
-                    <TextBlock Text="今日放送" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                    <TextBlock Text="每日放送" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
-                <ListBox ItemsSource="{Binding CalendarItems}" Style="{StaticResource WrapListBox}"
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Text="今天" Margin="0,10"/>
+                        <ListBox ItemsSource="{Binding TodayCalendarItems}" Style="{StaticResource NoScrollWrapListBox}"
                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" 
                              toolkit:TiltEffect.IsTiltEnabled="True">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding UriSource}"
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding UriSource}"
                                          Width="90" Height="90" >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Tap">
-                                        <cal:ActionMessage MethodName="OnTapItem" >
-                                            <cal:Parameter Value="$dataContext"/>
-                                        </cal:ActionMessage>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </c:Thumbnail>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Tap">
+                                                <cal:ActionMessage MethodName="OnTapItem" >
+                                                    <cal:Parameter Value="$dataContext"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </c:Thumbnail>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="明天" Margin="0,10" />
+                        <ListBox ItemsSource="{Binding TomorrowCalendarItems}" Style="{StaticResource NoScrollWrapListBox}"
+                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                             toolkit:TiltEffect.IsTiltEnabled="True">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding UriSource}"
+                                         Width="90" Height="90" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Tap">
+                                                <cal:ActionMessage MethodName="OnTapItem" >
+                                                    <cal:Parameter Value="$dataContext"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </c:Thumbnail>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
                 <!--<Image Height="43" Margin="0,50,0,0" Source="/Images/logo_rc1.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
             </controls:PanoramaItem>
         </controls:Panorama>

@@ -31,14 +31,25 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        private IEnumerable<WatchedItemModel> calendarItems;
-        public IEnumerable<WatchedItemModel> CalendarItems
+        private IEnumerable<WatchedItemModel> todayCalendarItems;
+        public IEnumerable<WatchedItemModel> TodayCalendarItems
         {
-            get { return calendarItems; }
+            get { return todayCalendarItems; }
             set
             {
-                calendarItems = value;
-                NotifyOfPropertyChange(() => CalendarItems);
+                todayCalendarItems = value;
+                NotifyOfPropertyChange(() => TodayCalendarItems);
+            }
+        }
+
+        private IEnumerable<WatchedItemModel> tomorrowCalendarItems;
+        public IEnumerable<WatchedItemModel> TomorrowCalendarItems
+        {
+            get { return tomorrowCalendarItems; }
+            set
+            {
+                tomorrowCalendarItems = value;
+                NotifyOfPropertyChange(() => TomorrowCalendarItems);
             }
         }
 
@@ -111,11 +122,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 var command = (CalendarCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
-                var query = from p in result
-                            from subject in p.Items
-                            where p.WeekDay.Id == WeekDay.WeekDayIdOfToday
-                            select WatchedItemModel.FromBagumiData(subject);
-                CalendarItems = query;
+                var today = WeekDay.WeekDayIdOfToday;
+                var tomorrow = WeekDay.GetWeekDayId(DateTime.Today.AddDays(1));
+                TodayCalendarItems = from p in result
+                                     from subject in p.Items
+                                     where p.WeekDay.Id == today
+                                     select WatchedItemModel.FromBagumiData(subject);
+
+                TomorrowCalendarItems = from p in result
+                                        from subject in p.Items
+                                        where p.WeekDay.Id == tomorrow
+                                        select WatchedItemModel.FromBagumiData(subject);
             }
             catch (Exception err)
             {

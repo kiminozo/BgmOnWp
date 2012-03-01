@@ -23,9 +23,14 @@ namespace KimiStudio.Bagumi.Api.Models
         {
             get
             {
-                int dayOfWeek = (int)DateTime.Today.DayOfWeek;
-                return dayOfWeek == 0 ? 7 : dayOfWeek;
+                return GetWeekDayId(DateTime.Today);
             }
+        }
+
+        public static int GetWeekDayId(DateTime date)
+        {
+            int dayOfWeek = (int)date.DayOfWeek;
+            return dayOfWeek == 0 ? 7 : dayOfWeek;
         }
     }
 }
