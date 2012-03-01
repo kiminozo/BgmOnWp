@@ -9,6 +9,7 @@ namespace KimiStudio.Bagumi.Api.Models
     {
         public List<BagumiSubject> Items { get; set; }
         public WeekDay WeekDay { get; set; }
+
     }
 
     public class WeekDay
@@ -17,5 +18,14 @@ namespace KimiStudio.Bagumi.Api.Models
         public string Cn { get; set; }
         public string En { get; set; }
         public int Jp { get; set; }
+
+        public static int WeekDayIdOfToday
+        {
+            get
+            {
+                int dayOfWeek = (int)DateTime.Today.DayOfWeek;
+                return dayOfWeek == 0 ? 7 : dayOfWeek;
+            }
+        }
     }
 }

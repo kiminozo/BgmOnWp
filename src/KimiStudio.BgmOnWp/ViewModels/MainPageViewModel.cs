@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             catch (Exception err)
             {
+                Debug.WriteLine(err);
                 //TODO:
             }
         }
@@ -74,11 +76,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 var command = (GetWatchedCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
                 Items = result.OrderByDescending(p => p.LastTouch)
-                   .Take(8)
-                   .Select(WatchedItemModel.FromBagumiData);
+                    .Take(8)
+                    .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
             }
             catch (Exception err)
             {
+                Debug.WriteLine(err);
                 //TODO:
             }
 
@@ -105,6 +108,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         public void NavReal()
         {
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 2).Navigate();
+        }
+
+        public void NavCalendar()
+        {
+            navigation.UriFor<CalendarViewModel>().Navigate();
         }
 
         public void OnTapItem(WatchedItemModel item)

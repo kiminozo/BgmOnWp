@@ -23,8 +23,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.navigation = navigation;
             this.progressService = progressService;
             Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "动画", Filter = p => p.Subject.Type == 2 });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "三次元", Filter = p => p.Subject.Type == 6 });
+            Items.Add(new WatchingsItemViewModel { DisplayName = "动画", Filter = p => p.Type == 2 });
+            Items.Add(new WatchingsItemViewModel { DisplayName = "三次元", Filter = p => p.Type == 6 });
             ActivateItem(Items[Index]);
         }
 
@@ -57,7 +57,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 var command = (GetWatchedCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
                 var query = result.OrderByDescending(p => p.LastTouch);
-                Items.Apply(x => x.UpdateWatchingItems(query));
+                Items.Apply(x => x.UpdateWatchingItems(query.Select(p => p.Subject)));
             }
             catch (Exception)
             {

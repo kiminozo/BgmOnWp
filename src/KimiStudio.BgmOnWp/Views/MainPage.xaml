@@ -55,6 +55,9 @@
                     <HyperlinkButton Name="NavReal" Content="三次元" Grid.Row="1"
 					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
 					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
+                    <HyperlinkButton Name="NavCalendar" Content="每日放送" Grid.Row="1"
+					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
+					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
                 </StackPanel>
             </controls:PanoramaItem>
             <controls:PanoramaItem Orientation="Horizontal">

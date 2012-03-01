@@ -92,6 +92,10 @@
     <Compile Include="Models\WatchedItemModel.cs" />
     <Compile Include="ViewModels\WatchingsItemViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
+    <Compile Include="ViewModels\CalendarViewModel.cs" />
+    <Compile Include="Views\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FavoriteView.xaml.cs">
       <DependentUpon>FavoriteView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\CalendarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FavoriteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

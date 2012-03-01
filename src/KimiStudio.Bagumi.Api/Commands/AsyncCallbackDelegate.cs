@@ -1,6 +1,6 @@
 using System;
 
-namespace KimiStudio.Bagumi.Api
+namespace KimiStudio.Bagumi.Api.Commands
 {
     /// <summary>
     /// 异步回调代理

@@ -9,13 +9,13 @@ namespace KimiStudio.BgmOnWp.Models
         public string Name { get; set; }
         public Uri UriSource { get; set; }
 
-        public static WatchedItemModel FromBagumiData(BagumiData data)
+        public static WatchedItemModel FromBagumiData(BagumiSubject subject)
         {
             return new WatchedItemModel
                 {
-                    Id = data.Subject.Id,
-                    Name = data.Name,
-                    UriSource = data.Subject.Images.Large
+                    Id = subject.Id,
+                    Name = subject.Name,
+                    UriSource = subject.Images.Large
                 };
         }
     }
