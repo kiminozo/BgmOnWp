@@ -15,55 +15,67 @@
 	Foreground="{StaticResource PhoneForegroundBrush}"
 	SupportedOrientations="Portrait" Orientation="Portrait"
 	shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
-	<phone:PhoneApplicationPage.Resources>
-		<Style x:Key="VerticalTextBlockStyle" TargetType="TextBlock">
-			<Setter Property="Width" Value="50"/>
-			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeExtraLarge}"/>
-			<Setter Property="Margin" Value="30,50,30,0"/>
-			<Setter Property="TextWrapping" Value="Wrap"/>
-			<Setter Property="VerticalAlignment" Value="Top"/>
-			<Setter Property="HorizontalAlignment" Value="Stretch"/>
-			
-		</Style>
-		
-	</phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="VerticalLink" TargetType="HyperlinkButton">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="400"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeLarge}"/>
+            <Setter Property="Margin" Value="10,30,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="HyperlinkButton">
+                        <Border Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}">
+                                <TextBlock x:Name="TextElement" Margin="0" TextWrapping="Wrap"
+                                           VerticalAlignment="Top"
+                                           HorizontalAlignment="Left" Text="{TemplateBinding Content}" />
+                            </Border>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot 是放置所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot">
         <!--透视控件-->
         <controls:Panorama >
-        	<controls:Panorama.TitleTemplate>
-        		<DataTemplate>
+            <controls:Panorama.TitleTemplate>
+                <DataTemplate>
                     <StackPanel Height="150" Margin="0,72,0,0" Orientation="Horizontal">
                         <TextBlock Text="Bagumi" FontSize="72" FontStyle="Italic" FontFamily="Segoe WP Semibold"><TextBlock.Foreground><LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0"><GradientStop Color="#FF5EB0D7" Offset="0" /><GradientStop Color="#FF277EEC" Offset="1" /></LinearGradientBrush></TextBlock.Foreground></TextBlock>
                         <TextBlock Text="番組計劃" Margin="36,28,0,0" FontSize="48" FontStyle="Normal" Foreground="Gray" />
                     </StackPanel>
-         			<!--<Image Height="150" Source="/Images/logo.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
-				</DataTemplate>     	
-			</controls:Panorama.TitleTemplate>
+                    <!--<Image Height="150" Source="/Images/logo.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
+                </DataTemplate>
+            </controls:Panorama.TitleTemplate>
             <controls:PanoramaItem>
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
-                <StackPanel Grid.Row="1" >
-                    <HyperlinkButton Name="NavAll" Content="全部" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
-                    <HyperlinkButton Name="NavAmine"  Content="动画" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
-                    <HyperlinkButton Name="NavReal" Content="三次元" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
-                    <HyperlinkButton Name="NavCalendar" Content="每日放送" Grid.Row="1"
-					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10" 
-					 FontSize="{StaticResource PhoneFontSizeExtraLarge}" Style="{StaticResource HyperlinkText}" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <HyperlinkButton Name="NavCalendar" Content="每日放送" Style="{StaticResource VerticalLink}" />
+                    <HyperlinkButton Name="NavAll" Content="全部" Style="{StaticResource VerticalLink}" />
+                    <HyperlinkButton Name="NavAmine" Content="动画" Style="{StaticResource VerticalLink}" />
+                    <HyperlinkButton Name="NavReal" Content="三次元" Style="{StaticResource VerticalLink}" />
                 </StackPanel>
             </controls:PanoramaItem>
             <controls:PanoramaItem Orientation="Horizontal">
-            	<controls:PanoramaItem.Header>
-            		 <TextBlock Text="最近观看" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>       	
-				</controls:PanoramaItem.Header>
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="最近观看" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="390" />
@@ -91,9 +103,9 @@
 					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
                 </Grid>
             </controls:PanoramaItem>
-			<controls:PanoramaItem>
-				<Image Height="43" Margin="0,50,0,0" Source="/Images/logo_rc1.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-			</controls:PanoramaItem>
+            <controls:PanoramaItem>
+                <Image Height="43" Margin="0,50,0,0" Source="/Images/logo_rc1.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
