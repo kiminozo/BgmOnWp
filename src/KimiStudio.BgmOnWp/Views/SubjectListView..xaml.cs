@@ -12,9 +12,9 @@ using System.Windows.Shapes;
 
 namespace KimiStudio.BgmOnWp.Views
 {
-    public partial class WatchingsItemView : UserControl
+    public partial class SubjectListView 
     {
-        public WatchingsItemView()
+        public SubjectListView()
         {
             InitializeComponent();
         }

@@ -26,7 +26,7 @@ namespace KimiStudio.BgmOnWp
             container.PerRequest<FavoriteViewModel>();
             container.PerRequest<SubjectViewModel>();
             container.PerRequest<WatchingsViewModel>();
-            container.PerRequest<WatchingsItemViewModel>();
+            container.PerRequest<SubjectListViewModel>();
             container.PerRequest<CalendarViewModel>();
 
             AddCustomConventions();

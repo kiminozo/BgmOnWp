@@ -9,7 +9,7 @@ using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public sealed class WatchingsViewModel : Conductor<WatchingsItemViewModel>.Collection.OneActive
+    public sealed class WatchingsViewModel : Conductor<SubjectListViewModel>.Collection.OneActive
     {
 
         private readonly INavigationService navigation;
@@ -22,9 +22,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = "收視進度";
             this.navigation = navigation;
             this.progressService = progressService;
-            Items.Add(new WatchingsItemViewModel { DisplayName = "全部" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "动画", Filter = p => p.Type == 2 });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "三次元", Filter = p => p.Type == 6 });
+            Items.Add(new SubjectListViewModel { DisplayName = "全部" });
+            Items.Add(new SubjectListViewModel { DisplayName = "动画", Filter = p => p.Type == 2 });
+            Items.Add(new SubjectListViewModel { DisplayName = "三次元", Filter = p => p.Type == 6 });
             ActivateItem(Items[Index]);
         }
 

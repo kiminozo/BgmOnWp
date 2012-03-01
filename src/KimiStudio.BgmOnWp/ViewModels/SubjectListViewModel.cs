@@ -7,7 +7,7 @@ using KimiStudio.BgmOnWp.Models;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class WatchingsItemViewModel : Screen
+    public class SubjectListViewModel : Screen
     {
         private IEnumerable<WatchedItemModel> watchingItems;
 

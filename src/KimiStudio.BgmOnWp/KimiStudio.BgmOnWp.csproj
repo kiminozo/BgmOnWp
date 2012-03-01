@@ -90,7 +90,7 @@
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="Models\WatchedItemModel.cs" />
-    <Compile Include="ViewModels\WatchingsItemViewModel.cs" />
+    <Compile Include="ViewModels\SubjectListViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="Views\CalendarView.xaml.cs">
@@ -107,8 +107,8 @@
     <Compile Include="Views\SubjectView.xaml.cs">
       <DependentUpon>SubjectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WatchingsItemView..xaml.cs">
-      <DependentUpon>WatchingsItemView..xaml</DependentUpon>
+    <Compile Include="Views\SubjectListView..xaml.cs">
+      <DependentUpon>SubjectListView..xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WatchingsView.xaml.cs">
       <DependentUpon>WatchingsView.xaml</DependentUpon>
@@ -135,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WatchingsItemView..xaml">
+    <Page Include="Views\SubjectListView..xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

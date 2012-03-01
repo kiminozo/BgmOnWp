@@ -10,7 +10,7 @@ using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public sealed class CalendarViewModel : Conductor<WatchingsItemViewModel>.Collection.OneActive
+    public sealed class CalendarViewModel : Conductor<SubjectListViewModel>.Collection.OneActive
     {
 
         private readonly INavigationService navigation;
@@ -23,13 +23,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = "每日放送";
             this.navigation = navigation;
             this.progressService = progressService;
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期一" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期二" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期三" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期四" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期五" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期六" });
-            Items.Add(new WatchingsItemViewModel { DisplayName = "星期日" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期一" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期二" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期三" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期四" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期五" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期六" });
+            Items.Add(new SubjectListViewModel { DisplayName = "星期日" });
 
             ActivateItem(Items[Index]);
         }
