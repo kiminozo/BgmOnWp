@@ -10,9 +10,17 @@ namespace KimiStudio.Controls
 {
     public class TabSwitch : ItemsControl
     {
-        private const int Size = 65;
-
         #region Propertys
+
+        public static readonly DependencyProperty SelectedWidthProperty =
+            DependencyProperty.Register("SelectedWidth", typeof (double), typeof (TabSwitch),
+                                        new PropertyMetadata(65.0, SelectedWidthPropertyChanged));
+
+        public double SelectedWidth
+        {
+            get { return (double)GetValue(SelectedWidthProperty); }
+            set { SetValue(SelectedWidthProperty, value); }
+        }
 
         public static readonly DependencyProperty SelectedItemProperty =
             DependencyProperty.Register("SelectedItem", typeof(TabSwitchItem), typeof(TabSwitch),
@@ -70,9 +78,18 @@ namespace KimiStudio.Controls
             sender.SetSelectedIndex((int)e.NewValue);
         }
 
+        private static void SelectedWidthPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            var sender = o as TabSwitch;
+            if (sender == null || e.NewValue == e.OldValue) return;
+
+            sender.SetSelectedWidth((double)e.NewValue);
+        }
 
 
         #endregion
+
+
 
         private Rectangle rectangle;
         public event RoutedEventHandler Selected;
@@ -109,7 +126,14 @@ namespace KimiStudio.Controls
             base.OnApplyTemplate();
             rectangle = (Rectangle)GetTemplateChild("rectangle");
             SetSelectedBackground(SelectedBackground);
+            SetSelectedWidth(SelectedWidth);
             SetSelectedIndex(SelectedIndex);
+        }
+
+        private void SetSelectedWidth(double itemWidth)
+        {
+            if (rectangle == null) return;
+            rectangle.Width = itemWidth;
         }
 
         private void SetSelectedBackground(Brush brush)
@@ -125,21 +149,21 @@ namespace KimiStudio.Controls
 
             //var compositeTransform = (CompositeTransform)rectangle.RenderTransform;
             //compositeTransform.TranslateX = Size * index;
-            ShowAnimation(Size * index);
+            ShowAnimation(SelectedWidth * index);
         }
 
         protected override void OnTap(GestureEventArgs e)
         {
             Point point = e.GetPosition(this);
 
-            var x = (int)(point.X / Size) * Size;
-            int index = x / Size;
+            var x = (int)(point.X / SelectedWidth) * SelectedWidth;
+            int index = (int)(x / SelectedWidth);
             ChangeSelected(index);
             // ShowAnimation(x);
             base.OnTap(e);
         }
 
-        private void ShowAnimation(int x)
+        private void ShowAnimation(double x)
         {
             var animation = new DoubleAnimation
                                 {

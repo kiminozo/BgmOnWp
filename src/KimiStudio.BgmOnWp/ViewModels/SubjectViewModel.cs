@@ -175,7 +175,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Setup(x =>
                            {
                                x.DisplayName = episode.Name;
-                               x.SelectIndex = 1;//TODO:getSelectIndex
+                               x.SelectedIndex = 1;//TODO:getSelectIndex
                                x.CnName = episode.CnName;
                            })
                 .Show();

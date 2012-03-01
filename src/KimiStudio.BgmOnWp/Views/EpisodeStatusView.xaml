@@ -11,11 +11,12 @@
 
     <StackPanel>
         <TextBlock Text="{Binding CnName}" Margin="5,3" />
-        <c:TabSwitch SelectedBackground="#FFF19199" Margin="10,20,10,50">
-            <c:TabSwitchItem Content="看过" />
-            <c:TabSwitchItem Content="看到" />
-            <c:TabSwitchItem Content="想看" />
-            <c:TabSwitchItem Content="抛弃" />
+        <c:TabSwitch SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectedBackground="#FFF19199" 
+                     SelectedWidth="80" Margin="10,20,10,50">
+            <c:TabSwitchItem Content="看过" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />
+            <c:TabSwitchItem Content="看到" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />
+            <c:TabSwitchItem Content="想看" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />
+            <c:TabSwitchItem Content="抛弃" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />
         </c:TabSwitch>
     </StackPanel>
 </UserControl>

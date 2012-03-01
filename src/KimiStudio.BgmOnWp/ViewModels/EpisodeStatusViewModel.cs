@@ -16,6 +16,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
     public class EpisodeStatusViewModel : Screen, IPrompt
     {
         private string cnName;
+        private int selectedIndex;
 
         public string CnName
         {
@@ -27,17 +28,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public int SelectIndex
+        public int SelectedIndex
         {
-            get { return selectIndex; }
+            get { return selectedIndex; }
             set
             {
-                selectIndex = value;
-                NotifyOfPropertyChange(() => SelectIndex);
+                selectedIndex = value;
+                NotifyOfPropertyChange(() => SelectedIndex);
             }
         }
 
-        private int selectIndex;
+        
 
         #region Implementation of IPrompt
 
