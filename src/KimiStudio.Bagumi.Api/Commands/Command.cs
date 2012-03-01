@@ -24,13 +24,15 @@ namespace KimiStudio.Bagumi.Api.Commands
         private string EndSend(IAsyncResult asyncResult)
         {
             IAsyncResult ownedAsyncResult;
-            var requestDelegate = AsyncCallbackDelegate.GetDelegateObject<HttpRequestDelegate>(asyncResult,out ownedAsyncResult );
+            var requestDelegate = AsyncCallbackDelegate.GetDelegateObject<HttpRequestDelegate>(asyncResult, out ownedAsyncResult);
             return requestDelegate.EndSend(ownedAsyncResult);
         }
 
         public TResult EndExecute(IAsyncResult asyncResult)
         {
             var result = EndSend(asyncResult);
+            if (string.IsNullOrEmpty(result)) return default(TResult);
+
             return JsonConvert.DeserializeObject<TResult>(result);
         }
 

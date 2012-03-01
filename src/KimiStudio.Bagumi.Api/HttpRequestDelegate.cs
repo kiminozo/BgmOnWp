@@ -64,10 +64,17 @@ namespace KimiStudio.Bagumi.Api
             IAsyncResult ownedAsyncResult;
             var webRequest = AsyncCallbackDelegate.GetDelegateObject<HttpWebRequest>(asyncResult, out ownedAsyncResult);
             using (var response = (HttpWebResponse)webRequest.EndGetResponse(ownedAsyncResult))
-            using (var streamResponse = response.GetResponseStream())
-            using (var streamReader = new StreamReader(streamResponse))
             {
-                return streamReader.ReadToEnd();
+                if (response.StatusCode != HttpStatusCode.OK && response.StatusCode != HttpStatusCode.NotModified)
+                    return null;
+
+                using (var streamResponse = response.GetResponseStream())
+                {
+                    using (var streamReader = new StreamReader(streamResponse))
+                    {
+                        return streamReader.ReadToEnd();
+                    }
+                }
             }
         }
     }

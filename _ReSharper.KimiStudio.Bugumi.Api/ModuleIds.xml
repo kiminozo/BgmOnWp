@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="680350A5-B1F9-441F-82A5-233B99198E84" ModuleId="KimiStudio.Bagumi.Api.Text" />
+  <Module PersistentId="95A382E8-2B65-49B1-B1C2-619454021B39" ModuleId="KimiStudio.Bagumi.Api.Dll" />
+</Modules>
