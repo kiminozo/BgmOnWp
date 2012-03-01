@@ -22,7 +22,7 @@ namespace KimiStudio.Bagumi.Api.Models
         public string Name { get; set; }
         [JsonProperty("name_cn")]
         public string NameCn { get; set; }
-        public IList<Staff> Staff { get; set; }
+        public IList<StaffItem> Staff { get; set; }
         public string Summary { get; set; }
         public IList<Topic> Topic { get; set; }
         public int Type { get; set; }
@@ -43,12 +43,12 @@ namespace KimiStudio.Bagumi.Api.Models
         public User User { get; set; }
     }
 
-    public class Staff
+    public class StaffItem
     {
         public int Collects { get; set; }
         public int Comment { get; set; }
         public int Id { get; set; }
-        public ImageData Image { get; set; }
+        public ImageData Images { get; set; }
         public CharacterInfo Info { get; set; }
         public IList<string> Jobs { get; set; }
         public string Name { get; set; }

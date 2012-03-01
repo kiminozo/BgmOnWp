@@ -25,6 +25,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private Uri uriSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
+        private IEnumerable<StaffModel> staff;
 
         public string Name
         {
@@ -73,6 +74,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 characters = value;
                 NotifyOfPropertyChange(() => Characters);
+            }
+        }
+
+        public IEnumerable<StaffModel> Staff
+        {
+            get { return staff; }
+            set
+            {
+                staff = value;
+                NotifyOfPropertyChange(() => Staff);
             }
         }
 
@@ -126,6 +137,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 Characters = subject.Characters.Select(CharacterModel.FromCharacter);
             }
+            if(subject.Staff != null)
+            {
+                Staff = subject.Staff.Select(StaffModel.FromStaffItem);
+            }
         }
 
         public void Favorite()
@@ -140,6 +155,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
             if (character.RemoteUrl == null) return;
 
             var task = new WebBrowserTask { Uri = character.RemoteUrl };
+            task.Show();
+        }
+
+        public void OnTapStaffItem(StaffModel staffModel)
+        {
+            if (staffModel.RemoteUrl == null) return;
+
+            var task = new WebBrowserTask { Uri = staffModel.RemoteUrl };
             task.Show();
         }
     }

@@ -54,6 +54,11 @@
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>
+                    <TextBlock Text="章节" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                </controls:PanoramaItem.Header>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem >
+                <controls:PanoramaItem.Header>
                     <TextBlock Text="角色" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
                 <!--<TextBlock Text="角色" Style="{StaticResource PhoneTextNormalStyle}"/>-->
@@ -84,8 +89,32 @@
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>
-                    <TextBlock Text="章节" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                    <TextBlock Text="工作人员" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
+                <ListBox ItemsSource="{Binding Staff}" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="85" Margin="0,5">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Tap">
+                                        <cal:ActionMessage MethodName="OnTapStaffItem" >
+                                            <cal:Parameter Value="$dataContext"/>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <c:Thumbnail UriSource="{Binding StaffImage}" Width="75" Height="75" Margin="0"/>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding StaffName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="12,2" />
+                                    <TextBlock Text="{Binding Job}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" VerticalAlignment="Top" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </controls:PanoramaItem>
             <controls:PanoramaItem >
                 <controls:PanoramaItem.Header>
