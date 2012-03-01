@@ -46,7 +46,7 @@ namespace KimiStudio.Bagumi.Api.Commands
             webRequest.BeginGetResponse(stateObj.Delegate.CreateCallback(), stateObj.State);
         }
 
-        public IAsyncResult BeginSend(RequestData request, AsyncCallback asyncCallback, object state)
+        protected IAsyncResult BeginSend(RequestData request, AsyncCallback asyncCallback, object state)
         {
             if (request.Data == null)
             {
@@ -58,7 +58,7 @@ namespace KimiStudio.Bagumi.Api.Commands
             }
         }
 
-        public string EndSend(IAsyncResult asyncResult)
+        protected string EndSend(IAsyncResult asyncResult)
         {
             IAsyncResult ownedAsyncResult;
             var webRequest = AsyncCallbackDelegate.GetDelegateObject<HttpWebRequest>(asyncResult, out ownedAsyncResult);
