@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:KimiStudio.Controls" 
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:Double x:Key="TextHeight">30</sys:Double>
-    
+
     <Style TargetType="local:Thumbnail">
         <Setter Property="Width" Value="173"/>
         <Setter Property="Height" Value="173"/>

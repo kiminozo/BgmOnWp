@@ -23,7 +23,7 @@ namespace KimiStudio.Bagumi.Api.Models
 
     public class ProgressState
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("cn_name")]
         public string CssName { get; set; }

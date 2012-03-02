@@ -106,7 +106,6 @@ namespace KimiStudio.Controls
             if (index < 0 || index > Items.Count) return;
             ;
             SelectedIndex = index;
-
             var switchItem = Items[index] as TabSwitchItem;
             if (switchItem != null)
             {
@@ -147,19 +146,21 @@ namespace KimiStudio.Controls
             if (rectangle == null) return;
             if (index < 0 || index > Items.Count) return;
 
-            //var compositeTransform = (CompositeTransform)rectangle.RenderTransform;
-            //compositeTransform.TranslateX = Size * index;
-            ShowAnimation(SelectedWidth * index);
+            double x = SelectedWidth*index;
+            var compositeTransform = (CompositeTransform) rectangle.RenderTransform;
+            if (Math.Abs(compositeTransform.TranslateX - x) > 1)
+                compositeTransform.TranslateX = SelectedWidth*index;
+            // ShowAnimation(SelectedWidth * index);
         }
 
         protected override void OnTap(GestureEventArgs e)
         {
             Point point = e.GetPosition(this);
 
-            var x = (int)(point.X / SelectedWidth) * SelectedWidth;
-            int index = (int)(x / SelectedWidth);
+            var x = (int) (point.X/SelectedWidth)*SelectedWidth;
+            int index = (int) (x/SelectedWidth);
+            ShowAnimation(x);
             ChangeSelected(index);
-            // ShowAnimation(x);
             base.OnTap(e);
         }
 

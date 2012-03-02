@@ -52,16 +52,21 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiKeyNames.cs" />
     <Compile Include="Commands\AsyncCallbackDelegate.cs" />
     <Compile Include="Commands\CalendarCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\GetSubjectCommand.cs" />
     <Compile Include="Commands\GetWatchedCommand.cs" />
+    <Compile Include="Commands\ProgressCommand.cs" />
+    <Compile Include="Commands\SubjectStateCommand.cs" />
     <Compile Include="Models\BagumiData.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Models\BagumiSubject.cs" />
     <Compile Include="Models\Calendar.cs" />
+    <Compile Include="Models\Progress.cs" />
     <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\SubjectState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestData.cs" />
   </ItemGroup>

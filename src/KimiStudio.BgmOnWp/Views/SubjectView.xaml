@@ -60,7 +60,10 @@
                          toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="48" Height="48" Background="{Binding Fill}" Margin="0,0,5,5">
+                            <Grid Width="48" Height="48"  Margin="0,0,5,5">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{Binding Fill}"/>
+                                </Grid.Background>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <cal:ActionMessage MethodName="TapEpisodeItem" >
@@ -79,7 +82,6 @@
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="角色" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
-                <!--<TextBlock Text="角色" Style="{StaticResource PhoneTextNormalStyle}"/>-->
                 <ListBox ItemsSource="{Binding Characters}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

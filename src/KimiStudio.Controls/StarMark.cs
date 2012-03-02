@@ -27,14 +27,14 @@ namespace KimiStudio.Controls
             DependencyProperty.Register("MaxStars", typeof(int), typeof(StarMark),
             new PropertyMetadata(10));
 
-        public static readonly DependencyProperty ValueProperty =
+        public static readonly DependencyProperty MarkedProperty =
             DependencyProperty.Register("Marked", typeof(int), typeof(StarMark),
-            new PropertyMetadata(0, OnValuePropertyChanged));
+            new PropertyMetadata(0, OnMarkedPropertyChanged));
 
         public int Marked
         {
-            get { return (int)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { return (int)GetValue(MarkedProperty); }
+            set { SetValue(MarkedProperty, value); }
         }
 
         public int MaxStars
@@ -55,7 +55,7 @@ namespace KimiStudio.Controls
             set { SetValue(MarkedFillProperty, value); }
         }
 
-        private static void OnValuePropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
+        private static void OnMarkedPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
         {
             var starMark = o as StarMark;
             if (starMark == null || args.NewValue == args.OldValue) return;

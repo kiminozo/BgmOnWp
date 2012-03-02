@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Windows.Media;
 using Caliburn.Micro;
 using KimiStudio.Bagumi.Api.Commands;
 using KimiStudio.Bagumi.Api.Models;
@@ -11,13 +12,16 @@ using Microsoft.Phone.Tasks;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class SubjectViewModel : Screen
+    public class SubjectViewModel : Screen,IHandle<Progress>
     {
         private readonly IProgressService progressService;
         private readonly INavigationService navigationService;
         private readonly IPromptManager promptManager;
+        private readonly IEventAggregator eventAggregator;
 
         public int Id { get; set; }
+
+      //  private static Brush DefaultBrush = WatchStateColors.Queue;
 
         #region Property
         private string name;
@@ -101,38 +105,99 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager)
+        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager, IEventAggregator eventAggregator)
         {
             this.progressService = progressService;
             this.navigationService = navigationService;
             this.promptManager = promptManager;
+            this.eventAggregator = eventAggregator;
+
         }
 
         protected override void OnActivate()
         {
             base.OnActivate();
-
+            eventAggregator.Subscribe(this);
             progressService.Show("加载中\u2026");
             var command = new GetSubjectCommand(Id, AuthStorage.Auth);
-            command.BeginExecute(CallBack, command);
+            command.BeginExecute(GetSubjectCallBack, command);
         }
 
-        private void CallBack(IAsyncResult asyncResult)
+        protected override void OnDeactivate(bool close)
+        {
+            eventAggregator.Unsubscribe(this);
+            base.OnDeactivate(close);
+        }
+
+        private void GetSubjectCallBack(IAsyncResult asyncResult)
         {
             try
             {
                 var command = (GetSubjectCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
                 SetSubject(result);
+
+                var stateCommand = new SubjectStateCommand(Id, AuthStorage.Auth);
+                stateCommand.BeginExecute(GetSubjectStateCallBack, stateCommand);
             }
             catch (Exception)
             {
+                progressService.Hide();
+                //TODO:
+            }
+        }
+
+        private void GetSubjectStateCallBack(IAsyncResult asyncResult)
+        {
+            try
+            {
+                var command = (SubjectStateCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                //TODO:result.Status
+
+                progressService.Show("获取进度中\u2026");
+                var progCommand = new ProgressCommand(Id, AuthStorage.Auth);
+                progCommand.BeginExecute(GetSubjectProgressCallBack, progCommand);
+            }
+            catch (Exception)
+            {
+                progressService.Hide();
+                //TODO:
+            }
+        }
+
+        private void GetSubjectProgressCallBack(IAsyncResult asyncResult)
+        {
+            try
+            {
+                var command = (ProgressCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                if (result.SubjectId == 0) return;
+                //UpdateProgress(result);
+                eventAggregator.Publish(result);
+            }
+            catch (Exception)
+            {
+
                 //TODO:
             }
             finally
             {
                 progressService.Hide();
             }
+        }
+
+        private void UpdateProgress(Progress progress)
+        {
+            //foreach (var item in Episodes)
+            //{
+            //    item.Fill = new SolidColorBrush(Colors.Green);
+            //}
+
+            var query = from ep in Episodes
+                        join prog in progress.Episodes on ep.Id equals prog.Id
+                        select new { Ep = ep, Prog = prog };
+            query.Apply(item => item.Ep.Update((WatchState)item.Prog.Status.Id));
         }
 
         private void SetSubject(Subject subject)
@@ -156,7 +221,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 //int maxLength = 
                 ////int length = subject.Eps.Count;
                 //Episodes = subject.Eps.
-                Episodes = subject.Eps.Select(EpisodeModel.FromEpisode);
+                Episodes = subject.Eps.Select(EpisodeModel.FromEpisode).ToArray();
             }
         }
 
@@ -170,12 +235,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         public void TapEpisodeItem(EpisodeModel episode)
         {
             if (!episode.IsOnAir) return;
-
             promptManager.PopupFor<EpisodeStatusViewModel>()
                 .Setup(x =>
                            {
                                x.DisplayName = episode.Name;
-                               x.SelectedIndex = 1;//TODO:getSelectIndex
+                               x.SelectedIndex = episode.WatchState == WatchState.None ? 0 : (int) episode.WatchState;
                                x.CnName = episode.CnName;
                            })
                 .Show();
@@ -195,6 +259,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             var task = new WebBrowserTask { Uri = staffModel.RemoteUrl };
             task.Show();
+        }
+
+        void IHandle<Progress>.Handle(Progress message)
+        {
+            UpdateProgress(message);
         }
     }
 }

@@ -2,11 +2,14 @@
 using System.Globalization;
 using System.Windows.Media;
 using KimiStudio.Bagumi.Api.Models;
+using Caliburn.Micro;
 
 namespace KimiStudio.BgmOnWp.Models
 {
-    public class EpisodeModel
+    public class EpisodeModel : PropertyChangedBase
     {
+        private Color fill;
+
         public int Id { get; set; }
         public int Sort { get; set; }
         public string Number { get; set; }
@@ -15,11 +18,18 @@ namespace KimiStudio.BgmOnWp.Models
         public Uri RemoteUrl { get; set; }
         public WatchState WatchState { get; set; }
         public bool IsOnAir { get; set; }
-        public Brush Fill { get; set; }
 
-        private static readonly Brush Watched = new SolidColorBrush(Color.FromArgb(0xFF, 0x48, 0x97, 0xFF));
-        private static readonly Brush UnWatched = new SolidColorBrush(Color.FromArgb(0xFF, 0xA1, 0xCF, 0xEF));
-        private static readonly Brush UnAir = new SolidColorBrush(Colors.DarkGray);
+        public Color Fill
+        {
+            get { return fill; }
+            set
+            {
+                fill = value;
+                NotifyOfPropertyChange(() => Fill);
+            }
+        }
+
+
 
         public static EpisodeModel FromEpisode(Episode episode)
         {
@@ -32,8 +42,49 @@ namespace KimiStudio.BgmOnWp.Models
                            CnName = episode.NameCn,
                            RemoteUrl = episode.Url,
                            IsOnAir = episode.Status == Episode.OnAir,
-                           Fill = episode.Status == Episode.OnAir ? UnWatched : UnAir,
+                           Fill = episode.Status == Episode.OnAir ? WatchStateColors.UnWatched : WatchStateColors.UnAir
                        };
+        }
+
+        public void Update(WatchState state)
+        {
+            if (WatchState == state) return;
+
+            switch (state)
+            {
+                case WatchState.Queue:
+                    Fill = WatchStateColors.Queue;
+                    break;
+                case WatchState.Watched:
+                    Fill = WatchStateColors.Watched;
+                    break;
+                case WatchState.Drop:
+                    Fill = WatchStateColors.Drop;
+                    break;
+                default:
+                    Fill = IsOnAir ? WatchStateColors.UnWatched : WatchStateColors.UnAir;
+                    break;
+
+            }
+            WatchState = state;
+        }
+    }
+
+    public class WatchStateColors
+    {
+        public static readonly Color Queue;
+        public static readonly Color Watched;
+        public static readonly Color UnWatched;
+        public static readonly Color UnAir;
+        public static readonly Color Drop;
+
+        static WatchStateColors()
+        {
+            Queue = Color.FromArgb(0xFF, 0xFF, 0xAD, 0xD1);
+            Watched = Color.FromArgb(0xFF, 0x48, 0x97, 0xFF);
+            UnWatched = Color.FromArgb(0xFF, 0xA1, 0xCF, 0xEF);
+            UnAir = Colors.DarkGray;
+            Drop = Colors.Gray;
         }
     }
 
