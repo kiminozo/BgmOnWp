@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
 using KimiStudio.Bagumi.Api.Models;
 
@@ -8,7 +9,7 @@ namespace KimiStudio.Bagumi.Api.Commands
     {
         private readonly string userName;
         private readonly string password;
-        private const string AuthUrl = @"http://api.bgm.tv/auth?source=onAir";
+        private const string AuthUrl = @"http://api.bgm.tv/auth";
 
         public LoginCommand(string userName, string password)
         {
@@ -23,7 +24,11 @@ namespace KimiStudio.Bagumi.Api.Commands
 
         protected override RequestData CreateRequestData()
         {
-            return new RequestData(AuthUrl, string.Format(PostFormat, userName, password));
+            var request = new RequestData(AuthUrl, string.Format(PostFormat, userName, password));
+            var rnd = new Random();
+            request.AddParameter("source", ApiKeyNames.Source);
+           // request.AddParameter("rand", rnd.NextDouble().ToString(CultureInfo.InvariantCulture));
+            return request;
         }
 
         #endregion

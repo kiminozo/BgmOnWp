@@ -8,3 +8,4 @@
 /src/KimiStudio.Bagumi.Api/Bin
 /src/KimiStudio.Bagumi.Api/obj
 /_ReSharper.KimiStudio.Bugumi.Api
+*.user

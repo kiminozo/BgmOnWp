@@ -10,6 +10,11 @@ namespace KimiStudio.Bagumi.Api.Text
     {
         public void Visit(object data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             if (IsEnumerable(data.GetType()))
             {
                 var enumerable = data as IEnumerable;

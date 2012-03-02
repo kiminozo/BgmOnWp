@@ -12,17 +12,17 @@ namespace KimiStudio.Bagumi.Api.Commands
             this.auth = auth;
         }
 
-        private const string Uri = @"http://api.bgm.tv/user/kiminozo/collection";
+        private const string Uri = @"http://api.bgm.tv/user/{0}/collection";
 
         protected override RequestData CreateRequestData()
         {
-            var request = new RequestData(Uri);
-            request.AddParameter("source", "OnAir");
-            request.AddParameter("sysbuild", "201107272200");
+            var request = new RequestData(string.Format(Uri, auth.UserName));
+            request.AddParameter("source",ApiKeyNames.Source);
+            request.AddParameter("sysbuild", ApiKeyNames.Sysbuild);
             request.AddParameter("cat", "watching");
             request.AddParameter("sysuid", auth.Id);
             request.AddParameter("sysusername", auth.UserName);
-            request.AddParameter("auth", auth.Auth);
+            request.AddParameter("auth", auth.AuthEncode);
             return request;
         }
     }

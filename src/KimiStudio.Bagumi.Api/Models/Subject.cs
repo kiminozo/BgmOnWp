@@ -154,8 +154,11 @@ namespace KimiStudio.Bagumi.Api.Models
 
     public class AuthUser : User
     {
+        [JsonProperty]
         public string Auth { get; set; }
-        //public string AuthEncode { get; set; }
+
+        [JsonProperty("auth_encode")]
+        public string AuthEncode { get; set; }
 
     }
 

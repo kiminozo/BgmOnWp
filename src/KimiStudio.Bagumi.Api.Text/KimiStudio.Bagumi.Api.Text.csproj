@@ -44,8 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarCommandTest.cs" />
+    <Compile Include="GetWatchedCommandTest.cs" />
+    <Compile Include="SubjectStateCommandTest.cs" />
+    <Compile Include="LoginCommandTest.cs" />
     <Compile Include="JsonDateTestVisitor.cs" />
+    <Compile Include="ProgressCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

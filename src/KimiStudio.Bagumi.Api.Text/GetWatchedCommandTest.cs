@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using KimiStudio.Bagumi.Api.Commands;
 using KimiStudio.Bagumi.Api.Models;
 using NUnit.Framework;
@@ -10,7 +9,7 @@ using NUnit.Framework;
 namespace KimiStudio.Bagumi.Api.Text
 {
     [TestFixture]
-    public class CalendarCommandTest
+    public class GetWatchedCommandTest
     {
         private AuthUser auth;
 
@@ -24,17 +23,15 @@ namespace KimiStudio.Bagumi.Api.Text
         [Test]
         public void TestInvoke()
         {
-            var command = new CalendarCommand(auth);
-            List<Calendar> calendars = command.Execute();
+            var command = new GetWatchedCommand(auth);
+            var result = command.Execute();
 
 
-            Assert.That(calendars, Is.Not.Null);
-            Assert.That(calendars.Count, Is.EqualTo(7));
+            Assert.That(result, Is.Not.Null);
 
-            var first = calendars.FirstOrDefault();
-            Assert.That(first, Is.Not.Null);
+
             var visitor = new JsonDateTestVisitor();
-            visitor.Visit(calendars);
+            visitor.Visit(result);
 
         }
     }
