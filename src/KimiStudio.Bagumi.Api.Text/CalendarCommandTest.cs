@@ -12,19 +12,12 @@ namespace KimiStudio.Bagumi.Api.Text
     [TestFixture]
     public class CalendarCommandTest
     {
-        private AuthUser auth;
-
-        [TestFixtureSetUp]
-        public void SetUp()
-        {
-            auth = TestHelper.Login();
-            Assert.That(auth, Is.Not.Null);
-        }
+       
 
         [Test]
         public void TestInvoke()
         {
-            var command = new CalendarCommand(auth);
+            var command = new CalendarCommand();
             List<Calendar> calendars = command.Execute();
 
 

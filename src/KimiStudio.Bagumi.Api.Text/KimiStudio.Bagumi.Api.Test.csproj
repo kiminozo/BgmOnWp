@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarCommandTest.cs" />
+    <Compile Include="GetSubjectCommandTest.cs" />
     <Compile Include="GetWatchedCommandTest.cs" />
     <Compile Include="ProgressUpdateCommandTest.cs" />
     <Compile Include="SearchSubjectCommandTest.cs" />

@@ -67,7 +67,7 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var stateObj = new StateObj
                                {
-                                   GetSubjectCommand = new GetSubjectCommand(subjectId, auth),
+                                   GetSubjectCommand = new GetSubjectCommand(subjectId),
                                    SubjectStateCommand = new SubjectStateCommand(subjectId, auth),
                                    ProgressCommand = new ProgressCommand(subjectId, auth),
                                    Countdown = new Countdown(3),

@@ -53,11 +53,12 @@ namespace KimiStudio.Bagumi.Api.Text
                     if (item == null) continue;
                     Visit(item);
                 }
+                return;
             }
             if (propertyInfo.PropertyType.Namespace == "KimiStudio.Bagumi.Api.Models")
             {
                 var value = propertyInfo.GetValue(data, null);
-                Visit(value);
+                if (value != null) Visit(value);
             }
             else
             {
