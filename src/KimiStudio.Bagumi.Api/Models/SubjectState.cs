@@ -19,4 +19,20 @@ namespace KimiStudio.Bagumi.Api.Models
         public string Name { get; set; }
         public string Type { get; set; }
     }
+
+    public class SubjectStateUpdateInfo
+    {
+        public int SubjectId { get; set; }
+        public string Comment { get; set; }
+        public string[] Tags { get; set; }
+        public int? Rating { get; set; }
+
+        public string Method { get;  set; }
+
+        public const string Wish = "wish";
+        public const string Collect = "collect";
+        public const string Do = "do";
+        public const string OnHold = "on_hold";
+        public const string Dropped = "dropped";
+    }
 }
