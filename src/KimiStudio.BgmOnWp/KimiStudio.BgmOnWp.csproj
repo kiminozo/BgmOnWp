@@ -171,7 +171,7 @@
     <Content Include="Images\appbar.favs.addto.rest.png" />
     <Content Include="Images\appbar.favs.rest.png" />
     <Content Include="Images\info_only_m.png" />
-    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo-bgm.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>

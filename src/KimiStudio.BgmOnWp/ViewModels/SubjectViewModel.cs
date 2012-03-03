@@ -200,6 +200,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             //navigationService.UriFor<FavoriteViewModel>().Navigate();
             promptManager.PopupFor<FavoriteViewModel>()
                 .Setup(model => model.SetUp(subjectStateModel))
+                .EnableCancel
                 .Show();
         }
 
