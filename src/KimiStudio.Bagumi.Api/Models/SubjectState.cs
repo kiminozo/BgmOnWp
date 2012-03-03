@@ -9,7 +9,7 @@ namespace KimiStudio.Bagumi.Api.Models
         public int EpisodeState { get; set; }
         public int LastTouch { get; set; }
         public SubjectStateInfo Status { get; set; }
-        //public string Tag { get; set; }
+        public string[] Tag { get; set; }
         public User User { get; set; }
     }
 

@@ -18,7 +18,7 @@ namespace KimiStudio.Bagumi.Api.Commands
 
             var callbackDelegate = AsyncCallbackDelegate.Create(asyncCallback, webRequest);
             webRequest.BeginGetRequestStream(RequestStreamCallBack,
-                                             new StateObj { Delegate = callbackDelegate, PostData = request.Data, State = state });
+                                             new StateObj { Delegate = callbackDelegate, PostData = request.BuildBody(), State = state });
 
         }
 
@@ -65,13 +65,13 @@ namespace KimiStudio.Bagumi.Api.Commands
 
         protected void BeginSend(RequestData request, AsyncCallback asyncCallback, object state)
         {
-            if (request.Data == null)
+            if (request.IsPost)
             {
-                BeginSendGetMethod(request, asyncCallback, state);
+                BeginSendPostMethod(request, asyncCallback, state);
             }
             else
             {
-                BeginSendPostMethod(request, asyncCallback, state);
+                BeginSendGetMethod(request, asyncCallback, state);
             }
         }
 

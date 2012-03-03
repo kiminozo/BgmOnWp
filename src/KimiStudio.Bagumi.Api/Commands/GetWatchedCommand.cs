@@ -17,12 +17,12 @@ namespace KimiStudio.Bagumi.Api.Commands
         protected override RequestData CreateRequestData()
         {
             var request = new RequestData(string.Format(Uri, auth.UserName));
-            request.AddParameter("source",ApiKeyNames.Source);
-            request.AddParameter("sysbuild", ApiKeyNames.Sysbuild);
-            request.AddParameter("cat", "watching");
-            request.AddParameter("sysuid", auth.Id);
-            request.AddParameter("sysusername", auth.UserName);
-            request.AddParameter("auth", auth.AuthEncode);
+            request.AddQueryString("source",ApiKeyNames.Source);
+            request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
+            request.AddQueryString("cat", "watching");
+            request.AddQueryString("sysuid", auth.Id);
+            request.AddQueryString("sysusername", auth.UserName);
+            request.AddQueryString("auth", auth.AuthEncode);
             return request;
         }
     }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Bagumi.Api.Dll", "src\KimiStudio.Bagumi.Api\KimiStudio.Bagumi.Api.Dll.csproj", "{95A382E8-2B65-49B1-B1C2-619454021B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Bagumi.Api.Text", "src\KimiStudio.Bagumi.Api.Text\KimiStudio.Bagumi.Api.Text.csproj", "{680350A5-B1F9-441F-82A5-233B99198E84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Bagumi.Api.Test", "src\KimiStudio.Bagumi.Api.Text\KimiStudio.Bagumi.Api.Test.csproj", "{680350A5-B1F9-441F-82A5-233B99198E84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

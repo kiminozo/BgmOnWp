@@ -23,7 +23,7 @@ namespace KimiStudio.Bagumi.Api.Text
         [Test]
         public void TestInvoke()
         {
-            var id = 9779;
+            var id = 975;
             var command = new ProgressCommand(id, auth);
             var result = command.Execute();
 

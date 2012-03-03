@@ -24,7 +24,7 @@ namespace KimiStudio.Bagumi.Api.Text
         [Test]
         public void TestInvoke()
         {
-            var command = new SubjectStateCommand(9779, auth);
+            var command = new SubjectStateCommand(975, auth);
             var result = command.Execute();
 
 

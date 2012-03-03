@@ -7,39 +7,34 @@ namespace KimiStudio.Bagumi.Api
     public sealed class RequestData
     {
         private readonly string uri;
-        private readonly string data;
-        private readonly Dictionary<string, string> parameters;
-
-        public RequestData(string uri, string data)
-        {
-            this.uri = uri;
-            this.data = data;
-            parameters = new Dictionary<string, string>();
-        }
+        private readonly Dictionary<string, string> queryStrings;
+        private readonly Dictionary<string, string> bodys;
 
         public RequestData(string uri)
-            : this(uri, null)
         {
-
+            this.uri = uri;
+            queryStrings = new Dictionary<string, string>();
+            bodys = new Dictionary<string, string>();
         }
 
-        public string Data
+        
+        public void AddQueryString(string name, string value)
         {
-            get { return data; }
+            queryStrings[name] = value;
         }
 
-        public void AddParameter(string key, string value)
+        public void AddBody(string name, string value)
         {
-            parameters[key] = value;
+            bodys[name] = value;
         }
 
         public Uri BuildUri()
         {
             var uriBuilder = new StringBuilder(uri, 100);
-            if (parameters.Count > 0)
+            if (queryStrings.Count > 0)
             {
                 uriBuilder.Append('?');
-                foreach (var item in parameters)
+                foreach (var item in queryStrings)
                 {
                     uriBuilder.Append(item.Key);
                     uriBuilder.Append('=');
@@ -49,6 +44,28 @@ namespace KimiStudio.Bagumi.Api
                 uriBuilder.Length--;
             }
             return new Uri(uriBuilder.ToString());
+        }
+
+        public bool IsPost
+        {
+            get { return bodys.Count > 0; }
+        }
+
+        public string BuildBody()
+        {
+            var builder = new StringBuilder(100);
+            if (bodys.Count > 0)
+            {
+                foreach (var item in bodys)
+                {
+                    builder.Append(item.Key);
+                    builder.Append('=');
+                    builder.Append(item.Value);
+                    builder.Append('&');
+                }
+                builder.Length--;
+            }
+            return builder.ToString();
         }
 
         public override string ToString()
