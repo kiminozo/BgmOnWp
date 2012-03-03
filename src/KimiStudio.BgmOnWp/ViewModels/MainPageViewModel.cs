@@ -105,7 +105,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                     .Take(8)
                     .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
 
-                var calendarCommand = new CalendarCommand(AuthStorage.Auth);
+                var calendarCommand = new CalendarCommand();
                 calendarCommand.BeginExecute(GetCalendarCallBack, calendarCommand);
             }
             catch (Exception err)

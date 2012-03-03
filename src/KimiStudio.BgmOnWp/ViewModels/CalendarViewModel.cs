@@ -44,7 +44,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         protected override void OnInitialize()
         {
             progressService.Show("加载中\u2026");
-            var command = new CalendarCommand(AuthStorage.Auth);
+            var command = new CalendarCommand();
             command.BeginExecute(GetWatchedCallBack, command);
         }
 

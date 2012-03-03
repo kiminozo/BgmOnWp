@@ -58,6 +58,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Countdown.cs" />
     <Compile Include="Commands\ProgressUpdateCommand.cs" />
+    <Compile Include="Commands\SearchSubjectCommand.cs" />
     <Compile Include="Commands\SubjectCommand.cs" />
     <Compile Include="Commands\GetSubjectCommand.cs" />
     <Compile Include="Commands\GetWatchedCommand.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\Calendar.cs" />
     <Compile Include="Models\DefaultResult.cs" />
     <Compile Include="Models\Progress.cs" />
+    <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\SubjectState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
