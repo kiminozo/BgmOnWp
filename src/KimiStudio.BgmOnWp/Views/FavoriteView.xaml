@@ -23,8 +23,8 @@
             <TextBlock Text="标签" />
             <TextBox Text="刚刚看了第六话心情很难平复下来刚 " MaxLength="20" />
             <TextBlock Text="吐槽"/>
-            <TextBox Height="180" MaxLength="140"  TextWrapping="Wrap" 
-                     Text="刚刚看了第六话 心情很难平复下来 因为哭了 之所以哭 是因为觉得感动 说不出来 虽然没有猫果卖萌 虽然早就知道夏目以前是很悲伤的 可是赤裸裸地呈现在眼前 真的觉得很悲哀 所以我在想 如果 我是夏目的同学 我是不是也会觉得他很奇怪呢 会不会像由梨 "/>
+            <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
+                     Text="刚刚看了第六话 心情很难平复下来 因为哭了 之所以哭 是因为觉得感动 说不出来 虽然没有猫果卖萌 虽然早就知道夏目以前是很悲伤的 可是赤裸裸地呈现在眼前 真的觉得很悲哀 所以我在想 如果 我是夏目的同学 我是不是也会觉得他很奇怪呢 会不会像由梨 " />
         </StackPanel>
     </Grid>
 </UserControl>

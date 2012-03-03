@@ -199,12 +199,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             if (!episode.IsOnAir) return;
             promptManager.PopupFor<EpisodeStatusViewModel>()
-                .Setup(x =>
-                           {
-                               x.DisplayName = episode.Name;
-                               x.SelectedIndex = episode.WatchState == WatchState.None ? 0 : (int)episode.WatchState;
-                               x.CnName = episode.CnName;
-                           })
+                .Setup(x => x.Setup(episode))
                 .Show();
         }
 

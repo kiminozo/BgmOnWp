@@ -112,6 +112,10 @@ namespace KimiStudio.Controls
                 SelectedItem = switchItem;
                 SelectedValue = switchItem.Content;
             }
+            else
+            {
+                SelectedValue = Items[index];
+            }
             OnSelected(new RoutedEventArgs());
         }
 

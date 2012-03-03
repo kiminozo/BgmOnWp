@@ -90,6 +90,7 @@
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Toolkit\PromptManager.cs" />
     <Compile Include="Toolkit\PromptManagerExtentions.cs" />
+    <Compile Include="Models\EpisodeStatusModel.cs" />
     <Compile Include="ViewModels\EpisodeStatusViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
