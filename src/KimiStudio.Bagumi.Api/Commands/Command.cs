@@ -8,25 +8,25 @@ namespace KimiStudio.Bagumi.Api.Commands
 {
     public abstract class Command
     {
-       
 
-        private IAsyncResult BeginSendPostMethod(RequestData request, AsyncCallback asyncCallback, object state)
+
+        private void BeginSendPostMethod(RequestData request, AsyncCallback asyncCallback, object state)
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(request.BuildUri());
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";
-       
+
             var callbackDelegate = AsyncCallbackDelegate.Create(asyncCallback, webRequest);
-            return webRequest.BeginGetRequestStream(RequestStreamCallBack,
-                                                    new StateObj { Delegate = callbackDelegate, PostData = request.Data, State = state });
+            webRequest.BeginGetRequestStream(RequestStreamCallBack,
+                                             new StateObj { Delegate = callbackDelegate, PostData = request.Data, State = state });
 
         }
 
-        private IAsyncResult BeginSendGetMethod(RequestData request, AsyncCallback asyncCallback, object state)
+        private void BeginSendGetMethod(RequestData request, AsyncCallback asyncCallback, object state)
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(request.BuildUri());
             webRequest.CookieContainer = new CookieContainer();
-         
+
             //webRequest.Accept =
             //    @"text/xml, application/xml, application/xhtml+xml, text/html;q=0.9, text/plain;q=0.8, text/css, image/png, image/jpeg, image/gif;q=0.8, application/x-shockwave-flash, video/mp4;q=0.9, flv-application/octet-stream;q=0.8, video/x-flv;q=0.7, audio/mp4, application/futuresplash, */*;q=0.5";
             //webRequest.KeepAlive = true;
@@ -40,7 +40,8 @@ namespace KimiStudio.Bagumi.Api.Commands
 
             var callbackDelegate = AsyncCallbackDelegate.Create(asyncCallback, webRequest);
             var asyncResult = webRequest.BeginGetResponse(callbackDelegate.CreateCallback(), state);
-            return callbackDelegate.CreateResult(asyncResult);
+            callbackDelegate.CreateResult(asyncResult);
+
         }
 
         private class StateObj
@@ -62,15 +63,15 @@ namespace KimiStudio.Bagumi.Api.Commands
             webRequest.BeginGetResponse(stateObj.Delegate.CreateCallback(), stateObj.State);
         }
 
-        protected IAsyncResult BeginSend(RequestData request, AsyncCallback asyncCallback, object state)
+        protected void BeginSend(RequestData request, AsyncCallback asyncCallback, object state)
         {
             if (request.Data == null)
             {
-                return BeginSendGetMethod(request, asyncCallback, state);
+                BeginSendGetMethod(request, asyncCallback, state);
             }
             else
             {
-                return BeginSendPostMethod(request, asyncCallback, state);
+                BeginSendPostMethod(request, asyncCallback, state);
             }
         }
 
@@ -96,10 +97,10 @@ namespace KimiStudio.Bagumi.Api.Commands
 
     public abstract class Command<TResult> : Command where TResult : class
     {
-        public IAsyncResult BeginExecute(AsyncCallback asyncCallback, object state)
+        public void BeginExecute(AsyncCallback asyncCallback, object state)
         {
             var data = CreateRequestData();
-            return BeginSend(data, asyncCallback, state);
+            BeginSend(data, asyncCallback, state);
         }
 
         protected abstract RequestData CreateRequestData();

@@ -12,12 +12,11 @@ using Microsoft.Phone.Tasks;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class SubjectViewModel : Screen,IHandle<Progress>
+    public class SubjectViewModel : Screen
     {
         private readonly IProgressService progressService;
         private readonly INavigationService navigationService;
         private readonly IPromptManager promptManager;
-        private readonly IEventAggregator eventAggregator;
 
         public int Id { get; set; }
 
@@ -105,29 +104,22 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager, IEventAggregator eventAggregator)
+        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager)
         {
             this.progressService = progressService;
             this.navigationService = navigationService;
             this.promptManager = promptManager;
-            this.eventAggregator = eventAggregator;
 
         }
 
         protected override void OnActivate()
         {
             base.OnActivate();
-            eventAggregator.Subscribe(this);
             progressService.Show("加载中\u2026");
             var command = new GetSubjectCommand(Id, AuthStorage.Auth);
             command.BeginExecute(GetSubjectCallBack, command);
         }
 
-        protected override void OnDeactivate(bool close)
-        {
-            eventAggregator.Unsubscribe(this);
-            base.OnDeactivate(close);
-        }
 
         private void GetSubjectCallBack(IAsyncResult asyncResult)
         {
@@ -173,8 +165,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 var command = (ProgressCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
                 if (result.SubjectId == 0) return;
-                //UpdateProgress(result);
-                eventAggregator.Publish(result);
+                UpdateProgress(result);
             }
             catch (Exception)
             {
@@ -261,9 +252,5 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Show();
         }
 
-        void IHandle<Progress>.Handle(Progress message)
-        {
-            UpdateProgress(message);
-        }
     }
 }
