@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace KimiStudio.Bagumi.Api
@@ -17,10 +18,19 @@ namespace KimiStudio.Bagumi.Api
             bodys = new Dictionary<string, string>();
         }
 
-        
+
         public void AddQueryString(string name, string value)
         {
             queryStrings[name] = value;
+        }
+
+        /// <summary>
+        /// 添加随机参数，防止缓存
+        /// </summary>
+        public void AddRandQueryString()
+        {
+            var rnd = new Random();
+            AddQueryString("rand", rnd.NextDouble().ToString(CultureInfo.InvariantCulture));
         }
 
         public void AddBody(string name, string value)

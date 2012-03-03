@@ -36,20 +36,12 @@ namespace KimiStudio.Bagumi.Api.Commands
             if (stateUpdateInfo.Comment != null) request.AddBody("comment", stateUpdateInfo.Comment);
             if (stateUpdateInfo.Rating != null)
                 request.AddBody("rating", stateUpdateInfo.Rating.Value.ToString(CultureInfo.InvariantCulture));
-            if (stateUpdateInfo.Tags != null && stateUpdateInfo.Tags.Length > 0)
+
+            var tags = stateUpdateInfo.Tags.GetTags();
+            if (!string.IsNullOrEmpty(tags))
             {
-                var builder = new StringBuilder();
-                foreach (var item in stateUpdateInfo.Tags)
-                {
-                    builder.Append(item);
-                    builder.Append(' ');
-                }
-                builder.Length--;
-                request.AddBody("tags", builder.ToString());
+                request.AddBody("tags", tags);
             }
-
-
-
             return request;
 
         }

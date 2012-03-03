@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace KimiStudio.Bagumi.Api.Models
@@ -12,6 +13,8 @@ namespace KimiStudio.Bagumi.Api.Models
         public SubjectStateInfo Status { get; set; }
         public string[] Tag { get; set; }
         public User User { get; set; }
+        public int Rating { get; set; }
+        
     }
 
     public class SubjectStateInfo
@@ -37,5 +40,21 @@ namespace KimiStudio.Bagumi.Api.Models
         public const string Dropped = "dropped";
     }
 
-   
+    public static class TagBuilder
+    {
+        public static string GetTags(this string[] tags)
+        {
+            if (tags == null || tags.Length == 0) return null;
+
+            var builder = new StringBuilder();
+            foreach (var item in tags)
+            {
+                builder.Append(item);
+                builder.Append(' ');
+            }
+            builder.Length--;
+            return builder.ToString();
+        }
+    }
+
 }

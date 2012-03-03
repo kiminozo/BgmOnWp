@@ -20,6 +20,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly IPromptManager promptManager;
 
         public int Id { get; set; }
+        private SubjectStateModel subjectStateModel;
 
         //  private static Brush DefaultBrush = WatchStateColors.Queue;
 
@@ -150,6 +151,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             CnName = subject.NameCn;
             UriSource = subject.Images.Large;
             Summary = subject.Summary;
+            subjectStateModel = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
             if (subject.Characters != null)
             {
@@ -184,7 +186,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    {
                                        EpisodeProgress prog;
                                        if (!progs.TryGetValue(model.Id, out prog)) return;
-                                       model.Update((WatchState) prog.Status.Id);
+                                       model.Update((WatchState)prog.Status.Id);
 
                                    });
                 }
@@ -196,12 +198,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             //            windowManager.ShowPopup(new FavoriteViewModel());
             //navigationService.UriFor<FavoriteViewModel>().Navigate();
-            promptManager.PopupFor<FavoriteViewModel>().Show();
+            promptManager.PopupFor<FavoriteViewModel>()
+                .Setup(model => model.SetUp(subjectStateModel))
+                .Show();
         }
 
         public void TapEpisodeItem(EpisodeModel episode)
         {
-            if (!episode.IsOnAir) return;
+            if (!episode.IsOnAir || !subjectStateModel.IsWatching) return;
             promptManager.PopupFor<EpisodeStatusViewModel>()
                 .Setup(x => x.Setup(episode))
                 .EnableCancel

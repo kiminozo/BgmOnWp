@@ -23,6 +23,7 @@ namespace KimiStudio.Bagumi.Api.Commands
             request.AddQueryString("sysusername", auth.UserName);
             request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             request.AddQueryString("auth", auth.AuthEncode);
+            request.AddRandQueryString();
             return request;
         }
     }
