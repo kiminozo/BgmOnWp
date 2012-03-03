@@ -24,7 +24,9 @@ namespace KimiStudio.Bagumi.Api.Text
         public void TestWatchedInvoke()
         {
             var id = 1807;
-            var command = ProgressUpdateCommand.Watched(id, auth);
+            var command =
+                new ProgressUpdateCommand(new ProgressUpdateInfo {EpisodeId = id, Method = ProgressUpdateInfo.Watched},
+                                          auth);
             var result = command.Execute();
 
 
@@ -56,7 +58,7 @@ namespace KimiStudio.Bagumi.Api.Text
         public void TestDropInvoke()
         {
             var id = 1807;
-            var command = ProgressUpdateCommand.Drop(id, auth);
+            var command = new ProgressUpdateCommand(new ProgressUpdateInfo { EpisodeId = id, Method = ProgressUpdateInfo.Watched }, auth);
             var result = command.Execute();
 
 
@@ -72,7 +74,7 @@ namespace KimiStudio.Bagumi.Api.Text
         public void TestQueueInvoke()
         {
             var id = 1807;
-            var command = ProgressUpdateCommand.Queue(id, auth);
+            var command = new ProgressUpdateCommand(new ProgressUpdateInfo { EpisodeId = id, Method = ProgressUpdateInfo.Watched }, auth);
             var result = command.Execute();
 
 
@@ -89,7 +91,15 @@ namespace KimiStudio.Bagumi.Api.Text
         public void TestWatchEndInvoke()
         {
             var id = 1807;
-            var command = ProgressUpdateCommand.Watched(id + 1, new List<int>() { id, id + 1 }.ToList(), auth);
+            var command =
+                new ProgressUpdateCommand(
+                    new ProgressUpdateInfo
+                        {
+                            EpisodeId = id,
+                            Method = ProgressUpdateInfo.Watched,
+                            Episodes = new List<int>() {id, id + 1}.ToList()
+                        }, auth);
+            ;
             var result = command.Execute();
 
 
@@ -99,6 +109,23 @@ namespace KimiStudio.Bagumi.Api.Text
             var visitor = new JsonDateTestVisitor();
             visitor.Visit(result);
 
+        }
+
+        [Test]
+        public void TestProgressUpdateEndInvoke()
+        {
+            var id = 10339;
+            var command =
+                new ProgressUpdateEndCommand(id, 3, auth);
+            ;
+            var result = command.Execute();
+
+
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Code, Is.EqualTo(200));
+
+            var visitor = new JsonDateTestVisitor();
+            visitor.Visit(result);
         }
 
     }

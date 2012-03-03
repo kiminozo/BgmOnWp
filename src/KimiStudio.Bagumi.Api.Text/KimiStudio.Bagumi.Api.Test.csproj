@@ -46,6 +46,7 @@
     <Compile Include="CalendarCommandTest.cs" />
     <Compile Include="GetWatchedCommandTest.cs" />
     <Compile Include="ProgressUpdateCommandTest.cs" />
+    <Compile Include="SearchSubjectCommandTest.cs" />
     <Compile Include="SubjectStateCommandTest.cs" />
     <Compile Include="LoginCommandTest.cs" />
     <Compile Include="JsonDateTestVisitor.cs" />

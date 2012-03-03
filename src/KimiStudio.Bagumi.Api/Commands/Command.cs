@@ -26,7 +26,6 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(request.BuildUri());
             webRequest.CookieContainer = new CookieContainer();
-            webRequest.AllowReadStreamBuffering = false;
             //webRequest.Accept =
             //    @"text/xml, application/xml, application/xhtml+xml, text/html;q=0.9, text/plain;q=0.8, text/css, image/png, image/jpeg, image/gif;q=0.8, application/x-shockwave-flash, video/mp4;q=0.9, flv-application/octet-stream;q=0.8, video/x-flv;q=0.7, audio/mp4, application/futuresplash, */*;q=0.5";
             //webRequest.KeepAlive = true;

@@ -20,7 +20,7 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var request = new RequestData(Uri + subjectId);
             request.AddQueryString("responseGroup", "large");
-            request.AddQueryString("source",ApiKeyNames.Source);
+            request.AddQueryString("source", ApiKeyNames.Source);
             request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             request.AddQueryString("sysuid", auth.Id);
             request.AddQueryString("sysusername", auth.UserName);

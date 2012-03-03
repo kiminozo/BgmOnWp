@@ -23,13 +23,14 @@ namespace KimiStudio.Bagumi.Api.Text
         [Test]
         public void TestInvoke()
         {
-            var command = new SubjectStateUpdateCommand(9779, "do", auth,
-                                                        new CollectInfo
+            var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
                                                             {
                                                                 Comment = "以为是暴力，结果比较搞笑",
+                                                                Method = "do",
                                                                 Rating = 7,
-                                                                Tags = new[] {"搞笑暴力", "恶魔奶爸 "}
-                                                            });
+                                                                SubjectId = 9779,
+                                                                Tags = new[] { "搞笑暴力", "恶魔奶爸 " }
+                                                            }, auth);
             var result = command.Execute();
 
 
