@@ -24,12 +24,13 @@ namespace KimiStudio.Bagumi.Api.Commands
             public GetSubjectCommand GetSubjectCommand;
             public SubjectStateCommand SubjectStateCommand;
             public ProgressCommand ProgressCommand;
+
             public Countdown Countdown;
             public AsyncCallback Callback;
             public object State;
             public Exception Exception;
 
-            public readonly SubjectResult Result = new SubjectResult();
+            public readonly SubjectCommandResult Result = new SubjectCommandResult();
         }
 
         private class StateAsyncResult : IAsyncResult
@@ -103,9 +104,8 @@ namespace KimiStudio.Bagumi.Api.Commands
                 stateObj.Exception = e;
                 stateObj.Countdown.Free();
             }
-
         }
-
+        
         private void SubjectStateCallBack(IAsyncResult asyncResult)
         {
             var stateObj = (StateObj)asyncResult.AsyncState;
@@ -139,15 +139,15 @@ namespace KimiStudio.Bagumi.Api.Commands
         }
 
 
-        public SubjectResult EndExecute(IAsyncResult asyncResult)
+        public SubjectCommandResult EndExecute(IAsyncResult asyncResult)
         {
-            var stateAsyncResult = asyncResult as StateAsyncResult;
-            if (stateAsyncResult == null) return null;
+            var stateAsyncResult = (StateAsyncResult)asyncResult;
+            if (stateAsyncResult.StateObj.Exception != null) throw stateAsyncResult.StateObj.Exception; 
             return stateAsyncResult.StateObj.Result;
         }
     }
 
-    public class SubjectResult
+    public class SubjectCommandResult
     {
         public Subject Subject;
         public SubjectState SubjectState;
