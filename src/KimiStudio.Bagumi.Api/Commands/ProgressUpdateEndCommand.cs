@@ -23,14 +23,8 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var request = new RequestData(string.Format(Uri, subjectId));
             request.AddQueryString("source", ApiKeyNames.Source);
-
-            // request.AddBody("");
             request.AddBody("watched_eps", sort.ToString(CultureInfo.InvariantCulture));
-            request.AddBody("sort", sort.ToString(CultureInfo.InvariantCulture));
-            request.AddBody("sysuid", auth.Id);
-            request.AddBody("sysusername", auth.UserName);
             request.AddBody("source", ApiKeyNames.Source);
-            request.AddBody("sysbuild", ApiKeyNames.Sysbuild);
             request.AddBody("auth", auth.AuthEncode);
 
             return request;

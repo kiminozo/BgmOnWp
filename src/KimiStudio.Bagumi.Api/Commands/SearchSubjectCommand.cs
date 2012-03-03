@@ -32,7 +32,6 @@ namespace KimiStudio.Bagumi.Api.Commands
 
             request.AddQueryString("responseGroup", "large");
             request.AddQueryString("source", ApiKeyNames.Source);
-            request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             //request.AddQueryString("sysuid", auth.Id);
             //request.AddQueryString("sysusername", auth.UserName);
             //request.AddQueryString("auth", auth.AuthEncode);

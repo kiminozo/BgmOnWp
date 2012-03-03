@@ -18,10 +18,7 @@ namespace KimiStudio.Bagumi.Api.Commands
         protected override RequestData CreateRequestData()
         {
             var request = new RequestData(string.Format(Uri, subjectId));
-            request.AddQueryString("sysuid", auth.Id);
             request.AddQueryString("source", ApiKeyNames.Source);
-            request.AddQueryString("sysusername", auth.UserName);
-            request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             request.AddQueryString("auth", auth.AuthEncode);
             request.AddRandQueryString();
             return request;

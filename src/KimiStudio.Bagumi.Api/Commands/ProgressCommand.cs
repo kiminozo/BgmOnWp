@@ -22,8 +22,6 @@ namespace KimiStudio.Bagumi.Api.Commands
             request.AddQueryString("sysuid", auth.Id);
             request.AddQueryString("source",ApiKeyNames.Source);
             request.AddQueryString("subject%5Fid", subjectId);
-            request.AddQueryString("sysusername", auth.UserName);
-            request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             request.AddQueryString("auth", auth.AuthEncode);
             request.AddRandQueryString();
             return request;

@@ -28,12 +28,8 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var request = new RequestData(string.Format(Uri, UpdateInfo.EpisodeId, UpdateInfo.Method));
             request.AddQueryString("source", ApiKeyNames.Source);
-
-            request.AddBody("sysusername", auth.UserName);
             request.AddBody("source", ApiKeyNames.Source);
-            request.AddBody("sysbuild", ApiKeyNames.Sysbuild);
             request.AddBody("auth", auth.AuthEncode);
-            request.AddBody("sysuid", auth.Id);
 
             if (UpdateInfo.Episodes != null && UpdateInfo.Episodes.Count > 0)
             {

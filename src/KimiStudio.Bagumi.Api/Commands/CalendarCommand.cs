@@ -19,7 +19,6 @@ namespace KimiStudio.Bagumi.Api.Commands
         {
             var request = new RequestData(Uri);
             request.AddQueryString("source",ApiKeyNames.Source);
-            request.AddQueryString("sysbuild", ApiKeyNames.Sysbuild);
             return request;
         }
 

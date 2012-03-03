@@ -29,12 +29,8 @@ namespace KimiStudio.Bagumi.Api.Commands
             request.AddQueryString("source", ApiKeyNames.Source);
 
             request.AddBody("auth","0");
-            request.AddBody("password", password);
-            request.AddBody("sysbuild", ApiKeyNames.Sysbuild);
             request.AddBody("username", userName);
-            request.AddBody("sysuid", "0");
-            request.AddBody("sysusername", "0");
-            request.AddBody("source", ApiKeyNames.Source);
+            request.AddBody("password", password);
            // request.AddParameter("rand", rnd.NextDouble().ToString(CultureInfo.InvariantCulture));
             return request;
         }
