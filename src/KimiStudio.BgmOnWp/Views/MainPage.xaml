@@ -62,10 +62,11 @@
                 </DataTemplate>
             </controls:Panorama.TitleTemplate>
             <controls:PanoramaItem>
-                <controls:PanoramaItem.Header>
+                <!--<controls:PanoramaItem.Header>
                     <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                </controls:PanoramaItem.Header>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" toolkit:TiltEffect.IsTiltEnabled="True">
+                </controls:PanoramaItem.Header>-->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" 
+                            toolkit:TiltEffect.IsTiltEnabled="True" Margin="0,42,0,0">
                     <HyperlinkButton Name="NavCalendar" Content="每日放送" Style="{StaticResource VerticalLink}" />
                     <HyperlinkButton Name="NavAll" Content="收视进度" Style="{StaticResource VerticalLink}" />
                     <HyperlinkButton Name="NavAmine" Content="动画" Style="{StaticResource VerticalLink}" />

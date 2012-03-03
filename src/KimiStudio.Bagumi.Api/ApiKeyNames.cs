@@ -7,8 +7,8 @@ namespace KimiStudio.Bagumi.Api
 {
     public static class ApiKeyNames
     {
-        public const string Source = "onAir";
+        public const string Source = "bgmOnWp";
 
-        public const string Sysbuild = "201107272200";
+        public const string Sysbuild = "20120303";
     }
 }
