@@ -60,7 +60,7 @@
                          toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="48" Height="48"  Margin="0,0,5,5">
+                            <Grid Width="52" Height="52"  Margin="0,0,5,5">
                                 <Grid.Background>
                                     <SolidColorBrush Color="{Binding Fill}"/>
                                 </Grid.Background>

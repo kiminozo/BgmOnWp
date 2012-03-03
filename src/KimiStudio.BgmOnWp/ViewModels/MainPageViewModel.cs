@@ -81,11 +81,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 AuthStorage.Auth = auth;
                 authed = true;
                 progressService.Show("加载中\u2026");
-                //var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
-               // watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
+                var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
+                watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
 
-                var testCommand = new SubjectCommand(22657, auth);
-                testCommand.BeginExecute(SubjectCallBack, testCommand);
             }
             catch (Exception err)
             {
@@ -93,11 +91,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 Debug.WriteLine(err);
                 //TODO:
             }
-        }
-        private void SubjectCallBack(IAsyncResult asyncResult)
-        {
-            var testCommand = (SubjectCommand) asyncResult.AsyncState;
-            var result = testCommand.EndExecute(asyncResult);
         }
 
 

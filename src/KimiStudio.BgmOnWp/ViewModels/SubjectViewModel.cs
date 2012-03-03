@@ -20,7 +20,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public int Id { get; set; }
 
-      //  private static Brush DefaultBrush = WatchStateColors.Queue;
+        //  private static Brush DefaultBrush = WatchStateColors.Queue;
 
         #region Property
         private string name;
@@ -116,7 +116,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             base.OnActivate();
             progressService.Show("加载中\u2026");
-            var command = new GetSubjectCommand(Id, AuthStorage.Auth);
+            var command = new SubjectCommand(Id, AuthStorage.Auth);
             command.BeginExecute(GetSubjectCallBack, command);
         }
 
@@ -125,47 +125,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             try
             {
-                var command = (GetSubjectCommand)asyncResult.AsyncState;
+                var command = (SubjectCommand)asyncResult.AsyncState;
                 var result = command.EndExecute(asyncResult);
                 SetSubject(result);
 
-                var stateCommand = new SubjectStateCommand(Id, AuthStorage.Auth);
-                stateCommand.BeginExecute(GetSubjectStateCallBack, stateCommand);
-            }
-            catch (Exception)
-            {
-                progressService.Hide();
-                //TODO:
-            }
-        }
-
-        private void GetSubjectStateCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (SubjectStateCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                //TODO:result.Status
-
-                progressService.Show("获取进度中\u2026");
-                var progCommand = new ProgressCommand(Id, AuthStorage.Auth);
-                progCommand.BeginExecute(GetSubjectProgressCallBack, progCommand);
-            }
-            catch (Exception)
-            {
-                progressService.Hide();
-                //TODO:
-            }
-        }
-
-        private void GetSubjectProgressCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (ProgressCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                if (result.SubjectId == 0) return;
-                UpdateProgress(result);
             }
             catch (Exception)
             {
@@ -178,21 +141,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        private void UpdateProgress(Progress progress)
+        private void SetSubject(SubjectCommandResult result)
         {
-            //foreach (var item in Episodes)
-            //{
-            //    item.Fill = new SolidColorBrush(Colors.Green);
-            //}
-
-            var query = from ep in Episodes
-                        join prog in progress.Episodes on ep.Id equals prog.Id
-                        select new { Ep = ep, Prog = prog };
-            query.Apply(item => item.Ep.Update((WatchState)item.Prog.Status.Id));
-        }
-
-        private void SetSubject(Subject subject)
-        {
+            var subject = result.Subject;
             DisplayName = subject.Name;
             Name = subject.Name;
             CnName = subject.NameCn;
@@ -209,10 +160,31 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             if (subject.Eps != null)
             {
-                //int maxLength = 
-                ////int length = subject.Eps.Count;
-                //Episodes = subject.Eps.
-                Episodes = subject.Eps.Select(EpisodeModel.FromEpisode).ToArray();
+                const int maxLength = 52;
+                int length = subject.Eps.Count;
+
+                IEnumerable<Episode> query;
+                if (length > maxLength)//长篇
+                {
+                    int state = result.SubjectState.EpisodeState;
+                    state = state - 1 > 0 ? state - 1 : 0;
+                    int skip = length - state < maxLength ? length - maxLength : state;
+                    query = subject.Eps.Skip(skip).Take(maxLength);
+                }
+                else
+                {
+                    query = subject.Eps;
+                }
+                var list = query.Select(EpisodeModel.FromEpisode).ToList();
+                var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
+                list.Apply(model =>
+                               {
+                                   EpisodeProgress prog;
+                                   if(!progs.TryGetValue(model.Id,out prog))return;
+                                   model.Update((WatchState)prog.Status.Id);
+
+                               });
+                Episodes = list;
             }
         }
 
@@ -230,7 +202,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Setup(x =>
                            {
                                x.DisplayName = episode.Name;
-                               x.SelectedIndex = episode.WatchState == WatchState.None ? 0 : (int) episode.WatchState;
+                               x.SelectedIndex = episode.WatchState == WatchState.None ? 0 : (int)episode.WatchState;
                                x.CnName = episode.CnName;
                            })
                 .Show();
