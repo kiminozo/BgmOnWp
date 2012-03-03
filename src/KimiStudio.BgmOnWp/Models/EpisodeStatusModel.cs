@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using KimiStudio.Bagumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {
@@ -12,11 +13,11 @@ namespace KimiStudio.BgmOnWp.Models
 
         static EpisodeStatusModel()
         {
-            Queue = new EpisodeStatusModel { Name = "想看" };
-            Watched = new EpisodeStatusModel { Name = "看过" };
-            WatchedEnd = new EpisodeStatusModel { Name = "看到" };
-            Drop = new EpisodeStatusModel { Name = "抛弃" };
-            Cancel = new EpisodeStatusModel { Name = "撤销" };
+            Queue = new EpisodeStatusModel { Name = "想看", Method = ProgressUpdateInfo.Queue };
+            Watched = new EpisodeStatusModel { Name = "看过", Method = ProgressUpdateInfo.Watched };
+            WatchedEnd = new EpisodeStatusModel { Name = "看到", Method = ProgressUpdateInfo.Watched };
+            Drop = new EpisodeStatusModel { Name = "抛弃", Method = ProgressUpdateInfo.Drop };
+            Cancel = new EpisodeStatusModel { Name = "撤销", Method = ProgressUpdateInfo.Remove };
         }
 
         private EpisodeStatusModel()
@@ -24,7 +25,7 @@ namespace KimiStudio.BgmOnWp.Models
 
         }
 
-        public int Index { get; private set; }
+        public string Method { get; private set; }
         public string Name { get; private set; }
     }
 

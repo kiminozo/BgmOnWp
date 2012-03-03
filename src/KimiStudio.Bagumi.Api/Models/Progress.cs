@@ -35,5 +35,19 @@ namespace KimiStudio.Bagumi.Api.Models
         public string UrlName { get; set; }
     }
 
+    public class ProgressUpdateInfo
+    {
+        public const string Queue = "queue";
+        public const string Watched = "watched";
+        public const string Drop = "drop";
+        public const string Remove = "remove";
+
+        public int EpisodeId { get; set; }
+
+        public IList<int> Episodes { get; set; }
+
+        public string Method { get; set; }
+    }
+
     
 }

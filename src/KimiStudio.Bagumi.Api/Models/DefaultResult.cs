@@ -10,5 +10,10 @@ namespace KimiStudio.Bagumi.Api.Models
         public int Code { get; set; }
         public string Error { get; set; }
         public string Request { get; set; }
+
+        public bool IsSuccess()
+        {
+            return Code == 200;
+        }
     }
 }

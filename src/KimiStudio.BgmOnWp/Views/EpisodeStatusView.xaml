@@ -11,7 +11,7 @@
 
     <StackPanel>
         <TextBlock Text="{Binding CnName}" Margin="5,3" />
-        <c:TabSwitch ItemsSource="{Binding Items}" SelectedBackground="#FFF19199" 
+        <c:TabSwitch SelectedValue="{Binding Selected,Mode=TwoWay}" ItemsSource="{Binding Items}" SelectedBackground="#FFF19199" 
                      SelectedWidth="80" Margin="10,20,10,50">
             <!--<c:TabSwitchItem Content="看过" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />
             <c:TabSwitchItem Content="看到" Width="80" FontSize="{StaticResource PhoneFontSizeNormal}" />

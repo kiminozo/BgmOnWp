@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace KimiStudio.Bagumi.Api.Models
@@ -35,4 +36,6 @@ namespace KimiStudio.Bagumi.Api.Models
         public const string OnHold = "on_hold";
         public const string Dropped = "dropped";
     }
+
+   
 }

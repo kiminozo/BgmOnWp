@@ -30,6 +30,16 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 promptManager.ShowPopup(viewModel, context, settings);
             }
 
+            public IPromptSetup<T> EnableCancel
+            {
+                get
+                {
+                    if (settings == null) settings = new Dictionary<string, object>();
+                    settings["IsCancelVisible"] = true;
+                    return this;
+                }
+            }
+
             public IPromptSetup<T> Setup(Action<T> action)
             {
                 action(viewModel);
@@ -42,6 +52,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
     {
         void Show();
 
+        IPromptSetup<T> EnableCancel { get; }
         IPromptSetup<T> Setup(Action<T> action);
     }
 }

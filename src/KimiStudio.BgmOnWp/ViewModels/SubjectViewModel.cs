@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Media;
@@ -130,9 +131,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 SetSubject(result);
 
             }
-            catch (Exception)
+            catch (Exception err)
             {
-
+                Debug.WriteLine(err.Message);
                 //TODO:
             }
             finally
@@ -176,14 +177,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
                     query = subject.Eps;
                 }
                 var list = query.Select(EpisodeModel.FromEpisode).ToList();
-                var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
-                list.Apply(model =>
-                               {
-                                   EpisodeProgress prog;
-                                   if(!progs.TryGetValue(model.Id,out prog))return;
-                                   model.Update((WatchState)prog.Status.Id);
+                if (result.Progress != null)
+                {
+                    var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
+                    list.Apply(model =>
+                                   {
+                                       EpisodeProgress prog;
+                                       if (!progs.TryGetValue(model.Id, out prog)) return;
+                                       model.Update((WatchState) prog.Status.Id);
 
-                               });
+                                   });
+                }
                 Episodes = list;
             }
         }
@@ -200,6 +204,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             if (!episode.IsOnAir) return;
             promptManager.PopupFor<EpisodeStatusViewModel>()
                 .Setup(x => x.Setup(episode))
+                .EnableCancel
                 .Show();
         }
 

@@ -66,8 +66,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             base.OnViewLoaded(view);
             progressService.Show("登录中\u2026");
-            
-            var loginCommand = new LoginCommand("kiminozo", "haruka");
+
+            var loginCommand = new LoginCommand("piova", "piova@live.com");
             loginCommand.BeginExecute(LoginCallBack, loginCommand);
         }
 

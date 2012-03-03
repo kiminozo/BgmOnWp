@@ -57,6 +57,7 @@
     <Compile Include="Commands\SubjectStateCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\ProgressCommand.cs" />
+    <Compile Include="Commands\SubjectStateUpdateCommand.cs" />
     <Compile Include="Models\BagumiData.cs" />
     <Compile Include="Models\BagumiSubject.cs" />
     <Compile Include="Models\Calendar.cs" />

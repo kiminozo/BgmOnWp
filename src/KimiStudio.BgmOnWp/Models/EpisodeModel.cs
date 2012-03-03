@@ -33,17 +33,25 @@ namespace KimiStudio.BgmOnWp.Models
 
         public static EpisodeModel FromEpisode(Episode episode)
         {
-            return new EpisodeModel
-                       {
-                           Id = episode.Id,
-                           Sort = episode.Sort,
-                           Number = episode.Sort.ToString(CultureInfo.InvariantCulture),
-                           Name = episode.Name,
-                           CnName = episode.NameCn,
-                           RemoteUrl = episode.Url,
-                           IsOnAir = episode.Status == Episode.OnAir,
-                           Fill = episode.Status == Episode.OnAir ? WatchStateColors.UnWatched : WatchStateColors.UnAir
-                       };
+            try
+            {
+                return new EpisodeModel
+                             {
+                                 Id = episode.Id,
+                                 Sort = episode.Sort,
+                                 Number = episode.Sort.ToString(CultureInfo.InvariantCulture),
+                                 Name = episode.Name,
+                                 CnName = episode.NameCn,
+                                 RemoteUrl = episode.Url,
+                                 IsOnAir = episode.Status == Episode.OnAir,
+                                 Fill = episode.Status == Episode.OnAir ? WatchStateColors.UnWatched : WatchStateColors.UnAir
+                             };
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         public void Update(WatchState state)

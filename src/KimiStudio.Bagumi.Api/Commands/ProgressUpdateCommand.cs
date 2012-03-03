@@ -9,50 +9,25 @@ namespace KimiStudio.Bagumi.Api.Commands
 {
     public class ProgressUpdateCommand : Command<DefaultResult>
     {
-        //POST /ep/1807/status/watched?source=onAir
-        private readonly int episodeId;
-        private readonly IList<int> episodes;
-        private readonly string method;
+        private readonly ProgressUpdateInfo updateInfo;
         private readonly AuthUser auth;
 
-        public static ProgressUpdateCommand Watched(int episodeId, AuthUser auth)
+        public ProgressUpdateCommand(ProgressUpdateInfo updateInfo, AuthUser auth)
         {
-            return new ProgressUpdateCommand(episodeId, "watched", auth);
-        }
-
-        public static ProgressUpdateCommand Watched(int episodeId, IList<int> episodes, AuthUser auth)
-        {
-            return new ProgressUpdateCommand(episodeId, "watched", auth, episodes);
-        }
-
-        public static ProgressUpdateCommand Queue(int episodeId, AuthUser auth)
-        {
-            return new ProgressUpdateCommand(episodeId, "queue", auth);
-        }
-
-        public static ProgressUpdateCommand Drop(int episodeId, AuthUser auth)
-        {
-            return new ProgressUpdateCommand(episodeId, "drop", auth);
-        }
-
-        public static ProgressUpdateCommand Remove(int episodeId, AuthUser auth)
-        {
-            return new ProgressUpdateCommand(episodeId, "remove", auth);
-        }
-
-        private ProgressUpdateCommand(int episodeId, string method, AuthUser auth, IList<int> episodes = null)
-        {
-            this.episodeId = episodeId;
-            this.method = method;
+            this.updateInfo = updateInfo;
             this.auth = auth;
-            this.episodes = episodes;
         }
 
         private const string Uri = @"http://api.bgm.tv/ep/{0}/status/{1}";
 
+        public ProgressUpdateInfo UpdateInfo
+        {
+            get { return updateInfo; }
+        }
+
         protected override RequestData CreateRequestData()
         {
-            var request = new RequestData(string.Format(Uri, episodeId, method));
+            var request = new RequestData(string.Format(Uri, UpdateInfo.EpisodeId, UpdateInfo.Method));
             request.AddQueryString("source", ApiKeyNames.Source);
 
             request.AddBody("sysusername", auth.UserName);
@@ -61,10 +36,10 @@ namespace KimiStudio.Bagumi.Api.Commands
             request.AddBody("auth", auth.AuthEncode);
             request.AddBody("sysuid", auth.Id);
 
-            if (episodes != null && episodes.Count > 0)
+            if (UpdateInfo.Episodes != null && UpdateInfo.Episodes.Count > 0)
             {
                 var builder = new StringBuilder();
-                foreach (var item in episodes)
+                foreach (var item in UpdateInfo.Episodes)
                 {
                     builder.Append(item);
                     builder.Append("%2C");//,
@@ -72,7 +47,7 @@ namespace KimiStudio.Bagumi.Api.Commands
                 builder.Length -= 3;
                 request.AddBody("ep%5Fid", builder.ToString());
             }
-            
+
             return request;
         }
     }
