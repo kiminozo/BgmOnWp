@@ -144,13 +144,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
                     subjectState.Update(result);
                 }
                 progressService.Hide();
-                promptManager.ShowToast("收藏成功");
+                promptManager.ToastInfo("收藏成功");
             }
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
                 progressService.Hide();
-                promptManager.ShowToast(err.Message, "收藏失败");
+                promptManager.ToastError(err, "收藏失败");
             }
             finally
             {

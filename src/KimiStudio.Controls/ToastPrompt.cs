@@ -52,10 +52,8 @@ namespace KimiStudio.Controls
             {
                 AnimationType = DialogService.AnimationTypes.Vetical,
                 Child = this,
-                BackgroundBrush = Overlay,
                 IsBackKeyOverride = true
             };
-
 
             popUp.Opened += _popUp_Opened;
             Dispatcher.BeginInvoke(() => popUp.Show());

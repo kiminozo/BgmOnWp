@@ -91,7 +91,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 Debug.WriteLine(err);
                 progressService.Hide();
-                promptManager.ShowToast(err.Message, "登录失败");
+                promptManager.ToastError(err, "登录失败");
                 
                 //TODO:
             }
@@ -116,7 +116,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 Debug.WriteLine(err);
                 progressService.Hide();
-                promptManager.ShowToast(err.Message, "加载失败");
+                promptManager.ToastError(err, "加载失败");
                 //TODO:
             }
 

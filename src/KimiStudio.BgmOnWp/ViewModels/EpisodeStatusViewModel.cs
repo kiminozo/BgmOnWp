@@ -130,13 +130,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 if(result.IsSuccess())
                     episodeModel.Update(GetState(command.UpdateInfo));
                 progressService.Hide();
-                promptManager.ShowToast("进度保存成功");
+                promptManager.ToastInfo("进度保存成功");
             }
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
                 progressService.Hide();
-                promptManager.ShowToast(err.Message, "进度保存失败");
+                promptManager.ToastError(err, "进度保存失败");
             }
             finally
             {

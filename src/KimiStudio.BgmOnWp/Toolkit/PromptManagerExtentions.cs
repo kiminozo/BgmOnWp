@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Media;
 using Caliburn.Micro;
 
 namespace KimiStudio.BgmOnWp.Toolkit
@@ -16,7 +18,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
             private readonly IPromptManager promptManager;
             private readonly T viewModel;
             private object context = null;
-            private IDictionary<string, object> settings;
+            private IDictionary<string, Func<object>> settings;
 
             public PromptSetup(IPromptManager promptManager)
             {
@@ -33,8 +35,8 @@ namespace KimiStudio.BgmOnWp.Toolkit
             {
                 get
                 {
-                    if (settings == null) settings = new Dictionary<string, object>();
-                    settings["IsCancelVisible"] = true;
+                    if (settings == null) settings = new Dictionary<string, Func<object>>();
+                    settings["IsCancelVisible"] = () => true;
                     return this;
                 }
             }
@@ -49,12 +51,22 @@ namespace KimiStudio.BgmOnWp.Toolkit
 
         public static void ToastInfo(this IPromptManager promptManager, string message, string title = null)
         {
-            promptManager.ShowToast(message,title);
+            var setting = new Dictionary<string, Func<object>>()
+                              {
+                                  {"Background", () => Application.Current.Resources["ToastInfoBackground"]}
+                              };
+
+            promptManager.ShowToast(message, title, setting);
         }
 
         public static void ToastError(this IPromptManager promptManager, Exception exception, string title = null)
         {
-            promptManager.ShowToast(exception.Message, title);
+
+            var setting = new Dictionary<string, Func<object>>()
+                              {
+                                  {"Background", () => Application.Current.Resources["ToastErrorBackground"]}
+                              };
+            promptManager.ShowToast(exception.Message, title, setting);
         }
     }
 

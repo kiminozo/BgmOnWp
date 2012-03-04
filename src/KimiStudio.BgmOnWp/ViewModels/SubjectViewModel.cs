@@ -147,7 +147,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
-                promptManager.ShowToast(err.Message, "错误");
+                promptManager.ToastError(err, "错误");
                 //TODO:
             }
             finally

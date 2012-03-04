@@ -18,7 +18,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
         }
 
         #region ShowPopup
-        public void ShowPopup(object rootModel, object context = null, IDictionary<string, object> settings = null)
+        public void ShowPopup(object rootModel, object context = null, IDictionary<string, Func<object>> settings = null)
         {
             if (!dispatcher.CheckAccess())
             {
@@ -55,7 +55,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
             messagePrompt.Show();
         }
 
-        private MessagePrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, object>> settings)
+        private MessagePrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
         {
             var messagePrompt = new MessagePrompt();
             ApplySettings(messagePrompt, settings);
@@ -65,7 +65,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
         #endregion
 
         #region Toast
-        public void ShowToast(string message, string title = null, IDictionary<string, object> settings = null)
+        public void ShowToast(string message, string title = null, IDictionary<string, Func<object>> settings = null)
         {
             if (!dispatcher.CheckAccess())
             {
@@ -78,16 +78,16 @@ namespace KimiStudio.BgmOnWp.Toolkit
             toast.Show();
         }
 
-        private ToastPrompt CreateToastPrompt(IEnumerable<KeyValuePair<string, object>> settings)
+        private ToastPrompt CreateToastPrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
         {
-            var toastPrompt = new ToastPrompt {AllowDrop = false};
+            var toastPrompt = new ToastPrompt { AllowDrop = false };
             ApplySettings(toastPrompt, settings);
             return toastPrompt;
         }
 
         #endregion
 
-        private bool ApplySettings(object target, IEnumerable<KeyValuePair<string, object>> settings)
+        private bool ApplySettings(object target, IEnumerable<KeyValuePair<string, Func<object>>> settings)
         {
             if (settings != null)
             {
@@ -97,8 +97,8 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 {
                     var propertyInfo = type.GetProperty(pair.Key);
 
-                    if (propertyInfo != null)
-                        propertyInfo.SetValue(target, pair.Value, null);
+                    if (propertyInfo != null && pair.Value != null)
+                        propertyInfo.SetValue(target, pair.Value(), null);
                 }
 
                 return true;
