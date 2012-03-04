@@ -6,13 +6,12 @@ namespace KimiStudio.BgmOnWp.Toolkit
 {
     public static class PromptManagerExtentions
     {
-        public static IPromptSetup<T> PopupFor<T>(this IPromptManager promptManager)
+        public static IPopupPromptSetup<T> PopupFor<T>(this IPromptManager promptManager)
         {
             return new PromptSetup<T>(promptManager);
         }
 
-
-        private sealed class PromptSetup<T> : IPromptSetup<T>
+        private sealed class PromptSetup<T> : IPopupPromptSetup<T>
         {
             private readonly IPromptManager promptManager;
             private readonly T viewModel;
@@ -30,7 +29,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 promptManager.ShowPopup(viewModel, context, settings);
             }
 
-            public IPromptSetup<T> EnableCancel
+            public IPopupPromptSetup<T> EnableCancel
             {
                 get
                 {
@@ -40,19 +39,31 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 }
             }
 
-            public IPromptSetup<T> Setup(Action<T> action)
+            public IPopupPromptSetup<T> Setup(Action<T> action)
             {
                 action(viewModel);
                 return this;
             }
         }
+
+
+        public static void ToastInfo(this IPromptManager promptManager, string message, string title = null)
+        {
+            promptManager.ShowToast(message,title);
+        }
+
+        public static void ToastError(this IPromptManager promptManager, Exception exception, string title = null)
+        {
+            promptManager.ShowToast(exception.Message, title);
+        }
     }
 
-    public interface IPromptSetup<T>
+    public interface IPopupPromptSetup<T>
     {
         void Show();
 
-        IPromptSetup<T> EnableCancel { get; }
-        IPromptSetup<T> Setup(Action<T> action);
+        IPopupPromptSetup<T> EnableCancel { get; }
+        IPopupPromptSetup<T> Setup(Action<T> action);
     }
+
 }

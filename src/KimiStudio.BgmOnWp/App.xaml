@@ -10,6 +10,7 @@
     <Application.Resources>
         <local:AppBootstrapper x:Key="bootstrapper" />
         <GridLength x:Key="SystemTrayHight">30</GridLength>
+        <SolidColorBrush x:Key="BugumiPink" Color="#FFF19199" />
         <Style TargetType="ListBox" x:Key="WrapListBox">
             <Setter Property="ItemsPanel">
                 <Setter.Value>

@@ -18,6 +18,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #region Property
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
+        private readonly IPromptManager promptManager;
         private bool authed;
 
         private IEnumerable<WatchedItemModel> watchedItems;
@@ -56,10 +57,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
         #region Private
-        public MainPageViewModel(INavigationService navigation, IProgressService progressService)
+        public MainPageViewModel(INavigationService navigation, IProgressService progressService, IPromptManager promptManager)
         {
             this.navigation = navigation;
             this.progressService = progressService;
+            this.promptManager = promptManager;
         }
 
         protected override void OnViewLoaded(object view)
@@ -87,8 +89,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             catch (Exception err)
             {
-                progressService.Hide();
                 Debug.WriteLine(err);
+                progressService.Hide();
+                promptManager.ShowToast(err.Message, "登录失败");
+                
                 //TODO:
             }
         }
@@ -110,8 +114,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             catch (Exception err)
             {
-                progressService.Hide();
                 Debug.WriteLine(err);
+                progressService.Hide();
+                promptManager.ShowToast(err.Message, "加载失败");
                 //TODO:
             }
 

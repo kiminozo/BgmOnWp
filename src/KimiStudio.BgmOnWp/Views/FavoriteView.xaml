@@ -11,7 +11,7 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel>
-            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="#FFF19199">
+            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="{StaticResource BugumiPink}">
                 <c:TabSwitchItem Content="想看" />
                 <c:TabSwitchItem Content="看过" />
                 <c:TabSwitchItem Content="在看" />

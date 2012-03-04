@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Media;
@@ -27,6 +28,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #region Property
         private string name;
         private string cnName;
+        private string doing;
         private Uri uriSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
@@ -103,6 +105,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public string Doing
+        {
+            get { return doing; }
+            set
+            {
+                doing = value;
+                NotifyOfPropertyChange(() => Doing);
+            }
+        }
+
         #endregion
 
 
@@ -135,6 +147,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
+                promptManager.ShowToast(err.Message, "错误");
                 //TODO:
             }
             finally
@@ -151,6 +164,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             CnName = subject.NameCn;
             UriSource = subject.Images.Large;
             Summary = subject.Summary;
+            Doing = string.Format("{0}人在看", subject.Collection.Doing);
             subjectStateModel = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
             if (subject.Characters != null)
@@ -196,8 +210,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void Favorite()
         {
-            //            windowManager.ShowPopup(new FavoriteViewModel());
-            //navigationService.UriFor<FavoriteViewModel>().Navigate();
             promptManager.PopupFor<FavoriteViewModel>()
                 .Setup(model => model.SetUp(subjectStateModel))
                 .EnableCancel
