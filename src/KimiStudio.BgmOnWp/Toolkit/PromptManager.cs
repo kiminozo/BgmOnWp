@@ -1,16 +1,30 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Threading;
 using Caliburn.Micro;
 using Coding4Fun.Phone.Controls;
+using ToastPrompt = KimiStudio.Controls.ToastPrompt;
 
 namespace KimiStudio.BgmOnWp.Toolkit
 {
     public sealed class PromptManager : IPromptManager
     {
+        private readonly Dispatcher dispatcher;
+
+        public PromptManager(Dispatcher dispatcher)
+        {
+            this.dispatcher = dispatcher;
+        }
+
+        #region ShowPopup
         public void ShowPopup(object rootModel, object context = null, IDictionary<string, object> settings = null)
         {
-
+            if (!dispatcher.CheckAccess())
+            {
+                dispatcher.BeginInvoke(() => ShowPopup(rootModel, context, settings));
+                return;
+            }
             var messagePrompt = CreateMessagePrompt(settings);
             var view = ViewLocator.LocateForModel(rootModel, messagePrompt, context);
 
@@ -32,7 +46,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
             {
                 messagePrompt.Completed += (sender, args) =>
                                                {
-                                                   if (deactivator != null)deactivator.Deactivate(true);
+                                                   if (deactivator != null) deactivator.Deactivate(true);
                                                    if (resultPrompt != null)
                                                        resultPrompt.PromptResult(args.PopUpResult != PopUpResult.Ok);
                                                };
@@ -47,6 +61,31 @@ namespace KimiStudio.BgmOnWp.Toolkit
             ApplySettings(messagePrompt, settings);
             return messagePrompt;
         }
+
+        #endregion
+
+        #region Toast
+        public void ShowToast(string message, string title = null, IDictionary<string, object> settings = null)
+        {
+            if (!dispatcher.CheckAccess())
+            {
+                dispatcher.BeginInvoke(() => ShowToast(message, title, settings));
+                return;
+            }
+            var toast = CreateToastPrompt(settings);
+            toast.Message = message;
+            toast.Title = title;
+            toast.Show();
+        }
+
+        private ToastPrompt CreateToastPrompt(IEnumerable<KeyValuePair<string, object>> settings)
+        {
+            var toastPrompt = new ToastPrompt {AllowDrop = false};
+            ApplySettings(toastPrompt, settings);
+            return toastPrompt;
+        }
+
+        #endregion
 
         private bool ApplySettings(object target, IEnumerable<KeyValuePair<string, object>> settings)
         {
@@ -68,5 +107,5 @@ namespace KimiStudio.BgmOnWp.Toolkit
         }
     }
 
-    
+
 }

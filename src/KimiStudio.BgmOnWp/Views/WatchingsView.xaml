@@ -13,12 +13,16 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
+    shell:SystemTray.IsVisible="True" shell:SystemTray.Opacity="0"  Style="{StaticResource TransitionPageStyle}">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource SystemTrayHight}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Pivot x:Name="Items" Title="{Binding DisplayName}">
+        <controls:Pivot x:Name="Items" Title="{Binding DisplayName}" Grid.Row="1">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}"/>

@@ -15,12 +15,17 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" Style="{StaticResource TransitionPageStyle}">
+    shell:SystemTray.IsVisible="True" shell:SystemTray.Opacity="0" 
+    Style="{StaticResource TransitionPageStyle}">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource SystemTrayHight}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Panorama Title="{Binding DisplayName}" FontSize="{StaticResource PhoneFontSizeExtraLarge}">
+        <controls:Panorama Title="{Binding DisplayName}" Grid.Row="1">
             <controls:Panorama.TitleTemplate>
                 <DataTemplate>
                     <TextBlock Height="50" Margin="0,72,0,0" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
@@ -45,10 +50,10 @@
                             <TextBlock Text="中文名" Margin="0,5" Style="{StaticResource PhoneTextSubtleStyle}"/>
                             <TextBlock Text="{Binding CnName}" TextWrapping="Wrap" Margin="0,5"  Style="{StaticResource PhoneTextNormalStyle}"/>
                         </StackPanel>
-                        <c:RoundButton x:Name="Favorite" Grid.Column="1" ImageSource="\Images\appbar.favs.addto.rest.png" Width="72" Height="72" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Bottom" />
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-                            <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
                         </StackPanel>
+                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\appbar.favs.addto.rest.png" Width="72" Height="72" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,6" />
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>

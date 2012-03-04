@@ -65,10 +65,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
         private readonly IProgressService progressService;
+        private readonly IPromptManager promptManager;
 
-        public EpisodeStatusViewModel(IProgressService progressService)
+        public EpisodeStatusViewModel(IProgressService progressService, IPromptManager promptManager)
         {
             this.progressService = progressService;
+            this.promptManager = promptManager;
         }
 
         public void Setup(EpisodeModel episode)
@@ -127,14 +129,18 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 var result = command.EndExecute(asyncResult);
                 if(result.IsSuccess())
                     episodeModel.Update(GetState(command.UpdateInfo));
+                progressService.Hide();
+                promptManager.ShowToast("进度保存成功");
             }
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
+                progressService.Hide();
+                promptManager.ShowToast(err.Message, "进度保存失败");
             }
             finally
             {
-                progressService.Hide();
+               
             }
         }
 

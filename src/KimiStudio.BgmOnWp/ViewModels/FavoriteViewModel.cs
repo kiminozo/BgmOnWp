@@ -73,6 +73,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private readonly static IList<string> ActionTypes;
         private readonly IProgressService progressService;
+        private readonly IPromptManager promptManager;
         private SubjectStateModel subjectState;
 
         static FavoriteViewModel()
@@ -87,9 +88,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
                         };
         }
 
-        public FavoriteViewModel(IProgressService progressService)
+        public FavoriteViewModel(IProgressService progressService, IPromptManager promptManager)
         {
             this.progressService = progressService;
+            this.promptManager = promptManager;
             DisplayName = "收藏";
         }
 
@@ -141,14 +143,18 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 {
                     subjectState.Update(result);
                 }
+                progressService.Hide();
+                promptManager.ShowToast("收藏成功");
             }
             catch (Exception err)
             {
                 Debug.WriteLine(err.Message);
+                progressService.Hide();
+                promptManager.ShowToast(err.Message, "收藏失败");
             }
             finally
             {
-                progressService.Hide();
+                
             }
         }
     }

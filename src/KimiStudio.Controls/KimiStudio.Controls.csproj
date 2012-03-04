@@ -41,6 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -57,6 +58,11 @@
     <Compile Include="TabSwitch.cs" />
     <Compile Include="TabSwitchItem.cs" />
     <Compile Include="Thumbnail.cs" />
+    <Compile Include="ToastPrompt.cs" />
+    <Compile Include="Unsupported\DialogService.cs" />
+    <Compile Include="Unsupported\PopUpExt.cs" />
+    <Compile Include="Unsupported\TemplatedVisualTreeExtensions.cs" />
+    <Compile Include="Unsupported\VisualTreeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
