@@ -20,7 +20,7 @@ using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class EpisodeStatusViewModel : Screen, IPrompt
+    public class EpisodeStatusViewModel : PromptScreen
     {
         #region Property
         private string cnName;
@@ -62,6 +62,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 NotifyOfPropertyChange(() => Items);
             }
         }
+
+
         #endregion
 
         private readonly IProgressService progressService;
@@ -118,6 +120,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 command.BeginExecute(UpdateCallBack, command);
             }
         }
+
 
         #endregion
 

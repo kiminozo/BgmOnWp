@@ -10,7 +10,7 @@ namespace KimiStudio.Controls
 {
     public class ToastPrompt : Control
     {
-        private DialogService popUp;
+        private DialogService dialogService;
         protected Image ToastImage;
         private const string ToastImageName = "ToastImage";
         private readonly DispatcherTimer timer;
@@ -48,15 +48,15 @@ namespace KimiStudio.Controls
             if (!IsTimerEnabled)
                 return;
 
-            popUp = new DialogService
+            dialogService = new DialogService
             {
                 AnimationType = DialogService.AnimationTypes.Vetical,
                 Child = this,
                 IsBackKeyOverride = true
             };
 
-            popUp.Opened += _popUp_Opened;
-            Dispatcher.BeginInvoke(() => popUp.Show());
+            dialogService.Opened += _popUp_Opened;
+            Dispatcher.BeginInvoke(() => dialogService.Show());
         }
 
 
@@ -69,17 +69,17 @@ namespace KimiStudio.Controls
         private void _timer_Tick(object state, EventArgs e)
         {
             timer.Stop();
-            if (popUp == null) return;
-            popUp.Hide();
+            if (dialogService == null) return;
+            dialogService.Hide();
             ResetWorldAndDestroyPopUp();
         }
 
         private void ResetWorldAndDestroyPopUp()
         {
-            if (popUp != null)
+            if (dialogService != null)
             {
-                popUp.Child = null;
-                popUp = null;
+                dialogService.Child = null;
+                dialogService = null;
             }
         }
 

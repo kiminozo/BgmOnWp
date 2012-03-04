@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Caliburn.Micro;
-using Coding4Fun.Phone.Controls;
-using ToastPrompt = KimiStudio.Controls.ToastPrompt;
+using KimiStudio.Controls;
 
 namespace KimiStudio.BgmOnWp.Toolkit
 {
@@ -33,31 +35,35 @@ namespace KimiStudio.BgmOnWp.Toolkit
             {
                 messagePrompt.Title = displayName.DisplayName;
             }
-            messagePrompt.Body = view;
+            messagePrompt.Content = view;
             ViewModelBinder.Bind(rootModel, messagePrompt, null);
             var activatable = rootModel as IActivate;
             if (activatable != null)
             {
                 activatable.Activate();
             }
-            var deactivator = rootModel as IDeactivate;
+            
             var resultPrompt = rootModel as IPrompt;
-            if (deactivator != null || resultPrompt != null)
+            if (resultPrompt != null)
             {
-                messagePrompt.Completed += (sender, args) =>
-                                               {
-                                                   if (deactivator != null) deactivator.Deactivate(true);
-                                                   if (resultPrompt != null)
-                                                       resultPrompt.PromptResult(args.PopUpResult != PopUpResult.Ok);
-                                               };
+                messagePrompt.SetBinding(PopupPrompt.IsOpenProperty, new Binding { Path = new PropertyPath("IsOpen") });
             }
+
+            var deactivator = rootModel as IDeactivate;
+            if (deactivator != null)
+            {
+                messagePrompt.Completed += (sender, args) => deactivator.Deactivate(true);
+            }
+
+
             ViewLocator.LocateForModel(rootModel, messagePrompt, null);
             messagePrompt.Show();
         }
 
-        private MessagePrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
+        private PopupPrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
         {
-            var messagePrompt = new MessagePrompt();
+            var messagePrompt = new PopupPrompt();
+            messagePrompt.Overlay = new SolidColorBrush(Color.FromArgb(200, 100, 149, 237));
             ApplySettings(messagePrompt, settings);
             return messagePrompt;
         }

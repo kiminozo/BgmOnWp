@@ -20,7 +20,7 @@ using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public sealed class FavoriteViewModel : Screen, IPrompt
+    public sealed class FavoriteViewModel : PromptScreen
     {
         #region Property
         private int rating;
@@ -106,10 +106,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         #region Implementation of IPrompt
 
-        public void PromptResult(bool canceled)
+        public void Save()
         {
-            if (canceled) return;
-
+            IsOpen = false;
             progressService.Show("提交中\u2026");
             var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
                                                             {

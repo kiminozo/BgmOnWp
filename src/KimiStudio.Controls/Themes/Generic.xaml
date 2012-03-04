@@ -197,4 +197,27 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:PopupPrompt">
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PopupPrompt">
+                    <Grid VerticalAlignment="Stretch">
+                        <Rectangle Fill="{StaticResource TransparentBrush}" />
+                        <StackPanel Margin="10,40,10,0" VerticalAlignment="Top"  Background="{TemplateBinding Background}"  >
+                            <Grid Margin="0" Background="{StaticResource PhoneAccentBrush}">
+                                <TextBlock Text="{TemplateBinding Title}" 
+							        Margin="10"  FontSize="30" TextWrapping="Wrap"  />
+                            </Grid>
+                            <ContentPresenter Margin="10" Content="{TemplateBinding Content}" />
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

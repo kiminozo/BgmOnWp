@@ -26,6 +26,7 @@
             <TextBlock Text="吐槽"/>
             <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
                      Text="{Binding Comment,Mode=TwoWay}" />
+            <Button Content="保存" Height="72" Name="Save" Width="160" Background="{StaticResource PhoneAccentBrush}" />
         </StackPanel>
     </Grid>
 </UserControl>
