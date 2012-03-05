@@ -45,4 +45,42 @@ namespace KimiStudio.Bagumi.Api.Text
             return command.EndExecute(async);
         }
     }
+
+    public class AsyncTask<TResult> where TResult : class
+    {
+        private readonly Command<TResult> command;
+        private Action<TResult> callBackAction;
+        private SynchronizationContext context;
+
+        public AsyncTask(Command<TResult> command)
+        {
+            this.command = command;
+        }
+
+        public void CallBack(Action<TResult> action)
+        {
+            callBackAction = action;
+        }
+
+        private void CallBack(IAsyncResult asyncResult)
+        {
+            if(callBackAction == null)return;
+
+            TResult result = command.EndExecute(asyncResult);
+            if (context == null)
+            {
+                callBackAction(result);
+            }
+            else
+            {
+                context.Post(o => callBackAction(result), null);
+            }
+        }
+
+        public void Execute()
+        {
+            context = SynchronizationContext.Current;
+            command.BeginExecute(CallBack, null);
+        }
+    }
 }

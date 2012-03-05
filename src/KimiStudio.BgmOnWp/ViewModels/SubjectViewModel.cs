@@ -130,8 +130,20 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             base.OnActivate();
             progressService.Show("加载中\u2026");
-            var command = new SubjectCommand(Id, AuthStorage.Auth);
-            command.BeginExecute(GetSubjectCallBack, command);
+            var task = CommandTaskFactory.Create(new SubjectCommand(Id, AuthStorage.Auth));
+            task.Result(result =>
+                            {
+                                progressService.Hide();
+                                SetSubject(result);
+                            });
+            task.Exception(err =>
+                               {
+                                   progressService.Hide();
+                                   promptManager.ToastError(err, "错误");
+                               });
+            task.Start();
+            //var command = new SubjectCommand(Id, AuthStorage.Auth);
+            //command.BeginExecute(GetSubjectCallBack, command);
         }
 
 

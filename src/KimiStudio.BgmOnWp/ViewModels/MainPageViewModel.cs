@@ -69,85 +69,138 @@ namespace KimiStudio.BgmOnWp.ViewModels
             base.OnViewLoaded(view);
             progressService.Show("登录中\u2026");
 
-            var loginCommand = new LoginCommand("piova", "piova@live.com");
-            loginCommand.BeginExecute(LoginCallBack, loginCommand);
+            var task = CommandTaskFactory.Create(new LoginCommand("piova", "piova@live.com"));
+            task.Result(auth =>
+                            {
+                                AuthStorage.Auth = auth;
+                                authed = true;
+                                GetWatched();
+                            });
+            task.Exception(err =>
+                               {
+                                   progressService.Hide();
+                                   promptManager.ToastError(err, "登录失败");
+                               });
+            task.Start();
+            //var loginCommand = new LoginCommand("piova", "piova@live.com");
+            //loginCommand.BeginExecute(LoginCallBack, loginCommand);
         }
 
-        private void LoginCallBack(IAsyncResult asyncResult)
+        private void GetWatched()
         {
+            progressService.Show("加载中\u2026");
+            var task = CommandTaskFactory.Create(new GetWatchedCommand(AuthStorage.Auth));
+            task.Result(result =>
+                            {
+                                WatchedItems = result.OrderByDescending(p => p.LastTouch)
+                                    .Take(8)
+                                    .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
+                                GetCalendar();
+                            });
+            task.Exception(err =>
+                               {
+                                   progressService.Hide();
+                                   promptManager.ToastError(err, "加载失败");
+                               });
+            task.Start();
+        }
 
-            try
+        private void GetCalendar()
+        {
+            var task = CommandTaskFactory.Create(new CalendarCommand());
+            task.Result(result =>
             {
-                var command = (LoginCommand)asyncResult.AsyncState;
-                var auth = command.EndExecute(asyncResult);
-                AuthStorage.Auth = auth;
-                authed = true;
-                progressService.Show("加载中\u2026");
-                var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
-                watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
-
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err);
                 progressService.Hide();
-                promptManager.ToastError(err, "登录失败");
-                
-                //TODO:
-            }
-        }
-
-
-        private void GetWatchedCallBack(IAsyncResult asyncResult)
-        {
-
-            try
-            {
-                var command = (GetWatchedCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                WatchedItems = result.OrderByDescending(p => p.LastTouch)
-                    .Take(8)
-                    .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
-
-                var calendarCommand = new CalendarCommand();
-                calendarCommand.BeginExecute(GetCalendarCallBack, calendarCommand);
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err);
-                progressService.Hide();
-                promptManager.ToastError(err, "加载失败");
-                //TODO:
-            }
-
-        }
-
-        private void GetCalendarCallBack(IAsyncResult asyncResult)
-        {
-            progressService.Hide();
-            try
-            {
-                var command = (CalendarCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
                 var today = WeekDay.WeekDayIdOfToday;
-                var tomorrow = WeekDay.GetWeekDayId(DateTime.Today.AddDays(1));
+                //var tomorrow = WeekDay.GetWeekDayId(DateTime.Today.AddDays(1));
                 TodayCalendarItems = from p in result
                                      from subject in p.Items
                                      where p.WeekDay.Id == today
                                      select WatchedItemModel.FromBagumiData(subject);
-
-                TomorrowCalendarItems = from p in result
-                                        from subject in p.Items
-                                        where p.WeekDay.Id == tomorrow
-                                        select WatchedItemModel.FromBagumiData(subject);
-            }
-            catch (Exception err)
+            });
+            task.Exception(err =>
             {
-                Debug.WriteLine(err);
-                //TODO:
-            }
-
+                progressService.Hide();
+                promptManager.ToastError(err, "加载失败");
+            });
+            task.Start();
         }
+
+        //private void LoginCallBack(IAsyncResult asyncResult)
+        //{
+
+        //    try
+        //    {
+        //        var command = (LoginCommand)asyncResult.AsyncState;
+        //        var auth = command.EndExecute(asyncResult);
+        //        AuthStorage.Auth = auth;
+        //        authed = true;
+        //        progressService.Show("加载中\u2026");
+        //        var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
+        //        watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
+
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Debug.WriteLine(err);
+        //        progressService.Hide();
+        //        promptManager.ToastError(err, "登录失败");
+
+        //        //TODO:
+        //    }
+        //}
+
+
+        //private void GetWatchedCallBack(IAsyncResult asyncResult)
+        //{
+
+        //    try
+        //    {
+        //        var command = (GetWatchedCommand)asyncResult.AsyncState;
+        //        var result = command.EndExecute(asyncResult);
+        //        WatchedItems = result.OrderByDescending(p => p.LastTouch)
+        //            .Take(8)
+        //            .Select(p => WatchedItemModel.FromBagumiData(p.Subject));
+
+        //        var calendarCommand = new CalendarCommand();
+        //        calendarCommand.BeginExecute(GetCalendarCallBack, calendarCommand);
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Debug.WriteLine(err);
+        //        progressService.Hide();
+        //        promptManager.ToastError(err, "加载失败");
+        //        //TODO:
+        //    }
+
+        //}
+
+        //private void GetCalendarCallBack(IAsyncResult asyncResult)
+        //{
+        //    progressService.Hide();
+        //    try
+        //    {
+        //        var command = (CalendarCommand)asyncResult.AsyncState;
+        //        var result = command.EndExecute(asyncResult);
+        //        var today = WeekDay.WeekDayIdOfToday;
+        //        var tomorrow = WeekDay.GetWeekDayId(DateTime.Today.AddDays(1));
+        //        TodayCalendarItems = from p in result
+        //                             from subject in p.Items
+        //                             where p.WeekDay.Id == today
+        //                             select WatchedItemModel.FromBagumiData(subject);
+
+        //        TomorrowCalendarItems = from p in result
+        //                                from subject in p.Items
+        //                                where p.WeekDay.Id == tomorrow
+        //                                select WatchedItemModel.FromBagumiData(subject);
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Debug.WriteLine(err);
+        //        //TODO:
+        //    }
+
+        //}
         #endregion
 
         #region Public

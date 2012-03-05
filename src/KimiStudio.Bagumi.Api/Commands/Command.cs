@@ -82,7 +82,14 @@ namespace KimiStudio.Bagumi.Api.Commands
         }
     }
 
-    public abstract class Command<TResult> : Command where TResult : class
+    public interface ICommand<TResult> where TResult : class
+    {
+        void BeginExecute(AsyncCallback asyncCallback, object state);
+        TResult EndExecute(IAsyncResult asyncResult);
+    }
+
+    public abstract class Command<TResult> : Command, ICommand<TResult>
+        where TResult : class
     {
         public void BeginExecute(AsyncCallback asyncCallback, object state)
         {

@@ -6,7 +6,7 @@ using KimiStudio.Bagumi.Api.Models;
 
 namespace KimiStudio.Bagumi.Api.Commands
 {
-    public class SubjectCommand : Command
+    public class SubjectCommand : Command, ICommand<SubjectCommandResult>
     {
         private readonly int subjectId;
         private readonly AuthUser auth;

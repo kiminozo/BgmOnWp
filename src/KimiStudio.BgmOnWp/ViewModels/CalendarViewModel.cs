@@ -15,14 +15,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
+        private readonly IPromptManager promptManager;
 
         public int Index { get; set; }
 
-        public CalendarViewModel(INavigationService navigation, IProgressService progressService)
+        public CalendarViewModel(INavigationService navigation, IProgressService progressService, IPromptManager promptManager)
         {
             DisplayName = "每日放送";
             this.navigation = navigation;
             this.progressService = progressService;
+            this.promptManager = promptManager;
             Items.Add(new SubjectListViewModel { DisplayName = "星期一" });
             Items.Add(new SubjectListViewModel { DisplayName = "星期二" });
             Items.Add(new SubjectListViewModel { DisplayName = "星期三" });
@@ -44,8 +46,25 @@ namespace KimiStudio.BgmOnWp.ViewModels
         protected override void OnInitialize()
         {
             progressService.Show("加载中\u2026");
-            var command = new CalendarCommand();
-            command.BeginExecute(GetWatchedCallBack, command);
+            var task = CommandTaskFactory.Create(new CalendarCommand());
+            task.Result(result =>
+                            {
+                                progressService.Hide();
+                                result.Apply(x =>
+                                                 {
+                                                     var item = Items[x.WeekDay.Id - 1];
+                                                     item.DisplayName = x.WeekDay.Cn;
+                                                     item.UpdateWatchingItems(x.Items);
+                                                 });
+                            });
+            task.Exception(err =>
+                               {
+                                   progressService.Hide();
+                                   promptManager.ToastError(err);
+                               });
+            task.Start();
+            //var command = new CalendarCommand();
+            //command.BeginExecute(GetWatchedCallBack, command);
         }
 
         public void OnTapItem(WatchedItemModel item)
@@ -57,29 +76,29 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Navigate();
         }
 
-        private void GetWatchedCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (CalendarCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
+        //private void GetWatchedCallBack(IAsyncResult asyncResult)
+        //{
+        //    try
+        //    {
+        //        var command = (CalendarCommand)asyncResult.AsyncState;
+        //        var result = command.EndExecute(asyncResult);
 
-                result.Apply(x =>
-                                {
-                                    var item = Items[x.WeekDay.Id - 1];
-                                    item.DisplayName = x.WeekDay.Cn;
-                                    item.UpdateWatchingItems(x.Items);
-                                });
+        //        result.Apply(x =>
+        //                        {
+        //                            var item = Items[x.WeekDay.Id - 1];
+        //                            item.DisplayName = x.WeekDay.Cn;
+        //                            item.UpdateWatchingItems(x.Items);
+        //                        });
 
-            }
-            catch (Exception)
-            {
-                //TODO:
-            }
-            finally
-            {
-                progressService.Hide();
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //TODO:
+        //    }
+        //    finally
+        //    {
+        //        progressService.Hide();
+        //    }
+        //}
     }
 }
