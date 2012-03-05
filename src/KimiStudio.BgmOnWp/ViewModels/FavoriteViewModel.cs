@@ -71,7 +71,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         }
         #endregion
 
-        private readonly static IList<string> ActionTypes;
+        internal readonly static IList<string> ActionTypes;
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
         private SubjectStateModel subjectState;
@@ -104,58 +104,56 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Index = ActionTypes.IndexOf(state.Type);
         }
 
-        #region Implementation of IPrompt
-
-        public void Save()
+        public string GetActionType()
         {
-            IsOpen = false;
-            progressService.Show("提交中\u2026");
-            var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
-                                                            {
-                                                                Comment = Comment,
-                                                                Method = ActionTypes[Index],
-                                                                Rating = Rating,
-                                                                SubjectId = subjectState.SubjectId,
-                                                                Tags = SipTags()
-                                                            }, AuthStorage.Auth);
-            command.BeginExecute(UpdateCallBack, command);
+            return ActionTypes[Index];
         }
 
-
-
-        #endregion
-
-        private string[] SipTags()
+        public string[] SplitTags()
         {
             if (string.IsNullOrEmpty(Tags)) return null;
 
             return tags.Split(',', ' ');
         }
 
-        private void UpdateCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                if(result.LastTouch != 0)
-                {
-                    subjectState.Update(result);
-                }
-                progressService.Hide();
-                promptManager.ToastInfo("收藏成功");
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                progressService.Hide();
-                promptManager.ToastError(err, "收藏失败");
-            }
-            finally
-            {
-                
-            }
-        }
+        //public void SaveFavorite()
+        //{
+        //    progressService.Show("提交中\u2026");
+        //    var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
+        //    {
+        //        Comment = Comment,
+        //        Method = ActionTypes[Index],
+        //        Rating = Rating,
+        //        SubjectId = subjectState.SubjectId,
+        //        Tags = SipTags()
+        //    }, AuthStorage.Auth);
+        //    command.BeginExecute(UpdateCallBack, command);
+        //}
+
+        //private void UpdateCallBack(IAsyncResult asyncResult)
+        //{
+        //    try
+        //    {
+        //        var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
+        //        var result = command.EndExecute(asyncResult);
+        //        if(result.LastTouch != 0)
+        //        {
+        //            subjectState.Update(result);
+        //        }
+        //        progressService.Hide();
+        //        promptManager.ToastInfo("收藏成功");
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Debug.WriteLine(err.Message);
+        //        progressService.Hide();
+        //        promptManager.ToastError(err, "收藏失败");
+        //    }
+        //    finally
+        //    {
+
+        //    }
+        //}
     }
 
 }

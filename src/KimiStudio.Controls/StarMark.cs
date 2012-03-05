@@ -120,18 +120,7 @@ namespace KimiStudio.Controls
             FillStars(index);
             return index;
         }
-
-        //protected override void OnTap(GestureEventArgs e)
-        //{
-        //    int x = (int)e.GetPosition(stars).X;
-        //    int index = x / StarSize;
-        //    FillStars(index);
-
-        //    if (VerifyValue(index)) { Marked = index + 1; }
-        //    base.OnTap(e);
-        //}
-
-
+        
         //protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         //{
         //    int x = (int)e.GetPosition(stars).X;
@@ -142,13 +131,7 @@ namespace KimiStudio.Controls
         //    base.OnMouseLeftButtonUp(e);
         //}
 
-        //protected override void OnMouseMove(MouseEventArgs e)
-        //{
-        //    int x = (int)e.GetPosition(stars).X;
-        //    int index = x / starSize;
-        //    FillStar(index,Colors.Yellow);
-        //    base.OnMouseMove(e);
-        //}
+     
         private bool VerifyValue(int index)
         {
             if (index < 0 || index >= stars.Items.Count) return false;
@@ -160,7 +143,6 @@ namespace KimiStudio.Controls
         {
             if (!VerifyValue(index)) return;
 
-            //var starlist = stars.Items.Cast<Shape>().ToArray();
             for (int i = 0, length = starItems.Count; i < length; i++)
             {
                 var star = starItems[i];

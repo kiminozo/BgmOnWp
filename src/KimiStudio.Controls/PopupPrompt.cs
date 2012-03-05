@@ -37,7 +37,7 @@ namespace KimiStudio.Controls
 
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(PopupPrompt),
-                                        new PropertyMetadata(IsOpenPropertyChanged));
+                                        new PropertyMetadata(true,IsOpenPropertyChanged));
 
         public bool IsOpen
         {

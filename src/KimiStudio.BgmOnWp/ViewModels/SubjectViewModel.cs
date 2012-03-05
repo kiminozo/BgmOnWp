@@ -216,6 +216,46 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Show();
         }
 
+        public void SaveFavorite(FavoriteViewModel favorite)
+        {
+            favorite.Hide();
+            progressService.Show("提交中\u2026");
+            var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
+            {
+                Comment = favorite.Comment,
+                Method = favorite.GetActionType(),
+                Rating = favorite.Rating,
+                SubjectId = Id,
+                Tags = favorite.SplitTags()
+            }, AuthStorage.Auth);
+            command.BeginExecute(UpdateCallBack, command);
+        }
+
+        private void UpdateCallBack(IAsyncResult asyncResult)
+        {
+            try
+            {
+                var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
+                var result = command.EndExecute(asyncResult);
+                if (result.LastTouch != 0)
+                {
+                    subjectStateModel.Update(result);
+                }
+                progressService.Hide();
+                promptManager.ToastInfo("收藏成功");
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                progressService.Hide();
+                promptManager.ToastError(err, "收藏失败");
+            }
+            finally
+            {
+
+            }
+        }
+
         public void TapEpisodeItem(EpisodeModel episode)
         {
             if (!episode.IsOnAir || !subjectStateModel.IsWatching) return;

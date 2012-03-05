@@ -3,7 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls" mc:Ignorable="d"
+    xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cal="http://www.caliburnproject.org" mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -26,7 +28,15 @@
             <TextBlock Text="吐槽"/>
             <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
                      Text="{Binding Comment,Mode=TwoWay}" />
-            <Button Content="保存" Height="72" Name="Save" Width="160" Background="{StaticResource PhoneAccentBrush}" />
+            <Button Content="保存" Height="72" Width="160" Background="{StaticResource PhoneAccentBrush}" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <cal:ActionMessage MethodName="SaveFavorite" >
+                            <cal:Parameter Value="$dataContext"/>
+                        </cal:ActionMessage>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

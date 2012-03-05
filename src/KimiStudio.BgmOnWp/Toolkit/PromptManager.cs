@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using Caliburn.Micro;
 using KimiStudio.Controls;
+using Action = System.Action;
 
 namespace KimiStudio.BgmOnWp.Toolkit
 {
@@ -46,7 +47,8 @@ namespace KimiStudio.BgmOnWp.Toolkit
             var resultPrompt = rootModel as IPrompt;
             if (resultPrompt != null)
             {
-                messagePrompt.SetBinding(PopupPrompt.IsOpenProperty, new Binding { Path = new PropertyPath("IsOpen") });
+                resultPrompt.HideAction = messagePrompt.Hide;
+                //messagePrompt.SetBinding(PopupPrompt.IsOpenProperty, new Binding { Path = new PropertyPath("IsOpen") });
             }
 
             var deactivator = rootModel as IDeactivate;

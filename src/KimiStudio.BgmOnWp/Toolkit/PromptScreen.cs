@@ -9,25 +9,27 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
+using Action = System.Action;
 
 namespace KimiStudio.BgmOnWp.Toolkit
 {
     public abstract class PromptScreen : Screen, IPrompt
     {
-        #region Implementation of IPrompt
 
-        private bool isOpen;
+        private System.Action hideAction;
 
-        #endregion
-
-        public bool IsOpen
+        Action IPrompt.HideAction
         {
-            get { return isOpen; }
-            set
-            {
-                isOpen = value;
-                NotifyOfPropertyChange(() => IsOpen);
-            }
+            get { return hideAction; }
+            set { hideAction = value; }
         }
+
+        public void Hide()
+        {
+            if (hideAction == null) return;
+            hideAction();
+        }
+
+       // System.Action IPrompt.HideAction { get; set; }
     }
 }
