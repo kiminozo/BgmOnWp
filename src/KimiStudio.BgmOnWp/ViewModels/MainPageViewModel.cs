@@ -130,31 +130,37 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void NavWatchings()
         {
+            if(!authed)return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
 
         public void NavAll()
         {
+            if (!authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
 
         public void NavAmine()
         {
+            if (!authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 1).Navigate();
         }
 
         public void NavReal()
         {
+            if (!authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 2).Navigate();
         }
 
         public void NavCalendar()
         {
+            if (!authed) return;
             navigation.UriFor<CalendarViewModel>().Navigate();
         }
 
         public void OnTapItem(WatchedItemModel item)
         {
+            if (!authed) return;
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
                 .WithParam(x => x.DisplayName, item.Name)

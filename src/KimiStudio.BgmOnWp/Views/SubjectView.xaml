@@ -35,7 +35,7 @@
                 <ScrollViewer>
                     <Grid Background="{x:Null}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -43,12 +43,12 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <c:Thumbnail UriSource="{Binding UriSource}" 
-                         Width="165" Height="250" VerticalAlignment="Top" Margin="15,15,20,0" />
+                         Width="165" Height="250" VerticalAlignment="Top" Margin="10,15,8,0" />
                         <StackPanel Grid.Column="1" Margin="0,10,0,0" >
-                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="0,10" Style="{StaticResource PhoneTextNormalStyle}"/>
-                            <TextBlock Text="{Binding CnName}" TextWrapping="Wrap" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="{Binding Doing}" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            <TextBlock Text="{Binding Path=State.StateName}" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}" />
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="12,5,0,5" Style="{StaticResource PhoneTextNormalStyle}"/>
+                            <TextBlock Text="{Binding CnName}" TextWrapping="Wrap" Margin="12,5,0,5"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding Doing}" Margin="12,5,0,5" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding Path=State.StateName}" Margin="12,5,0,5"  Style="{StaticResource PhoneTextSubtleStyle}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
