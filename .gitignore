@@ -9,3 +9,5 @@
 /src/KimiStudio.Bagumi.Api/obj
 /_ReSharper.KimiStudio.Bugumi.Api
 *.user
+/src/KimiStudio.Bangumi.Api/Bin
+/src/KimiStudio.Bangumi.Api/obj
