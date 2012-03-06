@@ -1,0 +1,7 @@
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\ResolveAssemblyReference.cache
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\KimiStudio.Bagumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\KimiStudio.Bagumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\bin\Debug\KimiStudio.Bagumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\bin\Debug\KimiStudio.Bagumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\bin\Debug\Newtonsoft.Json.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\bin\Debug\Newtonsoft.Json.xml

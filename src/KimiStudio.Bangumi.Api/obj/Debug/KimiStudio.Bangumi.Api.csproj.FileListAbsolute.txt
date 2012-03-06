@@ -1,0 +1,16 @@
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\Bin\Debug\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\Bin\Debug\KimiStudio.Bangumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\Bin\Debug\Newtonsoft.Json.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\Bin\Debug\Newtonsoft.Json.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\Bin\Debug\Newtonsoft.Json.xml
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\ResolveAssemblyReference.cache
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bagumi.Api\obj\Debug\KimiStudio.Bangumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Debug\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Debug\KimiStudio.Bangumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Debug\Newtonsoft.Json.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Debug\Newtonsoft.Json.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Debug\Newtonsoft.Json.xml
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Debug\ResolveAssemblyReference.cache
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Debug\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Debug\KimiStudio.Bangumi.Api.pdb

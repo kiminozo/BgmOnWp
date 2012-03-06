@@ -176,7 +176,7 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KimiStudio.Bagumi.Api\KimiStudio.Bangumi.Api.csproj">
+    <ProjectReference Include="..\KimiStudio.Bangumi.Api\KimiStudio.Bangumi.Api.csproj">
       <Project>{3DEA0C55-7487-4295-9446-2A312B4857B7}</Project>
       <Name>KimiStudio.Bangumi.Api</Name>
     </ProjectReference>
