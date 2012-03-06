@@ -5,8 +5,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Media;
 using Caliburn.Micro;
-using KimiStudio.Bagumi.Api.Commands;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Commands;
+using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
@@ -22,9 +22,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public int Id { get; set; }
         private SubjectStateModel subjectStateModel;
-
-        //  private static Brush DefaultBrush = WatchStateColors.Queue;
-
+        
         #region Property
         private string name;
         private string cnName;
@@ -224,55 +222,58 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             promptManager.PopupFor<FavoriteViewModel>()
                 .Setup(model => model.SetUp(subjectStateModel))
+                .SetTitleBackground("BangumiBlue")
                 .EnableCancel
                 .Show();
         }
 
-        public void SaveFavorite(FavoriteViewModel favorite)
-        {
-            favorite.Hide();
-            progressService.Show("提交中\u2026");
-            var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
-            {
-                Comment = favorite.Comment,
-                Method = favorite.GetActionType(),
-                Rating = favorite.Rating,
-                SubjectId = Id,
-                Tags = favorite.SplitTags()
-            }, AuthStorage.Auth);
-            command.BeginExecute(UpdateCallBack, command);
-        }
+        //public void SaveFavorite(FavoriteViewModel favorite)
+        //{
+        //    favorite.Hide();
+            
+        //    progressService.Show("提交中\u2026");
+        //    var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
+        //    {
+        //        Comment = favorite.Comment,
+        //        Method = favorite.GetActionType(),
+        //        Rating = favorite.Rating,
+        //        SubjectId = Id,
+        //        Tags = favorite.SplitTags()
+        //    }, AuthStorage.Auth);
+        //    command.BeginExecute(UpdateCallBack, command);
+        //}
 
-        private void UpdateCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                if (result.LastTouch != 0)
-                {
-                    subjectStateModel.Update(result);
-                }
-                progressService.Hide();
-                promptManager.ToastInfo("收藏成功");
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                progressService.Hide();
-                promptManager.ToastError(err, "收藏失败");
-            }
-            finally
-            {
+        //private void UpdateCallBack(IAsyncResult asyncResult)
+        //{
+        //    try
+        //    {
+        //        var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
+        //        var result = command.EndExecute(asyncResult);
+        //        if (result.LastTouch != 0)
+        //        {
+        //            subjectStateModel.Update(result);
+        //        }
+        //        progressService.Hide();
+        //        promptManager.ToastInfo("收藏成功");
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Debug.WriteLine(err.Message);
+        //        progressService.Hide();
+        //        promptManager.ToastError(err, "收藏失败");
+        //    }
+        //    finally
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public void TapEpisodeItem(EpisodeModel episode)
         {
             if (!episode.IsOnAir || !subjectStateModel.IsWatching) return;
             promptManager.PopupFor<EpisodeStatusViewModel>()
                 .Setup(x => x.Setup(episode))
+                .SetTitleBackground("BangumiPink")
                 .EnableCancel
                 .Show();
         }

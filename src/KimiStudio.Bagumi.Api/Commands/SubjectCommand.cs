@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
-using System.Net;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Models;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     public class SubjectCommand : Command, ICommand<SubjectCommandResult>
     {

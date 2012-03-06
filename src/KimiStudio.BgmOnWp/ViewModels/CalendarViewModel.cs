@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
-using KimiStudio.Bagumi.Api.Commands;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Commands;
+using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
@@ -19,19 +19,20 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public int Index { get; set; }
 
-        public CalendarViewModel(INavigationService navigation, IProgressService progressService, IPromptManager promptManager)
+        public CalendarViewModel(INavigationService navigation, IProgressService progressService,
+                                 IPromptManager promptManager)
         {
             DisplayName = "每日放送";
             this.navigation = navigation;
             this.progressService = progressService;
             this.promptManager = promptManager;
-            Items.Add(new SubjectListViewModel { DisplayName = "星期一" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期二" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期三" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期四" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期五" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期六" });
-            Items.Add(new SubjectListViewModel { DisplayName = "星期日" });
+            Items.Add(new SubjectListViewModel {DisplayName = "星期一"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期二"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期三"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期四"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期五"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期六"});
+            Items.Add(new SubjectListViewModel {DisplayName = "星期日"});
 
             ActivateItem(Items[Index]);
         }
@@ -63,8 +64,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    promptManager.ToastError(err);
                                });
             task.Start();
-            //var command = new CalendarCommand();
-            //command.BeginExecute(GetWatchedCallBack, command);
         }
 
         public void OnTapItem(WatchedItemModel item)
@@ -75,30 +74,5 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
         }
-
-        //private void GetWatchedCallBack(IAsyncResult asyncResult)
-        //{
-        //    try
-        //    {
-        //        var command = (CalendarCommand)asyncResult.AsyncState;
-        //        var result = command.EndExecute(asyncResult);
-
-        //        result.Apply(x =>
-        //                        {
-        //                            var item = Items[x.WeekDay.Id - 1];
-        //                            item.DisplayName = x.WeekDay.Cn;
-        //                            item.UpdateWatchingItems(x.Items);
-        //                        });
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //TODO:
-        //    }
-        //    finally
-        //    {
-        //        progressService.Hide();
-        //    }
-        //}
     }
 }

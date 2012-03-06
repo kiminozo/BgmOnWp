@@ -1,9 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Net;
-using KimiStudio.Bagumi.Api.Models;
+﻿using KimiStudio.Bangumi.Api.Models;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     public sealed class LoginCommand : Command<AuthUser>
     {

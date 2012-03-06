@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 
 namespace KimiStudio.BgmOnWp.ViewModels

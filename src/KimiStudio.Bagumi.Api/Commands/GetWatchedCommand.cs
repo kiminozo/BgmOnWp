@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Models;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     public sealed class GetWatchedCommand : Command<List<BagumiData>>
     {

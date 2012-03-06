@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using KimiStudio.Bagumi.Api.Models;
+﻿using System.Collections.Generic;
+using KimiStudio.Bangumi.Api.Models;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     public class CalendarCommand : Command<List<Calendar>>
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Media;
-using KimiStudio.Bagumi.Api.Models;
 using Caliburn.Micro;
+using KimiStudio.Bangumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {

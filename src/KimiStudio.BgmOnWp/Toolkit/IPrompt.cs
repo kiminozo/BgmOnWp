@@ -4,8 +4,6 @@ namespace KimiStudio.BgmOnWp.Toolkit
 {
     public interface IPrompt
     {
-     //   void PromptResult(bool canceled);
-
-        Action HideAction { get; set; }
+        void PromptResult(bool canceled);
     }
 }

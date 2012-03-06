@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     public abstract class Command
     {

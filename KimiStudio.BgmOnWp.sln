@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.BgmOnWp", "src\K
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Controls", "src\KimiStudio.Controls\KimiStudio.Controls.csproj", "{99A9578C-F0F8-4999-8335-FB56426220B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Bagumi.Api", "src\KimiStudio.Bagumi.Api\KimiStudio.Bagumi.Api.csproj", "{3DEA0C55-7487-4295-9446-2A312B4857B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KimiStudio.Bangumi.Api", "src\KimiStudio.Bagumi.Api\KimiStudio.Bangumi.Api.csproj", "{3DEA0C55-7487-4295-9446-2A312B4857B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

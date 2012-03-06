@@ -27,6 +27,8 @@
     </Style>
 
     <Style TargetType="local:RoundButton">
+        <Setter Property="Width" Value="72"/>
+        <Setter Property="Height" Value="72"/>
         <Setter Property="BorderBrush" Value="{StaticResource PhoneContrastBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
@@ -57,7 +59,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <StackPanel>
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Margin="3">
+                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Margin="0">
                                 <Ellipse
 								x:Name="ButtonBackground"
 								Stroke="{TemplateBinding BorderBrush}" 
@@ -208,11 +210,15 @@
                     <Grid VerticalAlignment="Stretch">
                         <Rectangle Fill="{StaticResource TransparentBrush}" />
                         <StackPanel Margin="10,40,10,0" VerticalAlignment="Top"  Background="{TemplateBinding Background}"  >
-                            <Grid Margin="0" Background="{StaticResource PhoneAccentBrush}">
+                            <Grid Margin="0" Background="{TemplateBinding TitleBackground}">
                                 <TextBlock Text="{TemplateBinding Title}" 
-							        Margin="10"  FontSize="30" TextWrapping="Wrap"  />
+							        Margin="10"  FontSize="{StaticResource PhoneFontSizeLarge}" TextWrapping="Wrap" />
                             </Grid>
                             <ContentPresenter Margin="10" Content="{TemplateBinding Content}" />
+                            <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                                <local:RoundButton x:Name="okButton" ImageSource="/KimiStudio.Controls;component/Icons/appbar.check.rest.png" />
+                                <local:RoundButton x:Name="cancelButton" ImageSource="/KimiStudio.Controls;component/Icons/appbar.cancel.rest.png" />
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

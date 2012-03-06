@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace KimiStudio.Bagumi.Api
+namespace KimiStudio.Bangumi.Api
 {
     public sealed class RequestData
     {

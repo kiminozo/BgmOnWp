@@ -13,7 +13,7 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel>
-            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="{StaticResource BugumiPink}">
+            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="{StaticResource BangumiPink}">
                 <c:TabSwitchItem Content="想看" />
                 <c:TabSwitchItem Content="看过" />
                 <c:TabSwitchItem Content="在看" />
@@ -28,7 +28,7 @@
             <TextBlock Text="吐槽"/>
             <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
                      Text="{Binding Comment,Mode=TwoWay}" />
-            <Button Content="保存" Height="72" Width="160" Background="{StaticResource PhoneAccentBrush}" >
+            <!--<Button Content="保存" Height="72" Width="160" Background="{StaticResource PhoneAccentBrush}" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Tap">
                         <cal:ActionMessage MethodName="SaveFavorite" >
@@ -36,7 +36,7 @@
                         </cal:ActionMessage>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-            </Button>
+            </Button>-->
         </StackPanel>
     </Grid>
 </UserControl>

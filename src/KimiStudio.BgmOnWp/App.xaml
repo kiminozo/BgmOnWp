@@ -10,7 +10,8 @@
     <Application.Resources>
         <local:AppBootstrapper x:Key="bootstrapper" />
         <GridLength x:Key="SystemTrayHight">30</GridLength>
-        <SolidColorBrush x:Key="BugumiPink" Color="#FFF19199" />
+        <SolidColorBrush x:Key="BangumiPink" Color="#FFF19199" />
+        <SolidColorBrush x:Key="BangumiBlue" Color="#FF4897FF" />
         <SolidColorBrush x:Key="ToastInfoBackground" Color="#FF3C8803"/>
         <SolidColorBrush x:Key="ToastErrorBackground" Color="Red"/>
         <Style TargetType="ListBox" x:Key="WrapListBox">

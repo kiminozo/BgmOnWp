@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {

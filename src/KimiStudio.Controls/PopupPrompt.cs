@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,65 +25,76 @@ namespace KimiStudio.Controls
             set { SetValue(TitleProperty, value); }
         }
 
+       
+
+        // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OverlayProperty =
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
+
         public Brush Overlay
         {
             get { return (Brush)GetValue(OverlayProperty); }
             set { SetValue(OverlayProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty OverlayProperty =
-            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
+        public static readonly DependencyProperty IsCancelVisibleProperty =
+            DependencyProperty.Register("IsCancelVisible", typeof(bool), typeof(PopupPrompt), new PropertyMetadata(default(bool)));
 
-
-        public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(PopupPrompt),
-                                        new PropertyMetadata(true,IsOpenPropertyChanged));
-
-        public bool IsOpen
+        public bool IsCancelVisible
         {
-            get { return (bool)GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); }
+            get { return (bool)GetValue(IsCancelVisibleProperty); }
+            set { SetValue(IsCancelVisibleProperty, value); }
         }
 
-        private static void IsOpenPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
+        public static readonly DependencyProperty TitleBackgroundProperty =
+            DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(PopupPrompt), new PropertyMetadata(Application.Current.Resources["PhoneAccentBrush"]));
+
+        public Brush TitleBackground
         {
-            var sender = o as PopupPrompt;
-            if (sender == null || args.OldValue == args.NewValue) return;
-            ;
-            sender.SetIsOpen((bool)args.NewValue);
+            get { return (Brush)GetValue(TitleBackgroundProperty); }
+            set { SetValue(TitleBackgroundProperty, value); }
         }
-
-
-
+        
         private DialogService dialogService;
 
         public event EventHandler Completed;
 
 
+        private Button okButton;
+        private Button cancelButton;
+
 
         public PopupPrompt()
         {
             DefaultStyleKey = typeof(PopupPrompt);
+
+
+            SetCancelButtonVisibility(IsCancelVisible);
         }
+
+        public bool? Result { get; set; }
+
 
         public override void OnApplyTemplate()
         {
             Focus();
             base.OnApplyTemplate();
+
+            okButton = (Button)GetTemplateChild("okButton");
+            cancelButton = (Button)GetTemplateChild("cancelButton");
+            SetCancelButtonVisibility(IsCancelVisible);
+            okButton.Click += (s, e) =>
+                                  {
+                                      Result = true;
+                                      Hide();
+                                  };
+            cancelButton.Click += (s, e) =>
+                                      {
+                                          Result = false;
+                                          Hide();
+                                      };
         }
 
-        private void SetIsOpen(bool isOpen)
-        {
-            if (isOpen)
-            {
-                Show();
-            }
-            else
-            {
-                Hide();
-            }
-        }
 
         public void Show()
         {
@@ -127,6 +139,13 @@ namespace KimiStudio.Controls
             dialogService = null;
         }
 
+
+        private void SetCancelButtonVisibility(bool isCancelVisible)
+        {
+            if (cancelButton == null) return;
+
+            cancelButton.Visibility = isCancelVisible ? Visibility.Visible : Visibility.Collapsed;
+        }
 
     }
 }

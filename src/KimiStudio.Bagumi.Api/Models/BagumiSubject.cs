@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace KimiStudio.Bagumi.Api.Models
+namespace KimiStudio.Bangumi.Api.Models
 {
     public class BagumiSubject
     {

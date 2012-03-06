@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Models;
 using Newtonsoft.Json;
 
 namespace KimiStudio.BgmOnWp.Storages

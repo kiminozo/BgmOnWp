@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace KimiStudio.Bagumi.Api.Commands
+namespace KimiStudio.Bangumi.Api.Commands
 {
     class Countdown
     {

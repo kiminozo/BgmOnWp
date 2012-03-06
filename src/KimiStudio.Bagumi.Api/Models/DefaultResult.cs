@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace KimiStudio.Bagumi.Api.Models
+﻿namespace KimiStudio.Bangumi.Api.Models
 {
     public class DefaultResult
     {

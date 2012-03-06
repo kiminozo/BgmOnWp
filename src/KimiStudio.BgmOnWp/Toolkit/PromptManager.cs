@@ -21,48 +21,46 @@ namespace KimiStudio.BgmOnWp.Toolkit
         }
 
         #region ShowPopup
-        public void ShowPopup(object rootModel, object context = null, IDictionary<string, Func<object>> settings = null)
+        public void ShowPopup(object rootModel, object context = null, IDictionary<string, object> settings = null)
         {
             if (!dispatcher.CheckAccess())
             {
                 dispatcher.BeginInvoke(() => ShowPopup(rootModel, context, settings));
                 return;
             }
-            var messagePrompt = CreateMessagePrompt(settings);
-            var view = ViewLocator.LocateForModel(rootModel, messagePrompt, context);
+            var popupPrompt = CreateMessagePrompt(settings);
+            var view = ViewLocator.LocateForModel(rootModel, popupPrompt, context);
 
             var displayName = rootModel as IHaveDisplayName;
             if (displayName != null)
             {
-                messagePrompt.Title = displayName.DisplayName;
+                popupPrompt.Title = displayName.DisplayName;
             }
-            messagePrompt.Content = view;
-            ViewModelBinder.Bind(rootModel, messagePrompt, null);
+            popupPrompt.Content = view;
+            ViewModelBinder.Bind(rootModel, popupPrompt, null);
             var activatable = rootModel as IActivate;
             if (activatable != null)
             {
                 activatable.Activate();
             }
-            
+
             var resultPrompt = rootModel as IPrompt;
             if (resultPrompt != null)
             {
-                resultPrompt.HideAction = messagePrompt.Hide;
-                //messagePrompt.SetBinding(PopupPrompt.IsOpenProperty, new Binding { Path = new PropertyPath("IsOpen") });
+                popupPrompt.Completed += (sender, args) => resultPrompt.PromptResult(popupPrompt.Result != true);
             }
 
             var deactivator = rootModel as IDeactivate;
             if (deactivator != null)
             {
-                messagePrompt.Completed += (sender, args) => deactivator.Deactivate(true);
+                popupPrompt.Completed += (sender, args) => deactivator.Deactivate(true);
             }
 
-
-            ViewLocator.LocateForModel(rootModel, messagePrompt, null);
-            messagePrompt.Show();
+            ViewLocator.LocateForModel(rootModel, popupPrompt, null);
+            popupPrompt.Show();
         }
 
-        private PopupPrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
+        private PopupPrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, object>> settings)
         {
             var messagePrompt = new PopupPrompt();
             messagePrompt.Overlay = new SolidColorBrush(Color.FromArgb(200, 100, 149, 237));
@@ -73,7 +71,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
         #endregion
 
         #region Toast
-        public void ShowToast(string message, string title = null, IDictionary<string, Func<object>> settings = null)
+        public void ShowToast(string message, string title = null, IDictionary<string, object> settings = null)
         {
             if (!dispatcher.CheckAccess())
             {
@@ -86,7 +84,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
             toast.Show();
         }
 
-        private ToastPrompt CreateToastPrompt(IEnumerable<KeyValuePair<string, Func<object>>> settings)
+        private ToastPrompt CreateToastPrompt(IEnumerable<KeyValuePair<string, object>> settings)
         {
             var toastPrompt = new ToastPrompt { AllowDrop = false };
             ApplySettings(toastPrompt, settings);
@@ -95,7 +93,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
 
         #endregion
 
-        private bool ApplySettings(object target, IEnumerable<KeyValuePair<string, Func<object>>> settings)
+        private bool ApplySettings(object target, IEnumerable<KeyValuePair<string, object>> settings)
         {
             if (settings != null)
             {
@@ -106,7 +104,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
                     var propertyInfo = type.GetProperty(pair.Key);
 
                     if (propertyInfo != null && pair.Value != null)
-                        propertyInfo.SetValue(target, pair.Value(), null);
+                        propertyInfo.SetValue(target, pair.Value, null);
                 }
 
                 return true;

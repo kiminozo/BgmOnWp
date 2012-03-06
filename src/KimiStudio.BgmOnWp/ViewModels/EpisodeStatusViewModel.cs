@@ -13,15 +13,15 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
-using KimiStudio.Bagumi.Api.Commands;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Commands;
+using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class EpisodeStatusViewModel : PromptScreen
+    public class EpisodeStatusViewModel : Screen, IPrompt
     {
         #region Property
         private string cnName;
@@ -113,40 +113,31 @@ namespace KimiStudio.BgmOnWp.ViewModels
             if (Selected != null)
             {
                 progressService.Show("提交中\u2026");
-                var command = new ProgressUpdateCommand(new ProgressUpdateInfo
-                                                            {
-                                                                EpisodeId = episodeModel.Id,
-                                                                Method = Selected.Method,
-                                                            }, AuthStorage.Auth);
-                command.BeginExecute(UpdateCallBack, command);
+
+                var updateInfo = new ProgressUpdateInfo
+                                     {
+                                         EpisodeId = episodeModel.Id,
+                                         Method = Selected.Method,
+                                     };
+                var task = CommandTaskFactory.Create(new ProgressUpdateCommand(updateInfo, AuthStorage.Auth));
+                task.Result(result =>
+                                {
+                                    if (result.IsSuccess())
+                                        episodeModel.Update(GetState(updateInfo));
+                                    progressService.Hide();
+                                    promptManager.ToastInfo("进度保存成功");
+                                });
+                task.Exception(err =>
+                                   {
+                                       progressService.Hide();
+                                       promptManager.ToastError(err, "进度保存失败");
+                                   });
+                task.Start();
             }
         }
 
 
         #endregion
-
-        private void UpdateCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (ProgressUpdateCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                if(result.IsSuccess())
-                    episodeModel.Update(GetState(command.UpdateInfo));
-                progressService.Hide();
-                promptManager.ToastInfo("进度保存成功");
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                progressService.Hide();
-                promptManager.ToastError(err, "进度保存失败");
-            }
-            finally
-            {
-               
-            }
-        }
 
         private WatchState GetState(ProgressUpdateInfo updateInfo)
         {

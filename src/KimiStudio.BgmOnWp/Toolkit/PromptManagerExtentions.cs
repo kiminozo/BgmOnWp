@@ -18,12 +18,12 @@ namespace KimiStudio.BgmOnWp.Toolkit
             private readonly IPromptManager promptManager;
             private readonly T viewModel;
             private object context = null;
-            private IDictionary<string, Func<object>> settings;
+            private IDictionary<string, object> settings;
 
             public PromptSetup(IPromptManager promptManager)
             {
                 this.promptManager = promptManager;
-                this.viewModel = IoC.Get<T>();
+                viewModel = IoC.Get<T>();
             }
 
             public void Show()
@@ -31,12 +31,19 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 promptManager.ShowPopup(viewModel, context, settings);
             }
 
+            public IPopupPromptSetup<T> SetTitleBackground(string resourcesKey)
+            {
+                if (settings == null) settings = new Dictionary<string, object>();
+                settings["TitleBackground"] = Application.Current.Resources[resourcesKey];
+                return this;
+            }
+
             public IPopupPromptSetup<T> EnableCancel
             {
                 get
                 {
-                    if (settings == null) settings = new Dictionary<string, Func<object>>();
-                    settings["IsCancelVisible"] = () => true;
+                    if (settings == null) settings = new Dictionary<string, object>();
+                    settings["IsCancelVisible"] = true;
                     return this;
                 }
             }
@@ -51,9 +58,9 @@ namespace KimiStudio.BgmOnWp.Toolkit
 
         public static void ToastInfo(this IPromptManager promptManager, string message, string title = null)
         {
-            var setting = new Dictionary<string, Func<object>>()
+            var setting = new Dictionary<string, object>
                               {
-                                  {"Background", () => Application.Current.Resources["ToastInfoBackground"]}
+                                  {"Background", Application.Current.Resources["ToastInfoBackground"]}
                               };
 
             promptManager.ShowToast(message, title, setting);
@@ -62,9 +69,9 @@ namespace KimiStudio.BgmOnWp.Toolkit
         public static void ToastError(this IPromptManager promptManager, Exception exception, string title = null)
         {
 
-            var setting = new Dictionary<string, Func<object>>()
+            var setting = new Dictionary<string, object>
                               {
-                                  {"Background", () => Application.Current.Resources["ToastErrorBackground"]}
+                                  {"Background", Application.Current.Resources["ToastErrorBackground"]}
                               };
             promptManager.ShowToast(exception.Message, title, setting);
         }
@@ -74,6 +81,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
     {
         void Show();
 
+        IPopupPromptSetup<T> SetTitleBackground(string resourcesKey);
         IPopupPromptSetup<T> EnableCancel { get; }
         IPopupPromptSetup<T> Setup(Action<T> action);
     }

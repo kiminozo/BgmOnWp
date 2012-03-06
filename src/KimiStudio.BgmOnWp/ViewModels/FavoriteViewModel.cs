@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Caliburn.Micro;
-using KimiStudio.Bagumi.Api.Commands;
-using KimiStudio.Bagumi.Api.Models;
+using KimiStudio.Bangumi.Api.Commands;
+using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public sealed class FavoriteViewModel : PromptScreen
+    public sealed class FavoriteViewModel : Screen, IPrompt
     {
         #region Property
         private int rating;
@@ -116,44 +116,40 @@ namespace KimiStudio.BgmOnWp.ViewModels
             return tags.Split(',', ' ');
         }
 
-        //public void SaveFavorite()
-        //{
-        //    progressService.Show("提交中\u2026");
-        //    var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
-        //    {
-        //        Comment = Comment,
-        //        Method = ActionTypes[Index],
-        //        Rating = Rating,
-        //        SubjectId = subjectState.SubjectId,
-        //        Tags = SipTags()
-        //    }, AuthStorage.Auth);
-        //    command.BeginExecute(UpdateCallBack, command);
-        //}
+        #region Implementation of IPrompt
 
-        //private void UpdateCallBack(IAsyncResult asyncResult)
-        //{
-        //    try
-        //    {
-        //        var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
-        //        var result = command.EndExecute(asyncResult);
-        //        if(result.LastTouch != 0)
-        //        {
-        //            subjectState.Update(result);
-        //        }
-        //        progressService.Hide();
-        //        promptManager.ToastInfo("收藏成功");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        Debug.WriteLine(err.Message);
-        //        progressService.Hide();
-        //        promptManager.ToastError(err, "收藏失败");
-        //    }
-        //    finally
-        //    {
+        public void PromptResult(bool canceled)
+        {
+            if (canceled) return;
 
-        //    }
-        //}
+            progressService.Show("提交中\u2026");
+            var info = new SubjectStateUpdateInfo
+                {
+                    Comment = Comment,
+                    Method = ActionTypes[Index],
+                    Rating = Rating,
+                    SubjectId = subjectState.SubjectId,
+                    Tags = SplitTags()
+                };
+            var task = CommandTaskFactory.Create(new SubjectStateUpdateCommand(info, AuthStorage.Auth));
+            task.Result(result =>
+                            {
+                                 if(result.LastTouch != 0)
+                                 {
+                                     subjectState.Update(result);
+                                 }
+                                 progressService.Hide();
+                                 promptManager.ToastInfo("收藏成功");
+                            });
+            task.Exception(err =>
+                               {
+                                   progressService.Hide();
+                                   promptManager.ToastError(err, "收藏失败");
+                               });
+            task.Start();
+        }
+
+        #endregion
     }
 
 }
