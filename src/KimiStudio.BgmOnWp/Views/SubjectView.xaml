@@ -52,7 +52,7 @@
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
                         </StackPanel>
-                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Foreground="{StaticResource BangumiPink}" BorderBrush="{StaticResource BugumiPink}" />
+                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Foreground="{StaticResource BangumiPink}" BorderBrush="{StaticResource BangumiPink}" />
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>
