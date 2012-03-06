@@ -101,7 +101,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Tags = state.Tag.GetTags();
             Comment = state.Comment;
             Rating = state.Rating;
-            Index = ActionTypes.IndexOf(state.Type);
+            var i = ActionTypes.IndexOf(state.Type);
+            Index = i < 0 ? 2 : i;
+
         }
 
         public string GetActionType()

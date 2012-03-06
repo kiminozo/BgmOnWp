@@ -29,7 +29,8 @@ namespace KimiStudio.Controls
 
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
-            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt), new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt), 
+            new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
 
         public Brush Overlay
         {
@@ -47,7 +48,8 @@ namespace KimiStudio.Controls
         }
 
         public static readonly DependencyProperty TitleBackgroundProperty =
-            DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(PopupPrompt), new PropertyMetadata(Application.Current.Resources["PhoneAccentBrush"]));
+            DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(PopupPrompt),
+            new PropertyMetadata(Application.Current.Resources["PhoneAccentBrush"]));
 
         public Brush TitleBackground
         {

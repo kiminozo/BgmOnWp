@@ -1,0 +1,8 @@
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Release\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Release\KimiStudio.Bangumi.Api.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Release\Newtonsoft.Json.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Release\Newtonsoft.Json.pdb
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\Bin\Release\Newtonsoft.Json.xml
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Release\ResolveAssemblyReference.cache
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Release\KimiStudio.Bangumi.Api.dll
+D:\Workspace\BgmOnWp\src\KimiStudio.Bangumi.Api\obj\Release\KimiStudio.Bangumi.Api.pdb

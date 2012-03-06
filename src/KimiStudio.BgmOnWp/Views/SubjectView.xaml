@@ -48,11 +48,15 @@
                             <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="0,10" Style="{StaticResource PhoneTextNormalStyle}"/>
                             <TextBlock Text="{Binding CnName}" TextWrapping="Wrap" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}"/>
                             <TextBlock Text="{Binding Doing}" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding Path=State.StateName}" Margin="0,10"  Style="{StaticResource PhoneTextSubtleStyle}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
                         </StackPanel>
-                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Foreground="{StaticResource BangumiPink}" BorderBrush="{StaticResource BangumiPink}" />
+                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" 
+                                       HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1"
+                                       Foreground="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" 
+                                       BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" />
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>

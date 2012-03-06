@@ -4,7 +4,9 @@
 	xmlns:local="clr-namespace:KimiStudio.BgmOnWp"
 	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
 	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-	xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Class="KimiStudio.BgmOnWp.App">
+	xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    xmlns:converters="clr-namespace:KimiStudio.BgmOnWp.Converters"
+	x:Class="KimiStudio.BgmOnWp.App">
 
     <!--应用程序资源-->
     <Application.Resources>
@@ -14,6 +16,9 @@
         <SolidColorBrush x:Key="BangumiBlue" Color="#FF4897FF" />
         <SolidColorBrush x:Key="ToastInfoBackground" Color="#FF3C8803"/>
         <SolidColorBrush x:Key="ToastErrorBackground" Color="Red"/>
+
+        <converters:StateBrushConverter x:Key="stateBrushConverter" />
+
         <Style TargetType="ListBox" x:Key="WrapListBox">
             <Setter Property="ItemsPanel">
                 <Setter.Value>

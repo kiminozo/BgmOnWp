@@ -13,7 +13,12 @@ namespace KimiStudio.Bangumi.Api.Models
         public string[] Tag { get; set; }
         public User User { get; set; }
         public int Rating { get; set; }
-        
+
+
+        public bool IsFavorited()
+        {
+            return Status != null;
+        }
     }
 
     public class SubjectStateInfo

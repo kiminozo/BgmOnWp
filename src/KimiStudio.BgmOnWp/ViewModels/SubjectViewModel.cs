@@ -17,16 +17,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
     public class SubjectViewModel : Screen
     {
         private readonly IProgressService progressService;
-        private readonly INavigationService navigationService;
         private readonly IPromptManager promptManager;
 
         public int Id { get; set; }
         private SubjectStateModel subjectStateModel;
-        
+
         #region Property
         private string name;
         private string cnName;
         private string doing;
+        private bool favorited;
         private Uri uriSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
@@ -103,6 +103,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public SubjectStateModel State
+        {
+            get { return subjectStateModel; }
+            set
+            {
+                subjectStateModel = value;
+                NotifyOfPropertyChange(() => State);
+            }
+        }
+
         public string Doing
         {
             get { return doing; }
@@ -116,10 +126,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, INavigationService navigationService, IPromptManager promptManager)
+        public SubjectViewModel(IProgressService progressService, IPromptManager promptManager)
         {
             this.progressService = progressService;
-            this.navigationService = navigationService;
             this.promptManager = promptManager;
 
         }
@@ -140,30 +149,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    promptManager.ToastError(err, "错误");
                                });
             task.Start();
-            //var command = new SubjectCommand(Id, AuthStorage.Auth);
-            //command.BeginExecute(GetSubjectCallBack, command);
-        }
-
-
-        private void GetSubjectCallBack(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var command = (SubjectCommand)asyncResult.AsyncState;
-                var result = command.EndExecute(asyncResult);
-                SetSubject(result);
-
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                promptManager.ToastError(err, "错误");
-                //TODO:
-            }
-            finally
-            {
-                progressService.Hide();
-            }
         }
 
         private void SetSubject(SubjectCommandResult result)
@@ -175,7 +160,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             UriSource = subject.Images.Large;
             Summary = subject.Summary;
             Doing = string.Format("{0}人在看", subject.Collection.Doing);
-            subjectStateModel = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
+            State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
             if (subject.Characters != null)
             {
@@ -221,52 +206,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         public void Favorite()
         {
             promptManager.PopupFor<FavoriteViewModel>()
-                .Setup(model => model.SetUp(subjectStateModel))
+                .Setup(model => model.SetUp(State))
                 .SetTitleBackground("BangumiBlue")
                 .EnableCancel
                 .Show();
         }
-
-        //public void SaveFavorite(FavoriteViewModel favorite)
-        //{
-        //    favorite.Hide();
-            
-        //    progressService.Show("提交中\u2026");
-        //    var command = new SubjectStateUpdateCommand(new SubjectStateUpdateInfo
-        //    {
-        //        Comment = favorite.Comment,
-        //        Method = favorite.GetActionType(),
-        //        Rating = favorite.Rating,
-        //        SubjectId = Id,
-        //        Tags = favorite.SplitTags()
-        //    }, AuthStorage.Auth);
-        //    command.BeginExecute(UpdateCallBack, command);
-        //}
-
-        //private void UpdateCallBack(IAsyncResult asyncResult)
-        //{
-        //    try
-        //    {
-        //        var command = (SubjectStateUpdateCommand)asyncResult.AsyncState;
-        //        var result = command.EndExecute(asyncResult);
-        //        if (result.LastTouch != 0)
-        //        {
-        //            subjectStateModel.Update(result);
-        //        }
-        //        progressService.Hide();
-        //        promptManager.ToastInfo("收藏成功");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        Debug.WriteLine(err.Message);
-        //        progressService.Hide();
-        //        promptManager.ToastError(err, "收藏失败");
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        //}
 
         public void TapEpisodeItem(EpisodeModel episode)
         {
