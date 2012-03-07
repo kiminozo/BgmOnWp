@@ -101,7 +101,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                {
                                    // progressService.Hide();
                                    loadingService.Hide();
-                                   promptManager.ToastError(err, "登录失败");
+                                   promptManager.ToastError(err);
                                });
             task.Start();
         }
