@@ -13,19 +13,19 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel>
-            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="{StaticResource BangumiPink}">
-                <c:TabSwitchItem Content="想看" />
-                <c:TabSwitchItem Content="看过" />
-                <c:TabSwitchItem Content="在看" />
-                <c:TabSwitchItem Content="搁置" />
-                <c:TabSwitchItem Content="抛弃" />
+            <c:TabSwitch SelectedIndex="{Binding Index,Mode=TwoWay}" SelectedBackground="{StaticResource BangumiPink}" SelectedWidth="80" >
+                <c:TabSwitchItem Content="想看" Width="80" />
+                <c:TabSwitchItem Content="看过" Width="80" />
+                <c:TabSwitchItem Content="在看" Width="80" />
+                <c:TabSwitchItem Content="搁置" Width="80" />
+                <c:TabSwitchItem Content="抛弃" Width="80" />
             </c:TabSwitch>
-            <TextBlock Text="评分" />
+            <TextBlock Text="评分" Style="{StaticResource PhoneTextSubtleStyle}" />
             <c:StarMark Marked="{Binding Rating,Mode=TwoWay}" 
                         MaxStars="10" Height="50" HorizontalAlignment="Left" Width="340" Padding="10,10,0,10" Margin="15,0,0,0" />
-            <TextBlock Text="标签" />
+            <TextBlock Text="标签" Style="{StaticResource PhoneTextSubtleStyle}" />
             <TextBox Text="{Binding Tags,Mode=TwoWay}" MaxLength="20" />
-            <TextBlock Text="吐槽"/>
+            <TextBlock Text="吐槽" Style="{StaticResource PhoneTextSubtleStyle}"/>
             <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
                      Text="{Binding Comment,Mode=TwoWay}" />
             <!--<Button Content="保存" Height="72" Width="160" Background="{StaticResource PhoneAccentBrush}" >

@@ -22,7 +22,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly ILoadingService loadingService;
 
 
-        private bool authed;
+        public bool Authed { get; private set; }
 
         private IEnumerable<WatchedItemModel> watchedItems;
         public IEnumerable<WatchedItemModel> WatchedItems
@@ -68,18 +68,33 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.loadingService = loadingService;
         }
 
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            if (AuthStorage.UserName == null)
+                navigation.UriFor<LoginViewModel>().Navigate();
+
+        }
+
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            //progressService.Show("登录中\u2026");
-            loadingService.Show("登录中\u2026");
 
-            var task = CommandTaskFactory.Create(new LoginCommand("piova", "piova@live.com"));
+            if (AuthStorage.Authed)
+            {
+                Authed = true;
+                GetWatched();
+                return;
+            }
+
+
+            loadingService.Show("登录中\u2026");
+            var task = CommandTaskFactory.Create(new LoginCommand(AuthStorage.UserName, AuthStorage.Password));
             task.Result(auth =>
                             {
                                 loadingService.Hide();
                                 AuthStorage.Auth = auth;
-                                authed = true;
+                                Authed = true;
                                 GetWatched();
                             });
             task.Exception(err =>
@@ -137,37 +152,37 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void NavWatchings()
         {
-            if(!authed)return;
+            if(!Authed)return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
 
         public void NavAll()
         {
-            if (!authed) return;
+            if (!Authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
 
         public void NavAmine()
         {
-            if (!authed) return;
+            if (!Authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 1).Navigate();
         }
 
         public void NavReal()
         {
-            if (!authed) return;
+            if (!Authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 2).Navigate();
         }
 
         public void NavCalendar()
         {
-            if (!authed) return;
+            if (!Authed) return;
             navigation.UriFor<CalendarViewModel>().Navigate();
         }
 
         public void OnTapItem(WatchedItemModel item)
         {
-            if (!authed) return;
+            if (!Authed) return;
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
                 .WithParam(x => x.DisplayName, item.Name)

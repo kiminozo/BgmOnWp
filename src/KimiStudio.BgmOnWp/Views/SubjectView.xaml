@@ -10,7 +10,7 @@
     xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:cal="http://www.caliburnproject.org" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"

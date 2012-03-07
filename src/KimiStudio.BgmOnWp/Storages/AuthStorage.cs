@@ -18,7 +18,11 @@ namespace KimiStudio.BgmOnWp.Storages
     public static class AuthStorage
     {
         private const string AuthKey = "authKey";
+        private const string UserNameKey = "usernameKey";
+        private const string PasswordKey = "usernameKey";
+
         private static AuthUser _authUser;
+
         public static AuthUser Auth
         {
             get
@@ -38,6 +42,10 @@ namespace KimiStudio.BgmOnWp.Storages
             }
         }
 
+        public static bool Authed { get; set; }
+
+
+
         [MethodImpl(MethodImplOptions.Synchronized)]
         private static void ReadAuth()
         {
@@ -47,5 +55,31 @@ namespace KimiStudio.BgmOnWp.Storages
                 _authUser = JsonConvert.DeserializeObject<AuthUser>(authString);
             }
         }
+
+        private static string _userName;
+        private static string _password;
+
+        public static string UserName
+        {
+            get
+            {
+                if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(UserNameKey, out _userName))
+                {
+                    return _userName;
+                }
+                return null;
+            }
+            set { IsolatedStorageSettings.ApplicationSettings[UserNameKey] = value; }
+        }
+
+        public static string Password
+        {
+            get
+            {
+                return IsolatedStorageSettings.ApplicationSettings.TryGetValue(PasswordKey, out _password) ? _password : null;
+            }
+            set { IsolatedStorageSettings.ApplicationSettings[PasswordKey] = value; }
+        }
+
     }
 }

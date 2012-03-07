@@ -89,6 +89,7 @@
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\IPrompt.cs" />
     <Compile Include="Toolkit\IPromptManager.cs" />
+    <Compile Include="Toolkit\LoadingService.cs" />
     <Compile Include="Toolkit\ProgressService.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Toolkit\PromptManager.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Models\EpisodeStatusModel.cs" />
     <Compile Include="ViewModels\EpisodeStatusViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="Models\WatchedItemModel.cs" />
     <Compile Include="ViewModels\SubjectListViewModel.cs" />
@@ -109,6 +111,9 @@
     </Compile>
     <Compile Include="Views\FavoriteView.xaml.cs">
       <DependentUpon>FavoriteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -142,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +181,7 @@
     </Content>
     <Content Include="Images\appbar.favs.addto.rest.png" />
     <Content Include="Images\appbar.favs.rest.png" />
+    <Content Include="Images\appbar.save.rest.png" />
     <Content Include="Images\heart.png" />
     <Content Include="Images\info_only_m.png" />
     <Content Include="Images\logo-bgm.png" />
@@ -189,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\shell_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

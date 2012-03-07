@@ -163,6 +163,7 @@
         <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" 
                               BackgroundColor="#99000000" StateChanged="OnAppBarStateChanged">
             <shell:ApplicationBar.MenuItems>
+                <!--<cal:AppBarMenuItem Text="配置"/>-->
                 <shell:ApplicationBarMenuItem Text="配置"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
