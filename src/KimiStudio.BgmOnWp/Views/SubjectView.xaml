@@ -94,7 +94,7 @@
                 <ListBox ItemsSource="{Binding Characters}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="85" Margin="0,5">
+                            <Grid Height="95" Margin="0,5">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <cal:ActionMessage MethodName="TapCharacterItem" >
@@ -106,10 +106,16 @@
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <c:Thumbnail UriSource="{Binding CharacterImage}" Width="75" Height="75" Margin="0"/>
-                                <StackPanel Grid.Column="1">
-                                    <TextBlock Text="{Binding CharacterName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="12,2" />
-                                    <TextBlock Text="{Binding CvName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" VerticalAlignment="Top" />
+                                <c:Thumbnail UriSource="{Binding CharacterImage}" VerticalAlignment="Center" Width="75" Height="75"/>
+                                <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                    <TextBlock Text="{Binding CharacterName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="0,2" />
+									<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2,10,2" >
+										<Border Background="{StaticResource BangumiBlue}" CornerRadius="6" >
+                                            <TextBlock Text="{Binding Role}" Style="{StaticResource PhoneTextNormalStyle}"/>
+										</Border>
+                                        <TextBlock Text="{Binding CnName}"  Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"/>
+									</StackPanel>  
+									<TextBlock Text="{Binding CvName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}"  Margin="0,2"/>                                 
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

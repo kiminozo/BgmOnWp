@@ -164,7 +164,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             if (subject.Characters != null)
             {
-                Characters = subject.Characters.Select(CharacterModel.FromCharacter);
+                Characters = subject.Characters.OrderBy(p => p.Id).Select(CharacterModel.FromCharacter);
             }
             if (subject.Staff != null)
             {

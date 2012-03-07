@@ -9,6 +9,8 @@ namespace KimiStudio.BgmOnWp.Models
     {
         public Uri CharacterImage { get; set; }
         public string CharacterName { get; set; }
+        public string CnName { get; set; }
+        public string Role { get; set; }
         public string CvName { get; set; }
         public Uri RemoteUrl { get; set; }
 
@@ -22,6 +24,8 @@ namespace KimiStudio.BgmOnWp.Models
                                CharacterImage = CharacterImageUri(character.Images),
                                CharacterName = character.Name,
                                CvName = ToCvName(character.Actors),
+                               Role = character.RoleName,
+                               CnName = character.Info == null ? null : character.Info.NameCn,
                                RemoteUrl = character.Url
                            };
             }
