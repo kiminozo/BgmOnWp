@@ -19,6 +19,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
+        private readonly ILoadingService loadingService;
+
+
         private bool authed;
 
         private IEnumerable<WatchedItemModel> watchedItems;
@@ -57,28 +60,32 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
         #region Private
-        public MainPageViewModel(INavigationService navigation, IProgressService progressService, IPromptManager promptManager)
+        public MainPageViewModel(INavigationService navigation, IProgressService progressService, IPromptManager promptManager, ILoadingService loadingService)
         {
             this.navigation = navigation;
             this.progressService = progressService;
             this.promptManager = promptManager;
+            this.loadingService = loadingService;
         }
 
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
-            progressService.Show("登录中\u2026");
+            //progressService.Show("登录中\u2026");
+            loadingService.Show("登录中\u2026");
 
             var task = CommandTaskFactory.Create(new LoginCommand("piova", "piova@live.com"));
             task.Result(auth =>
                             {
+                                loadingService.Hide();
                                 AuthStorage.Auth = auth;
                                 authed = true;
                                 GetWatched();
                             });
             task.Exception(err =>
                                {
-                                   progressService.Hide();
+                                   // progressService.Hide();
+                                   loadingService.Hide();
                                    promptManager.ToastError(err, "登录失败");
                                });
             task.Start();

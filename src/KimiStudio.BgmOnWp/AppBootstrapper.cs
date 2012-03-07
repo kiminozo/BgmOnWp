@@ -21,6 +21,7 @@ namespace KimiStudio.BgmOnWp
 
             container.Instance<IProgressService>(new ProgressService(RootFrame));
             container.Instance<IPromptManager>(new PromptManager(RootFrame.Dispatcher));
+            container.Instance<ILoadingService>(new LoadingService());
 
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<FavoriteViewModel>();
