@@ -32,6 +32,13 @@ namespace KimiStudio.Bangumi.Api.Commands
             return request;
         }
 
+        protected override AuthUser ValidateResult(AuthUser result)
+        {
+            if (result.AuthEncode == null) throw new ApiException("登录失败，请检查用户名和密码");
+
+            return result;
+        }
+
         #endregion
     }
 

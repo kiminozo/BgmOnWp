@@ -66,6 +66,7 @@
     <Compile Include="Commands\SubjectStateCommand.cs" />
     <Compile Include="Commands\SubjectStateUpdateCommand.cs" />
     <Compile Include="Commands\CommandTask.cs" />
+    <Compile Include="Models\ApiException.cs" />
     <Compile Include="Models\BagumiData.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Models\BagumiSubject.cs" />

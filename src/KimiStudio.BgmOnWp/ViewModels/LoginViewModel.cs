@@ -57,7 +57,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void Login()
         {
-            if(string.IsNullOrWhiteSpace(UserName) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 promptManager.ShowToast("请输入用户名和密码");
                 return;
@@ -79,7 +79,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 // progressService.Hide();
                 loadingService.Hide();
-                promptManager.ToastError(err, "登录失败");
+                promptManager.ToastError(err);
             });
             task.Start();
         }

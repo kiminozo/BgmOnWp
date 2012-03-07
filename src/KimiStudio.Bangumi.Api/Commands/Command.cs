@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using KimiStudio.Bangumi.Api.Models;
 using Newtonsoft.Json;
 
 namespace KimiStudio.Bangumi.Api.Commands
@@ -82,7 +83,9 @@ namespace KimiStudio.Bangumi.Api.Commands
         }
     }
 
+// ReSharper disable TypeParameterCanBeVariant
     public interface ICommand<TResult> where TResult : class
+// ReSharper restore TypeParameterCanBeVariant
     {
         void BeginExecute(AsyncCallback asyncCallback, object state);
         TResult EndExecute(IAsyncResult asyncResult);
@@ -101,10 +104,31 @@ namespace KimiStudio.Bangumi.Api.Commands
 
         public TResult EndExecute(IAsyncResult asyncResult)
         {
-            var result = EndSend(asyncResult);
-            if (string.IsNullOrEmpty(result)) return default(TResult);
+            string resultString;
+            try
+            {
+                resultString = EndSend(asyncResult);
+            }
+            catch (Exception err)
+            {
+                throw new ApiException("网络异常，请检查网络设置", err);
+            }
+            if (string.IsNullOrEmpty(resultString)) return default(TResult);
+            TResult result;
+            try
+            {
+                result = JsonConvert.DeserializeObject<TResult>(resultString);
+            }
+            catch (Exception err)
+            {
+                throw new ApiException("获取数据发生错误", err);
+            }
+            return ValidateResult(result);
+        }
 
-            return JsonConvert.DeserializeObject<TResult>(result);
+        protected virtual TResult ValidateResult(TResult result)
+        {
+            return result;
         }
 
     }

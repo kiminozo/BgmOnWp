@@ -11,7 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
@@ -30,9 +30,9 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock Text="你的用户名或Email地址" Style="{StaticResource PhoneTextSmallStyle}"/>
-                <TextBox Text="{Binding UserName,Mode=TwoWay}"/>
+                <TextBox x:Name="username" Text="{Binding UserName,Mode=TwoWay}" TextChanged="TextBox_TextChanged" />
                 <TextBlock Text="你的密码" Style="{StaticResource PhoneTextSmallStyle}"/>
-                <PasswordBox Password="{Binding Password,Mode=TwoWay}" />
+                <PasswordBox x:Name="password" Password="{Binding Password,Mode=TwoWay}" PasswordChanged="PasswordBox_PasswordChanged" />
             </StackPanel>
             <Image Height="340" Source="/KimiStudio.BgmOnWp;component/Images/shell_1.png" Stretch="Fill" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,80" Opacity="0.695"/>
         </Grid>
