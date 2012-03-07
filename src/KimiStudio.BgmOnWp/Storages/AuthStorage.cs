@@ -81,5 +81,12 @@ namespace KimiStudio.BgmOnWp.Storages
             set { IsolatedStorageSettings.ApplicationSettings[PasswordKey] = value; }
         }
 
+
+        internal static void Clear()
+        {
+            IsolatedStorageSettings.ApplicationSettings.Remove(AuthKey);
+            IsolatedStorageSettings.ApplicationSettings.Remove(UserNameKey);
+            IsolatedStorageSettings.ApplicationSettings.Remove(PasswordKey);
+        }
     }
 }

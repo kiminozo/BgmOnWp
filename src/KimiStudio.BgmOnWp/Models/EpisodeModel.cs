@@ -40,7 +40,7 @@ namespace KimiStudio.BgmOnWp.Models
                                  Id = episode.Id,
                                  Sort = episode.Sort,
                                  Number = episode.Sort.ToString(CultureInfo.InvariantCulture),
-                                 Name = episode.Name,
+                                 Name = string.Format("ep.{0} {1}", episode.Sort, episode.Name),
                                  CnName = episode.NameCn,
                                  RemoteUrl = episode.Url,
                                  IsOnAir = episode.Status == Episode.OnAir,
@@ -49,7 +49,7 @@ namespace KimiStudio.BgmOnWp.Models
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }

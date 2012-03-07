@@ -106,6 +106,20 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
+        protected override void OnActivate()
+        {
+            base.OnActivate();
+            //切换用户后更新
+            if(!Authed)
+            {
+                if (AuthStorage.Authed)
+                {
+                    Authed = true;
+                    GetWatched();
+                }
+            }
+        }
+
         private void GetWatched()
         {
             progressService.Show("加载中\u2026");
@@ -149,6 +163,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
         #region Public
+
+        public void Logout()
+        {
+            AuthStorage.Clear();
+            Authed = false;
+            navigation.UriFor<LoginViewModel>().Navigate();
+        }
 
         public void NavWatchings()
         {
