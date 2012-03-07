@@ -19,7 +19,7 @@ namespace KimiStudio.BgmOnWp.Storages
     {
         private const string AuthKey = "authKey";
         private const string UserNameKey = "usernameKey";
-        private const string PasswordKey = "usernameKey";
+        private const string PasswordKey = "passwordKey";
 
         private static AuthUser _authUser;
 

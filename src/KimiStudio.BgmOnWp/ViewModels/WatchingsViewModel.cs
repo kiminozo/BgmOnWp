@@ -52,8 +52,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    promptManager.ToastError(err);
                                });
             task.Start();
-            //var watchedCommand = new GetWatchedCommand(AuthStorage.Auth);
-            //watchedCommand.BeginExecute(GetWatchedCallBack, watchedCommand);
         }
 
         public void OnTapItem(WatchedItemModel item)
@@ -64,24 +62,5 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.UriSource, item.UriSource)
                 .Navigate();
         }
-
-        ////private void GetWatchedCallBack(IAsyncResult asyncResult)
-        ////{
-        ////    try
-        ////    {
-        ////        var command = (GetWatchedCommand)asyncResult.AsyncState;
-        ////        var result = command.EndExecute(asyncResult);
-        ////        var query = result.OrderByDescending(p => p.LastTouch);
-        ////        Items.Apply(x => x.UpdateWatchingItems(query.Select(p => p.Subject)));
-        ////    }
-        ////    catch (Exception)
-        ////    {
-        ////        //TODO:
-        ////    }
-        ////    finally
-        ////    {
-        ////        progressService.Hide();
-        ////    }
-        ////} 
     }
 }

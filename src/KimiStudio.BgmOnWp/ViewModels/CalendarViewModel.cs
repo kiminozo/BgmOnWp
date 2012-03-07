@@ -50,13 +50,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             var task = CommandTaskFactory.Create(new CalendarCommand());
             task.Result(result =>
                             {
-                                progressService.Hide();
                                 result.Apply(x =>
                                                  {
                                                      var item = Items[x.WeekDay.Id - 1];
                                                      item.DisplayName = x.WeekDay.Cn;
                                                      item.UpdateWatchingItems(x.Items);
                                                  });
+                                progressService.Hide();
                             });
             task.Exception(err =>
                                {
