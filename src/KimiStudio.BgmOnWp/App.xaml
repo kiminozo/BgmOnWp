@@ -87,7 +87,7 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}">
+                            <Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}" CornerRadius="10">
                                 <TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                         </Border>
@@ -95,6 +95,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        
         <Style x:Key="TransitionPageStyle" TargetType="phone:PhoneApplicationPage">
             <Setter Property="toolkit:TransitionService.NavigationInTransition">
                 <Setter.Value>

@@ -95,14 +95,19 @@
     <Compile Include="Toolkit\PromptManager.cs" />
     <Compile Include="Toolkit\PromptManagerExtentions.cs" />
     <Compile Include="Models\EpisodeStatusModel.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\EpisodeStatusViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\SoftStaffModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="Models\WatchedItemModel.cs" />
     <Compile Include="ViewModels\SubjectListViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CalendarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

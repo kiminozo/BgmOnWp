@@ -33,8 +33,13 @@
                 <TextBox x:Name="username" Text="{Binding UserName,Mode=TwoWay}" TextChanged="TextBox_TextChanged" />
                 <TextBlock Text="你的密码" Style="{StaticResource PhoneTextSmallStyle}"/>
                 <PasswordBox x:Name="password" Password="{Binding Password,Mode=TwoWay}" PasswordChanged="PasswordBox_PasswordChanged" />
+
+                <HyperlinkButton Content="注册帐号" NavigateUri="http://bgm.tv/signup" TargetName="_blank" 
+                                 Margin="0,50,0,0" Background="{StaticResource BangumiPink}" HorizontalAlignment="Left" Width="200" Height="46" 
+                                 Style="{StaticResource HyperlinkText}"/>
+                    
             </StackPanel>
-            <Image Height="340" Source="/KimiStudio.BgmOnWp;component/Images/shell_1.png" Stretch="Fill" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,80" Opacity="0.695"/>
+            <Image Height="340" Source="/KimiStudio.BgmOnWp;component/Images/shell_1.png" Stretch="Fill" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,80" Opacity="0.7"/>
         </Grid>
     </Grid>
 

@@ -163,7 +163,8 @@
         <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" 
                               BackgroundColor="#99000000" StateChanged="OnAppBarStateChanged">
             <shell:ApplicationBar.MenuItems>
-                <cal:AppBarMenuItem Text="切换用户" Message="Logout"/>
+                <cal:AppBarMenuItem Text="登出" Message="Logout"/>
+                <cal:AppBarMenuItem Text="关于" Message="About"/>
                 <!--<shell:ApplicationBarMenuItem Text="配置"/>-->
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>

@@ -31,6 +31,7 @@ namespace KimiStudio.BgmOnWp
             container.PerRequest<CalendarViewModel>();
             container.PerRequest<EpisodeStatusViewModel>();
             container.PerRequest<LoginViewModel>();
+            container.PerRequest<AboutViewModel>();
 
             AddCustomConventions();
         }

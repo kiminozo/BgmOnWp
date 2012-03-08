@@ -171,6 +171,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
             navigation.UriFor<LoginViewModel>().Navigate();
         }
 
+        public void About()
+        {
+            navigation.UriFor<AboutViewModel>().Navigate();
+        }
+
         public void NavWatchings()
         {
             if(!Authed)return;
