@@ -15,7 +15,7 @@ namespace KimiStudio.BgmOnWp.Models
         {
             Queue = new EpisodeStatusModel { Name = "想看", Method = ProgressUpdateInfo.Queue };
             Watched = new EpisodeStatusModel { Name = "看过", Method = ProgressUpdateInfo.Watched };
-            WatchedEnd = new EpisodeStatusModel { Name = "看到", Method = ProgressUpdateInfo.Watched };
+            WatchedEnd = new EpisodeStatusModel { Name = "看到", Method = ProgressUpdateInfo.Watched,IsEnd = true};
             Drop = new EpisodeStatusModel { Name = "抛弃", Method = ProgressUpdateInfo.Drop };
             Cancel = new EpisodeStatusModel { Name = "撤销", Method = ProgressUpdateInfo.Remove };
         }
@@ -27,6 +27,8 @@ namespace KimiStudio.BgmOnWp.Models
 
         public string Method { get; private set; }
         public string Name { get; private set; }
+
+        public bool IsEnd { get; private set; }
     }
 
     public sealed class EpisodeStatuses

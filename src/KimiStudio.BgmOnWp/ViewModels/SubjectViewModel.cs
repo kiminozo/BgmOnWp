@@ -32,6 +32,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
         private IEnumerable<EpisodeModel> episodes;
+        private IList<int> episodeIds = new List<int>(0);
 
         public string Name
         {
@@ -172,6 +173,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
             if (subject.Eps != null)
             {
+                episodeIds = subject.Eps.OrderBy(p => p.Sort).Select(p => p.Id).ToList();
+
                 const int maxLength = 52;
                 int length = subject.Eps.Count;
 
@@ -216,7 +219,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             if (!episode.IsOnAir || !subjectStateModel.IsWatching) return;
             promptManager.PopupFor<EpisodeStatusViewModel>()
-                .Setup(x => x.Setup(episode))
+                .Setup(x => x.Setup(episode, episodeIds))
                 .SetTitleBackground("BangumiPink")
                 .EnableCancel
                 .Show();

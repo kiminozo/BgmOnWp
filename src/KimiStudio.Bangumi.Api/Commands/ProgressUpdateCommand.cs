@@ -28,7 +28,7 @@ namespace KimiStudio.Bangumi.Api.Commands
             request.AddBody("source", ApiKeyNames.Source);
             request.AddBody("auth", auth.AuthEncode);
 
-            if (UpdateInfo.Episodes != null && UpdateInfo.Episodes.Count > 0)
+            if (UpdateInfo.Episodes != null)
             {
                 var builder = new StringBuilder();
                 foreach (var item in UpdateInfo.Episodes)

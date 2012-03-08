@@ -41,7 +41,7 @@ namespace KimiStudio.Bangumi.Api.Models
 
         public int EpisodeId { get; set; }
 
-        public IList<int> Episodes { get; set; }
+        public IEnumerable<int> Episodes { get; set; }
 
         public string Method { get; set; }
     }

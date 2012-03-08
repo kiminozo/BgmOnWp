@@ -67,6 +67,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         #endregion
 
+        private IEnumerable<int> episodeIdList;
+
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
 
@@ -76,11 +78,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.promptManager = promptManager;
         }
 
-        public void Setup(EpisodeModel episode)
+        public void Setup(EpisodeModel episode, IEnumerable<int> episodeIds = null)
         {
             episodeModel = episode;
             DisplayName = episode.Name;
             CnName = episode.CnName;
+            episodeIdList = episodeIds;
             SetSelectType(episode.WatchState);
         }
 
@@ -114,11 +117,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 progressService.Show("提交中\u2026");
 
+                
+               
                 var updateInfo = new ProgressUpdateInfo
                                      {
                                          EpisodeId = episodeModel.Id,
                                          Method = Selected.Method,
                                      };
+                if (selected.IsEnd)
+                {
+                    updateInfo.Episodes = episodeIdList.Where(p => p <= episodeModel.Id);
+                }
                 var task = CommandTaskFactory.Create(new ProgressUpdateCommand(updateInfo, AuthStorage.Auth));
                 task.Result(result =>
                                 {
