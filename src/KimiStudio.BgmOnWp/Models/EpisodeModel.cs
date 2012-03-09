@@ -6,7 +6,7 @@ using KimiStudio.Bangumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {
-    public class EpisodeModel : PropertyChangedBase
+    public class EpisodeModel : PropertyChangedBase, IEquatable<EpisodeModel>
     {
         private Color fill;
 
@@ -75,6 +75,11 @@ namespace KimiStudio.BgmOnWp.Models
 
             }
             WatchState = state;
+        }
+
+        public bool Equals(EpisodeModel other)
+        {
+            return Id == other.Id;
         }
     }
 

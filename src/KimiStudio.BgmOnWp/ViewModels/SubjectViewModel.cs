@@ -205,17 +205,21 @@ namespace KimiStudio.BgmOnWp.ViewModels
                     query = subject.Eps;
                 }
                 var list = query.Select(EpisodeModel.FromEpisode).ToList();
-                if (result.Progress != null)
+                if(Episodes == null || !list.SequenceEqual(Episodes))
+                {
+                    Episodes = list;
+                }
+
+                if (Episodes != null && result.Progress != null)
                 {
                     var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
-                    list.Apply(model =>
-                                   {
-                                       EpisodeProgress prog;
-                                       if (!progs.TryGetValue(model.Id, out prog)) return;
-                                       model.Update((WatchState) prog.Status.Id);
-                                   });
+                    Episodes.Apply(model =>
+                                       {
+                                           EpisodeProgress prog;
+                                           if (!progs.TryGetValue(model.Id, out prog)) return;
+                                           model.Update((WatchState) prog.Status.Id);
+                                       });
                 }
-                Episodes = list;
             }
         }
 
