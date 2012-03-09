@@ -247,4 +247,14 @@
 
     </Style>
 
+    <Style TargetType="local:SearchBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SearchBox">
+                    <TextBox x:Name="textBox" Text="{TemplateBinding Keyword}" InputScope="Search"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -169,7 +169,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = subject.Name;
             Name = subject.Name;
             CnName = subject.NameCn;
-            UriSource = subject.Images.Large;
+            UriSource = subject.Images != null ? subject.Images.Large : null;
             Summary = subject.Summary;
             Doing = string.Format("{0}人在看", subject.Collection.Doing);
             State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
@@ -183,7 +183,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void SetEpisodes(SubjectCommandResult result)
         {
-            if(Episodes == null)
+            if (Episodes == null)
             {
                 Episodes = EpisodeCollectionModel.FromEpisodes(result);
             }

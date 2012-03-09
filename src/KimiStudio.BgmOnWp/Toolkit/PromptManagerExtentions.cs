@@ -63,6 +63,17 @@ namespace KimiStudio.BgmOnWp.Toolkit
             promptManager.ShowToast(message, title, setting);
         }
 
+        public static void ToastWarn(this IPromptManager promptManager, string message, string title = null)
+        {
+            var setting = new Dictionary<string, object>
+                              {
+                                  {"Background", Application.Current.Resources["ToastErrorBackground"]}
+                              };
+
+            promptManager.ShowToast(message, title, setting);
+        }
+
+
         public static void ToastError(this IPromptManager promptManager, Exception exception, string title = null)
         {
 

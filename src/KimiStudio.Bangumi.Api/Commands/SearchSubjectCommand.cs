@@ -11,7 +11,7 @@ namespace KimiStudio.Bangumi.Api.Commands
         private readonly int start;
         private readonly int count;
 
-        public SearchSubjectCommand(string keyword, int type = 1, int start = 1, int count = 20)
+        public SearchSubjectCommand(string keyword, int type = 2, int start = 1, int count = 20)
         {
             this.keyword = keyword;
             this.type = type;
@@ -20,11 +20,10 @@ namespace KimiStudio.Bangumi.Api.Commands
         }
 
         private const string Uri = @"http://api.bgm.tv/search/subject/{0}";
-        //http://api.bgm.tv/search/subject/{0}?type=1&start=1&max_results=20
 
         protected override RequestData CreateRequestData()
         {
-            var request = new RequestData(string.Format(Uri, keyword));
+            var request = new RequestData(string.Format(Uri,keyword));
 
             request.AddQueryString("type", type.ToString(CultureInfo.InvariantCulture));
             request.AddQueryString("start", start.ToString(CultureInfo.InvariantCulture));

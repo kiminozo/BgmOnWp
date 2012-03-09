@@ -160,8 +160,9 @@
         </controls:Panorama>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True" Opacity="1" 
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="1" 
                               BackgroundColor="#99000000" StateChanged="OnAppBarStateChanged">
+            <cal:AppBarButton IconUri="/Images/appbar.feature.search.rest.png" Text="搜索" Message="Search"/>
             <shell:ApplicationBar.MenuItems>
                 <cal:AppBarMenuItem Text="登出" Message="Logout"/>
                 <cal:AppBarMenuItem Text="关于" Message="About"/>

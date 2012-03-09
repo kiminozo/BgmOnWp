@@ -9,9 +9,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
 {
     public class SubjectListViewModel : Screen
     {
-        private IEnumerable<WatchedItemModel> watchingItems;
+        private IEnumerable<SubjectSummaryModel> watchingItems;
 
-        public IEnumerable<WatchedItemModel> WatchingItems
+        public IEnumerable<SubjectSummaryModel> WatchingItems
         {
             get { return watchingItems; }
             set
@@ -26,7 +26,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         public void UpdateWatchingItems(IEnumerable<BagumiSubject> itemModels)
         {
             var query = Filter == null ? itemModels : itemModels.Where(Filter);
-            WatchingItems = query.Select(WatchedItemModel.FromBagumiData);
+            WatchingItems = query.Select(SubjectSummaryModel.FromBagumiData);
         }
 
     }

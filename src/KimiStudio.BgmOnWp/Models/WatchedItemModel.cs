@@ -3,20 +3,22 @@ using KimiStudio.Bangumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {
-    public class WatchedItemModel
+    public class SubjectSummaryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CnName { get; set; }
         public Uri UriSource { get; set; }
 
-        public static WatchedItemModel FromBagumiData(BagumiSubject subject)
+        public static SubjectSummaryModel FromBagumiData(BagumiSubject subject)
         {
-            return new WatchedItemModel
-                {
-                    Id = subject.Id,
-                    Name = subject.Name,
-                    UriSource = subject.Images.Large
-                };
+            return new SubjectSummaryModel
+                       {
+                           Id = subject.Id,
+                           Name = subject.Name,
+                           CnName = subject.NameCn,
+                           UriSource = subject.Images != null ? subject.Images.Large : null
+                       };
         }
     }
 }

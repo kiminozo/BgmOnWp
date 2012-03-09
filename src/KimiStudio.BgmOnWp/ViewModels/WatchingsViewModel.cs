@@ -54,7 +54,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
-        public void OnTapItem(WatchedItemModel item)
+        public void OnTapItem(SubjectSummaryModel item)
         {
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)

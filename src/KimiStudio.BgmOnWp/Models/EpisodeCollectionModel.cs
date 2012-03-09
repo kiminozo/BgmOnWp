@@ -74,8 +74,10 @@ namespace KimiStudio.BgmOnWp.Models
       
         #region Implementation of IEnumerable
 
+        private static readonly IEnumerator<EpisodeModel> EmptyEnumerator = Enumerable.Empty<EpisodeModel>().GetEnumerator();
         public IEnumerator<EpisodeModel> GetEnumerator()
         {
+            if (EpisodeModels == null) return EmptyEnumerator;
             return EpisodeModels.GetEnumerator();
         }
 
