@@ -155,6 +155,22 @@
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="评论" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
+                <ListBox ItemsSource="{Binding Blogs}" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5,10" Orientation="Horizontal">
+                                <c:Thumbnail UriSource="{Binding Image}" Width="75" Height="75" Margin="5"  VerticalAlignment="Top"/>
+                                <StackPanel Margin="5" Width="300">
+                                    <TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextTitle3Style}"/>
+                                    <TextBlock Margin="0,5" TextWrapping="Wrap" Text="{Binding Subtitle}" 
+                                               Style="{StaticResource PhoneTextSmallStyle}"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Summary}" 
+                                               FontSize="16" Margin="5,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>

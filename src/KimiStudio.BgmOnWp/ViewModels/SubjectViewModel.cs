@@ -32,6 +32,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
         private IEnumerable<EpisodeModel> episodes;
+        private IEnumerable<BlogModel> blogs;
         private IList<int> episodeIds = new List<int>(0);
 
         public string Name
@@ -124,6 +125,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public IEnumerable<BlogModel> Blogs
+        {
+            get { return blogs; }
+            set
+            {
+                blogs = value;
+                NotifyOfPropertyChange(() => Blogs);
+            }
+        }
+
         #endregion
 
 
@@ -152,6 +163,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
+        #region SetSubject
         private void SetSubject(SubjectCommandResult result)
         {
             var subject = result.Subject;
@@ -163,14 +175,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             Doing = string.Format("{0}人在看", subject.Collection.Doing);
             State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
-            if (subject.Characters != null)
-            {
-                Characters = subject.Characters.OrderBy(p => p.Id).Select(CharacterModel.FromCharacter);
-            }
-            if (subject.Staff != null)
-            {
-                Staff = subject.Staff.Select(StaffModel.FromStaffItem);
-            }
+            SetCharacters(subject);
+            SetStaff(subject);
+            SetEpisodes(result);
+            SetBlogs(subject);
+
+        }
+
+        private void SetEpisodes(SubjectCommandResult result)
+        {
+            var subject = result.Subject;
             if (subject.Eps != null)
             {
                 episodeIds = subject.Eps.OrderBy(p => p.Sort).Select(p => p.Id).ToList();
@@ -179,7 +193,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 int length = subject.Eps.Count;
 
                 IEnumerable<Episode> query;
-                if (length > maxLength)//长篇
+                if (length > maxLength) //长篇
                 {
                     int state = result.SubjectState.EpisodeState;
                     state = state - 1 > 0 ? state - 1 : 0;
@@ -198,14 +212,40 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    {
                                        EpisodeProgress prog;
                                        if (!progs.TryGetValue(model.Id, out prog)) return;
-                                       model.Update((WatchState)prog.Status.Id);
-
+                                       model.Update((WatchState) prog.Status.Id);
                                    });
                 }
                 Episodes = list;
             }
         }
 
+        private void SetStaff(Subject subject)
+        {
+            if (subject.Staff != null)
+            {
+                Staff = subject.Staff.Select(StaffModel.FromStaffItem);
+            }
+        }
+
+        private void SetCharacters(Subject subject)
+        {
+            if (subject.Characters != null)
+            {
+                Characters = subject.Characters.OrderBy(p => p.Id).Select(CharacterModel.FromCharacter);
+            }
+        }
+
+        private void SetBlogs(Subject subject)
+        {
+            if(subject.Blog != null)
+            {
+                Blogs = subject.Blog.Select(BlogModel.FromBlog);
+            }
+        }
+
+        #endregion
+
+        #region Public
         public void Favorite()
         {
             promptManager.PopupFor<FavoriteViewModel>()
@@ -239,7 +279,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             var task = new WebBrowserTask { Uri = staffModel.RemoteUrl };
             task.Show();
-        }
+        } 
+        #endregion
 
     }
 }
