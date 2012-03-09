@@ -31,9 +31,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string summary;
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
-        private IEnumerable<EpisodeModel> episodes;
+        private EpisodeCollectionModel episodes;
         private IEnumerable<BlogModel> blogs;
-        private IList<int> episodeIds = new List<int>(0);
 
         public string Name
         {
@@ -95,7 +94,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public IEnumerable<EpisodeModel> Episodes
+        public EpisodeCollectionModel Episodes
         {
             get { return episodes; }
             set
@@ -184,43 +183,51 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void SetEpisodes(SubjectCommandResult result)
         {
-            var subject = result.Subject;
-            if (subject.Eps != null)
+            if(Episodes == null)
             {
-                episodeIds = subject.Eps.OrderBy(p => p.Sort).Select(p => p.Id).ToList();
-
-                const int maxLength = 52;
-                int length = subject.Eps.Count;
-
-                IEnumerable<Episode> query;
-                if (length > maxLength) //长篇
-                {
-                    int state = result.SubjectState.EpisodeState;
-                    state = state - 1 > 0 ? state - 1 : 0;
-                    int skip = length - state < maxLength ? length - maxLength : state;
-                    query = subject.Eps.Skip(skip).Take(maxLength);
-                }
-                else
-                {
-                    query = subject.Eps;
-                }
-                var list = query.Select(EpisodeModel.FromEpisode).ToList();
-                if (Episodes == null || !list.SequenceEqual(Episodes))
-                {
-                    Episodes = list;
-                }
-
-                if (Episodes != null && result.Progress != null)
-                {
-                    var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
-                    Episodes.Apply(model =>
-                                       {
-                                           EpisodeProgress prog;
-                                           if (!progs.TryGetValue(model.Id, out prog)) return;
-                                           model.Update((WatchState)prog.Status.Id);
-                                       });
-                }
+                Episodes = EpisodeCollectionModel.FromEpisodes(result);
             }
+            else
+            {
+                Episodes.Update(result);
+            }
+            //var subject = result.Subject;
+            //if (subject.Eps != null)
+            //{
+            //    episodeIds = subject.Eps.OrderBy(p => p.Sort).Select(p => p.Id).ToList();
+
+            //    const int maxLength = 52;
+            //    int length = subject.Eps.Count;
+
+            //    IEnumerable<Episode> query;
+            //    if (length > maxLength) //长篇
+            //    {
+            //        int state = result.SubjectState.EpisodeState;
+            //        state = state - 1 > 0 ? state - 1 : 0;
+            //        int skip = length - state < maxLength ? length - maxLength : state;
+            //        query = subject.Eps.Skip(skip).Take(maxLength);
+            //    }
+            //    else
+            //    {
+            //        query = subject.Eps;
+            //    }
+            //    var list = query.Select(EpisodeModel.FromEpisode).ToList();
+            //    if (Episodes == null || !list.SequenceEqual(Episodes))
+            //    {
+            //        Episodes = list;
+            //    }
+
+            //    if (Episodes != null && result.Progress != null)
+            //    {
+            //        var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
+            //        Episodes.Apply(model =>
+            //                           {
+            //                               EpisodeProgress prog;
+            //                               if (!progs.TryGetValue(model.Id, out prog)) return;
+            //                               model.Update((WatchState)prog.Status.Id);
+            //                           });
+            //    }
+            //}
         }
 
         private void SetStaff(Subject subject)
@@ -263,7 +270,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             var canEdit = episode.IsOnAir && subjectStateModel.IsWatching;
             promptManager.PopupFor<EpisodeStatusViewModel>()
-                .Setup(x => x.Setup(episode, canEdit, episodeIds))
+                .Setup(x => x.Setup(episode, Episodes, canEdit))
                 .SetTitleBackground("BangumiPink")
                 .SetEnableCancel(canEdit)
                 .Show();

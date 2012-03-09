@@ -88,7 +88,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         #endregion
 
-        private IEnumerable<int> episodeIdList;
+        private EpisodeCollectionModel episodeCollectionModel;
 
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
@@ -99,14 +99,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.promptManager = promptManager;
         }
 
-        public void Setup(EpisodeModel episode, bool doing = false, IEnumerable<int> episodeIds = null)
+        public void Setup(EpisodeModel episode, EpisodeCollectionModel episodeCollection, bool doing = false)
         {
             episodeModel = episode;
             DisplayName = episode.Name;
             CnName = string.IsNullOrEmpty(episode.CnName) ? null : string.Format("中文名: {0}", episode.CnName);
             AirDate = string.IsNullOrEmpty(episode.AirDate) ? null : string.Format("首播  : {0}", episode.AirDate);
             IsDoing = doing;
-            episodeIdList = episodeIds;
+            episodeCollectionModel = episodeCollection;
             SetSelectType(episode.WatchState);
         }
 
@@ -149,13 +149,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                      };
                 if (selected.IsEnd)
                 {
-                    updateInfo.Episodes = episodeIdList.Where(p => p <= episodeModel.Id);
+                    updateInfo.Episodes = episodeCollectionModel.GetBeforeIdList(episodeModel);
                 }
                 var task = CommandTaskFactory.Create(new ProgressUpdateCommand(updateInfo, AuthStorage.Auth));
                 task.Result(result =>
                                 {
                                     if (result.IsSuccess())
+                                    {
                                         episodeModel.Update(GetState(updateInfo));
+                                        if (selected.IsEnd)
+                                            episodeCollectionModel.UpdateEpisodeEnd(episodeModel.Sort);
+                                    }
                                     progressService.Hide();
                                     promptManager.ToastInfo("进度保存成功");
                                 });
