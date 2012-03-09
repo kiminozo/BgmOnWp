@@ -20,6 +20,7 @@ namespace KimiStudio.Bangumi.Api.Commands
             request.AddQueryString("source",ApiKeyNames.Source);
             request.AddQueryString("cat", "watching");
             request.AddQueryString("auth", auth.AuthEncode);
+            request.AddTimetamp();
             return request;
         }
     }

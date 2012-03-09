@@ -33,6 +33,15 @@ namespace KimiStudio.Bangumi.Api
             AddQueryString("rand", rnd.NextDouble().ToString(CultureInfo.InvariantCulture));
         }
 
+        /// <summary>
+        /// 添加时间参数，防止缓存
+        /// </summary>
+        public void AddTimetamp(int seconds = 30)
+        {
+            var tick = DateTime.Now.Ticks/TimeSpan.FromSeconds(seconds).Ticks;
+            AddQueryString("timetamp", tick.ToString(CultureInfo.InvariantCulture));
+        }
+
         public void AddBody(string name, string value)
         {
             bodys[name] = value;
