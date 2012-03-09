@@ -6,6 +6,7 @@ using KimiStudio.Bangumi.Api.Models;
 
 namespace KimiStudio.BgmOnWp.Models
 {
+
     public class EpisodeModel : PropertyChangedBase, IEquatable<EpisodeModel>
     {
         private Color fill;
@@ -18,6 +19,7 @@ namespace KimiStudio.BgmOnWp.Models
         public Uri RemoteUrl { get; set; }
         public WatchState WatchState { get; set; }
         public bool IsOnAir { get; set; }
+        public string AirDate { get; set; }
 
         public Color Fill
         {
@@ -43,6 +45,7 @@ namespace KimiStudio.BgmOnWp.Models
                                  Name = string.Format("ep.{0} {1}", episode.Sort, episode.Name),
                                  CnName = episode.NameCn,
                                  RemoteUrl = episode.Url,
+                                 AirDate =  episode.AirDate,
                                  IsOnAir = episode.Status == Episode.OnAir,
                                  Fill = episode.Status == Episode.OnAir ? WatchStateColors.UnWatched : WatchStateColors.UnAir
                              };

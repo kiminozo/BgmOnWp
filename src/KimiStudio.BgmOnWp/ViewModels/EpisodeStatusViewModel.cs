@@ -25,8 +25,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
     {
         #region Property
         private string cnName;
+        private string airDate;
         private IEnumerable<EpisodeStatusModel> items;
         private EpisodeModel episodeModel;
+        private bool isDoing;
 
         public string CnName
         {
@@ -35,6 +37,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 cnName = value;
                 NotifyOfPropertyChange(() => CnName);
+            }
+        }
+
+        public string AirDate
+        {
+            get { return airDate; }
+            set
+            {
+                airDate = value;
+                NotifyOfPropertyChange(() => AirDate);
             }
         }
 
@@ -64,6 +76,15 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public bool IsDoing
+        {
+            get { return isDoing; }
+            set
+            {
+                isDoing = value;
+                NotifyOfPropertyChange(() => IsDoing);
+            }
+        }
 
         #endregion
 
@@ -78,11 +99,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.promptManager = promptManager;
         }
 
-        public void Setup(EpisodeModel episode, IEnumerable<int> episodeIds = null)
+        public void Setup(EpisodeModel episode, bool doing = false, IEnumerable<int> episodeIds = null)
         {
             episodeModel = episode;
             DisplayName = episode.Name;
-            CnName = episode.CnName;
+            CnName = string.IsNullOrEmpty(episode.CnName) ? null : string.Format("中文名: {0}", episode.CnName);
+            AirDate = string.IsNullOrEmpty(episode.AirDate) ? null : string.Format("首播  : {0}", episode.AirDate);
+            IsDoing = doing;
             episodeIdList = episodeIds;
             SetSelectType(episode.WatchState);
         }
@@ -111,14 +134,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void PromptResult(bool canceled)
         {
-            if (canceled) return;
+            if (canceled || !isDoing) return;
 
             if (Selected != null)
             {
                 progressService.Show("提交中\u2026");
 
-                
-               
+
+
                 var updateInfo = new ProgressUpdateInfo
                                      {
                                          EpisodeId = episodeModel.Id,

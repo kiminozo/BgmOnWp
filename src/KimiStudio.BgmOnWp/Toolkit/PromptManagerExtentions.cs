@@ -38,14 +38,11 @@ namespace KimiStudio.BgmOnWp.Toolkit
                 return this;
             }
 
-            public IPopupPromptSetup<T> EnableCancel
+            public IPopupPromptSetup<T> SetEnableCancel(bool enable = true)
             {
-                get
-                {
-                    if (settings == null) settings = new Dictionary<string, object>();
-                    settings["IsCancelVisible"] = true;
-                    return this;
-                }
+                if (settings == null) settings = new Dictionary<string, object>();
+                settings["IsCancelVisible"] = enable;
+                return this;
             }
 
             public IPopupPromptSetup<T> Setup(Action<T> action)
@@ -82,7 +79,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
         void Show();
 
         IPopupPromptSetup<T> SetTitleBackground(string resourcesKey);
-        IPopupPromptSetup<T> EnableCancel { get; }
+        IPopupPromptSetup<T> SetEnableCancel(bool enable = true);
         IPopupPromptSetup<T> Setup(Action<T> action);
     }
 

@@ -205,7 +205,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                     query = subject.Eps;
                 }
                 var list = query.Select(EpisodeModel.FromEpisode).ToList();
-                if(Episodes == null || !list.SequenceEqual(Episodes))
+                if (Episodes == null || !list.SequenceEqual(Episodes))
                 {
                     Episodes = list;
                 }
@@ -217,7 +217,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                        {
                                            EpisodeProgress prog;
                                            if (!progs.TryGetValue(model.Id, out prog)) return;
-                                           model.Update((WatchState) prog.Status.Id);
+                                           model.Update((WatchState)prog.Status.Id);
                                        });
                 }
             }
@@ -241,7 +241,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         private void SetBlogs(Subject subject)
         {
-            if(subject.Blog != null)
+            if (subject.Blog != null)
             {
                 Blogs = subject.Blog.Select(BlogModel.FromBlog);
             }
@@ -255,17 +255,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             promptManager.PopupFor<FavoriteViewModel>()
                 .Setup(model => model.SetUp(State))
                 .SetTitleBackground("BangumiBlue")
-                .EnableCancel
+                .SetEnableCancel()
                 .Show();
         }
 
         public void TapEpisodeItem(EpisodeModel episode)
         {
-            if (!episode.IsOnAir || !subjectStateModel.IsWatching) return;
+            var canEdit = episode.IsOnAir && subjectStateModel.IsWatching;
             promptManager.PopupFor<EpisodeStatusViewModel>()
-                .Setup(x => x.Setup(episode, episodeIds))
+                .Setup(x => x.Setup(episode, canEdit, episodeIds))
                 .SetTitleBackground("BangumiPink")
-                .EnableCancel
+                .SetEnableCancel(canEdit)
                 .Show();
         }
 
@@ -283,7 +283,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             var task = new WebBrowserTask { Uri = staffModel.RemoteUrl };
             task.Show();
-        } 
+        }
         #endregion
 
     }

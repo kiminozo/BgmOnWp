@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Converters\StateBrushConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\EpisodeModel.cs" />
     <Compile Include="Models\StaffModel.cs" />

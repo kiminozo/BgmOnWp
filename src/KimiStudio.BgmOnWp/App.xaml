@@ -18,6 +18,7 @@
         <SolidColorBrush x:Key="ToastErrorBackground" Color="Red"/>
 
         <converters:StateBrushConverter x:Key="stateBrushConverter" />
+        <converters:VisibilityConverter x:Key="visibilityConverter" />
 
         <Style TargetType="ListBox" x:Key="WrapListBox">
             <Setter Property="ItemsPanel">
