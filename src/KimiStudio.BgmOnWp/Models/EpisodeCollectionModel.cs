@@ -71,13 +71,7 @@ namespace KimiStudio.BgmOnWp.Models
             }
         }
 
-        public IEnumerable<int> GetBeforeIdList(EpisodeModel episodeModel)
-        {
-            if (EpisodeIds == null) return null;
-
-            return EpisodeIds.Where(p => p.Key <= episodeModel.Sort).Select(p => p.Value).ToArray();
-        }
-
+      
         #region Implementation of IEnumerable
 
         public IEnumerator<EpisodeModel> GetEnumerator()
@@ -92,11 +86,19 @@ namespace KimiStudio.BgmOnWp.Models
 
         #endregion
 
+        public IEnumerable<int> GetBeforeIdList(EpisodeModel episodeModel)
+        {
+            if (EpisodeIds == null) return null;
+
+            return EpisodeIds.Where(p => p.Key <= episodeModel.Sort).Select(p => p.Value).ToArray();
+        }
+
+
         internal void UpdateEpisodeEnd(int sort)
         {
             if (EpisodeIds == null || EpisodeModels == null) return;
             EpisodeModels
-                .Where(p => p.Sort <= sort)
+                .Where(p => p.Sort <= sort && (p.WatchState != WatchState.Drop || p.WatchState != WatchState.Watched))
                 .Apply(m => m.Update(WatchState.Watched));
         }
     }
