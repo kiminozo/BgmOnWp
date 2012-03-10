@@ -21,8 +21,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly IPromptManager promptManager;
         private readonly ILoadingService loadingService;
 
-
-        public bool Authed { get; private set; }
+        public bool Authed { get; set; }
 
         private IEnumerable<SubjectSummaryModel> watchedItems;
         public IEnumerable<SubjectSummaryModel> WatchedItems
@@ -67,27 +66,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.promptManager = promptManager;
             this.loadingService = loadingService;
         }
-
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-            if (AuthStorage.UserName == null)
-                navigation.UriFor<LoginViewModel>().Navigate();
-
-        }
-
+        
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
+            navigation.RemoveBackEntry();//去掉登录框
 
-            if (AuthStorage.Authed)
+            if (Authed)
             {
-                Authed = true;
                 GetWatched();
                 return;
             }
-
-
             loadingService.Show("登录中\u2026");
             var task = CommandTaskFactory.Create(new LoginCommand(AuthStorage.UserName, AuthStorage.Password));
             task.Result(auth =>
@@ -99,26 +88,25 @@ namespace KimiStudio.BgmOnWp.ViewModels
                             });
             task.Exception(err =>
                                {
-                                   // progressService.Hide();
                                    loadingService.Hide();
                                    promptManager.ToastError(err);
                                });
             task.Start();
         }
 
-        protected override void OnActivate()
-        {
-            base.OnActivate();
-            //切换用户后更新
-            if(!Authed)
-            {
-                if (AuthStorage.Authed)
-                {
-                    Authed = true;
-                    GetWatched();
-                }
-            }
-        }
+        //protected override void OnActivate()
+        //{
+        //    base.OnActivate();
+        //    //切换用户后更新
+        //    if(!Authed)
+        //    {
+        //        if (AuthStorage.Authed)
+        //        {
+        //            Authed = true;
+        //            GetWatched();
+        //        }
+        //    }
+        //}
 
         private void GetWatched()
         {

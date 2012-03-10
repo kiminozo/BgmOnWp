@@ -35,6 +35,15 @@ namespace KimiStudio.BgmOnWp.ViewModels
 #endif
         }
 
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            if (AuthStorage.UserName != null)
+            {
+                navigation.UriFor<MainPageViewModel>().Navigate();
+            }
+        }
+
         public string UserName
         {
             get { return userName; }
@@ -67,20 +76,21 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             var task = CommandTaskFactory.Create(new LoginCommand(UserName, Password));
             task.Result(auth =>
-            {
-                loadingService.Hide();
-                AuthStorage.Auth = auth;
-                AuthStorage.Authed = true;
-                AuthStorage.UserName = UserName;
-                AuthStorage.Password = Password;
-                navigation.GoBack();
-            });
+                            {
+                                loadingService.Hide();
+                                AuthStorage.Auth = auth;
+                                AuthStorage.Authed = true;
+                                AuthStorage.UserName = UserName;
+                                AuthStorage.Password = Password;
+                                navigation.UriFor<MainPageViewModel>()
+                                    .WithParam(x => x.Authed, true)
+                                    .Navigate();
+                            });
             task.Exception(err =>
-            {
-                // progressService.Hide();
-                loadingService.Hide();
-                promptManager.ToastError(err);
-            });
+                               {
+                                   loadingService.Hide();
+                                   promptManager.ToastError(err);
+                               });
             task.Start();
         }
     }
