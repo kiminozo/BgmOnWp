@@ -10,7 +10,7 @@ namespace KimiStudio.BgmOnWp.Models
         public string CnName { get; set; }
         public Uri UriSource { get; set; }
 
-        public static SubjectSummaryModel FromBagumiData(BagumiSubject subject)
+        public static SubjectSummaryModel FromBagumiData(SubjectSummary subject)
         {
             return new SubjectSummaryModel
                        {
@@ -19,6 +19,17 @@ namespace KimiStudio.BgmOnWp.Models
                            CnName = subject.NameCn,
                            UriSource = subject.Images != null ? subject.Images.Large : null
                        };
+        }
+
+        public static SubjectSummaryModel FromBagumiDataSmall(SubjectSummary subject)
+        {
+            return new SubjectSummaryModel
+            {
+                Id = subject.Id,
+                Name = subject.Name,
+                CnName = subject.NameCn,
+                UriSource = subject.Images != null ? subject.Images.Small : null
+            };
         }
     }
 }

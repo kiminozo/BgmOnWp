@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace KimiStudio.Bangumi.Api.Models
 {
-    public class BagumiSubject
+    public class SubjectSummary
     {
         [JsonProperty("air_date")]
         public string AirDate { get; set; }

@@ -15,7 +15,7 @@ namespace KimiStudio.BgmOnWp.Models
     public class BlogModel
     {
         public Uri Image { get; set; }
-        public Uri Url { get; set; }
+        public Uri RemoteUrl { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string Summary { get; set; }
@@ -28,7 +28,7 @@ namespace KimiStudio.BgmOnWp.Models
                            Title = blog.Title,
                            Subtitle = GetSubtitle(blog.User, blog.Dateline),
                            Summary = blog.Summary,
-                           Url = blog.Url
+                           RemoteUrl = blog.Url
                        };
         }
 

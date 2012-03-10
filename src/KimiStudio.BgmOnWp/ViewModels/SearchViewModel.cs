@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -15,15 +16,18 @@ using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using Caliburn.Micro;
 using KimiStudio.BgmOnWp.Toolkit;
+using Microsoft.Expression.Interactivity.Core;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
-    public class SearchViewModel:Screen
+    public class SearchViewModel : Screen
     {
         private string keyword;
-        private IEnumerable<SubjectSummaryModel> results;
+        private string oldKeyword;
+        private int resultCount;
+        private ObservableCollection<SubjectSummaryModel> results = new BindableCollection<SubjectSummaryModel>();
 
-        public IEnumerable<SubjectSummaryModel> Results
+        public ObservableCollection<SubjectSummaryModel> Results
         {
             get { return results; }
             set
@@ -43,6 +47,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public ICommand SearchMoreResult { get; private set; }
+
 
         private readonly INavigationService navigation;
         private readonly IProgressService progressService;
@@ -53,23 +59,47 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.navigation = navigation;
             this.progressService = progressService;
             this.promptManager = promptManager;
+
+            SearchMoreResult = new ActionCommand(MoreResult);
         }
 
         private bool inSearch;
 
+        private void MoreResult()
+        {
+            if (inSearch) return;
+
+            if (string.IsNullOrEmpty(Keyword) || Keyword != oldKeyword) return;
+            if (Results == null || Results.Count == resultCount) return;
+
+            DoSearch(Results.Count);
+        }
+
         public void Search()
         {
-            if(string.IsNullOrEmpty(Keyword))return;
-            if (inSearch)return;
+            if (string.IsNullOrEmpty(Keyword)) return;
+            if (inSearch) return;
+            oldKeyword = Keyword;
+            Results.Clear();
+            DoSearch();
+        }
 
+        public void DoSearch(int start = 0)
+        {
             inSearch = true;
             progressService.Show("搜索中\u2026");
-            var task = CommandTaskFactory.Create(new SearchSubjectCommand(Keyword));
+            var task = CommandTaskFactory.Create(new SearchSubjectCommand(oldKeyword, start: start));
             task.Result(result =>
                             {
-                                Results = result.Results > 0
-                                              ? result.List.Select(SubjectSummaryModel.FromBagumiData)
-                                              : Enumerable.Empty<SubjectSummaryModel>();
+                                if(result.Results > 0 && result.List != null && result.List.Count > 0)
+                                {
+                                    result.List.Select(SubjectSummaryModel.FromBagumiDataSmall).Apply(
+                                        x => Results.Add(x));
+                                }
+                                else
+                                {
+                                    resultCount = 0;    
+                                }
                                 progressService.Hide();
                                 inSearch = false;
                             });
@@ -93,25 +123,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
         {
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, subject.Id)
-                .WithParam(x => x.DisplayName,subject.Name)
+                .WithParam(x => x.DisplayName, subject.Name)
                 .WithParam(x => x.UriSource, subject.UriSource)
                 .Navigate();
         }
     }
-
-    //public class SearchResultModel
-    //{
-    //    public string Name { get; set; }
-    //    public string CnName { get; set; }
-    //    public int Id { get; set; }
-    //    public Uri Image { get; set; }
-
-    //    public static SearchResultModel FromSearchResult(BagumiSubject searchResult)
-    //    {
-    //        return new SearchResultModel
-    //                   {
-    //                       CnName = searchResult.List
-    //                   }
-    //    }
-    //}
 }

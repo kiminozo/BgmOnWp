@@ -191,43 +191,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 Episodes.Update(result);
             }
-            //var subject = result.Subject;
-            //if (subject.Eps != null)
-            //{
-            //    episodeIds = subject.Eps.OrderBy(p => p.Sort).Select(p => p.Id).ToList();
-
-            //    const int maxLength = 52;
-            //    int length = subject.Eps.Count;
-
-            //    IEnumerable<Episode> query;
-            //    if (length > maxLength) //长篇
-            //    {
-            //        int state = result.SubjectState.EpisodeState;
-            //        state = state - 1 > 0 ? state - 1 : 0;
-            //        int skip = length - state < maxLength ? length - maxLength : state;
-            //        query = subject.Eps.Skip(skip).Take(maxLength);
-            //    }
-            //    else
-            //    {
-            //        query = subject.Eps;
-            //    }
-            //    var list = query.Select(EpisodeModel.FromEpisode).ToList();
-            //    if (Episodes == null || !list.SequenceEqual(Episodes))
-            //    {
-            //        Episodes = list;
-            //    }
-
-            //    if (Episodes != null && result.Progress != null)
-            //    {
-            //        var progs = result.Progress.Episodes.ToDictionary(p => p.Id);
-            //        Episodes.Apply(model =>
-            //                           {
-            //                               EpisodeProgress prog;
-            //                               if (!progs.TryGetValue(model.Id, out prog)) return;
-            //                               model.Update((WatchState)prog.Status.Id);
-            //                           });
-            //    }
-            //}
         }
 
         private void SetStaff(Subject subject)
@@ -289,6 +252,14 @@ namespace KimiStudio.BgmOnWp.ViewModels
             if (staffModel.RemoteUrl == null) return;
 
             var task = new WebBrowserTask { Uri = staffModel.RemoteUrl };
+            task.Show();
+        }
+
+        public void TapBlogItem(BlogModel blogModel)
+        {
+            if (blogModel.RemoteUrl == null) return;
+
+            var task = new WebBrowserTask { Uri = blogModel.RemoteUrl };
             task.Show();
         }
         #endregion

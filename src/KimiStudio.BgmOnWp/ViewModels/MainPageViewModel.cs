@@ -150,7 +150,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 TodayCalendarItems = from p in result
                                      from subject in p.Items
                                      where p.WeekDay.Id == today
-                                     select SubjectSummaryModel.FromBagumiData(subject);
+                                     select SubjectSummaryModel.FromBagumiDataSmall(subject);
             });
             task.Exception(err =>
             {

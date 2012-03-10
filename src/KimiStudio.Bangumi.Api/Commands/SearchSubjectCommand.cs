@@ -11,7 +11,7 @@ namespace KimiStudio.Bangumi.Api.Commands
         private readonly int start;
         private readonly int count;
 
-        public SearchSubjectCommand(string keyword, int type = 2, int start = 1, int count = 20)
+        public SearchSubjectCommand(string keyword, int type = 2, int start = 0, int count = 20)
         {
             this.keyword = keyword;
             this.type = type;

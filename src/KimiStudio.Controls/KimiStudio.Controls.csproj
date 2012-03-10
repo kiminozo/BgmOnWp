@@ -53,6 +53,7 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\ScrollViewerBehavior.cs" />
     <Compile Include="LoadingOverlay.cs" />
     <Compile Include="PopupPrompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

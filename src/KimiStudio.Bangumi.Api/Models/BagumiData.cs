@@ -5,6 +5,6 @@ namespace KimiStudio.Bangumi.Api.Models
         public string EpStatus { get; set; }
         public int LastTouch { get; set; }
         public string Name { get; set; }
-        public BagumiSubject Subject { get; set; }
+        public SubjectSummary Subject { get; set; }
     }
 }

@@ -39,7 +39,8 @@
 
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding Results}" toolkit:TiltEffect.IsTiltEnabled="True">
+            <ListBox ItemsSource="{Binding Results}" toolkit:TiltEffect.IsTiltEnabled="True"
+                    c:ScrollViewerBehavior.ScrollEndCommand="{Binding SearchMoreResult}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="95" Margin="0,5">

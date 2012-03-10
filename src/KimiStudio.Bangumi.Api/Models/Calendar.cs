@@ -5,7 +5,7 @@ namespace KimiStudio.Bangumi.Api.Models
 {
     public class Calendar
     {
-        public List<BagumiSubject> Items { get; set; }
+        public List<SubjectSummary> Items { get; set; }
         public WeekDay WeekDay { get; set; }
 
     }

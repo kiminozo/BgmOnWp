@@ -159,12 +159,19 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5,10" Orientation="Horizontal">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Tap">
+                                        <cal:ActionMessage MethodName="TapBlogItem" >
+                                            <cal:Parameter Value="$dataContext"/>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <c:Thumbnail UriSource="{Binding Image}" Width="75" Height="75" Margin="5"  VerticalAlignment="Top"/>
                                 <StackPanel Margin="5" Width="300">
                                     <TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextTitle3Style}"/>
                                     <TextBlock Margin="0,5" TextWrapping="Wrap" Text="{Binding Subtitle}" 
                                                Style="{StaticResource PhoneTextSmallStyle}"/>
-                                    <TextBlock TextWrapping="Wrap" Text="{Binding Summary}" 
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}"
                                                FontSize="16" Margin="5,0"/>
                                 </StackPanel>
                             </StackPanel>

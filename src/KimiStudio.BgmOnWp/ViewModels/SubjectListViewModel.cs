@@ -21,9 +21,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public Func<BagumiSubject, bool> Filter { get; set; }
+        public Func<SubjectSummary, bool> Filter { get; set; }
 
-        public void UpdateWatchingItems(IEnumerable<BagumiSubject> itemModels)
+        public void UpdateWatchingItems(IEnumerable<SubjectSummary> itemModels)
         {
             var query = Filter == null ? itemModels : itemModels.Where(Filter);
             WatchingItems = query.Select(SubjectSummaryModel.FromBagumiData);
