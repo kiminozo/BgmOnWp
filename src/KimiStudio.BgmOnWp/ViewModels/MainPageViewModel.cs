@@ -116,7 +116,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                             {
                                 WatchedItems = result.OrderByDescending(p => p.LastTouch)
                                     .Take(8)
-                                    .Select(p => SubjectSummaryModel.FromBagumiData(p.Subject));
+                                    .Select(p => SubjectSummaryModel.FromBagumiData(p.Subject, x => x.Common));
                                 GetCalendar();
                             });
             task.Exception(err =>
@@ -138,7 +138,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 TodayCalendarItems = from p in result
                                      from subject in p.Items
                                      where p.WeekDay.Id == today
-                                     select SubjectSummaryModel.FromBagumiDataSmall(subject);
+                                     select SubjectSummaryModel.FromBagumiData(subject, x => x.Small);
             });
             task.Exception(err =>
             {

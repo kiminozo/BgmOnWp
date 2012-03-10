@@ -169,9 +169,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = subject.Name;
             Name = subject.Name;
             CnName = subject.NameCn;
-            UriSource = subject.Images != null ? subject.Images.Large : null;
+            UriSource = subject.Images != null ? subject.Images.Common : null;
             Summary = subject.Summary;
-            Doing = string.Format("{0}人在看", subject.Collection.Doing);
+            Doing = subject.Collection != null ? string.Format("{0}人在看", subject.Collection.Doing) : null;
             State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
             SetCharacters(subject);

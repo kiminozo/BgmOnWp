@@ -93,8 +93,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
                             {
                                 if(result.Results > 0 && result.List != null && result.List.Count > 0)
                                 {
-                                    result.List.Select(SubjectSummaryModel.FromBagumiDataSmall).Apply(
-                                        x => Results.Add(x));
+                                    result.List
+                                        .Select(p => SubjectSummaryModel.FromBagumiData(p, x => x.Small))
+                                        .Apply(x => Results.Add(x));
+                                    resultCount = result.Results;
                                 }
                                 else
                                 {

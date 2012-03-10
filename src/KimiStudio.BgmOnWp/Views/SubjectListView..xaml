@@ -11,12 +11,12 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="800" d:DesignWidth="480">
-    <ListBox ItemsSource="{Binding WatchingItems}" Style="{StaticResource WrapListBox}"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+    <ListBox ItemsSource="{Binding WatchingItems}" 
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
              toolkit:TiltEffect.IsTiltEnabled="True">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="200" Height="200">
+                <Grid Height="120" Margin="0,5">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Tap">
                             <cal:ActionMessage MethodName="OnTapItem" >
@@ -24,7 +24,17 @@
                             </cal:ActionMessage>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </c:Thumbnail>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <c:Thumbnail UriSource="{Binding UriSource}" VerticalAlignment="Center" Width="100" Height="100"/>
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Name}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="0,2" />
+                        <TextBlock Text="{Binding CnName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"  Margin="0,2"/>
+                        <TextBlock Text="{Binding Doing}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"  Margin="0,2"/>
+                    </StackPanel>
+                </Grid>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

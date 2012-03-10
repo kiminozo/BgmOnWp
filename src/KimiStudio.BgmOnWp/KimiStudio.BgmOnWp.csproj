@@ -39,6 +39,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -107,7 +108,7 @@
     <Compile Include="Models\SoftStaffModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
-    <Compile Include="Models\WatchedItemModel.cs" />
+    <Compile Include="Models\SubjectSummaryModel.cs" />
     <Compile Include="ViewModels\SubjectListViewModel.cs" />
     <Compile Include="ViewModels\WatchingsViewModel.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />

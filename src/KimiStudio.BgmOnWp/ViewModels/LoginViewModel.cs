@@ -31,7 +31,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.navigation = navigation;
 #if DEBUG
             userName = "piova";
-            password = "piova@live.com";
+            password = "test";
 #endif
         }
 
