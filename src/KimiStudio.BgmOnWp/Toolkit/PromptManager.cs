@@ -63,7 +63,6 @@ namespace KimiStudio.BgmOnWp.Toolkit
         private PopupPrompt CreateMessagePrompt(IEnumerable<KeyValuePair<string, object>> settings)
         {
             var messagePrompt = new PopupPrompt();
-            messagePrompt.Overlay = new SolidColorBrush(Color.FromArgb(0x99, 0x11, 0x50, 0xA2));
             ApplySettings(messagePrompt, settings);
             return messagePrompt;
         }
