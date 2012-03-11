@@ -94,19 +94,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
-        //protected override void OnActivate()
-        //{
-        //    base.OnActivate();
-        //    //切换用户后更新
-        //    if(!Authed)
-        //    {
-        //        if (AuthStorage.Authed)
-        //        {
-        //            Authed = true;
-        //            GetWatched();
-        //        }
-        //    }
-        //}
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+            progressService.Hide();
+        }
+
 
         private void GetWatched()
         {

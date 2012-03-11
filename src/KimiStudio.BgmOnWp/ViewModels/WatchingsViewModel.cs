@@ -54,6 +54,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+            progressService.Hide();
+        }
+
         public void OnTapItem(SubjectSummaryModel item)
         {
             navigation.UriFor<SubjectViewModel>()

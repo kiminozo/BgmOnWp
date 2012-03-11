@@ -144,9 +144,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         }
 
-        protected override void OnActivate()
+        protected override void OnViewLoaded(object view)
         {
-            base.OnActivate();
+            base.OnViewLoaded(view);
             progressService.Show("加载中\u2026");
             var task = CommandTaskFactory.Create(new SubjectCommand(Id, AuthStorage.Auth));
             task.Result(result =>
@@ -160,6 +160,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                    promptManager.ToastError(err, "错误");
                                });
             task.Start();
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+            progressService.Hide();
         }
 
         #region SetSubject

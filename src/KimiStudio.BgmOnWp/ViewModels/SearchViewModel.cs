@@ -63,6 +63,12 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SearchMoreResult = new ActionCommand(MoreResult);
         }
 
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+            progressService.Hide();
+        }
+
         private bool inSearch;
 
         private void MoreResult()
