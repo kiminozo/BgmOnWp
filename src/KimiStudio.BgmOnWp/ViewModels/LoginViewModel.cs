@@ -94,10 +94,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             task.Start();
         }
 
-        protected override void OnDeactivate(bool close)
-        {
-            base.OnDeactivate(close);
-            loadingService.Hide();
-        }
+       
     }
 }

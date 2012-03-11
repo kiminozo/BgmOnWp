@@ -45,17 +45,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        private IEnumerable<SubjectSummaryModel> tomorrowCalendarItems;
-        public IEnumerable<SubjectSummaryModel> TomorrowCalendarItems
-        {
-            get { return tomorrowCalendarItems; }
-            set
-            {
-                tomorrowCalendarItems = value;
-                NotifyOfPropertyChange(() => TomorrowCalendarItems);
-            }
-        }
-
         #endregion
 
         #region Private
@@ -127,7 +116,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             {
                 progressService.Hide();
                 var today = WeekDay.WeekDayIdOfToday;
-                //var tomorrow = WeekDay.GetWeekDayId(DateTime.Today.AddDays(1));
                 TodayCalendarItems = from p in result
                                      from subject in p.Items
                                      where p.WeekDay.Id == today
