@@ -8,7 +8,8 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
 	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+	xmlns:b="clr-namespace:KimiStudio.Controls.Behaviors;assembly=KimiStudio.Controls" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
 	x:Class="KimiStudio.BgmOnWp.Views.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -56,7 +57,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Panorama Grid.Row="1">
+        <controls:Panorama x:Name="panorama" Grid.Row="1">
+            <i:Interaction.Behaviors>
+                <b:PanoramaSelectedStorageBehavior Key="aaa" />
+            </i:Interaction.Behaviors>
             <controls:Panorama.TitleTemplate>
                 <DataTemplate>
                     <!--<StackPanel Height="150" Margin="0,72,0,0" Orientation="Horizontal">
