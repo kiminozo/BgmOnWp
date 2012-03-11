@@ -29,7 +29,7 @@ namespace KimiStudio.BgmOnWp
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // 显示在每个帧中重绘的应用程序区域。
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
+             //   Application.Current.Host.Settings.EnableRedrawRegions = true;
 
                 // 启用非生产分析可视化模式， 
                 // 该模式显示递交给 GPU 的包含彩色重叠区的页面区域。
