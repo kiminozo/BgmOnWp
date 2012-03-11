@@ -100,7 +100,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                                 if(result.Results > 0 && result.List != null && result.List.Count > 0)
                                 {
                                     result.List
-                                        .Select(p => SubjectSummaryModel.FromBagumiData(p, x => x.Small))
+                                        .Select(SubjectSummaryModel.FromBagumiData)
                                         .Apply(x => Results.Add(x));
                                     resultCount = result.Results;
                                 }
@@ -132,7 +132,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, subject.Id)
                 .WithParam(x => x.DisplayName, subject.Name)
-                .WithParam(x => x.UriSource, subject.UriSource)
+                .WithParam(x => x.UriSource, subject.Image)
                 .Navigate();
         }
     }

@@ -14,21 +14,6 @@ namespace KimiStudio.BgmOnWp.Views
         public MainPage()
         {
             InitializeComponent();
-            //InitializePanoramaIndex();
-        }
-
-        private void InitializePanoramaIndex()
-        {
-
-            int start = 2;
-            if (start <= 0 || start >= panorama.Items.Count) return;
-            var items = panorama.Items;
-            for (int i = 0; i < start; i++)
-            {
-                var tmp = items[0];
-                items.RemoveAt(0);
-                items.Add(tmp);
-            }
         }
 
         private void OnAppBarStateChanged(object sender, ApplicationBarStateChangedEventArgs e)

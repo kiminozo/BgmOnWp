@@ -12,7 +12,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid Background="Gray">
+                    <Grid Background="{TemplateBinding Background}">
                         <Rectangle HorizontalAlignment='Stretch' VerticalAlignment="Stretch" Margin="0">
                             <Rectangle.Fill>
                                 <ImageBrush x:Name="imageBrush" Stretch="UniformToFill"/>

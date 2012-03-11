@@ -98,7 +98,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                             {
                                 WatchedItems = result.OrderByDescending(p => p.LastTouch)
                                     .Take(8)
-                                    .Select(p => SubjectSummaryModel.FromBagumiData(p.Subject, x => x.Common));
+                                    .Select(p => SubjectSummaryModel.FromBagumiData(p.Subject));
                                 GetCalendar();
                             });
             task.Exception(err =>
@@ -119,7 +119,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 TodayCalendarItems = from p in result
                                      from subject in p.Items
                                      where p.WeekDay.Id == today
-                                     select SubjectSummaryModel.FromBagumiData(subject, x => x.Small);
+                                     select SubjectSummaryModel.FromBagumiData(subject);
             });
             task.Exception(err =>
             {
@@ -187,7 +187,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             navigation.UriFor<SubjectViewModel>()
                 .WithParam(x => x.Id, item.Id)
                 .WithParam(x => x.DisplayName, item.Name)
-                .WithParam(x => x.UriSource, item.UriSource)
+                .WithParam(x => x.UriSource, item.Image)
                 .Navigate();
         }
         #endregion

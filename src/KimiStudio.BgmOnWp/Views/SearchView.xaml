@@ -10,6 +10,7 @@
     xmlns:cal="http://www.caliburnproject.org"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
+    xmlns:b="clr-namespace:KimiStudio.Controls.Behaviors;assembly=KimiStudio.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,8 +40,10 @@
 
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding Results}" toolkit:TiltEffect.IsTiltEnabled="True"
-                    c:ScrollViewerBehavior.ScrollEndCommand="{Binding SearchMoreResult}" >
+            <ListBox ItemsSource="{Binding Results}" toolkit:TiltEffect.IsTiltEnabled="True">
+                <i:Interaction.Behaviors>
+                    <b:ScrollViewerScrollCommandBehavior ScrollFootCommand="{Binding SearchMoreResult}"/>
+                </i:Interaction.Behaviors>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="95" Margin="0,5">
@@ -55,7 +58,7 @@
                                 <ColumnDefinition Width="80"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <c:Thumbnail UriSource="{Binding UriSource}" VerticalAlignment="Center" Width="75" Height="75"/>
+                            <c:Thumbnail UriSource="{Binding SmallImage}" VerticalAlignment="Center" Width="75" Height="75"/>
                             <StackPanel Grid.Column="1" Margin="12,0,0,0">
                                 <TextBlock Text="{Binding Name}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="0,2" />
                                 <TextBlock Text="{Binding CnName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"  Margin="0,2"/>

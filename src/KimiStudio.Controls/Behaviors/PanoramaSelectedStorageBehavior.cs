@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.IO.IsolatedStorage;
 using System.Net;
 using System.Windows;
@@ -44,8 +46,15 @@ namespace KimiStudio.Controls.Behaviors
         {
             if(!IsolatedStorageSettings.ApplicationSettings.Contains(Key))return;
 
-            var start = Convert.ToInt32(IsolatedStorageSettings.ApplicationSettings[Key]);
-            AssociatedObject.DefaultItem = AssociatedObject.Items[start];
+            try
+            {
+                var start = Convert.ToInt32(IsolatedStorageSettings.ApplicationSettings[Key]);
+                AssociatedObject.DefaultItem = AssociatedObject.Items[start];
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err);
+            }
         }
 
         private void AssociatedObject_SelectionChanged(object sender, RoutedEventArgs e)

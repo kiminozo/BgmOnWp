@@ -59,7 +59,7 @@
         <!--透视控件-->
         <controls:Panorama x:Name="panorama" Grid.Row="1">
             <i:Interaction.Behaviors>
-                <b:PanoramaSelectedStorageBehavior Key="aaa" />
+                <b:PanoramaSelectedStorageBehavior Key="mainView" />
             </i:Interaction.Behaviors>
             <controls:Panorama.TitleTemplate>
                 <DataTemplate>
@@ -96,7 +96,7 @@
                              toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding UriSource}" Width="173" Height="173" >
+                                <c:Thumbnail Text="{Binding Name}" Margin="0,0,20,20" UriSource="{Binding Image}" Width="173" Height="173" >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Tap">
                                             <cal:ActionMessage MethodName="OnTapItem" >
@@ -125,7 +125,7 @@
                              toolkit:TiltEffect.IsTiltEnabled="True">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding UriSource}"
+                            <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding SmallImage}"
                                          Width="90" Height="90" >
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Tap">

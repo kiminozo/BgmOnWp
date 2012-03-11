@@ -10,7 +10,9 @@
     xmlns:c="clr-namespace:KimiStudio.Controls;assembly=KimiStudio.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:b="clr-namespace:KimiStudio.Controls.Behaviors;assembly=KimiStudio.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
@@ -26,6 +28,9 @@
         </Grid.RowDefinitions>
         <!--透视控件-->
         <controls:Panorama Title="{Binding DisplayName}" Grid.Row="1">
+            <!--<i:Interaction.Behaviors>
+                <b:PanoramaSelectedStorageBehavior Key="subjectView"/>
+            </i:Interaction.Behaviors>-->
             <controls:Panorama.TitleTemplate>
                 <DataTemplate>
                     <TextBlock Margin="0,72,0,10" 

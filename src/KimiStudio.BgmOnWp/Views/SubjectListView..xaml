@@ -28,7 +28,7 @@
                         <ColumnDefinition Width="105"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <c:Thumbnail UriSource="{Binding UriSource}" VerticalAlignment="Center" Width="100" Height="100"/>
+                    <c:Thumbnail UriSource="{Binding SmallImage}" VerticalAlignment="Center" Width="100" Height="100"/>
                     <StackPanel Grid.Column="1" Margin="12,0,0,0">
                         <TextBlock Text="{Binding Name}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="0,2" />
                         <TextBlock Text="{Binding CnName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"  Margin="0,2"/>
