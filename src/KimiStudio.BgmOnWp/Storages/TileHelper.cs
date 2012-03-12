@@ -27,7 +27,7 @@ namespace KimiStudio.BgmOnWp.Storages
             int mSize = writeableBitmap.PixelWidth;
             writeableBitmap = writeableBitmap.Crop(0, (writeableBitmap.PixelHeight - mSize) / 2, mSize, mSize);
             writeableBitmap = writeableBitmap.Resize(173, 173, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-            writeableBitmap.FillRectangle(0, 133, 173, 173, Color.FromArgb(0xFF, 0xF1, 0x91, 0x99));
+           // writeableBitmap.FillRectangle(0, 133, 173, 173, Color.FromArgb(0xFF, 0xF1, 0x91, 0x99));
             var filename = string.Format("/Shared/ShellContent/subject-{0}.jpg", subject.Id);
             var image = new Uri("isostore:" + filename, UriKind.Absolute);
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
@@ -51,8 +51,9 @@ namespace KimiStudio.BgmOnWp.Storages
             var myTile = new StandardTileData
             {
                 BackgroundImage = image,
-                Title = subject.Name,
-                Count = 0,
+               // BackBackgroundImage = new Uri("/BackBackground.png", UriKind.Relative),
+                BackContent = subject.Name,
+                BackTitle = subject.CnName
             };
             //固定到开始界面
             ShellTile.Create(uri, myTile);
