@@ -51,7 +51,6 @@ namespace KimiStudio.BgmOnWp.Storages
             var myTile = new StandardTileData
             {
                 BackgroundImage = image,
-               // BackBackgroundImage = new Uri("/BackBackground.png", UriKind.Relative),
                 BackContent = subject.Name,
                 BackTitle = subject.CnName
             };
