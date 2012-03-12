@@ -28,7 +28,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string name;
         private string cnName;
         private string doing;
-        private Uri uriSource;
+        private Uri imageSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
@@ -55,13 +55,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public Uri UriSource
+        public Uri ImageSource
         {
-            get { return uriSource; }
+            get { return imageSource; }
             set
             {
-                uriSource = value;
-                NotifyOfPropertyChange(() => UriSource);
+                imageSource = value;
+                NotifyOfPropertyChange(() => ImageSource);
             }
         }
 
@@ -206,7 +206,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             DisplayName = subject.Name;
             Name = subject.Name;
             CnName = subject.NameCn;
-            UriSource = subject.Images != null ? subject.Images.Common : null;
+            ImageSource = subject.Images != null ? subject.Images.Common : null;
             Summary = subject.Summary;
             Doing = subject.Collection != null ? string.Format("{0}人在看", subject.Collection.Doing) : null;
             State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
@@ -298,6 +298,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
             var task = new WebBrowserTask { Uri = blogModel.RemoteUrl };
             task.Show();
+        }
+
+        public void Pin()
+        {
+            TileHelper.PinTile(this);
         }
         #endregion
 

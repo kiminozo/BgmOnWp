@@ -209,6 +209,7 @@
     <Content Include="Images\appbar.favs.addto.rest.png" />
     <Content Include="Images\appbar.favs.rest.png" />
     <Content Include="Images\appbar.feature.search.rest.png" />
+    <Content Include="Images\appbar.pin.png" />
     <Content Include="Images\appbar.save.rest.png" />
     <Content Include="Images\heart.png" />
     <Content Include="Images\info_only_m.png" />

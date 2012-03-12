@@ -40,19 +40,5 @@ namespace KimiStudio.BgmOnWp.Models
             };
         }
 
-        public SubjectSummaryModel()
-        {
-            Pin = new ActionCommand(OnPin);
-        }
-
-
-
-        public ICommand Pin { get; private set; }
-
-        public void OnPin()
-        {
-           this.PinTile();
-        }
-
     }
 }

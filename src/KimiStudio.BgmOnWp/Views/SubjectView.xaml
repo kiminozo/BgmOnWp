@@ -48,7 +48,7 @@
                             <RowDefinition Height="280" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <c:Thumbnail UriSource="{Binding UriSource}" 
+                        <c:Thumbnail UriSource="{Binding ImageSource}" 
                          Width="165" Height="250" VerticalAlignment="Top" Margin="10,15,8,0" />
                         <StackPanel Grid.Column="1" Margin="0,10,0,0" >
                             <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="12,5,0,5" Style="{StaticResource PhoneTextNormalStyle}"/>
@@ -59,10 +59,17 @@
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <TextBlock Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
                         </StackPanel>
-                        <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" 
-                                       HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1"
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" 
+                                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                                        Foreground="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" 
                                        BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" />
+                            <c:RoundButton x:Name="Pin" ImageSource="\Images\appbar.pin.png" Width="72" Height="72"  
+                                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                       Foreground="{Binding Path=State.IsFavorited,Converter={StaticResource visibilityBrushConverter}}" 
+                                       BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource visibilityBrushConverter}}" 
+                                       Visibility="{Binding Path=State.IsFavorited,Converter={StaticResource visibilityConverter}}" />
+                        </StackPanel>
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>

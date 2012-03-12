@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KimiStudio.BgmOnWp.Models;
+using KimiStudio.BgmOnWp.ViewModels;
 using KimiStudio.Controls;
 using Microsoft.Phone.Shell;
 
@@ -20,9 +21,9 @@ namespace KimiStudio.BgmOnWp.Storages
 {
     public static class TileHelper
     {
-        public static void PinTile(this SubjectSummaryModel subject)
+        public static void PinTile(SubjectViewModel subject)
         {
-            var writeableBitmap = new WriteableBitmap(new StorageCachedImage(subject.Image));
+            var writeableBitmap = new WriteableBitmap(new StorageCachedImage(subject.ImageSource));
             //IF PixelWidth Min
             int mSize = writeableBitmap.PixelWidth;
             writeableBitmap = writeableBitmap.Crop(0, (writeableBitmap.PixelHeight - mSize) / 2, mSize, mSize);
