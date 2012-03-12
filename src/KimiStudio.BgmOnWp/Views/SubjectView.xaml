@@ -66,9 +66,9 @@
                                        BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" />
                             <c:RoundButton x:Name="Pin" ImageSource="\Images\appbar.pin.png" Width="72" Height="72"  
                                        HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                                       Foreground="{Binding IsPined,Converter={StaticResource visibilityBrushConverter}}" 
-                                       BorderBrush="{Binding IsPined,Converter={StaticResource visibilityBrushConverter}}" 
-                                           IsEnabled="{Binding IsPined}"
+                                       Foreground="{Binding IsUnPined,Converter={StaticResource visibilityBrushConverter}}" 
+                                       BorderBrush="{Binding IsUnPined,Converter={StaticResource visibilityBrushConverter}}" 
+                                           IsEnabled="{Binding IsUnPined}"
                                        Visibility="{Binding Path=State.IsFavorited,Converter={StaticResource visibilityConverter}}" />
                         </StackPanel>
                     </Grid>

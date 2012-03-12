@@ -28,7 +28,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string name;
         private string cnName;
         private string doing;
-        private bool isPined;
+        private bool isUnPined = true;
         private Uri imageSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
@@ -136,13 +136,13 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public bool IsPined
+        public bool IsUnPined
         {
-            get { return isPined; }
+            get { return isUnPined; }
             set
             {
-                isPined = value;
-                NotifyOfPropertyChange(() => IsPined);
+                isUnPined = value;
+                NotifyOfPropertyChange(() => IsUnPined);
             }
         }
 
@@ -227,7 +227,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SetEpisodes(result);
             SetBlogs(subject);
 
-            IsPined = TileHelper.IsPined(this);
+            IsUnPined = !TileHelper.IsPined(this);
 
         }
 
