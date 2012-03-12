@@ -66,23 +66,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
             if (Authed)
             {
                 GetWatched();
-                return;
             }
-            loadingService.Show("登录中\u2026");
-            var task = CommandTaskFactory.Create(new LoginCommand(AuthStorage.UserName, AuthStorage.Password));
-            task.Result(auth =>
-                            {
-                                loadingService.Hide();
-                                AuthStorage.Auth = auth;
-                                Authed = true;
-                                GetWatched();
-                            });
-            task.Exception(err =>
-                               {
-                                   loadingService.Hide();
-                                   promptManager.ToastError(err);
-                               });
-            task.Start();
+            else
+            {
+                Login();
+            }
         }
 
         protected override void OnDeactivate(bool close)
@@ -91,6 +79,24 @@ namespace KimiStudio.BgmOnWp.ViewModels
             progressService.Hide();
         }
 
+        private void Login()
+        {
+            loadingService.Show("登录中\u2026");
+            var task = CommandTaskFactory.Create(new LoginCommand(AuthStorage.UserName, AuthStorage.Password));
+            task.Result(auth =>
+            {
+                loadingService.Hide();
+                AuthStorage.Auth = auth;
+                Authed = true;
+                GetWatched();
+            });
+            task.Exception(err =>
+            {
+                loadingService.Hide();
+                promptManager.ToastError(err);
+            });
+            task.Start();
+        }
 
         private void GetWatched()
         {

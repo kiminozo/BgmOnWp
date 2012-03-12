@@ -18,15 +18,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
     {
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
+        private readonly ILoadingService loadingService;
 
         public int Id { get; set; }
+        public bool FromPin { get; set; }
         private SubjectStateModel subjectStateModel;
 
         #region Property
         private string name;
         private string cnName;
         private string doing;
-        private bool favorited;
         private Uri uriSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
@@ -137,28 +138,58 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, IPromptManager promptManager)
+        public SubjectViewModel(IProgressService progressService, IPromptManager promptManager, ILoadingService loadingService)
         {
             this.progressService = progressService;
             this.promptManager = promptManager;
-
+            this.loadingService = loadingService;
         }
 
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
+            if (FromPin)
+            {
+                Login();
+            }
+            else
+            {
+                LoadSubject();
+            }
+        }
+
+        private void Login()
+        {
+            loadingService.Show("登录中\u2026");
+            var task = CommandTaskFactory.Create(new LoginCommand(AuthStorage.UserName, AuthStorage.Password));
+            task.Result(auth =>
+            {
+                loadingService.Hide();
+                AuthStorage.Auth = auth;
+                LoadSubject();
+            });
+            task.Exception(err =>
+            {
+                loadingService.Hide();
+                promptManager.ToastError(err);
+            });
+            task.Start();
+        }
+
+        private void LoadSubject()
+        {
             progressService.Show("加载中\u2026");
             var task = CommandTaskFactory.Create(new SubjectCommand(Id, AuthStorage.Auth));
             task.Result(result =>
-                            {
-                                progressService.Hide();
-                                SetSubject(result);
-                            });
+            {
+                progressService.Hide();
+                SetSubject(result);
+            });
             task.Exception(err =>
-                               {
-                                   progressService.Hide();
-                                   promptManager.ToastError(err, "错误");
-                               });
+            {
+                progressService.Hide();
+                promptManager.ToastError(err, "错误");
+            });
             task.Start();
         }
 

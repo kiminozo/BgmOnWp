@@ -75,6 +75,9 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
+    <Reference Include="WriteableBitmapExWinPhone">
+      <HintPath>..\..\lib\WriteableBitmapEx\WriteableBitmapExWinPhone.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -91,6 +94,7 @@
     <Compile Include="Models\SubjectStateModel.cs" />
     <Compile Include="Storages\AuthStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
+    <Compile Include="Storages\TileHelper.cs" />
     <Compile Include="Toolkit\ILoadingService.cs" />
     <Compile Include="Toolkit\IProgressService.cs" />
     <Compile Include="Toolkit\IPrompt.cs" />

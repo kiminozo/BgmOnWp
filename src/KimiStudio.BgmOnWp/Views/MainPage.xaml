@@ -104,11 +104,11 @@
                                             </cal:ActionMessage>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <!--<toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenuService.ContextMenu>
                                         <toolkit:ContextMenu>
                                             <toolkit:MenuItem Header="固定到开始菜单" Command="{Binding Pin}"/>
                                         </toolkit:ContextMenu>
-                                    </toolkit:ContextMenuService.ContextMenu>-->
+                                    </toolkit:ContextMenuService.ContextMenu>
                                 </c:Thumbnail>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
