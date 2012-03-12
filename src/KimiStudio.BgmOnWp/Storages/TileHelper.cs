@@ -23,6 +23,8 @@ namespace KimiStudio.BgmOnWp.Storages
     {
         public static void PinTile(SubjectViewModel subject)
         {
+            if(subject.ImageSource == null)return;
+
             var writeableBitmap = new WriteableBitmap(new StorageCachedImage(subject.ImageSource));
             //IF PixelWidth Min
             int mSize = writeableBitmap.PixelWidth;
