@@ -4,12 +4,14 @@ using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Caliburn.Micro;
 using KimiStudio.Bangumi.Api.Commands;
 using KimiStudio.Bangumi.Api.Models;
 using KimiStudio.BgmOnWp.Models;
 using KimiStudio.BgmOnWp.Storages;
 using KimiStudio.BgmOnWp.Toolkit;
+using Microsoft.Phone.Shell;
 
 namespace KimiStudio.BgmOnWp.ViewModels
 {
@@ -190,6 +192,10 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .WithParam(x => x.UriSource, item.Image)
                 .Navigate();
         }
+
+        
+
+       
         #endregion
 
 

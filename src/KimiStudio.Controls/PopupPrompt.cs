@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Clarity.Phone.Extensions;
+using Microsoft.Phone.Shell;
 
 namespace KimiStudio.Controls
 {
@@ -25,11 +26,11 @@ namespace KimiStudio.Controls
             set { SetValue(TitleProperty, value); }
         }
 
-       
+
 
         // Using a DependencyProperty as the backing store for Overlay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OverlayProperty =
-            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt), 
+            DependencyProperty.Register("Overlay", typeof(Brush), typeof(PopupPrompt),
             new PropertyMetadata(Application.Current.Resources["PhoneSemitransparentBrush"]));
 
         public Brush Overlay
@@ -56,8 +57,19 @@ namespace KimiStudio.Controls
             get { return (Brush)GetValue(TitleBackgroundProperty); }
             set { SetValue(TitleBackgroundProperty, value); }
         }
-        
+
+
+        public static readonly DependencyProperty IsShowButtonInAppBarProperty =
+            DependencyProperty.Register("IsShowButtonInAppBar", typeof(bool), typeof(PopupPrompt), new PropertyMetadata(false));
+
+        public bool IsShowButtonInAppBar
+        {
+            get { return (bool)GetValue(IsShowButtonInAppBarProperty); }
+            set { SetValue(IsShowButtonInAppBarProperty, value); }
+        }
+
         private DialogService dialogService;
+        private IApplicationBar applicationBar;
 
         public event EventHandler Completed;
 
@@ -108,6 +120,7 @@ namespace KimiStudio.Controls
                                     BackgroundBrush = Overlay,
                                     Child = this,
                                 };
+            dialogService.Opened += DialogServiceOnOpened;
             dialogService.Closed += DialogServiceOnClosed;
             dialogService.Show();
         }
@@ -118,6 +131,15 @@ namespace KimiStudio.Controls
 
             dialogService.Hide();
             ResetWorldAndDestroyPopUp();
+        }
+
+        private void DialogServiceOnOpened(object sender, EventArgs args)
+        {
+            applicationBar = dialogService.Page.ApplicationBar;
+            if (applicationBar != null)
+            {
+                dialogService.Page.ApplicationBar = null;
+            }
         }
 
         private void DialogServiceOnClosed(object sender, EventArgs args)
@@ -136,10 +158,14 @@ namespace KimiStudio.Controls
         private void ResetWorldAndDestroyPopUp()
         {
             if (dialogService == null) return;
-
+            if (applicationBar != null)
+            {
+                dialogService.Page.ApplicationBar = applicationBar;
+            }
             dialogService.Child = null;
             dialogService = null;
         }
+
 
 
         private void SetCancelButtonVisibility(bool isCancelVisible)

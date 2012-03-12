@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Clarity.Phone.Extensions;
+using Microsoft.Phone.Shell;
 
 namespace KimiStudio.Controls
 {
@@ -35,6 +36,7 @@ namespace KimiStudio.Controls
         }
 
         private DialogService dialogService;
+        private IApplicationBar applicationBar;
 
         public event EventHandler Completed;
 
@@ -61,6 +63,7 @@ namespace KimiStudio.Controls
                 IsBackKeyOverride = true,
                 HasPopup = true,
             };
+            dialogService.Opened += DialogServiceOnOpened;
             dialogService.Closed += DialogServiceOnClosed;
             dialogService.Show();
         }
@@ -71,6 +74,15 @@ namespace KimiStudio.Controls
 
             dialogService.Hide();
             ResetWorldAndDestroyPopUp();
+        }
+
+        private void DialogServiceOnOpened(object sender, EventArgs args)
+        {
+            applicationBar = dialogService.Page.ApplicationBar;
+            if (applicationBar != null)
+            {
+                dialogService.Page.ApplicationBar = null;
+            }
         }
 
         private void DialogServiceOnClosed(object sender, EventArgs args)
@@ -89,6 +101,11 @@ namespace KimiStudio.Controls
         private void ResetWorldAndDestroyPopUp()
         {
             if (dialogService == null) return;
+
+            if (applicationBar != null)
+            {
+                dialogService.Page.ApplicationBar = applicationBar;
+            }
 
             dialogService.Child = null;
             dialogService = null;

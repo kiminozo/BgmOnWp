@@ -121,6 +121,7 @@ namespace KimiStudio.Controls
             return index;
         }
         
+        //SL可用
         //protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         //{
         //    int x = (int)e.GetPosition(stars).X;
