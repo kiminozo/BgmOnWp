@@ -21,6 +21,18 @@ namespace KimiStudio.BgmOnWp.Storages
 {
     public static class TileHelper
     {
+        private static Uri PageLink(SubjectViewModel subject)
+        {
+            return new Uri(string.Format("/Views/SubjectView.xaml?Id={0}&DisplayName={1}&FromPin=true", subject.Id, subject.Name), UriKind.Relative);
+        }
+
+        public static bool IsPined(SubjectViewModel subject)
+        {
+            var uri = PageLink(subject);
+            //如果存在则删除，并在下面重新Pin到桌面
+            return ShellTile.ActiveTiles.Any(e => e.NavigationUri == uri);
+        }
+
         public static void PinTile(SubjectViewModel subject)
         {
             if(subject.ImageSource == null)return;
@@ -41,24 +53,28 @@ namespace KimiStudio.BgmOnWp.Storages
                 }
             }
 
-            var uri = new Uri(string.Format("/Views/SubjectView.xaml?Id={0}&DisplayName={1}&FromPin=true", subject.Id, subject.Name), UriKind.Relative);
+            var uri = PageLink(subject);
             //如果存在则删除，并在下面重新Pin到桌面
             ShellTile oldTile = ShellTile.ActiveTiles.FirstOrDefault
                 (e => e.NavigationUri == uri);
-            if (oldTile != null)
-            {
-                oldTile.Delete();
-            }
 
             //生成Tile
-            var myTile = new StandardTileData
+            var newTile = new StandardTileData
             {
                 BackgroundImage = image,
                 BackContent = subject.Name,
                 BackTitle = subject.CnName
             };
-            //固定到开始界面
-            ShellTile.Create(uri, myTile);
+            if (oldTile != null)
+            {
+                oldTile.Update(newTile);
+            }
+            else
+            {
+                //固定到开始界面
+                ShellTile.Create(uri, newTile);    
+            }
+            
         }
     }
 }

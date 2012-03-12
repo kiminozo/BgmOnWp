@@ -18,7 +18,7 @@
         <SolidColorBrush x:Key="ToastErrorBackground" Color="Red"/>
 
         <converters:StateBrushConverter x:Key="stateBrushConverter" OnBrush="{StaticResource BangumiPink}"  />
-        <converters:StateBrushConverter x:Key="visibilityBrushConverter" OnBrush="Gray"  />
+        <converters:StateBrushConverter x:Key="visibilityBrushConverter" OffBrush="{StaticResource PhoneForegroundBrush}" OnBrush="Gray" />
         <converters:VisibilityConverter x:Key="visibilityConverter" />
 
         <Style TargetType="ListBox" x:Key="WrapListBox">

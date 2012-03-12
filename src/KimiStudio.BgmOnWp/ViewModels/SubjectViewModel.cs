@@ -28,6 +28,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private string name;
         private string cnName;
         private string doing;
+        private bool isPined;
         private Uri imageSource;
         private string summary;
         private IEnumerable<CharacterModel> characters;
@@ -135,6 +136,16 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
+        public bool IsPined
+        {
+            get { return isPined; }
+            set
+            {
+                isPined = value;
+                NotifyOfPropertyChange(() => IsPined);
+            }
+        }
+
         #endregion
 
 
@@ -215,6 +226,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SetStaff(subject);
             SetEpisodes(result);
             SetBlogs(subject);
+
+            IsPined = TileHelper.IsPined(this);
 
         }
 
