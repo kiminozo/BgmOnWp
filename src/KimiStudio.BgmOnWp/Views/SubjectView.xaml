@@ -99,7 +99,7 @@
                 <ListBox ItemsSource="{Binding Characters}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="95" Margin="0,5">
+                            <StackPanel Margin="0,5" Orientation="Horizontal">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <cal:ActionMessage MethodName="TapCharacterItem" >
@@ -107,22 +107,18 @@
                                         </cal:ActionMessage>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <c:Thumbnail UriSource="{Binding CharacterImage}" VerticalAlignment="Center" Width="75" Height="75"/>
-                                <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                <c:Thumbnail UriSource="{Binding CharacterImage}" Width="75" Height="75" Margin="5"  VerticalAlignment="Top"/>
+                                <StackPanel Margin="5,0" Width="300">
                                     <TextBlock Text="{Binding CharacterName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="0,2" />
-									<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2,10,2" >
-										<Border Background="{StaticResource BangumiBlue}" CornerRadius="6" >
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2,10,2" >
+                                        <Border Background="{StaticResource BangumiBlue}" CornerRadius="6" >
                                             <TextBlock Text="{Binding Role}" Style="{StaticResource PhoneTextNormalStyle}"/>
-										</Border>
+                                        </Border>
                                         <TextBlock Text="{Binding CnName}"  Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap"/>
-									</StackPanel>  
-									<TextBlock Text="{Binding CvName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}"  Margin="0,2"/>                                 
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding CvName}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}"  Margin="0,2"/>
                                 </StackPanel>
-                            </Grid>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -134,7 +130,7 @@
                 <ListBox ItemsSource="{Binding Staff}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="85" Margin="0,5">
+                            <StackPanel Margin="0,5" Orientation="Horizontal">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <cal:ActionMessage MethodName="TapStaffItem" >
@@ -142,16 +138,12 @@
                                         </cal:ActionMessage>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <c:Thumbnail UriSource="{Binding StaffImage}" Width="75" Height="75" Margin="0"/>
-                                <StackPanel Grid.Column="1">
-                                    <TextBlock Text="{Binding StaffName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="12,2" />
-                                    <TextBlock Text="{Binding Job}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" VerticalAlignment="Top" />
+                                <c:Thumbnail UriSource="{Binding StaffImage}" Width="75" Height="75" Margin="5"  VerticalAlignment="Top"/>
+                                <StackPanel Margin="5,0" Width="300">
+                                        <TextBlock Text="{Binding StaffName}"  Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" Margin="12,2" />
+                                        <TextBlock Text="{Binding Job}" Grid.Row="1" Style="{StaticResource PhoneTextSubtleStyle}" VerticalAlignment="Top" />
                                 </StackPanel>
-                            </Grid>
+                            </StackPanel>                         
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -172,12 +164,12 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <c:Thumbnail UriSource="{Binding Image}" Width="75" Height="75" Margin="5"  VerticalAlignment="Top"/>
-                                <StackPanel Margin="5" Width="300">
+                                <StackPanel Margin="5,0" Width="300">
                                     <TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextTitle3Style}"/>
                                     <TextBlock Margin="0,5" TextWrapping="Wrap" Text="{Binding Subtitle}" 
                                                Style="{StaticResource PhoneTextSmallStyle}"/>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding Summary}" Style="{StaticResource PhoneTextNormalStyle}"
-                                               FontSize="16" Margin="5,0"/>
+                                               Margin="5,0"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
