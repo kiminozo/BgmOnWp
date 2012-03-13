@@ -59,18 +59,10 @@
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <TextBlock Text="{Binding Path=Subject.Summary}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                            <c:RoundButton x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" 
+                        <c:RoundButton Grid.Column="1" x:Name="Favorite" ImageSource="\Images\heart.png" Width="72" Height="72" 
                                        HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                                        Foreground="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" 
                                        BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" />
-                            <c:RoundButton x:Name="Pin" ImageSource="\Images\appbar.pin.png" Width="72" Height="72"  
-                                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                                       Foreground="{Binding Path=Subject.IsUnPined,Converter={StaticResource visibilityBrushConverter}}" 
-                                       BorderBrush="{Binding Path=Subject.IsUnPined,Converter={StaticResource visibilityBrushConverter}}" 
-                                           IsEnabled="{Binding Path=Subject.IsUnPined}"
-                                       Visibility="{Binding Path=State.IsFavorited,Converter={StaticResource visibilityConverter}}" />
-                        </StackPanel>
                     </Grid>
                 </ScrollViewer>
             </controls:PanoramaItem>
@@ -188,15 +180,13 @@
     </Grid>
 
     <!--演示 ApplicationBar 用法的示例代码-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="按钮 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="按钮 2"/>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized" BackgroundColor="Transparent" StateChanged="ApplicationBar_StateChanged" Opacity="0.8">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="菜单项 1"/>
-                <shell:ApplicationBarMenuItem Text="菜单项 2"/>
+                <cal:AppBarMenuItem Text="固定到桌面" Message="Pin"/>
+                <cal:AppBarMenuItem Text="回到首页" Message="Home"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

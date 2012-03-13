@@ -19,5 +19,12 @@ namespace KimiStudio.BgmOnWp.Views
         {
             InitializeComponent();
         }
+
+        private void ApplicationBar_StateChanged(object sender, Microsoft.Phone.Shell.ApplicationBarStateChangedEventArgs e)
+        {
+            ApplicationBar.BackgroundColor = e.IsMenuVisible
+                                                 ? (Color) Application.Current.Resources["PhoneBackgroundColor"]
+                                                 : Colors.Transparent;
+        }
     }
 }
