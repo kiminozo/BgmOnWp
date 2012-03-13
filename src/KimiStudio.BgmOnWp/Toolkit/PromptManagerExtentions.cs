@@ -67,7 +67,7 @@ namespace KimiStudio.BgmOnWp.Toolkit
         {
             var setting = new Dictionary<string, object>
                               {
-                                  {"Background", Application.Current.Resources["ToastErrorBackground"]}
+                                  {"Background", Application.Current.Resources["ToastWarnBackground"]}
                               };
 
             promptManager.ShowToast(message, title, setting);

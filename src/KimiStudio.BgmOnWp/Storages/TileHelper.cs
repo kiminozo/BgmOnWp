@@ -21,19 +21,19 @@ namespace KimiStudio.BgmOnWp.Storages
 {
     public static class TileHelper
     {
-        private static Uri PageLink(SubjectViewModel subject)
+        private static Uri PageLink(SubjectModel subject)
         {
             return new Uri(string.Format("/Views/SubjectView.xaml?Id={0}&DisplayName={1}&FromPin=true", subject.Id, subject.Name), UriKind.Relative);
         }
 
-        public static bool IsPined(SubjectViewModel subject)
+        public static bool IsPined(this SubjectModel subject)
         {
             var uri = PageLink(subject);
             //如果存在则删除，并在下面重新Pin到桌面
             return ShellTile.ActiveTiles.Any(e => e.NavigationUri == uri);
         }
 
-        public static void PinTile(SubjectViewModel subject)
+        public static void PinTile(this SubjectModel subject)
         {
             if(subject.ImageSource == null)return;
 

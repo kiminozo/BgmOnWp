@@ -19,42 +19,21 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private readonly IProgressService progressService;
         private readonly IPromptManager promptManager;
         private readonly ILoadingService loadingService;
+        private readonly INavigationService navigation;
 
         public int Id { get; set; }
         public bool FromPin { get; set; }
-        private SubjectStateModel subjectStateModel;
+       
 
         #region Property
-        private string name;
-        private string cnName;
-        private string doing;
-        private bool isUnPined = true;
+
         private Uri imageSource;
-        private string summary;
+        private SubjectModel subjectModel;
+        private SubjectStateModel subjectStateModel;
         private IEnumerable<CharacterModel> characters;
         private IEnumerable<StaffModel> staff;
         private EpisodeCollectionModel episodes;
         private IEnumerable<BlogModel> blogs;
-
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                NotifyOfPropertyChange(() => Name);
-            }
-        }
-
-        public string CnName
-        {
-            get { return cnName; }
-            set
-            {
-                cnName = value;
-                NotifyOfPropertyChange(() => CnName);
-            }
-        }
 
         public Uri ImageSource
         {
@@ -66,13 +45,23 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public string Summary
+        public SubjectModel Subject
         {
-            get { return summary; }
+            get { return subjectModel; }
             set
             {
-                summary = value;
-                NotifyOfPropertyChange(() => Summary);
+                subjectModel = value;
+                NotifyOfPropertyChange(() => Subject);
+            }
+        }
+
+        public SubjectStateModel State
+        {
+            get { return subjectStateModel; }
+            set
+            {
+                subjectStateModel = value;
+                NotifyOfPropertyChange(() => State);
             }
         }
 
@@ -106,25 +95,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public SubjectStateModel State
-        {
-            get { return subjectStateModel; }
-            set
-            {
-                subjectStateModel = value;
-                NotifyOfPropertyChange(() => State);
-            }
-        }
+        
 
-        public string Doing
-        {
-            get { return doing; }
-            set
-            {
-                doing = value;
-                NotifyOfPropertyChange(() => Doing);
-            }
-        }
+        
 
         public IEnumerable<BlogModel> Blogs
         {
@@ -136,24 +109,17 @@ namespace KimiStudio.BgmOnWp.ViewModels
             }
         }
 
-        public bool IsUnPined
-        {
-            get { return isUnPined; }
-            set
-            {
-                isUnPined = value;
-                NotifyOfPropertyChange(() => IsUnPined);
-            }
-        }
+       
 
         #endregion
 
 
-        public SubjectViewModel(IProgressService progressService, IPromptManager promptManager, ILoadingService loadingService)
+        public SubjectViewModel(IProgressService progressService, IPromptManager promptManager, ILoadingService loadingService, INavigationService navigation)
         {
             this.progressService = progressService;
             this.promptManager = promptManager;
             this.loadingService = loadingService;
+            this.navigation = navigation;
         }
 
         protected override void OnViewLoaded(object view)
@@ -214,12 +180,11 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private void SetSubject(SubjectCommandResult result)
         {
             var subject = result.Subject;
-            DisplayName = subject.Name;
-            Name = subject.Name;
-            CnName = subject.NameCn;
-            ImageSource = subject.Images != null ? subject.Images.Common : null;
-            Summary = subject.Summary;
-            Doing = subject.Collection != null ? string.Format("{0}人在看", subject.Collection.Doing) : null;
+
+            Subject = SubjectModel.FromSubject(subject);
+            DisplayName = Subject.Name;
+            ImageSource = Subject.ImageSource;
+
             State = SubjectStateModel.FromSubjectState(Id, result.SubjectState);
 
             SetCharacters(subject);
@@ -227,7 +192,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SetEpisodes(result);
             SetBlogs(subject);
 
-            IsUnPined = !TileHelper.IsPined(this);
+            
 
         }
 
@@ -315,7 +280,19 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void Pin()
         {
-            TileHelper.PinTile(this);
+            if (Subject.IsPined())
+            {
+                promptManager.ToastWarn("已经固定到桌面过了");
+                return;
+            }
+            Subject.PinTile();
+        }
+
+        public void Home()
+        {
+            navigation.UriFor<MainPageViewModel>()
+                .WithParam(x => x.Authed,true)
+                .Navigate();
         }
         #endregion
 

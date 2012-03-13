@@ -91,6 +91,7 @@
     <Compile Include="Models\EpisodeCollectionModel.cs" />
     <Compile Include="Models\EpisodeModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
+    <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Models\SubjectStateModel.cs" />
     <Compile Include="Storages\AuthStorage.cs" />
     <Compile Include="Storages\SubjectViewModelStorage.cs" />
