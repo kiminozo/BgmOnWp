@@ -30,7 +30,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock Text="你的用户名或Email地址" Style="{StaticResource PhoneTextSmallStyle}"/>
-                <TextBox x:Name="username" Text="{Binding UserName,Mode=TwoWay}" TextChanged="TextBox_TextChanged" />
+                <TextBox x:Name="username" Text="{Binding UserName,Mode=TwoWay}" TextChanged="TextBox_TextChanged" InputScope="EmailNameOrAddress" />
                 <TextBlock Text="你的密码" Style="{StaticResource PhoneTextSmallStyle}"/>
                 <PasswordBox x:Name="password" Password="{Binding Password,Mode=TwoWay}" PasswordChanged="PasswordBox_PasswordChanged" />
 

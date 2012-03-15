@@ -136,7 +136,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             var task = CommandTaskFactory.Create(new SubjectStateUpdateCommand(info, AuthStorage.Auth));
             task.Result(result =>
                             {
-                                 if(result.LastTouch != 0)
+                                if (result != null && result.LastTouch != 0)
                                  {
                                      subjectState.Update(result);
                                  }

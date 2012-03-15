@@ -23,5 +23,10 @@ namespace KimiStudio.Bangumi.Api.Commands
             request.AddTimetamp();
             return request;
         }
+
+        protected override List<BagumiData> ValidateResult(List<BagumiData> result)
+        {
+            return result ?? new List<BagumiData>(0);
+        }
     }
 }

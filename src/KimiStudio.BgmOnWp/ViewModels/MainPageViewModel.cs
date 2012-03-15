@@ -57,7 +57,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
             this.promptManager = promptManager;
             this.loadingService = loadingService;
         }
-        
+
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
@@ -161,7 +161,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void NavWatchings()
         {
-            if(!Authed)return;
+            if (!Authed) return;
             navigation.UriFor<WatchingsViewModel>().WithParam(x => x.Index, 0).Navigate();
         }
 
@@ -199,9 +199,9 @@ namespace KimiStudio.BgmOnWp.ViewModels
                 .Navigate();
         }
 
-        
 
-       
+
+
         #endregion
 
 
