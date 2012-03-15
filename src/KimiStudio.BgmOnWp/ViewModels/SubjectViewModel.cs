@@ -277,6 +277,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
 
         public void Pin()
         {
+            if(Subject == null)return;
+
             if (Subject.IsPined())
             {
                 promptManager.ToastWarn("已经固定到桌面过了");
