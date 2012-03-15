@@ -15,6 +15,8 @@ namespace KimiStudio.Controls
         private readonly Uri uriSource;
         private readonly string filePath;
         private const string CacheDirectory = "CachedImages";
+
+        public bool IsLoaded { get; private set; }
         
         static StorageCachedImage()
         {
@@ -72,6 +74,7 @@ namespace KimiStudio.Controls
             {
                 SetSource(stream);
             }
+            IsLoaded = true;
         }
 
         /// <summary>

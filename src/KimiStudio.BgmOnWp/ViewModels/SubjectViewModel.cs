@@ -191,9 +191,6 @@ namespace KimiStudio.BgmOnWp.ViewModels
             SetStaff(subject);
             SetEpisodes(result);
             SetBlogs(subject);
-
-            
-
         }
 
         private void SetEpisodes(SubjectCommandResult result)
