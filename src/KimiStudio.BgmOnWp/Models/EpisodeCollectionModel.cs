@@ -12,7 +12,7 @@ namespace KimiStudio.BgmOnWp.Models
         private const int MaxLength = 52;
 
         public int SubjectId { get; set; }
-        public IDictionary<int,int> EpisodeIds { get; private set; }
+        public ILookup<int,int> EpisodeIds { get; private set; }
         public List<EpisodeModel> EpisodeModels { get; private set; }
         public bool IsUpdated { get; private set; }
 
@@ -32,7 +32,7 @@ namespace KimiStudio.BgmOnWp.Models
             SubjectId = subject.Id;
             if (subject.Eps != null)
             {
-                EpisodeIds = subject.Eps.OrderBy(p => p.Sort).ToDictionary(k => k.Sort, v => v.Id);
+                EpisodeIds = subject.Eps.OrderBy(p => p.Sort).ToLookup(k => k.Sort, v => v.Id);
 
                 
                 int length = subject.Eps.Count;
@@ -92,7 +92,10 @@ namespace KimiStudio.BgmOnWp.Models
         {
             if (EpisodeIds == null) return null;
 
-            return EpisodeIds.Where(p => p.Key <= episodeModel.Sort).Select(p => p.Value).ToArray();
+            return from p in EpisodeIds
+                   where p.Key <= episodeModel.Sort
+                   from i in p
+                   select i;
         }
 
 
