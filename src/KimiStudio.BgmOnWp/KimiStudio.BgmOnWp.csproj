@@ -207,6 +207,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\appbar.check.rest.png" />
     <Content Include="Images\appbar.favs.addto.rest.png" />
     <Content Include="Images\appbar.favs.rest.png" />
     <Content Include="Images\appbar.feature.search.rest.png" />

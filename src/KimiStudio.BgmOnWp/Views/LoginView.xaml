@@ -46,7 +46,7 @@
     <!--演示 ApplicationBar 用法的示例代码-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False" Opacity="0.5" >
-            <cal:AppBarButton IconUri="/Images/appbar.save.rest.png" Text="登录" Message="Login"/>
+            <cal:AppBarButton IconUri="/Images/appbar.check.rest.png" Text="登录" Message="Login"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
