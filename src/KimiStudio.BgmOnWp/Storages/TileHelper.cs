@@ -63,6 +63,7 @@ namespace KimiStudio.BgmOnWp.Storages
             //生成Tile
             var newTile = new StandardTileData
             {
+               // Title = subject.CnName,
                 BackgroundImage = image,
                 BackContent = subject.Name,
                 BackTitle = subject.CnName
