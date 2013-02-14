@@ -21,6 +21,7 @@ namespace KimiStudio.BgmOnWp.Models
         private string doing;
         private bool isUnPined = true;
         private Uri imageSource;
+        private Uri largeImageSource;
         private string summary;
 
         public int Id { get; set; }
@@ -52,6 +53,17 @@ namespace KimiStudio.BgmOnWp.Models
             {
                 imageSource = value;
                 NotifyOfPropertyChange(() => ImageSource);
+            }
+        }
+
+        
+        public Uri LargeImageSource
+        {
+            get { return largeImageSource; }
+            set
+            {
+                largeImageSource = value;
+                NotifyOfPropertyChange(() => LargeImageSource);
             }
         }
 
@@ -93,6 +105,7 @@ namespace KimiStudio.BgmOnWp.Models
                            Name = subject.Name,
                            CnName = subject.NameCn,
                            ImageSource = subject.Images != null ? subject.Images.Common : null,
+                           LargeImageSource = subject.Images != null ? subject.Images.Large : null,
                            Summary = subject.Summary,
                            Doing = subject.Collection != null ? string.Format("{0}人在看", subject.Collection.Doing) : null,
                        };

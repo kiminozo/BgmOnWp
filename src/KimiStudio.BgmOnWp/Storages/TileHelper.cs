@@ -33,26 +33,13 @@ namespace KimiStudio.BgmOnWp.Storages
             return ShellTile.ActiveTiles.Any(e => e.NavigationUri == uri);
         }
 
+
+
         public static void PinTile(this SubjectModel subject)
         {
-            if(subject.ImageSource == null)return;
-            var cachedImage = new StorageCachedImage(subject.ImageSource);
-            if(!cachedImage.IsLoaded)return;
-
-            var writeableBitmap = new WriteableBitmap(cachedImage);
-            //IF PixelWidth Min
-            int mSize = writeableBitmap.PixelWidth;
-            writeableBitmap = writeableBitmap.Crop(0, (writeableBitmap.PixelHeight - mSize) / 2, mSize, mSize);
-            writeableBitmap = writeableBitmap.Resize(173, 173, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-            var filename = string.Format("/Shared/ShellContent/subject-{0}.jpg", subject.Id);
-            var image = new Uri("isostore:" + filename, UriKind.Absolute);
-            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                using (var st = new IsolatedStorageFileStream(filename, FileMode.Create, FileAccess.Write, store))
-                {
-                    writeableBitmap.SaveJpeg(st, 173, 173, 0, 100);
-                }
-            }
+            Uri smallImage, mediumImage;
+            if (!WriteImage(subject, true, out smallImage)) return;
+            if (!WriteImage(subject, false, out mediumImage)) return;
 
             var uri = PageLink(subject);
 
@@ -61,23 +48,61 @@ namespace KimiStudio.BgmOnWp.Storages
                 (e => e.NavigationUri == uri);
 
             //生成Tile
-            var newTile = new StandardTileData
+            var newTile = new FlipTileData
             {
-               // Title = subject.CnName,
-                BackgroundImage = image,
+                Title = subject.CnName,
+                BackgroundImage = mediumImage,
                 BackContent = subject.Name,
-                BackTitle = subject.CnName
+                BackTitle = subject.CnName,
+                SmallBackgroundImage = smallImage,
             };
-            if (oldTile != null)
+            try
             {
-                oldTile.Update(newTile);
+                if (oldTile != null)
+                {
+                    oldTile.Update(newTile);
+                }
+                else
+                {
+                    //固定到开始界面
+                    ShellTile.Create(uri, newTile, false);
+                }
             }
-            else
+            catch (Exception)
             {
-                //固定到开始界面
-                ShellTile.Create(uri, newTile);    
+                throw;
             }
-            
+
+        }
+
+        private static bool WriteImage(SubjectModel subject, bool isSmall, out Uri sharedImage)
+        {
+            sharedImage = null;
+            if (subject.ImageSource == null) return false;
+
+
+            int size = isSmall ? 159 : 336;
+            string imageName = isSmall ? "subject-small-" : "subject-medium-";
+            Uri imageSrc = subject.ImageSource;//isSmall ? subject.ImageSource : subject.LargeImageSource;
+
+            var cachedImage = new StorageCachedImage(imageSrc);
+            if (!cachedImage.IsLoaded) return false;
+
+            var writeableBitmap = new WriteableBitmap(cachedImage);
+            //IF PixelWidth Min
+            int mSize = writeableBitmap.PixelWidth;
+            writeableBitmap = writeableBitmap.Crop(0, (writeableBitmap.PixelHeight - mSize) / 2, mSize, mSize);
+            writeableBitmap = writeableBitmap.Resize(size, size, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            var filename = string.Format("/Shared/ShellContent/{0}{1}.jpg", imageName, subject.Id);
+            sharedImage = new Uri("isostore:" + filename, UriKind.Absolute);
+            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                using (var st = new IsolatedStorageFileStream(filename, FileMode.Create, FileAccess.Write, store))
+                {
+                    writeableBitmap.SaveJpeg(st, size, size, 0, 100);
+                }
+            }
+            return true;
         }
     }
 }

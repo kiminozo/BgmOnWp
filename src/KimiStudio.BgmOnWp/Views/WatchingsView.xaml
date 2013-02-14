@@ -22,12 +22,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Pivot x:Name="Items" Title="{Binding DisplayName}" Grid.Row="1">
-            <controls:Pivot.HeaderTemplate>
+        <phone:Pivot x:Name="Items" Title="{Binding DisplayName}" Grid.Row="1">
+            <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}"/>
                 </DataTemplate>
-            </controls:Pivot.HeaderTemplate>
-        </controls:Pivot>
+            </phone:Pivot.HeaderTemplate>
+        </phone:Pivot>
     </Grid>
 </phone:PhoneApplicationPage>

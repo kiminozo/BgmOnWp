@@ -52,28 +52,17 @@
 
     <!--LayoutRoot 是放置所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource SystemTrayHight}"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Panorama x:Name="panorama" Grid.Row="1">
+        <phone:Panorama x:Name="panorama">
             <i:Interaction.Behaviors>
                 <b:PanoramaSelectedStorageBehavior Key="mainView" />
             </i:Interaction.Behaviors>
-            <controls:Panorama.TitleTemplate>
+            <phone:Panorama.TitleTemplate>
                 <DataTemplate>
-                    <!--<StackPanel Height="150" Margin="0,72,0,0" Orientation="Horizontal">
-                        <TextBlock Text="Bagumi" FontSize="72" FontStyle="Italic" FontFamily="Segoe WP Semibold"><TextBlock.Foreground><LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0"><GradientStop Color="#FF5EB0D7" Offset="0" /><GradientStop Color="#FF277EEC" Offset="1" /></LinearGradientBrush></TextBlock.Foreground></TextBlock>
-                        <TextBlock Text="番組計劃" Margin="36,28,0,0" FontSize="48" FontStyle="Normal" Foreground="Gray" />
-                    </StackPanel>-->
                     <Image Height="150" Margin="0,72,0,0"  Source="/Images/logo-bgm.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </DataTemplate>
-            </controls:Panorama.TitleTemplate>
-            <controls:PanoramaItem>
-                <!--<controls:PanoramaItem.Header>
-                    <TextBlock Text="类别" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                </controls:PanoramaItem.Header>-->
+            </phone:Panorama.TitleTemplate>
+            <phone:PanoramaItem>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" 
                             toolkit:TiltEffect.IsTiltEnabled="True" Margin="0,42,0,0">
                     <HyperlinkButton Name="NavCalendar" Content="每日放送" Style="{StaticResource VerticalLink}" />
@@ -81,8 +70,8 @@
                     <HyperlinkButton Name="NavAmine" Content="动画" Style="{StaticResource VerticalLink}" />
                     <HyperlinkButton Name="NavReal" Content="三次元" Style="{StaticResource VerticalLink}" />
                 </StackPanel>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem Orientation="Horizontal">
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Orientation="Horizontal">
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="最近观看" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
@@ -104,11 +93,6 @@
                                             </cal:ActionMessage>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <!--<toolkit:ContextMenuService.ContextMenu>
-                                        <toolkit:ContextMenu>
-                                            <toolkit:MenuItem Header="固定到开始菜单" Command="{Binding Pin}"/>
-                                        </toolkit:ContextMenu>
-                                    </toolkit:ContextMenuService.ContextMenu>-->
                                 </c:Thumbnail>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -117,56 +101,31 @@
 					 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" 
 					 FontSize="{StaticResource PhoneFontSizeLarge}" Style="{StaticResource HyperlinkText}" />
                 </Grid>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem>
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="今日放送" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
-                <!--<ScrollViewer>
-                    <StackPanel>
-                        <TextBlock Text="今天" Margin="0,10"/>-->
-                        <ListBox ItemsSource="{Binding TodayCalendarItems}" Style="{StaticResource WrapListBox}"
+                <ListBox ItemsSource="{Binding TodayCalendarItems}" Style="{StaticResource WrapListBox}"
                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" 
                              toolkit:TiltEffect.IsTiltEnabled="True">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
                             <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding SmallImage}"
                                          Width="90" Height="90" >
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Tap">
-                                                <cal:ActionMessage MethodName="OnTapItem" >
-                                                    <cal:Parameter Value="$dataContext"/>
-                                                </cal:ActionMessage>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </c:Thumbnail>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <!--<TextBlock Text="明天" Margin="0,10" />
-                        <ListBox ItemsSource="{Binding TomorrowCalendarItems}" Style="{StaticResource NoScrollWrapListBox}"
-                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" 
-                             toolkit:TiltEffect.IsTiltEnabled="True">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <c:Thumbnail Margin="0,0,15,15" UriSource="{Binding UriSource}"
-                                         Width="90" Height="90" >
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Tap">
-                                                <cal:ActionMessage MethodName="OnTapItem" >
-                                                    <cal:Parameter Value="$dataContext"/>
-                                                </cal:ActionMessage>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </c:Thumbnail>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </ScrollViewer>-->
-                <!--<Image Height="43" Margin="0,50,0,0" Source="/Images/logo_rc1.png" VerticalAlignment="Top" HorizontalAlignment="Left"/>-->
-            </controls:PanoramaItem>
-        </controls:Panorama>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Tap">
+                                        <cal:ActionMessage MethodName="OnTapItem" >
+                                            <cal:Parameter Value="$dataContext"/>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </c:Thumbnail>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+        </phone:Panorama>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Opacity="0.8" BackgroundColor="{StaticResource PhoneBackgroundColor}">

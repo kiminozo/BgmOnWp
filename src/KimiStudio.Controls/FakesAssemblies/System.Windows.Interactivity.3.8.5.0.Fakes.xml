@@ -1,0 +1,1754 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Windows.Interactivity.3.8.5.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1">
+            <summary>System.Windows.Interactivity.AttachableCollection`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.#ctor(System.Windows.Interactivity.AttachableCollection{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.Specialized.INotifyCollectionChanged)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.ICollection)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.IEnumerable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.IList)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.Generic.ICollection{`0})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Bind(System.Collections.Generic.IList{`0})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AssociatedObjectGet">
+            <summary>设置 AttachableCollection`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 AttachableCollection`1.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AttachDependencyObject">
+            <summary>设置 AttachableCollection`1.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Constructor">
+            <summary>设置 AttachableCollection`1.AttachableCollection`1() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.Detach">
+            <summary>设置 AttachableCollection`1.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.OnCollectionChangedObjectNotifyCollectionChangedEventArgs">
+            <summary>设置 AttachableCollection`1.OnCollectionChanged(Object sender, NotifyCollectionChangedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.VerifyAddT0">
+            <summary>设置 AttachableCollection`1.VerifyAdd(!0 item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.VerifySnapshotIntegrity">
+            <summary>设置 AttachableCollection`1.VerifySnapshotIntegrity() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.AssociatedObjectGet">
+            <summary>设置 AttachableCollection`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 AttachableCollection`1.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.AttachDependencyObject">
+            <summary>设置 AttachableCollection`1.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.Detach">
+            <summary>设置 AttachableCollection`1.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.OnCollectionChangedObjectNotifyCollectionChangedEventArgs">
+            <summary>设置 AttachableCollection`1.OnCollectionChanged(Object sender, NotifyCollectionChangedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.VerifyAddT0">
+            <summary>设置 AttachableCollection`1.VerifyAdd(!0 item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimAttachableCollection`1.AllInstances.VerifySnapshotIntegrity">
+            <summary>设置 AttachableCollection`1.VerifySnapshotIntegrity() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehavior">
+            <summary>System.Windows.Interactivity.Behavior 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior.#ctor(System.Windows.Interactivity.Behavior)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AssociatedObjectChangedAddEventHandler">
+            <summary>设置 Behavior.add_AssociatedObjectChanged(EventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AssociatedObjectChangedRemoveEventHandler">
+            <summary>设置 Behavior.remove_AssociatedObjectChanged(EventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AssociatedObjectGet">
+            <summary>设置 Behavior.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 Behavior.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AssociatedTypeGet">
+            <summary>设置 Behavior.get_AssociatedType() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AttachDependencyObject">
+            <summary>设置 Behavior.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.ConstructorType">
+            <summary>设置 Behavior.Behavior(Type associatedType) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.Detach">
+            <summary>设置 Behavior.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.OnAssociatedObjectChanged">
+            <summary>设置 Behavior.OnAssociatedObjectChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.OnAttached">
+            <summary>设置 Behavior.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.OnDetaching">
+            <summary>设置 Behavior.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AssociatedObjectChangedAddEventHandler">
+            <summary>设置 Behavior.add_AssociatedObjectChanged(EventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AssociatedObjectChangedRemoveEventHandler">
+            <summary>设置 Behavior.remove_AssociatedObjectChanged(EventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AssociatedObjectGet">
+            <summary>设置 Behavior.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 Behavior.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AssociatedTypeGet">
+            <summary>设置 Behavior.get_AssociatedType() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.AttachDependencyObject">
+            <summary>设置 Behavior.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.Detach">
+            <summary>设置 Behavior.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.OnAssociatedObjectChanged">
+            <summary>设置 Behavior.OnAssociatedObjectChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.OnAttached">
+            <summary>设置 Behavior.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior.AllInstances.OnDetaching">
+            <summary>设置 Behavior.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehavior`1">
+            <summary>System.Windows.Interactivity.Behavior`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior`1.#ctor(System.Windows.Interactivity.Behavior{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehavior`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior`1.AssociatedObjectGet">
+            <summary>设置 Behavior`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior`1.Constructor">
+            <summary>设置 Behavior`1.Behavior`1() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehavior`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehavior`1.AllInstances.AssociatedObjectGet">
+            <summary>设置 Behavior`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehaviorCollection">
+            <summary>System.Windows.Interactivity.BehaviorCollection 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.#ctor(System.Windows.Interactivity.BehaviorCollection)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.Specialized.INotifyCollectionChanged)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.ICollection)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.IEnumerable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.IList)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.Generic.ICollection{System.Windows.Interactivity.Behavior})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.Generic.IEnumerable{System.Windows.Interactivity.Behavior})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Bind(System.Collections.Generic.IList{System.Windows.Interactivity.Behavior})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.Constructor">
+            <summary>设置 BehaviorCollection.BehaviorCollection() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.ItemAddedBehavior">
+            <summary>设置 BehaviorCollection.ItemAdded(Behavior item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.ItemRemovedBehavior">
+            <summary>设置 BehaviorCollection.ItemRemoved(Behavior item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.OnAttached">
+            <summary>设置 BehaviorCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.OnDetaching">
+            <summary>设置 BehaviorCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.AllInstances.ItemAddedBehavior">
+            <summary>设置 BehaviorCollection.ItemAdded(Behavior item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.AllInstances.ItemRemovedBehavior">
+            <summary>设置 BehaviorCollection.ItemRemoved(Behavior item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.AllInstances.OnAttached">
+            <summary>设置 BehaviorCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimBehaviorCollection.AllInstances.OnDetaching">
+            <summary>设置 BehaviorCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute">
+            <summary>System.Windows.Interactivity.CustomPropertyValueEditorAttribute 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.#ctor(System.Windows.Interactivity.CustomPropertyValueEditorAttribute)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.ConstructorCustomPropertyValueEditor">
+            <summary>设置 CustomPropertyValueEditorAttribute.CustomPropertyValueEditorAttribute(CustomPropertyValueEditor customPropertyValueEditor) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.CustomPropertyValueEditorGet">
+            <summary>设置 CustomPropertyValueEditorAttribute.get_CustomPropertyValueEditor() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.CustomPropertyValueEditorSetCustomPropertyValueEditor">
+            <summary>设置 CustomPropertyValueEditorAttribute.set_CustomPropertyValueEditor(CustomPropertyValueEditor value) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.AllInstances.CustomPropertyValueEditorGet">
+            <summary>设置 CustomPropertyValueEditorAttribute.get_CustomPropertyValueEditor() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimCustomPropertyValueEditorAttribute.AllInstances.CustomPropertyValueEditorSetCustomPropertyValueEditor">
+            <summary>设置 CustomPropertyValueEditorAttribute.set_CustomPropertyValueEditor(CustomPropertyValueEditor value) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute">
+            <summary>System.Windows.Interactivity.DefaultTriggerAttribute 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.#ctor(System.Windows.Interactivity.DefaultTriggerAttribute)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.ConstructorTypeTypeObject">
+            <summary>设置 DefaultTriggerAttribute.DefaultTriggerAttribute(Type targetType, Type triggerType, Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.ConstructorTypeTypeObjectArray">
+            <summary>设置 DefaultTriggerAttribute.DefaultTriggerAttribute(Type targetType, Type triggerType, Object[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.Instantiate">
+            <summary>设置 DefaultTriggerAttribute.Instantiate() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.ParametersGet">
+            <summary>设置 DefaultTriggerAttribute.get_Parameters() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.TargetTypeGet">
+            <summary>设置 DefaultTriggerAttribute.get_TargetType() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.TriggerTypeGet">
+            <summary>设置 DefaultTriggerAttribute.get_TriggerType() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.AllInstances.Instantiate">
+            <summary>设置 DefaultTriggerAttribute.Instantiate() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.AllInstances.ParametersGet">
+            <summary>设置 DefaultTriggerAttribute.get_Parameters() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.AllInstances.TargetTypeGet">
+            <summary>设置 DefaultTriggerAttribute.get_TargetType() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDefaultTriggerAttribute.AllInstances.TriggerTypeGet">
+            <summary>设置 DefaultTriggerAttribute.get_TriggerType() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper">
+            <summary>System.Windows.Interactivity.DependencyObjectHelper 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimDependencyObjectHelper.GetSelfAndAncestorsDependencyObject">
+            <summary>设置 DependencyObjectHelper.GetSelfAndAncestors(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventObserver">
+            <summary>System.Windows.Interactivity.EventObserver 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventObserver.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventObserver.#ctor(System.Windows.Interactivity.EventObserver)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventObserver.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventObserver.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventObserver.Bind(System.IDisposable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventObserver.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventObserver.ConstructorEventInfoObjectDelegate">
+            <summary>设置 EventObserver.EventObserver(EventInfo eventInfo, Object target, Delegate handler) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventObserver.Dispose">
+            <summary>设置 EventObserver.Dispose() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventObserver.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventObserver.AllInstances.Dispose">
+            <summary>设置 EventObserver.Dispose() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTrigger">
+            <summary>System.Windows.Interactivity.EventTrigger 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTrigger.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTrigger.#ctor(System.Windows.Interactivity.EventTrigger)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTrigger.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTrigger.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTrigger.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.Constructor">
+            <summary>设置 EventTrigger.EventTrigger() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.ConstructorString">
+            <summary>设置 EventTrigger.EventTrigger(String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.EventNameGet">
+            <summary>设置 EventTrigger.get_EventName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.EventNameSetString">
+            <summary>设置 EventTrigger.set_EventName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.GetEventName">
+            <summary>设置 EventTrigger.GetEventName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.OnEventNameChangedObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 EventTrigger.OnEventNameChanged(Object sender, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.StaticConstructor">
+            <summary>设置 EventTrigger.EventTrigger() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTrigger.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.AllInstances.EventNameGet">
+            <summary>设置 EventTrigger.get_EventName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.AllInstances.EventNameSetString">
+            <summary>设置 EventTrigger.set_EventName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTrigger.AllInstances.GetEventName">
+            <summary>设置 EventTrigger.GetEventName() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTriggerBase">
+            <summary>System.Windows.Interactivity.EventTriggerBase 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.#ctor(System.Windows.Interactivity.EventTriggerBase)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AssociatedObjectTypeConstraintGet">
+            <summary>设置 EventTriggerBase.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.ConstructorType">
+            <summary>设置 EventTriggerBase.EventTriggerBase(Type sourceTypeConstraint) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsLoadedRegisteredGet">
+            <summary>设置 EventTriggerBase.get_IsLoadedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsLoadedRegisteredSetBoolean">
+            <summary>设置 EventTriggerBase.set_IsLoadedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsSourceChangedRegisteredGet">
+            <summary>设置 EventTriggerBase.get_IsSourceChangedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsSourceChangedRegisteredSetBoolean">
+            <summary>设置 EventTriggerBase.set_IsSourceChangedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsSourceNameSetGet">
+            <summary>设置 EventTriggerBase.get_IsSourceNameSet() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.IsValidEventEventInfo">
+            <summary>设置 EventTriggerBase.IsValidEvent(EventInfo eventInfo) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnAttached">
+            <summary>设置 EventTriggerBase.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnBehaviorHostChangedObjectEventArgs">
+            <summary>设置 EventTriggerBase.OnBehaviorHostChanged(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnDetaching">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnEventEventArgs">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnEventImplObjectEventArgs">
+            <summary>设置 EventTriggerBase.OnEventImpl(Object sender, EventArgs eventArgs) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnEventNameChangedStringString">
+            <summary>设置 EventTriggerBase.OnEventNameChanged(String oldEventName, String newEventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnSourceChangedImplObjectObject">
+            <summary>设置 EventTriggerBase.OnSourceChangedImpl(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnSourceChangedObjectObject">
+            <summary>设置 EventTriggerBase.OnSourceChanged(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnSourceNameChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 EventTriggerBase.OnSourceNameChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.OnSourceObjectChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 EventTriggerBase.OnSourceObjectChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.RegisterEventObjectString">
+            <summary>设置 EventTriggerBase.RegisterEvent(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.RegisterLoadedFrameworkElement">
+            <summary>设置 EventTriggerBase.RegisterLoaded(FrameworkElement associatedElement) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.RegisterSourceChanged">
+            <summary>设置 EventTriggerBase.RegisterSourceChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceGet">
+            <summary>设置 EventTriggerBase.get_Source() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceNameGet">
+            <summary>设置 EventTriggerBase.get_SourceName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceNameSetString">
+            <summary>设置 EventTriggerBase.set_SourceName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceObjectGet">
+            <summary>设置 EventTriggerBase.get_SourceObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceObjectSetObject">
+            <summary>设置 EventTriggerBase.set_SourceObject(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.SourceTypeConstraintGet">
+            <summary>设置 EventTriggerBase.get_SourceTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.StaticConstructor">
+            <summary>设置 EventTriggerBase.EventTriggerBase() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.UnregisterEventImplObjectString">
+            <summary>设置 EventTriggerBase.UnregisterEventImpl(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.UnregisterEventObjectString">
+            <summary>设置 EventTriggerBase.UnregisterEvent(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.UnregisterLoadedFrameworkElement">
+            <summary>设置 EventTriggerBase.UnregisterLoaded(FrameworkElement associatedElement) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.UnregisterSourceChanged">
+            <summary>设置 EventTriggerBase.UnregisterSourceChanged() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 EventTriggerBase.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.IsLoadedRegisteredGet">
+            <summary>设置 EventTriggerBase.get_IsLoadedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.IsLoadedRegisteredSetBoolean">
+            <summary>设置 EventTriggerBase.set_IsLoadedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.IsSourceChangedRegisteredGet">
+            <summary>设置 EventTriggerBase.get_IsSourceChangedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.IsSourceChangedRegisteredSetBoolean">
+            <summary>设置 EventTriggerBase.set_IsSourceChangedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.IsSourceNameSetGet">
+            <summary>设置 EventTriggerBase.get_IsSourceNameSet() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnAttached">
+            <summary>设置 EventTriggerBase.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnBehaviorHostChangedObjectEventArgs">
+            <summary>设置 EventTriggerBase.OnBehaviorHostChanged(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnDetaching">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnEventEventArgs">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnEventImplObjectEventArgs">
+            <summary>设置 EventTriggerBase.OnEventImpl(Object sender, EventArgs eventArgs) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnEventNameChangedStringString">
+            <summary>设置 EventTriggerBase.OnEventNameChanged(String oldEventName, String newEventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnSourceChangedImplObjectObject">
+            <summary>设置 EventTriggerBase.OnSourceChangedImpl(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.OnSourceChangedObjectObject">
+            <summary>设置 EventTriggerBase.OnSourceChanged(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.RegisterEventObjectString">
+            <summary>设置 EventTriggerBase.RegisterEvent(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.RegisterLoadedFrameworkElement">
+            <summary>设置 EventTriggerBase.RegisterLoaded(FrameworkElement associatedElement) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.RegisterSourceChanged">
+            <summary>设置 EventTriggerBase.RegisterSourceChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceGet">
+            <summary>设置 EventTriggerBase.get_Source() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceNameGet">
+            <summary>设置 EventTriggerBase.get_SourceName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceNameSetString">
+            <summary>设置 EventTriggerBase.set_SourceName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceObjectGet">
+            <summary>设置 EventTriggerBase.get_SourceObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceObjectSetObject">
+            <summary>设置 EventTriggerBase.set_SourceObject(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.SourceTypeConstraintGet">
+            <summary>设置 EventTriggerBase.get_SourceTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.UnregisterEventImplObjectString">
+            <summary>设置 EventTriggerBase.UnregisterEventImpl(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.UnregisterEventObjectString">
+            <summary>设置 EventTriggerBase.UnregisterEvent(Object obj, String eventName) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.UnregisterLoadedFrameworkElement">
+            <summary>设置 EventTriggerBase.UnregisterLoaded(FrameworkElement associatedElement) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase.AllInstances.UnregisterSourceChanged">
+            <summary>设置 EventTriggerBase.UnregisterSourceChanged() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1">
+            <summary>System.Windows.Interactivity.EventTriggerBase`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.#ctor(System.Windows.Interactivity.EventTriggerBase{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.Constructor">
+            <summary>设置 EventTriggerBase`1.EventTriggerBase`1() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.OnSourceChangedImplObjectObject">
+            <summary>设置 EventTriggerBase`1.OnSourceChangedImpl(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.OnSourceChangedT0T0">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.SourceGet">
+            <summary>设置 EventTriggerBase`1.get_Source() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.AllInstances.OnSourceChangedImplObjectObject">
+            <summary>设置 EventTriggerBase`1.OnSourceChangedImpl(Object oldSource, Object newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.AllInstances.OnSourceChangedT0T0">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimEventTriggerBase`1.AllInstances.SourceGet">
+            <summary>设置 EventTriggerBase`1.get_Source() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimInteraction">
+            <summary>System.Windows.Interactivity.Interaction 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInteraction.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInteraction.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInteraction.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.GetBehaviorsDependencyObject">
+            <summary>设置 Interaction.GetBehaviors(DependencyObject obj) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.GetTriggersDependencyObject">
+            <summary>设置 Interaction.GetTriggers(DependencyObject obj) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.IsElementLoadedFrameworkElement">
+            <summary>设置 Interaction.IsElementLoaded(FrameworkElement element) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.OnBehaviorsChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 Interaction.OnBehaviorsChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.OnTriggersChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 Interaction.OnTriggersChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInteraction.StaticConstructor">
+            <summary>设置 Interaction.Interaction() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction">
+            <summary>System.Windows.Interactivity.InvokeCommandAction 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.#ctor(System.Windows.Interactivity.InvokeCommandAction)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandGet">
+            <summary>设置 InvokeCommandAction.get_Command() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandNameGet">
+            <summary>设置 InvokeCommandAction.get_CommandName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandNameSetString">
+            <summary>设置 InvokeCommandAction.set_CommandName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandParameterGet">
+            <summary>设置 InvokeCommandAction.get_CommandParameter() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandParameterSetObject">
+            <summary>设置 InvokeCommandAction.set_CommandParameter(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.CommandSetICommand">
+            <summary>设置 InvokeCommandAction.set_Command(ICommand value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.Constructor">
+            <summary>设置 InvokeCommandAction.InvokeCommandAction() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.InvokeObject">
+            <summary>设置 InvokeCommandAction.Invoke(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.ResolveCommand">
+            <summary>设置 InvokeCommandAction.ResolveCommand() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.StaticConstructor">
+            <summary>设置 InvokeCommandAction.InvokeCommandAction() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandGet">
+            <summary>设置 InvokeCommandAction.get_Command() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandNameGet">
+            <summary>设置 InvokeCommandAction.get_CommandName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandNameSetString">
+            <summary>设置 InvokeCommandAction.set_CommandName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandParameterGet">
+            <summary>设置 InvokeCommandAction.get_CommandParameter() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandParameterSetObject">
+            <summary>设置 InvokeCommandAction.set_CommandParameter(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.CommandSetICommand">
+            <summary>设置 InvokeCommandAction.set_Command(ICommand value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.InvokeObject">
+            <summary>设置 InvokeCommandAction.Invoke(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimInvokeCommandAction.AllInstances.ResolveCommand">
+            <summary>设置 InvokeCommandAction.ResolveCommand() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs">
+            <summary>System.Windows.Interactivity.PreviewInvokeEventArgs 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.#ctor(System.Windows.Interactivity.PreviewInvokeEventArgs)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.CancellingGet">
+            <summary>设置 PreviewInvokeEventArgs.get_Cancelling() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.CancellingSetBoolean">
+            <summary>设置 PreviewInvokeEventArgs.set_Cancelling(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.Constructor">
+            <summary>设置 PreviewInvokeEventArgs.PreviewInvokeEventArgs() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.AllInstances.CancellingGet">
+            <summary>设置 PreviewInvokeEventArgs.get_Cancelling() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimPreviewInvokeEventArgs.AllInstances.CancellingSetBoolean">
+            <summary>设置 PreviewInvokeEventArgs.set_Cancelling(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction">
+            <summary>System.Windows.Interactivity.TargetedTriggerAction 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.#ctor(System.Windows.Interactivity.TargetedTriggerAction)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TargetedTriggerAction.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.ConstructorType">
+            <summary>设置 TargetedTriggerAction.TargetedTriggerAction(Type targetTypeConstraint) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.IsTargetChangedRegisteredGet">
+            <summary>设置 TargetedTriggerAction.get_IsTargetChangedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.IsTargetChangedRegisteredSetBoolean">
+            <summary>设置 TargetedTriggerAction.set_IsTargetChangedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.IsTargetNameSetGet">
+            <summary>设置 TargetedTriggerAction.get_IsTargetNameSet() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnAttached">
+            <summary>设置 TargetedTriggerAction.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnBehaviorHostChangedObjectEventArgs">
+            <summary>设置 TargetedTriggerAction.OnBehaviorHostChanged(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnDetaching">
+            <summary>设置 TargetedTriggerAction.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnTargetChangedImplObjectObject">
+            <summary>设置 TargetedTriggerAction.OnTargetChangedImpl(Object oldTarget, Object newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnTargetNameChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 TargetedTriggerAction.OnTargetNameChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.OnTargetObjectChangedDependencyObjectDependencyPropertyChangedEventArgs">
+            <summary>设置 TargetedTriggerAction.OnTargetObjectChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.RegisterTargetChanged">
+            <summary>设置 TargetedTriggerAction.RegisterTargetChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.StaticConstructor">
+            <summary>设置 TargetedTriggerAction.TargetedTriggerAction() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetGet">
+            <summary>设置 TargetedTriggerAction.get_Target() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetNameGet">
+            <summary>设置 TargetedTriggerAction.get_TargetName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetNameSetString">
+            <summary>设置 TargetedTriggerAction.set_TargetName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetObjectGet">
+            <summary>设置 TargetedTriggerAction.get_TargetObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetObjectSetObject">
+            <summary>设置 TargetedTriggerAction.set_TargetObject(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.TargetTypeConstraintGet">
+            <summary>设置 TargetedTriggerAction.get_TargetTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.UnregisterTargetChanged">
+            <summary>设置 TargetedTriggerAction.UnregisterTargetChanged() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TargetedTriggerAction.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.IsTargetChangedRegisteredGet">
+            <summary>设置 TargetedTriggerAction.get_IsTargetChangedRegistered() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.IsTargetChangedRegisteredSetBoolean">
+            <summary>设置 TargetedTriggerAction.set_IsTargetChangedRegistered(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.IsTargetNameSetGet">
+            <summary>设置 TargetedTriggerAction.get_IsTargetNameSet() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.OnAttached">
+            <summary>设置 TargetedTriggerAction.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.OnBehaviorHostChangedObjectEventArgs">
+            <summary>设置 TargetedTriggerAction.OnBehaviorHostChanged(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.OnDetaching">
+            <summary>设置 TargetedTriggerAction.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.OnTargetChangedImplObjectObject">
+            <summary>设置 TargetedTriggerAction.OnTargetChangedImpl(Object oldTarget, Object newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.RegisterTargetChanged">
+            <summary>设置 TargetedTriggerAction.RegisterTargetChanged() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetGet">
+            <summary>设置 TargetedTriggerAction.get_Target() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetNameGet">
+            <summary>设置 TargetedTriggerAction.get_TargetName() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetNameSetString">
+            <summary>设置 TargetedTriggerAction.set_TargetName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetObjectGet">
+            <summary>设置 TargetedTriggerAction.get_TargetObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetObjectSetObject">
+            <summary>设置 TargetedTriggerAction.set_TargetObject(Object value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.TargetTypeConstraintGet">
+            <summary>设置 TargetedTriggerAction.get_TargetTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction.AllInstances.UnregisterTargetChanged">
+            <summary>设置 TargetedTriggerAction.UnregisterTargetChanged() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1">
+            <summary>System.Windows.Interactivity.TargetedTriggerAction`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.#ctor(System.Windows.Interactivity.TargetedTriggerAction{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.Constructor">
+            <summary>设置 TargetedTriggerAction`1.TargetedTriggerAction`1() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.OnTargetChangedImplObjectObject">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChangedImpl(Object oldTarget, Object newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.OnTargetChangedT0T0">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChanged(!0 oldTarget, !0 newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.TargetGet">
+            <summary>设置 TargetedTriggerAction`1.get_Target() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.AllInstances.OnTargetChangedImplObjectObject">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChangedImpl(Object oldTarget, Object newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.AllInstances.OnTargetChangedT0T0">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChanged(!0 oldTarget, !0 newTarget) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTargetedTriggerAction`1.AllInstances.TargetGet">
+            <summary>设置 TargetedTriggerAction`1.get_Target() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerAction">
+            <summary>System.Windows.Interactivity.TriggerAction 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction.#ctor(System.Windows.Interactivity.TriggerAction)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AssociatedObjectGet">
+            <summary>设置 TriggerAction.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 TriggerAction.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerAction.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AttachDependencyObject">
+            <summary>设置 TriggerAction.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.CallInvokeObject">
+            <summary>设置 TriggerAction.CallInvoke(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.ConstructorType">
+            <summary>设置 TriggerAction.TriggerAction(Type associatedObjectTypeConstraint) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.Detach">
+            <summary>设置 TriggerAction.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.IsEnabledGet">
+            <summary>设置 TriggerAction.get_IsEnabled() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.IsEnabledSetBoolean">
+            <summary>设置 TriggerAction.set_IsEnabled(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.IsHostedGet">
+            <summary>设置 TriggerAction.get_IsHosted() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.IsHostedSetBoolean">
+            <summary>设置 TriggerAction.set_IsHosted(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.OnAttached">
+            <summary>设置 TriggerAction.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.OnDetaching">
+            <summary>设置 TriggerAction.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.StaticConstructor">
+            <summary>设置 TriggerAction.TriggerAction() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.AssociatedObjectGet">
+            <summary>设置 TriggerAction.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 TriggerAction.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerAction.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.AttachDependencyObject">
+            <summary>设置 TriggerAction.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.CallInvokeObject">
+            <summary>设置 TriggerAction.CallInvoke(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.Detach">
+            <summary>设置 TriggerAction.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.IsEnabledGet">
+            <summary>设置 TriggerAction.get_IsEnabled() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.IsEnabledSetBoolean">
+            <summary>设置 TriggerAction.set_IsEnabled(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.IsHostedGet">
+            <summary>设置 TriggerAction.get_IsHosted() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.IsHostedSetBoolean">
+            <summary>设置 TriggerAction.set_IsHosted(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.OnAttached">
+            <summary>设置 TriggerAction.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction.AllInstances.OnDetaching">
+            <summary>设置 TriggerAction.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerAction`1">
+            <summary>System.Windows.Interactivity.TriggerAction`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.#ctor(System.Windows.Interactivity.TriggerAction{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.AssociatedObjectGet">
+            <summary>设置 TriggerAction`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerAction`1.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.Constructor">
+            <summary>设置 TriggerAction`1.TriggerAction`1() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.AllInstances.AssociatedObjectGet">
+            <summary>设置 TriggerAction`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerAction`1.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerAction`1.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection">
+            <summary>System.Windows.Interactivity.TriggerActionCollection 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.#ctor(System.Windows.Interactivity.TriggerActionCollection)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.Specialized.INotifyCollectionChanged)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.ICollection)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.IEnumerable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.IList)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.Generic.ICollection{System.Windows.Interactivity.TriggerAction})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.Generic.IEnumerable{System.Windows.Interactivity.TriggerAction})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Bind(System.Collections.Generic.IList{System.Windows.Interactivity.TriggerAction})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.Constructor">
+            <summary>设置 TriggerActionCollection.TriggerActionCollection() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.ItemAddedTriggerAction">
+            <summary>设置 TriggerActionCollection.ItemAdded(TriggerAction item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.ItemRemovedTriggerAction">
+            <summary>设置 TriggerActionCollection.ItemRemoved(TriggerAction item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.OnAttached">
+            <summary>设置 TriggerActionCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.OnDetaching">
+            <summary>设置 TriggerActionCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.AllInstances.ItemAddedTriggerAction">
+            <summary>设置 TriggerActionCollection.ItemAdded(TriggerAction item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.AllInstances.ItemRemovedTriggerAction">
+            <summary>设置 TriggerActionCollection.ItemRemoved(TriggerAction item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.AllInstances.OnAttached">
+            <summary>设置 TriggerActionCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerActionCollection.AllInstances.OnDetaching">
+            <summary>设置 TriggerActionCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerBase">
+            <summary>System.Windows.Interactivity.TriggerBase 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase.#ctor(System.Windows.Interactivity.TriggerBase)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.ActionsGet">
+            <summary>设置 TriggerBase.get_Actions() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AssociatedObjectGet">
+            <summary>设置 TriggerBase.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 TriggerBase.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerBase.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AttachDependencyObject">
+            <summary>设置 TriggerBase.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.ConstructorType">
+            <summary>设置 TriggerBase.TriggerBase(Type associatedObjectTypeConstraint) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.Detach">
+            <summary>设置 TriggerBase.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.InvokeActionsObject">
+            <summary>设置 TriggerBase.InvokeActions(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.OnAttached">
+            <summary>设置 TriggerBase.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.OnDetaching">
+            <summary>设置 TriggerBase.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.PreviewInvokeAddEventHandlerOfPreviewInvokeEventArgs">
+            <summary>设置 TriggerBase.add_PreviewInvoke(EventHandler`1&lt;PreviewInvokeEventArgs&gt; value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.PreviewInvokeRemoveEventHandlerOfPreviewInvokeEventArgs">
+            <summary>设置 TriggerBase.remove_PreviewInvoke(EventHandler`1&lt;PreviewInvokeEventArgs&gt; value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.StaticConstructor">
+            <summary>设置 TriggerBase.TriggerBase() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.ActionsGet">
+            <summary>设置 TriggerBase.get_Actions() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.AssociatedObjectGet">
+            <summary>设置 TriggerBase.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.AssociatedObjectSystemWindowsInteractivityIAttachedObjectget">
+            <summary>设置 TriggerBase.System.Windows.Interactivity.IAttachedObject.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerBase.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.AttachDependencyObject">
+            <summary>设置 TriggerBase.Attach(DependencyObject dependencyObject) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.Detach">
+            <summary>设置 TriggerBase.Detach() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.InvokeActionsObject">
+            <summary>设置 TriggerBase.InvokeActions(Object parameter) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.OnAttached">
+            <summary>设置 TriggerBase.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.OnDetaching">
+            <summary>设置 TriggerBase.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.PreviewInvokeAddEventHandlerOfPreviewInvokeEventArgs">
+            <summary>设置 TriggerBase.add_PreviewInvoke(EventHandler`1&lt;PreviewInvokeEventArgs&gt; value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase.AllInstances.PreviewInvokeRemoveEventHandlerOfPreviewInvokeEventArgs">
+            <summary>设置 TriggerBase.remove_PreviewInvoke(EventHandler`1&lt;PreviewInvokeEventArgs&gt; value) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerBase`1">
+            <summary>System.Windows.Interactivity.TriggerBase`1 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.#ctor(System.Windows.Interactivity.TriggerBase{`0})">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.AssociatedObjectGet">
+            <summary>设置 TriggerBase`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerBase`1.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.Constructor">
+            <summary>设置 TriggerBase`1.TriggerBase`1() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.AllInstances.AssociatedObjectGet">
+            <summary>设置 TriggerBase`1.get_AssociatedObject() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerBase`1.AllInstances.AssociatedObjectTypeConstraintGet">
+            <summary>设置 TriggerBase`1.get_AssociatedObjectTypeConstraint() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerCollection">
+            <summary>System.Windows.Interactivity.TriggerCollection 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.#ctor(System.Windows.Interactivity.TriggerCollection)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.Specialized.INotifyCollectionChanged)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Windows.Interactivity.IAttachedObject)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.ICollection)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.IEnumerable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.IList)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.Generic.ICollection{System.Windows.Interactivity.TriggerBase})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.Generic.IEnumerable{System.Windows.Interactivity.TriggerBase})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Bind(System.Collections.Generic.IList{System.Windows.Interactivity.TriggerBase})">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.Constructor">
+            <summary>设置 TriggerCollection.TriggerCollection() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.ItemAddedTriggerBase">
+            <summary>设置 TriggerCollection.ItemAdded(TriggerBase item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.ItemRemovedTriggerBase">
+            <summary>设置 TriggerCollection.ItemRemoved(TriggerBase item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.OnAttached">
+            <summary>设置 TriggerCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.OnDetaching">
+            <summary>设置 TriggerCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTriggerCollection.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.AllInstances.ItemAddedTriggerBase">
+            <summary>设置 TriggerCollection.ItemAdded(TriggerBase item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.AllInstances.ItemRemovedTriggerBase">
+            <summary>设置 TriggerCollection.ItemRemoved(TriggerBase item) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.AllInstances.OnAttached">
+            <summary>设置 TriggerCollection.OnAttached() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTriggerCollection.AllInstances.OnDetaching">
+            <summary>设置 TriggerCollection.OnDetaching() 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute">
+            <summary>System.Windows.Interactivity.TypeConstraintAttribute 的填充码类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.#ctor(System.Windows.Interactivity.TypeConstraintAttribute)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.ConstraintGet">
+            <summary>设置 TypeConstraintAttribute.get_Constraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.ConstraintSetType">
+            <summary>设置 TypeConstraintAttribute.set_Constraint(Type value) 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.ConstructorType">
+            <summary>设置 TypeConstraintAttribute.TypeConstraintAttribute(Type constraint) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.AllInstances.ConstraintGet">
+            <summary>设置 TypeConstraintAttribute.get_Constraint() 的 填充码</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.ShimTypeConstraintAttribute.AllInstances.ConstraintSetType">
+            <summary>设置 TypeConstraintAttribute.set_Constraint(Type value) 的 填充码</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubBehavior`1">
+            <summary>System.Windows.Interactivity.Behavior`1 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubBehavior`1.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubBehavior`1.InitializeStub">
+            <summary>初始化 type StubBehavior 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubBehavior`1.OnAttached">
+            <summary>设置 Behavior.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubBehavior`1.OnAttached01">
+            <summary>设置 Behavior.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubBehavior`1.OnDetaching">
+            <summary>设置 Behavior.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubBehavior`1.OnDetaching01">
+            <summary>设置 Behavior.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubBehavior`1.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubBehavior`1.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubBehavior`1.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubEventTrigger">
+            <summary>System.Windows.Interactivity.EventTrigger 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.#ctor(System.String)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.GetEventName">
+            <summary>设置 EventTrigger.GetEventName() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTrigger.GetEventName01">
+            <summary>设置 EventTrigger.GetEventName() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.InitializeStub">
+            <summary>初始化 type StubEventTrigger 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.OnAttached">
+            <summary>设置 EventTriggerBase.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTrigger.OnAttached01">
+            <summary>设置 EventTriggerBase.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.OnDetaching">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTrigger.OnDetaching01">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.OnEvent(System.EventArgs)">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTrigger.OnEventEventArgs">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTrigger.OnSourceChanged(System.Object,System.Object)">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTrigger.OnSourceChangedObjectObject">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTrigger.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTrigger.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTrigger.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1">
+            <summary>System.Windows.Interactivity.EventTriggerBase`1 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.GetEventName">
+            <summary>设置 EventTriggerBase.GetEventName() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.GetEventName01">
+            <summary>设置 EventTriggerBase.GetEventName() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.InitializeStub">
+            <summary>初始化 type StubEventTriggerBase 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnAttached">
+            <summary>设置 EventTriggerBase.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnAttached01">
+            <summary>设置 EventTriggerBase.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnDetaching">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnDetaching01">
+            <summary>设置 EventTriggerBase.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnEvent(System.EventArgs)">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnEventEventArgs">
+            <summary>设置 EventTriggerBase.OnEvent(EventArgs eventArgs) 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnSourceChanged(`0,`0)">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.OnSourceChangedT0T0">
+            <summary>设置 EventTriggerBase`1.OnSourceChanged(!0 oldSource, !0 newSource) 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubEventTriggerBase`1.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubIAttachedObject">
+            <summary>System.Windows.Interactivity.IAttachedObject 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubIAttachedObject.#ctor">
+            <summary>初始化 type StubIAttachedObject 的新实例</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubIAttachedObject.AssociatedObjectGet">
+            <summary>设置 IAttachedObject.get_AssociatedObject() 的 stub</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubIAttachedObject.AttachDependencyObject">
+            <summary>设置 IAttachedObject.Attach(DependencyObject dependencyObject) 的 stub</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubIAttachedObject.Detach">
+            <summary>设置 IAttachedObject.Detach() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubIAttachedObject.swi::System#Windows#Interactivity#IAttachedObject#Attach(System.Windows.DependencyObject)">
+            <summary>设置 IAttachedObject.Attach(DependencyObject dependencyObject) 的 存根</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubIAttachedObject.swi::System#Windows#Interactivity#IAttachedObject#Detach">
+            <summary>设置 IAttachedObject.Detach() 的 存根</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubIAttachedObject.swi::System#Windows#Interactivity#IAttachedObject#AssociatedObject">
+            <summary>设置 IAttachedObject.get_AssociatedObject() 的 stub</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs">
+            <summary>System.Windows.Interactivity.PreviewInvokeEventArgs 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs.InitializeStub">
+            <summary>初始化 type StubPreviewInvokeEventArgs 的新实例</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubPreviewInvokeEventArgs.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1">
+            <summary>System.Windows.Interactivity.TargetedTriggerAction`1 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.InitializeStub">
+            <summary>初始化 type StubTargetedTriggerAction 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.Invoke(System.Object)">
+            <summary>设置 TriggerAction.Invoke(Object parameter) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.InvokeObject">
+            <summary>设置 TriggerAction.Invoke(Object parameter) 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnAttached">
+            <summary>设置 TargetedTriggerAction.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnAttached01">
+            <summary>设置 TargetedTriggerAction.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnDetaching">
+            <summary>设置 TargetedTriggerAction.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnDetaching01">
+            <summary>设置 TargetedTriggerAction.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnTargetChanged(`0,`0)">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChanged(!0 oldTarget, !0 newTarget) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.OnTargetChangedT0T0">
+            <summary>设置 TargetedTriggerAction`1.OnTargetChanged(!0 oldTarget, !0 newTarget) 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTargetedTriggerAction`1.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubTriggerAction`1">
+            <summary>System.Windows.Interactivity.TriggerAction`1 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerAction`1.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerAction`1.InitializeStub">
+            <summary>初始化 type StubTriggerAction 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerAction`1.Invoke(System.Object)">
+            <summary>设置 TriggerAction.Invoke(Object parameter) 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTriggerAction`1.InvokeObject">
+            <summary>设置 TriggerAction.Invoke(Object parameter) 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerAction`1.OnAttached">
+            <summary>设置 TriggerAction.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTriggerAction`1.OnAttached01">
+            <summary>设置 TriggerAction.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerAction`1.OnDetaching">
+            <summary>设置 TriggerAction.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTriggerAction`1.OnDetaching01">
+            <summary>设置 TriggerAction.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerAction`1.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerAction`1.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerAction`1.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:System.Windows.Interactivity.Fakes.StubTriggerBase`1">
+            <summary>System.Windows.Interactivity.TriggerBase`1 的存根类型</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerBase`1.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerBase`1.InitializeStub">
+            <summary>初始化 type StubTriggerBase 的新实例</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerBase`1.OnAttached">
+            <summary>设置 TriggerBase.OnAttached() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTriggerBase`1.OnAttached01">
+            <summary>设置 TriggerBase.OnAttached() 的 stub</summary>
+        </member>
+        <member name="M:System.Windows.Interactivity.Fakes.StubTriggerBase`1.OnDetaching">
+            <summary>设置 TriggerBase.OnDetaching() 的 存根</summary>
+        </member>
+        <member name="F:System.Windows.Interactivity.Fakes.StubTriggerBase`1.OnDetaching01">
+            <summary>设置 TriggerBase.OnDetaching() 的 stub</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerBase`1.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerBase`1.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:System.Windows.Interactivity.Fakes.StubTriggerBase`1.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+    </members>
+</doc>

@@ -22,22 +22,18 @@
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource SystemTrayHight}"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <!--透视控件-->
-        <controls:Panorama Title="{Binding DisplayName}" Grid.Row="1">
+        <phone:Panorama Title="{Binding DisplayName}">
             <!--<i:Interaction.Behaviors>
                 <b:PanoramaSelectedStorageBehavior Key="subjectView"/>
             </i:Interaction.Behaviors>-->
-            <controls:Panorama.TitleTemplate>
+            <phone:Panorama.TitleTemplate>
                 <DataTemplate>
                     <TextBlock Margin="0,72,0,10" 
                                Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </DataTemplate>
-            </controls:Panorama.TitleTemplate>
-            <controls:PanoramaItem>
+            </phone:Panorama.TitleTemplate>
+            <phone:PanoramaItem>
                 <ScrollViewer>
                     <Grid Background="{x:Null}">
                         <Grid.ColumnDefinitions>
@@ -65,8 +61,8 @@
                                        BorderBrush="{Binding Path=State.IsFavorited,Converter={StaticResource stateBrushConverter}}" />
                     </Grid>
                 </ScrollViewer>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem >
+            </phone:PanoramaItem>
+            <phone:PanoramaItem >
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="章节" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
@@ -91,8 +87,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem >
+            </phone:PanoramaItem>
+            <phone:PanoramaItem >
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="角色" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
@@ -122,8 +118,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem >
+            </phone:PanoramaItem>
+            <phone:PanoramaItem >
                 <controls:PanoramaItem.Header>
                     <TextBlock Text="工作人员" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                 </controls:PanoramaItem.Header>
@@ -147,11 +143,11 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </controls:PanoramaItem>
-            <controls:PanoramaItem >
-                <controls:PanoramaItem.Header>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem >
+                <phone:PanoramaItem.Header>
                     <TextBlock Text="评论" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                </controls:PanoramaItem.Header>
+                </phone:PanoramaItem.Header>
                 <ListBox ItemsSource="{Binding Blogs}" toolkit:TiltEffect.IsTiltEnabled="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -175,8 +171,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </controls:PanoramaItem>
-        </controls:Panorama>
+            </phone:PanoramaItem>
+        </phone:Panorama>
     </Grid>
 
     <!--演示 ApplicationBar 用法的示例代码-->
