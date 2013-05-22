@@ -180,6 +180,7 @@ namespace KimiStudio.BgmOnWp.ViewModels
         private void SetSubject(SubjectCommandResult result)
         {
             var subject = result.Subject;
+            if (subject == null) return;
 
             Subject = SubjectModel.FromSubject(subject);
             DisplayName = Subject.Name;
@@ -234,6 +235,8 @@ namespace KimiStudio.BgmOnWp.ViewModels
         #region Public
         public void Favorite()
         {
+            if (State == null) return;
+
             promptManager.PopupFor<FavoriteViewModel>()
                 .Setup(model => model.SetUp(State))
                 .SetTitleBackground("BangumiBlue")
