@@ -67,6 +67,20 @@ namespace KimiStudio.Bangumi.Api.Commands
             }
         }
 
+        private void InvokeCallBackAction(TResult result)
+        {
+            if (callBackAction == null) return;
+
+            try
+            {
+                callBackAction(result);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("InvokeCallBackAction,err:{0}", e);
+            }
+        }
+
         private void DoException(Exception e)
         {
             if (exceptionAction == null) return;

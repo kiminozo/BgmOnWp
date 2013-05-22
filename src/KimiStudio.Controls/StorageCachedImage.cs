@@ -70,9 +70,18 @@ namespace KimiStudio.Controls
         private void SetCacheStreamSource()
         {
             using (var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication())
-            using (var stream = isolatedStorageFile.OpenFile(filePath, FileMode.Open, FileAccess.Read))
             {
-                SetSource(stream);
+                try
+                {
+                    using (var stream = isolatedStorageFile.OpenFile(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        SetSource(stream);
+                    }
+                }
+                catch (IsolatedStorageException)
+                {
+                    SetSource(new MemoryStream());
+                }
             }
             IsLoaded = true;
         }
