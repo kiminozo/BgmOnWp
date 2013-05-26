@@ -24,7 +24,7 @@
             <c:StarMark Marked="{Binding Rating,Mode=TwoWay}" 
                         MaxStars="10" Height="50" HorizontalAlignment="Left" Width="340" Padding="10,10,0,10" Margin="15,0,0,0" />
             <TextBlock Text="标签" Style="{StaticResource PhoneTextSubtleStyle}" />
-            <TextBox Text="{Binding Tags,Mode=TwoWay}" MaxLength="20" />
+            <TextBox Text="{Binding Tags,Mode=TwoWay}" MaxLength="30" />
             <TextBlock Text="吐槽" Style="{StaticResource PhoneTextSubtleStyle}"/>
             <TextBox Height="105" MaxLength="140"  TextWrapping="Wrap" 
                      Text="{Binding Comment,Mode=TwoWay}" />
