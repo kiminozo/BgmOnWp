@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="zh-CN" />
-  <App xmlns="" ProductID="{b49c0b17-2b1c-4292-a26b-b62851e7fe0a}" Title="Bangumi 番組計劃" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="kiminozo" Description="Sample description" Publisher="kiminozo" PublisherID="{a7097e82-7476-4982-8755-3d2abfa9df57}">
+  <App xmlns="" ProductID="{b49c0b17-2b1c-4292-a26b-b62851e7fe0a}" Title="Bangumi 番組計劃" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="kiminozo" Description="Bangumi 番组计划 手机客户端。&#xD;&#xA;轻触屏幕,在手机上记录你曾经看过的动画、书籍、音乐；&#xD;&#xA;独特的收视进度管理功能让你不必担心将看过的章节下载第二次；在乐园里游玩了解各类符合你口味的讯息动向，或到小组里寻觅趣味相投的伙伴。只需要一个 Bangumi 帐户，你就可以拥有这一切。" Publisher="kiminozo" PublisherID="{a7097e82-7476-4982-8755-3d2abfa9df57}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />

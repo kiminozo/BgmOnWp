@@ -37,8 +37,15 @@ namespace KimiStudio.Controls
         /// <param name="uriSource"></param>
         public StorageCachedImage(Uri uriSource)
         {
-            this.uriSource = uriSource;
-
+            if (uriSource.Scheme != "http" || uriSource.Scheme != "https")
+            {
+                this.uriSource = new Uri("http://" + uriSource.Host + uriSource.PathAndQuery);
+            }
+            else
+            {
+                this.uriSource = uriSource;    
+            }
+            
             //文件路径
             filePath = Path.Combine(CacheDirectory, uriSource.AbsolutePath.TrimStart('/').Replace('/', '_'));
             OpenCatchSource();
